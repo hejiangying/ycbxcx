@@ -1,0 +1,46 @@
+<!--pages/comments/comments.wxml-->
+<view class="container">
+  <view class="commsel">
+    <view data-comm="1" bindtap='commClick' class="{{comm == 1 ? 'on' : ''}}">全部评论</view>
+    <view data-comm="2" bindtap='commClick' class="{{comm == 2 ? 'on' : ''}}">有图</view>
+  </view>
+  <!-- 全部评论 -->
+  <view class="allcomm" wx:if="{{comm == 1 ? 'on' : ''}}">
+    <view class="commcon">
+      <view class="comm-t">
+        <view class="comm-l">
+          <image src="../../image/kezhan.png"></image>
+          <text>哈哈哈哈</text>
+        </view>
+        <view class="comm-r">2018-8-3</view>
+      </view>
+      <view class="comm-con">惊艳之作 很好用</view>
+      <image src="../../image/kezhan.png"></image>
+    </view>
+    <view class="commcon">
+      <view class="comm-t">
+        <view class="comm-l">
+          <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg"></image>
+          <text>哈哈哈哈</text>
+        </view>
+        <view class="comm-r">2018-8-3</view>
+      </view>
+      <view class="comm-con">很不错的一次体验</view>
+    </view>
+  </view>
+<!-- 图片评论 -->
+<view class="phtcomm"  wx:if="{{comm == 2 ? 'on' : ''}}">
+   <view class="commcon">
+      <view class="comm-t">
+        <view class="comm-l">
+          <image src="../../image/kezhan.png"></image>
+          <text>哈哈哈哈</text>
+        </view>
+        <view class="comm-r">2018-8-3</view>
+      </view>
+      <view class="comm-con">惊艳之作 很好用</view>
+      <image src="../../image/kezhan.png"></image>
+    </view>
+</view>
+
+</view>

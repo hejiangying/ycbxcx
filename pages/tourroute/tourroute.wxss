@@ -1,0 +1,145 @@
+/* pages/tourroute/tourroute.wxss */
+
+.toursearch {
+  position: relative;
+}
+
+.toursearch input {
+  background-color: #000;
+  opacity: 0.5;
+  padding: 10rpx 0rpx;
+}
+
+.tourcon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0px 2px 2px rgb(224, 222, 222);
+}
+
+.tourcon text {
+  font-size: 32rpx;
+  border: 1px solid #ccc;
+  padding: 10rpx 15rpx;
+  margin: 20rpx;
+}
+
+.toursearch input {
+  text-align: center;
+  color: #fff;
+  font-size: 34rpx;
+}
+
+.tourlist {
+  width: 96%;
+  margin: 0 auto;
+}
+
+.tourlist .touritem {
+  padding: 10px 0rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px dashed #ccc;
+}
+
+.tourlist .touritem .search-con {
+  position: relative;
+}
+
+.tourlist .touritem .search-con image {
+  height: 100px;
+  width: 100px;
+  margin-right: 20rpx;
+}
+
+.tourlist .touritem .search-con text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10rpx 15rpx;
+  color: #fff;
+  font-size: 30rpx;
+  background-color: #f63264;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+
+.tourlist .touritem .tourinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 34rpx;
+}
+
+.tourlist .tourinfo .tour-sell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tourlist .tourinfo .sell-price {
+  font-weight: bold;
+  color: #f63264;
+}
+
+.tourlist .tourinfo .sell-price text {
+  font-size: 24rpx;
+  color: #ccc;
+  margin-left: 10rpx;
+}
+
+.tourlist .tourinfo .tour-tag text {
+  border-right: 1rpx solid #ccc;
+  padding: 0rpx 10rpx;
+  font-size: 30rpx;
+  color: #ccc;
+}
+
+.tourlist .tourinfo .tour-tag text:nth-child(1) {
+  color: #f63264;
+}
+
+.tourlist .tourinfo .tour-tag text:last-child {
+  border-right: 0rpx;
+}
+
+.tourlist .tourinfo .sell-num text {
+  font-size: 30rpx;
+  color: #ccc;
+  margin-left: 10rpx;
+}
+
+.search-bottom .rank {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.search-bottom .rank text {
+  padding: 15rpx 0rpx;
+  color: #555;
+  border-bottom: 1px solid rgb(226, 223, 223);
+  font-size: 34rpx;
+}
+.search-bottom .rank text:nth-child(1){
+  color: rgb(58, 157, 214);
+}
+.search-bottom .search-way{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* position: fixed;
+  bottom: 0; */
+}
+.onway{
+  color: rgb(115, 145, 228);
+}
+.choose-item{
+  display: flex;
+  flex: row;
+}
+.choose-item .choose-title,.choose-item .choose-name{
+  display: flex;
+  flex-direction: column;
+}

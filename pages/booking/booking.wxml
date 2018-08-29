@@ -1,0 +1,69 @@
+<!--pages/booking/booking.wxml-->
+<view class="container">
+  <view class="booking-title">
+    蝴蝶泉跟团一日游门票(带导游)
+  </view>
+  <view class="time">
+    <picker mode="date" value="{{_date}}" bindchange='dateSel'>
+     <text>游玩日期</text> {{_date}}
+    </picker>
+  </view>
+  <text class="selnum">选择数量</text>
+  <view class="per adult" wx:for="{{peritem}}" wx:key="{{index}}">
+    <view class="p-l">
+      <text>{{item.per}}</text>￥{{item.price}} 
+    </view>
+    <view class="p-r">
+      <input type="number" value="{{item.num}}" class="{{minusStatuses[index]}}" ></input>
+      <view bindtap="bindMinus" data-index="{{index}}">-</view>
+      <view bindtap="bindPlus" data-index="{{index}}">+</view>
+    </view>
+  </view>
+  <!-- <view class="per children">
+    <view class="p-l">
+      <text>儿童</text>￥199
+    </view>
+    <view class="p-r">
+      <input type="number" bindchange="bindManual" value="{{num}}" class="{{minusStatus}}"></input>
+      <view bindtap="bindMinus">-</view>
+      <view bindtap="bindPlus">+</view>
+    </view>
+  </view>
+  <view class="per old">
+    <view class="p-l">
+      <text>老人</text>￥199
+    </view>
+    <view class="p-r">
+      <input type="number" bindchange="bindManual" value="{{num}}" class="{{minusStatus}}"></input>
+      <view bindtap="bindMinus">-</view>
+      <view bindtap="bindPlus">+</view>
+    </view>
+  </view> -->
+  <text class="selnum">个人信息登记</text>
+  <scroll-view scroll-y="true" style="min-height:280px;padding-bottom:100rpx;background-color:rgb(243,237,237);">
+  <view class="myform">
+    <view class="form-item" wx:for="{{lists}}" wx:key="{{index}}" data-index="{{index}}"> 
+      <view class="fo-name">
+        <text>姓名</text>
+        <input placeholder='请填写真实姓名' bindinput='getName' value="{{item.name}}" data-index="{{index}}"></input>
+      </view>
+      <view class="fo-id">
+        <text>身份证</text>
+        <input placeholder='请填写身份证号码' bindinput='getId' value="{{item.ids}}" data-index="{{index}}" maxlength='18'></input>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+  <!-- 底部结算按钮 -->
+  <view class="foot">
+    <view class="allmoney">
+      <view class="num">
+        <text>{{totalCount}}件总计</text>
+        <text>￥{{totalPrice}}</text>
+      </view>
+      <view class="gopay" bindtap='goPay'>
+        去下单
+      </view>
+    </view>
+  </view>
+</view>

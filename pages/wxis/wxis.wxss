@@ -1,0 +1,15 @@
+/* pages/wxis/wxis.wxss */
+image{
+  width: 200rpx;
+  height: 200rpx;
+  display: block;
+  margin: 100rpx auto;
+}
+button{
+  background: #f63264;
+  color: #fff;
+  border-radius: 50rpx;
+  width: 80%;
+  margin: 0 auto;
+  margin-top:20%;
+}

@@ -1,0 +1,81 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/houselist/houselist",
+    "pages/wxis/wxis",
+    "pages/custom/custom",
+    "pages/fooddetail/fooddetail",
+    "pages/commentPost/commentPost",
+    "pages/shopping/shopping",
+    "pages/booking/booking",
+    "pages/comments/comments",
+    "pages/start/start",
+    "pages/postdetail/postdetail",
+    "pages/seeorder/seeorder",
+    "pages/myinfo/myinfo",
+    "pages/mine/mine",
+    "pages/order/order",
+    "pages/logs/logs",
+    "pages/active/active",
+    "pages/tourroute/tourroute",
+    "pages/orderdetail/orderdetail",
+    "pages/myattention/myattention",
+    "pages/myfans/myfans",
+    "pages/mypost/mypost",
+    "pages/found/found",
+    "pages/post/post",
+    "pages/about/about",
+    "pages/help/help",
+    "pages/moreroute/moreroute",
+    "pages/quiz/quiz",
+    "pages/buy/checkout/checkout",
+    "pages/buy/address/address",
+    "pages/ucenter/addressAdd/addressAdd",
+    "pages/search/search",
+    "pages/goodsdetail/goodsdetail",
+    "pages/food/food",
+    "pages/housedetail/housedetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "云彩帮",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#f63264",
+    "color": "#9a9798",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/home1.png",
+        "selectedIconPath": "image/home.png"
+      },
+      {
+        "pagePath": "pages/found/found",
+        "text": "发现",
+        "iconPath": "image/tab22.png",
+        "selectedIconPath": "image/tab2.png"
+      },
+      {
+        "pagePath": "pages/active/active",
+        "text": "附近玩",
+        "iconPath": "image/tab3.png",
+        "selectedIconPath": "image/tab33.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "image/tab44.png",
+        "selectedIconPath": "image/tab4.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "image/tab55.png",
+        "selectedIconPath": "image/tab5.png"
+      }
+    ]
+  }
+}

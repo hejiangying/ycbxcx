@@ -1,0 +1,96 @@
+/* pages/fooddetail/fooddetail.wxss */
+@import '../../pages/orderdetail/orderdetail.wxss';
+.mask-cover{
+  width: 100%;
+  height: 100%;
+  background:#000;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  z-index: 222;
+}
+.mask-con{
+  position: fixed;
+  bottom: 100rpx;
+  background: #fff;
+  z-index: 333;
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.mask-con .img-con {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start
+}
+.mask-con .img-con .img-left{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 20rpx;
+}
+.mask-con .img-con text.close{
+  font-size: 36rpx;
+  color: rgb(109, 106, 106);
+}
+.mask-con .img-con .img-left image{
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 20rpx;
+  }
+.mask-con .img-con .kc{
+  display: flex;
+  flex-direction:column;
+  font-size: 36rpx;
+}
+.mask-con .img-con .kc .price{
+  color: #f63264;
+  font-weight: bold;
+}
+.mask-con .img-con .kc .num{
+  font-size: 34rpx;
+}
+.mask-con .type-con{
+  margin-bottom: 30rpx;
+}
+.mask-con .num-con{
+  margin-bottom: 30rpx;
+}
+.mask-con .type-con view{
+  margin-bottom: 10rpx;
+}
+.mask-con .type-con text{
+  border: 1rpx solid rgb(119, 119, 119);
+  color:  rgb(119, 119, 119);
+  margin-right: 20rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  padding: 8rpx;
+  margin-bottom: 30rpx;
+  display: inline-block;
+  border-radius: 10rpx;
+}
+.mask-con .num-con text{
+  margin-bottom: 10rpx;
+  display: block
+}
+.mask-con .numsel {
+  display: flex;
+  flex-direction: row;
+}
+.mask-con .numsel view{
+  border: 1rpx solid rgb(119, 119, 119);
+  width: 50rpx;
+  text-align: center;
+}
+.mask-con .numsel input{
+  width: 80rpx;
+  text-align: center;
+  border-top: 1rpx solid rgb(119, 119, 119);
+  border-bottom: 1rpx solid rgb(119, 119, 119);
+}
+.type-con text.on{
+  color: #f63264;
+  border: 1rpx solid #f63264;
+}

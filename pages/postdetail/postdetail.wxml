@@ -1,0 +1,98 @@
+<!--pages/postdetail/postdetail.wxml-->
+<view class="container">
+  <!-- 帖子详情 -->
+  <view class="post-item">
+    <text>远方去不了那就来个周末北京一日游吧——北京一日游攻略</text>
+    <view class="perinfo">
+      <view class="perinfo-l">
+        <view class="perinfo-pho">
+          <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+        </view>
+        <view class="perinfo-id">
+          <text>ID某某</text>
+          <view class="perinfo-addre">
+            <image src="../../image/address1.png"></image>
+            <text>北京</text>
+            <text>|</text>
+            <text>一分钟前</text>
+          </view>
+        </view>
+      </view>
+      <view class="perinfop-r">
+        <text bindtap="attenClick" class="{{att_status == true ? 'old' :''}}">{{att_status == true ? '已关注' :'+关注'}}</text>
+      </view>
+    </view>
+    <view class="imglist">
+      <image src="../../image/kezhan.png"></image>
+      <image src="http://pic-cdn.35pic.com/58pic/18/32/34/04d58PICiGN_1024.jpg"></image>
+      <image src="../../image/zuche.png"></image>
+    </view>
+    <view class="post-text">
+      hahhahahahha哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈还好还好
+    </view>
+    <view class="btns">
+      <view class="btn-comm" bindtap="goComment">
+        <image src="../../image/comment.png"></image>
+        <text>评论</text>
+      </view>
+      <view class="btn-like" bindtap="likeClick">
+        <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
+        <text>{{isLike == false ? '点赞' : '已点赞'}}</text>
+      </view>
+    </view>
+
+  </view>
+  <!-- 帖子回复 -->
+  <view class="reply">
+    <text>全部回复</text>
+    <view class="peritem">
+      <view class="perinfo">
+        <view class="perinfo-l">
+          <view class="perinfo-pho">
+            <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+          </view>
+          <view class="perinfo-id">
+            <text>ID某某</text>
+            <view class="perinfo-addre">
+              <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+              <text>北京</text>
+              <text>|</text>
+              <text>一分钟前</text>
+            </view>
+          </view>
+        </view>
+        <view class="perinfop-r">
+          <text class="replyop" bindtap="commClick">...</text>
+        </view>
+      </view>
+      <view class="reply-text">
+        <text>这是评论这是评论这是评论这是评论这是评论这是评论这</text>
+      </view>
+    </view>
+
+    <view class="peritem">
+      <view class="perinfo">
+        <view class="perinfo-l">
+          <view class="perinfo-pho">
+            <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+          </view>
+          <view class="perinfo-id">
+            <text>ID某某</text>
+            <view class="perinfo-addre">
+              <image src="../../image/address1.png"></image>
+              <text>北京</text>
+              <text>|</text>
+              <text>一分钟前</text>
+            </view>
+          </view>
+        </view>
+        <view class="perinfop-r">
+          <text class="replyop">...</text>
+        </view>
+      </view>
+      <view class="reply-text">
+        <text>这是评论这是评论这是评论这是评论这是评论这是评论这</text>
+      </view>
+    </view>
+  </view>
+</view>

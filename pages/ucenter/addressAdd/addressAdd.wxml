@@ -1,0 +1,39 @@
+<!--pages/ucenter/addressAdd/addressAdd.wxml-->
+
+<view class="add-address">
+  <view class="add-form">
+    <input placeholder='姓名' value=""></input>
+    <input placeholder='电话' value=""></input>
+    <view class="mine-item">
+      <text>现居城市</text>
+      <view class="mine-r">
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{region[0]}}，{{region[1]}}，{{region[2]}}
+          </view>
+        </picker>
+        <image src="../../../image/arrow.png"></image>
+      </view>
+    </view>
+    <input placeholder='详细地址' value=""></input>
+    
+  </view>
+
+  <view class="zan-panel">
+    <view class="zan-cell zan-cell-switch">
+      <view class="zan-cell__bd">设为默认地址</view>
+      <view class="zan-cell__ft">
+        <view class="zan-switch zan-switch--{{ checked ? 'on' : 'off' }} {{ disabled ? 'zan-swtich--disabled' : '' }}" data-checked="{{ checked }}" data-loading="{{ loading }}" data-disabled="{{ disabled }}" data-component-id="{{ componentId }}" bindtap="_handleZanSwitchChange">
+          <view class="zan-switch__circle">
+            <view hidden="{{ !loading }}" class="zan-switch__loading"></view>
+          </view>
+          <view class="zan-switch__bg"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btns">
+    <button class="save" bindtap="saveAddress">保存</button>
+  </view>
+</view>

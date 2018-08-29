@@ -1,0 +1,42 @@
+<!--pages/commentPost/commentPost.wxml-->
+<import src="../../lib/wux/rater/rater.wxml" />
+
+<view>
+  <view class="post-comment" wx:for="{{goodsList}}" wx:key="{{item.id}}" wx:for-index="goodsIndex">
+
+    <view class="goods">
+      <view class="img">
+        <image src="{{item.picUrl}}"></image>
+      </view>
+      <view class="info">
+        <text class="name">{{item.name}}</text>
+        <text class="number">{{item.spec}}</text>
+      </view>
+    </view>
+
+    <view class="star">
+      <view>评价</view>
+      <view class="rater">
+        <template is="rater" data="{{ ...$wux.rater[item.id] }}" />
+      </view>
+    </view>
+
+    <view wx:if="{{!item.commented}}">
+      <view class="input-box">
+        <textarea class="content" data-index="{{goodsIndex}}" bindinput="bindInpuntValue" maxlength="140" placeholder="请填写您的评价" />
+      </view>
+      <image class="i" src="{{item.imagePath}}" data-index="{{goodsIndex}}" bindtap="chooseImage" mode="aspectFill"></image>
+      <view class="btns">
+        <button class="zan-btn zan-btn--small post" hover-class="active" data-index="{{goodsIndex}}" bindtap="onPost">发表</button>
+      </view>
+    </view>
+
+    <view wx:if="{{item.commented}}">
+      <view class="commented">{{item.comment}}</view>
+      <view wx:if="{{item.commentPicList.length > 0}}">
+        <image class="imgs" wx:for="{{item.commentPicList}}" wx:for-index="picIndex" wx:key="{{picIndex}}" wx:for-item="pitem" src="{{pitem}}" data-goods-index="{{goodsIndex}}" data-pic-index="{{picIndex}}" bindtap="previewImage" mode="aspectFill"></image>
+      </view>
+    </view>
+
+  </view>
+</view>

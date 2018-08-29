@@ -1,0 +1,33 @@
+/* pages/custom/custom.wxss */
+.container>view{
+  display: flex;
+  flex-direction: row;
+  width: 96%;
+  border: 1rpx solid rgb(243, 241, 241);
+  padding: 10rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+  font-size: 34rpx;
+  align-items: center;
+}
+.container view text{
+  width: 30%;
+  color: #f63264
+}
+.container view picker {
+  width: 96%;
+}
+.container view picker view{
+  color: #f63264;
+  display: inline-block
+}
+button{
+  width:60%;
+  font-size: 34rpx;
+  background: #f63264;
+  color: #fff;
+  border-radius: 50rpx;
+  margin-top: 100rpx;
+}

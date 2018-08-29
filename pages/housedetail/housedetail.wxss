@@ -1,0 +1,3 @@
+/* pages/housedetail/housedetail.wxss */
+@import '../../pages/orderdetail/orderdetail.wxss';
+@import '../../pages/fooddetail/fooddetail.wxss'

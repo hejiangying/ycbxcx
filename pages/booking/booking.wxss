@@ -1,0 +1,138 @@
+/* pages/booking/booking.wxss */
+.booking-title {
+  border-bottom: 1rpx solid rgb(245, 241, 241);
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.time {
+  box-sizing: border-box;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.time text {
+  width: 160rpx;
+  margin-right: 20rpx;
+}
+
+.time picker {
+  width: 80%;
+}
+
+.selnum {
+  background-color: rgb(243, 237, 237);
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.per {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20rpx;
+  border-bottom: 1rpx solid rgb(245, 241, 241);
+  font-size: 34rpx;
+}
+
+.per .p-l text {
+  margin-right: 40rpx;
+  font-size: 32rpx;
+}
+
+.p-r {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.p-r input {
+  margin-right: 40rpx;
+  width: 40rpx;
+}
+
+.p-r view {
+  font-size: 40rpx;
+  border: 1rpx solid #ccc;
+  width: 80rpx;
+  text-align: center;
+}
+.form-item{
+  border-radius: 20rpx;
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.form-item>view {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 20rpx;
+  border-bottom: 1rpx solid rgb(245, 241, 241);
+}
+
+.form-item>view text {
+  width: 160rpx;
+  font-size: 34rpx;
+}
+
+.form-item>view input {
+  font-size: 34rpx;
+}
+.form-item button{
+  display: block;
+  text-align: right;
+  background-color:#fff;
+  outline: none;
+}
+.form-item button{
+  border-bottom-left-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  font-size: 30rpx;
+  color: #d4237a;
+}
+
+.form-item button::after{
+  border: none;
+  border-radius: 0;
+}
+
+.normal {
+  color: black;
+}
+
+.disabled {
+  color: #ccc;
+}
+.allmoney{
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 10rpx 30rpx;
+  background-color: rgb(250, 247, 247);
+  width: 100%;
+  z-index: 999
+}
+.allmoney .num{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  float: left;
+}
+.allmoney .num text:nth-child(1){
+  font-size: 30rpx;
+  color: #ccc;
+}
+.allmoney .gopay{
+  display: inline-block;
+  background-color:#d4237a;
+  padding: 20rpx 50rpx;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  color: #fff;
+  margin-top: 5rpx;
+}

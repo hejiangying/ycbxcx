@@ -1,0 +1,48 @@
+/* pages/quiz/quiz.wxss */
+.create_comment {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.create_comment .content {
+  min-height: 300rpx;
+  height: auto;
+  padding-bottom: 64rpx;
+  position: relative;
+}
+
+.create_comment .content textarea {
+  width: calc(100% - 80rpx);
+  min-height: 300rpx;
+  background-color: white;
+  font-weight: normal !important;
+  padding: 40rpx 40rpx 0;
+  font-size: 32rpx;
+  color: #717277;
+}
+
+.create_comment .content .placestyle {
+  font-size: 32rpx;
+  color: #b3b3bc;
+  font-weight: normal !important;
+}
+
+.create_comment .content .count {
+  position: absolute;
+  bottom: 26rpx;
+  right: 40rpx;
+  color: #b3b3bc;
+  font-size: 30rpx;
+}
+
+.btn_normal {
+  text-align: center;
+  margin-top: 100rpx;
+  background-color: #f63264;
+  color: #fff;
+  width: 60%;
+  border-radius: 50rpx;
+  border: none;
+  font-size: 34rpx
+}

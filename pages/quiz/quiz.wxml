@@ -1,0 +1,8 @@
+<!--pages/quiz/quiz.wxml-->
+<view class="create_comment">
+  <view class="content">
+    <textarea auto-height maxlength="300" placeholder-class="placestyle" placeholder="{{placeholder}}" bindinput="getContent" />
+    <text class="count">{{content.length}}/300</text>
+  </view>
+  <button bindtap="publish" class="btn_normal">确定</button>
+</view>

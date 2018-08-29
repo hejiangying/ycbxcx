@@ -1,0 +1,57 @@
+<!--pages/myattention/myattention.wxml-->
+<view class="container">
+  <view class="att-list">
+    <view class="att-item">
+      <view class="att-l">
+        <view class="att-photo">
+          <image src="../../image/kezhan.png"></image>
+        </view>
+        <view class="att-name">
+          <view>张晓明</view>
+        </view>
+      </view>
+      <view class="att-state">
+        <text>拉黑</text>
+      </view>
+    </view>
+    <view class="att-item">
+      <view class="att-l">
+        <view class="att-photo">
+          <image src="../../image/kezhan.png"></image>
+        </view>
+        <view class="att-name">
+          <view>张晓明</view>
+        </view>
+      </view>
+      <view class="att-state">
+        <text>拉黑</text>
+      </view>
+    </view>
+    <view class="att-item">
+      <view class="att-l">
+        <view class="att-photo">
+          <image src="../../image/kezhan.png"></image>
+        </view>
+        <view class="att-name">
+          <view>张晓明</view>
+        </view>
+      </view>
+      <view class="att-state">
+        <text>拉黑</text>
+      </view>
+    </view>
+    <view class="att-item">
+      <view class="att-l">
+        <view class="att-photo">
+          <image src="../../image/kezhan.png"></image>
+        </view>
+        <view class="att-name">
+          <view>张晓明</view>
+        </view>
+      </view>
+      <view class="att-state">
+        <text>拉黑</text>
+      </view>
+    </view>
+  </view>
+</view>

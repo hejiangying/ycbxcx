@@ -1,0 +1,22 @@
+<!--pages/shopping/address/address.wxml-->
+<view class="container">
+  <view class="no-address" wx:if="{{addressList.length == 0}}">
+    <image class="i" src="/images/noAddress.png"></image>
+    <view class="t">收货地址在哪里</view>
+  </view>
+  <view class="address-list" wx:if="{{ addressList.length > 0 }}">
+    <view class="items">
+      <view class="item {{item.selected ? 'select' : ''}}" wx:for="{{addressList}}" wx:key="{{item.id}}" bindtap="chooseAddress" data-address="{{item}}">
+        <view class="l">
+          <view class="name">{{item.name}}</view>
+          <view class="default" wx:if="{{item.isDefault}}">默认</view>
+        </view>
+        <view class="c">
+          <view class="mobile">{{item.mobile}}</view>
+          <view class="address">{{item.region + item.address}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="add-address zan-btn zan-btn--large zan-btn--danger zan-btn--plain" hover-class="active" bindtap="addressAddOrUpdate" data-address-id="0">+ 新建地址</button>
+</view>

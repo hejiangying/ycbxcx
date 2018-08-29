@@ -1,0 +1,41 @@
+<!--pages/shopping/coupon/coupon.wxml-->
+
+<view class="container">
+  <view class="head">
+    <view class="coupon-form">
+      <view class="input-box">
+        <input class="coupon-sn" value="{{couponCode}}" bindinput="inputChange" placeholder="请输入优惠码" />
+        <image class="clear-icon" wx:if="{{couponCode}}" bindtap="clearInput" src="/images/clear.png"></image>
+      </view>
+      <button class="add-btn {{couponCode ? '' : 'disabled'}}" bindtap="changeCoupon">兑换</button>
+    </view>
+  </view>
+
+  <view class="no-coupon" wx:if="{{couponList.length == 0}}">
+    <image class="i" src="/images/noCoupon.png"></image>
+    <view class="t">列表还是空的</view>
+  </view>
+
+  <view class="coupon-list">
+    <view class="item" wx:if="{{couponList.length > 0}}" wx:for="{{couponList}}" wx:for-index="index" wx:key="{{item.id}}">
+      <view data-coupon="{{item}}" bindtap="chooseCoupon">
+        <view wx:if="{{item.selected}}" class="checked zan-icon zan-icon-checked"></view>
+        <view class="tag" wx:if="{{item.tag}}">{{item.tag}}</view>
+        <view class="content">
+          <view class="left">
+            <view class="name">{{item.name}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="condition {{item.showAll ? 'showAll' : ''}}">
+        <text class="txt {{item.showAll ? 'showAll' : ''}}">{{item.description}}</text>
+        <image src="/images/downArrow.png" class="icon {{item.showAll ? 'showAll' : ''}}" data-index="{{index}}" bindtap="showAllDes"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="btns">
+    <button class="clear" bindtap="clearCoupon">不使用优惠券</button>
+  </view>
+</view>

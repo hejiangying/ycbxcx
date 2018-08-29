@@ -1,0 +1,28 @@
+/* pages/myattention/myattention.wxss */
+.att-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dedddd;
+  padding: 20rpx 30rpx;
+}
+.att-item .att-l .att-photo image{
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.att-item .att-l {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.att-state text{
+  font-size: 32rpx;
+  background-color: rgb(167, 229, 240);
+  color: #fff;
+  border-radius: 50rpx;
+  padding: 10rpx 20rpx;
+  }

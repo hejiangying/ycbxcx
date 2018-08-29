@@ -1,0 +1,70 @@
+<!--pages/shopping/checkout/checkout.wxml-->
+<view>
+  <view class="address-box">
+    <view class="address-item" bindtap="chooseAddress" wx:if="{{checkedAddress.id}}">
+      <view class="l">
+        <text class="name">{{checkedAddress.name}}</text>
+        <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
+      </view>
+      <view class="m">
+        <text class="mobile">{{checkedAddress.mobile}}</text>
+        <text class="address">{{checkedAddress.region + checkedAddress.address}}</text>
+      </view>
+      <view class="r">
+         <image src="/image/arrow.png"></image>
+      </view>
+    </view>
+    <view class="address-item address-empty" bindtap="addAddress" wx:if="{{!checkedAddress.id}}">
+      <view class="m">
+        还没有收货地址，去添加
+      </view>
+      <view class="r">
+        <image src="/image/arrow.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-box">
+    <view class="zan-cell zan-item" bindtap="chooseCoupon">
+      <view class="zan-cell__bd">优惠券：{{couponId === '' ? '未选择' : couponName }}</view>
+      <view class="zan-cell__ft arrow">
+        {{couponCount}} 张
+        <image  class="right-arrow" src="/image/arrow.png"></image>
+      </view>
+    </view>
+    <view class="zan-cell zan-item">
+      <view class="zan-cell__bd">商品合计</view>
+      <view class="zan-cell__ft">￥{{goodsTotalPrice}}</view>
+    </view>
+    <view class="zan-cell zan-item">
+      <view class="zan-cell__bd">运费</view>
+      <view class="zan-cell__ft">￥{{freightPrice}}</view>
+    </view>
+    <view class="zan-cell zan-item" wx:if="{{couponId}}">
+      <view class="zan-cell__bd">优惠券</view>
+      <view class="zan-cell__ft">-￥{{couponPrice}}</view>
+    </view>
+  </view>
+
+  <view class="goods-items">
+    <view class="item" wx:for="{{checkedGoodsList}}" wx:key="{{item.id}}">
+      <view class="img">
+        <image src="{{item.picUrl}}"></image>
+      </view>
+      <view class="info">
+        <view class="t">
+          <text class="name">{{item.name}}</text>
+          <text class="number">x{{item.number}}</text>
+        </view>
+        <view class="m">{{item.specValue}}</view>
+        <view class="b">￥{{item.retailPrice}}</view>
+        <view class="originPrice">￥{{item.originPrice}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-total">
+    <view class="l">实付: ￥{{actualPrice}}</view>
+    <view class="r" hover-class="active" bindtap="submitOrder">去付款</view>
+  </view>
+</view>

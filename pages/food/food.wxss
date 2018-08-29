@@ -1,0 +1,33 @@
+/* pages/food/food.wxss */
+.fooditem{
+  width: 49%;
+  float: left;
+  margin-bottom: 20rpx;
+  box-shadow: 0rpx 0rpx 2rpx #ccc;
+}
+.fooditem:nth-child(2n+1){
+  margin-right: 2%;
+}
+.fooditem image{
+  width: 100%;
+  display: block;
+  height: 260rpx;
+}
+.fooditem .foodprice{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0rpx 10rpx 10rpx 10rpx;
+}
+.fooditem .foodprice text{
+  font-size: 32rpx;
+}
+.fooditem>text{
+  display: block;
+  font-size: 34rpx;
+  overflow: hidden;
+  padding: 10rpx;
+}
+.fooditem .foodprice text:nth-child(1){
+  color: #f63264;
+}

@@ -1,0 +1,110 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- banner -->
+  <view class="banner">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+      <block>
+        <swiper-item>
+          <image src="../../image/banner2.jpg" width="100%" height="150"/>
+        </swiper-item>
+        <swiper-item>
+          <image src="http://img.zcool.cn/community/01238655a521e032f8758bed2f7a40.jpg@1280w_1l_2o_100sh.jpg" width="100%" height="150" />
+        </swiper-item>
+        <swiper-item>
+          <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535263889&di=a4173a28c8649f561f10eb34d14d3ef8&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0146a0574b983332f875a4291b8607.png%401280w_1l_2o_100sh.png"  width="100%" height="150"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- 顶部悬浮搜索框 -->
+    <view class="address_con">
+      <view class="logo">
+        <image src="../../image/logo.png"></image>
+      </view>
+      <view class="address" bindtap='getLocation'>
+        <image src="../../image/address.png"></image>
+        <text>{{addressname}}</text>
+      </view>
+      <view class="search" bindtap='goSearch'>
+        <input placeholder='输入你想去的地方'></input>
+        <image src="../../image/search.png"></image>
+      </view>
+      <view class="shopping" bindtap='goShop'>
+        <image src="../../image/car.png"></image>
+        <text>16</text>
+      </view>
+    </view>
+  </view>
+  <view class="project_list">
+    <view class="project_item">
+      <!-- <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg" bindtap='gotour'></image> -->
+      <image src="../../image/ad1.png" bindtap='gotour'></image>
+      <text>自助游路线</text>
+    </view>
+    <view class="project_item">
+      <!-- <image src="../../image/techan.jpg" bindtap='gofood'></image> -->
+      <image src="../../image/ad2.png" bindtap="gofood"></image>
+      <text>美食</text>
+    </view>
+    <view class="project_item">
+      <!-- <image src="../../image/kezhan.png" bindtap='gocustom'></image> -->
+      <image src="../../image/ad3.png" bindtap="gocustom"></image>
+      <text>定制旅游</text>
+    </view>
+    <view class="project_item">
+      <image src="../../image/ad4.png" bindtap="gohouse"></image>
+      <text>客栈信息</text>
+    </view>
+  </view>
+  <!-- 自助游路线 -->
+  <view class="active_recruiting">
+    <view class="active_subtitle">
+      <text class="subtitle">自助游路线</text>
+      <text class="more" bindtap='moreClick'>更多></text>
+    </view>
+  </view>
+  <view class="active_list">
+    <view class="active_item" bindtap='goBuy'>
+      <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg"></image>
+      <view class="active_name">
+        <text class="name">活动名称</text>
+        <text class="active_status">￥99</text>
+      </view>
+      <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
+    </view>
+    <view class="active_item">
+      <image src="../../image/techan.jpg"></image>
+      <view class="active_name">
+        <text class="name">活动名称</text>
+        <text class="active_status">招募中</text>
+      </view>
+      <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
+    </view>
+  </view>
+  <!-- 热门景点 -->
+  <view class="active_recruiting">
+    <view class="active_subtitle">
+      <text class="subtitle">热门景点</text>
+      <text class="more" bindtap='moreClick'>更多></text>
+    </view>
+  </view>
+  <view class="active_list">
+    <view class="active_item">
+      <image src="../../image/kezhan.png"></image>
+      <view class="active_name">
+        <text class="name">活动名称</text>
+        <text class="active_status">￥99</text>
+      </view>
+      <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
+    </view>
+    <view class="active_item">
+      <image src="../../image/zuche.png"></image>
+      <view class="active_name">
+        <text class="name">活动名称</text>
+        <text class="active_status">招募中</text>
+      </view>
+      <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
+    </view>
+  </view>
+
+
+</view>

@@ -1,0 +1,78 @@
+<!--pages/moreroute/moreroute.wxml-->
+<view class="container">
+ <!-- 产品列表 -->
+  <view class="tourlist">
+    <view class="touritem" bindtap='goDetail'>
+      <view class="search-con">
+        <image src="http://img.zcool.cn/community/012f6f59cf44aea80121ae0cbb1ad3.jpg@3000w_1l_2o_100sh.jpg"></image>
+        <text>可订明日</text>
+      </view>
+      <view class="tourinfo">
+        <text class="tour-title">大理360度洱海旅拍一日游.敞篷吉普+单反跟拍.底片全送</text>
+        <view class="tour-tag">
+          <text>大理出发</text>
+          <text>无自费</text>
+          <text>无购物</text>
+        </view>
+        <view class="tour-sell">
+          <view class="sell-num">
+            <text>已售423</text>
+            <text>|</text>
+            <text>4.8分</text>
+          </view>
+          <view class="sell-price">￥196
+            <text>起</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="touritem">
+      <view class="search-con">
+        <image src="http://img10.3lian.com/show2014/1/73/105.jpg"></image>
+        <text>可订明日</text>
+      </view>
+      <view class="tourinfo">
+        <text class="tour-title">大理360度洱海旅拍一日游.敞篷吉普+单反跟拍.底片全送</text>
+        <view class="tour-tag">
+          <text>大理出发</text>
+          <text>无自费</text>
+          <text>无购物</text>
+        </view>
+        <view class="tour-sell">
+          <view class="sell-num">
+            <text>已售423</text>
+            <text>|</text>
+            <text>4.8分</text>
+          </view>
+          <view class="sell-price">￥196
+            <text>起</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="touritem">
+      <view class="search-con">
+        <image src="http://img1.3lian.com/2015/a1/30/d/5.jpg"></image>
+        <text>可订明日</text>
+      </view>
+      <view class="tourinfo">
+        <text class="tour-title">大理360度洱海旅拍一日游.敞篷吉普+单反跟拍.底片全送</text>
+        <view class="tour-tag">
+          <text>大理出发</text>
+          <text>无自费</text>
+          <text>无购物</text>
+        </view>
+        <view class="tour-sell">
+          <view class="sell-num">
+            <text>已售423</text>
+            <text>|</text>
+            <text>4.8分</text>
+          </view>
+          <view class="sell-price">￥196
+            <text>起</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,63 @@
+/* pages/seeorder/seeorder.wxss */
+.order-img>image{
+  height: 340rpx;
+}
+.tour-name{
+  width: 96%;
+  margin: 0 auto;
+}
+.tour-time{
+  width: 96%;
+  margin: 10rpx auto;
+  color: #ccc;
+  font-size: 34rpx;
+}
+.tour-num{
+  width: 96%;
+  margin: 0 auto;
+   color: #ccc;
+  font-size: 34rpx;
+}
+.tour-num text{
+  margin-right: 50rpx;
+}
+.tour-price{
+  width: 96%;
+  margin: 20rpx auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgb(85, 84, 84)
+}
+.tour-price .paid{
+  color: #ccc;
+}
+.order-con>text{
+  background-color: rgb(236, 233, 233);
+  padding: 10rpx;
+  width: 100%;
+  display: block
+}
+.order-con>view{
+  padding: 20rpx 50rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid rgb(250, 242, 242);
+  font-size: 34rpx;  
+}
+.order-con>view text{
+  width: 20%;
+  display: inline-block
+}
+.order-id{
+  border-top: 20rpx solid rgb(236, 233, 233);
+}
+.order-id view {
+ font-size: 34rpx;
+  color: #ccc;
+  padding: 20rpx 50rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid rgb(250, 242, 242);
+}
+.order-id view text{
+  display: inline-block;
+}

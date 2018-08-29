@@ -1,0 +1,87 @@
+<!--pages/orderdetail/orderdetail.wxml-->
+<view class="container">
+  <view class="tourdetail">
+    <image src="http://img.zcool.cn/community/01490655cade9a6ac72558084f5e6d.jpg@1280w_1l_2o_100sh.jpg"></image>
+    <view class="t-name cen">
+      <text>【上新特惠】</text> 大理洱海游船+三塔+蝴蝶泉纯玩一日游
+    </view>
+    <view class="sell-state cen">
+      <view class="t-money">
+        <text class="t-symbol">￥</text>
+        <text class="t-much">320</text>
+        <text class="t-min">起</text>
+        <text>可订明日</text>
+      </view>
+      <text class="sold">已售:91</text>
+    </view>
+    <view class="advantages cen">
+      <view>
+        <image src="../../image/ok.png"></image> 条件退</view>
+      <view>
+        <image src="../../image/ok.png"></image>铁定成团</view>
+      <view>
+        <image src="../../image/ok.png"></image>无自费</view>
+      <view>
+        <image src="../../image/ok.png"></image>无购物</view>
+    </view>
+  </view>
+  <view class="kong"></view>
+  <view class="comments">
+    <view class="score cen">
+      <view class="satisfaction">
+        <text>4.8 </text> 分
+        <text>非常满意</text>
+      </view>
+      <view class="com-num" bindtap='commSee'>21条评论 ></view>
+    </view>
+    <view class="time cen">
+      <view>4.8</view>
+      <view class="who">
+        <text>平旷</text>
+        <text>2018-05-15</text>
+      </view>
+    </view>
+    <view class="comments-con cen">
+      很开心呀，很好玩呀，哈哈哈哈哈哈，服务不错哦，风景很美
+    </view>
+  </view>
+  <view class="kong"></view>
+  <!-- tab -->
+  <view class="tab">
+    <view class="tab-top">
+      <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">行程介绍</text>
+      <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">费用说明</text>
+      <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text>
+    </view>
+    <view class="tab-con">
+      <view class="tab1" wx:if="{{xc==1}}">
+      早餐后从九寨沟口出发， 途中经过美丽的天然草甸牧场“甘海子”，途中游览—寒盼藏寨，观赏少数民族饰品、体验少数民族文化特色及经济建设成就，参观时请尊重少数民族地区的风俗习惯主题宣传藏族村寨文化，真正感受藏族人民的风土人情。随后参观川主寺镇雪宝顶超市，中餐在川主寺德吉梅朵风情街品尝特色自助餐，中餐后前往茂县，途中游览具有羌族文化特色，风景秀美的牟托羌寨。返回成都结束此次愉快的旅途！
+      </view>
+      <view class="tab2" wx:elif="{{xc==2}}">
+        （住宿）：单房差（若产生单男单女或自然单间我社有权安排三人间，或客人自付单房差）
+（其他）：其它个人消费，成都食宿、各地至成都往返大交通、景区便民设施，交通保险、行程 中约定的自理自费内容、酒水、个人消费、景区内索道、沿途小门票、行程中备注未含的餐及住宿等！请当地现付，备有说明除外。
+      </view>
+      <view class="tab3" wx:elif="{{xc==3}}">
+        【门票说明】：含九寨沟门票及观光车和黄龙门票，1.2米以下儿童免门票，但需大人带领进入景区。持各类特殊有效证件（如：军官证、老年证、学生证、残疾证等优惠证件）由导游现退，（如：军残、70以上老人等免票证件）由导游现退。
+
+
+
+【住宿说明】：九寨沟沿线住宿硬件和软件条件都有限，请不要以城市的标准来衡量，敬请谅解！（为提倡绿色环保，酒店基本不提供一次性洗漱用品，游客需自备）；行程中提到的酒店名称，为经济舒适型住宿，是非国家旅游局授牌的星级酒店，仅指旅行社行业内部评称，特别告知！
+
+【餐饮说明】：景区段所含早、晚餐均在所住酒店就餐，中餐在沿路指定餐厅就餐（九寨沟沟内餐未含），但当地饮食与游客饮食习惯有一定的差异，且九寨沟菜品均由成都运进，餐饮条件相当有限，请做好心理准备，旅行社已尽心安排特色菜品，希望能合你的味口，建议您自备榨菜，香辣酱等合适自己品味的佐料；为了保证顺利用餐，行程中所有用餐均为提前预定，如若你在行程中取消用餐，费用一律不退；因路途遥远，有可能不能按时用餐，请带好巧克力、饼干等干粮。
+
+
+
+【用车说明】：行程内用车为旅游交通巴士，散客拼团全程可能非同一台车；因延线有行车公里数限制或部分路段维修，易发生堵车，发车时间均较早，行程内标注出发及行车时间均为预计，具体情况略有不同；为保证车辆制动性能，行车延途均需停车加水；行程内所有自由活动期间及行程外均不含用车。请予以理解。四川旅游车均按每人一正座提前一天定车，根据同团人数安排车型，空调限时开放（主要争对坡路上行中为保证动力，无法开放）；保证一人一座，不提供座次要求；若因大交通（如：航班、火车等）延误、取消、造成无法按时参加我社旅游出团计划者，需向我社交已经产生的旅游车位损失费及行程及合同约定的其它已产生费用。
+      </view>
+    </view>
+  </view>
+  <!-- 底部悬浮按钮 -->
+  <view class="footbtn">
+    <view class="scbtn" bindtap="isCollect">
+      <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}" ></image>
+      <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
+    </view>
+    <view class="buybtn" bindtap="buyClick">立即购买</view>
+  </view>
+</view>

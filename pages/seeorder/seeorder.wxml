@@ -1,0 +1,41 @@
+<!--pages/seeorder/seeorder.wxml-->
+<view class="container">
+  <view class="order-img">
+    <image src="../../image/kezhan.png"></image>
+    <view class="tour-name">
+      蝴蝶泉跟团一日游门票(带导游)
+    </view>
+    <view class="tour-time">
+      2018年1月1日下午2:00
+    </view>
+    <view class="tour-num">
+      <text>成人2人</text>
+      <text>2017.12.26下单</text>
+    </view>
+    <view class="tour-price">
+      <text>￥99</text>
+      <text class="paid">已付款</text>
+    </view>
+  </view>
+  <view class="order-con">
+    <text>身份信息</text>
+    <view class="idname">
+      <text>姓名</text>王德发
+    </view>
+    <view class="idnum">
+      <text>身份证</text> 53332519960716****
+    </view>
+  </view>
+  <!-- 身份信息 -->
+  <view class="order-id">
+    <view>
+      <text> 订单号</text> 13188248569
+    </view>
+    <view>
+      <text>  怎么取票></text>
+    </view>
+    <view>
+      <text>  我要退票</text>
+    </view>
+  </view>
+</view>

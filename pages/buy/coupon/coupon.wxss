@@ -1,0 +1,227 @@
+/* pages/shopping/coupon/coupon.wxss */
+
+page {
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.container {
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.no-coupon {
+  position: absolute;
+  top: -200rpx;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 250rpx;
+  margin: auto;
+  text-align: center;
+}
+
+.no-coupon .i {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.no-coupon .t {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.head {
+  z-index: 2;
+  background: #fff;
+  padding: 30rpx 0;
+  margin-bottom: 40rpx;
+  position: fixed;
+}
+
+.coupon-form {
+  width: 750rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-box {
+  height: 70rpx;
+  color: #333;
+  font-size: 24rpx;
+  background: #fff;
+  position: relative;
+  border: 1rpx solid rgba(0, 0, 0, 0.15);
+  border-radius: 4rpx;
+  width: 525rpx;
+  margin-left: 15rpx;
+}
+
+.input-box .coupon-sn {
+  position: absolute;
+  top: 10rpx;
+  left: 30rpx;
+  height: 50rpx;
+  width: 85%;
+  color: #000;
+  line-height: 50rpx;
+  font-size: 24rpx;
+}
+
+.clear-icon {
+  position: absolute;
+  top: 15rpx;
+  right: 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.add-btn {
+  height: 70rpx;
+  border: none;
+  width: 155rpx;
+  background: #b4282d;
+  line-height: 70rpx;
+  color: #fff;
+  font-size: 28rpx;
+  margin-left: 0;
+  margin-right: 15rpx;
+}
+
+.add-btn.disabled {
+  background: #ccc;
+}
+
+.coupon-list {
+  width: 705rpx;
+  height: auto;
+  overflow: hidden;
+  background: #f4f4f4;
+  margin-top: 170rpx;
+}
+
+.item {
+  position: relative;
+  height: 215rpx;
+  width: 705rpx;
+  background: linear-gradient(to right, #cfa568, #e3bf79);
+  margin-bottom: 30rpx;
+  padding-top: 52rpx;
+  border-radius: 10rpx;
+}
+
+.tag {
+  height: 32rpx;
+  background: #a48143;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+  position: absolute;
+  left: 20rpx;
+  color: #fff;
+  top: 20rpx;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 32rpx;
+}
+
+.checked {
+  position: absolute;
+  right: 15rpx;
+  top: 10rpx;
+  color: #b4282d;
+}
+
+.content {
+  padding: 5rpx 40rpx 0 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content .left {
+  flex: 1;
+}
+
+.name {
+  font-size: 44rpx;
+  color: #fff;
+  margin-bottom: 14rpx;
+}
+
+.time {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 30rpx;
+}
+
+.content .right {
+  width: 162rpx;
+}
+
+.condition {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 29%;
+  align-items: center;
+}
+
+.condition.showAll {
+  height: 35%;
+}
+
+.condition .txt {
+  display: block;
+  height: 30rpx;
+  font-size: 24rpx;
+  color: #fff;
+  width: 550rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.condition .txt.showAll {
+  height: 65rpx;
+  overflow: visible;
+  white-space: normal;
+}
+
+.condition .icon {
+  width: 25rpx;
+  height: 25rpx;
+  padding: 15rpx;
+  margin-right: -18rpx;
+  transform: rotate(0deg);
+}
+
+.condition .icon.showAll {
+  transform: rotate(180deg);
+}
+
+.btns {
+  position: fixed;
+  bottom: 0;
+  left: -15rpx;
+  overflow: hidden;
+  display: flex;
+  height: 100rpx;
+  width: 780rpx;
+}
+
+.clear {
+  flex: 1;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #555;
+  border: none;
+  border-radius: 0;
+}

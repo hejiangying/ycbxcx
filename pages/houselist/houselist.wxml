@@ -1,0 +1,10 @@
+<!--pages/houselist/houselist.wxml-->
+<view class="container">
+  <view class="fooditem" bindtap='foodClick' wx:for="{{houselist}}" wx:key="{{item.id}}" data-id="{{item.id}}">
+    <image src="http://images4.c-ctrip.com/target/fd/hotel/g5/M04/EF/80/CggYsVb6eLCAdFVTAAfvR4_cFFA036_550_412.jpg"></image>
+    <text>{{item.title}}</text>
+    <view class="foodprice">
+      <text>￥90.00</text>
+    </view>
+  </view>
+  </view>

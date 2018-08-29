@@ -1,0 +1,128 @@
+/* pages/commentPost/commentPost.wxss */
+@import "../../lib/wux/wux.wxss";
+
+page, .container {
+  height: 100%;
+  background: #f4f4f4;
+}
+
+.post-comment {
+  width: 750rpx;
+  height: auto;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding-bottom:20rpx;
+}
+
+.star {
+  font-size: 28rpx;
+  color: #555;
+  display: flex;
+  align-items: center;
+  margin: -10rpx 0 25rpx 32rpx;
+}
+
+.star .rater {
+  margin-left: 20rpx;
+  width: 80%;
+}
+
+.goods {
+  display: flex;
+  align-items: center;
+  height: 180rpx;
+  margin-left: 32rpx;
+}
+
+.goods .img {
+  height: 145.83rpx;
+  width: 145.83rpx;
+  background: #f4f4f4;
+}
+
+.goods .img image {
+  height: 145.83rpx;
+  width: 145.83rpx;
+}
+
+.goods .info {
+  height: 145rpx;
+  flex: 1;
+  padding-left: 30rpx;
+}
+
+.goods .name {
+  margin-top: 30rpx;
+  display: block;
+  height: 44rpx;
+  line-height: 44rpx;
+  color: #555;
+  font-size: 27rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.goods .number {
+  display: block;
+  height: 37rpx;
+  line-height: 37rpx;
+  color: #777;
+  font-size: 25rpx;
+}
+
+.post-comment .input-box {
+  height: 310rpx;
+  width: 690rpx;
+  margin: 0 auto;
+}
+
+.post-comment .input-box .content {
+  position: absolute;
+  display: block;
+  font-size: 29rpx;
+  color: #555;
+  height: 270rpx;
+  width: 650rpx;
+  padding: 20rpx;
+  border: 1rpx solid #999;
+}
+
+.post-comment .i {
+  margin: 30rpx 0 0 28rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.post-comment .btns {
+  height: 90rpx;
+}
+
+.post-comment .post {
+  float: right;
+  right: 30rpx;
+  background: #f63264;
+  width: 170rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+
+.zan-btn--small.active {
+  background: #ccc;
+}
+
+.commented {
+  margin-left: 32rpx;
+  font-size: 28rpx;
+  color: #555;
+  line-height: 70rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 1rpx solid #ebebeb;
+  margin-right: 32rpx;
+}
+
+.post-comment .imgs {
+  margin: 10rpx 0 20rpx 28rpx;
+  width: 150rpx;
+  height: 150rpx;
+}

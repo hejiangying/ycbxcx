@@ -1,0 +1,131 @@
+/* pages/postdetail/postdetail.wxss */
+.post-item{
+  width: 96%;
+  margin: 0 auto;
+}
+.post-item>text{
+  font-weight: bold;
+  font-size: 36rpx;
+  color: rgb(71, 71, 71);
+}
+.perinfo-id{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.perinfo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.perinfo-l {
+  display: flex;
+  flex-direction: row;
+}
+.perinfo-addre{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.perinfo-addre text{
+  font-size: 32rpx;
+  color: #ccc;
+  margin-left:15rpx;
+}
+
+.perinfo-l .perinfo-pho>image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: block;
+  margin-right: 30rpx;
+}
+.perinfo-addre>image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.perinfop-r text{
+  margin-left: 20rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  background-color: #f63264;
+  color: #fff;
+  font-size: 34rpx;
+}
+.perinfop-r text.old{
+  background: #fff;
+  border: 1rpx solid #ccc;
+  color: #ccc;
+}
+.perinfop-r text.replyop{
+  background-color: white;
+  color: #000;
+  letter-spacing: 5rpx;
+  font-weight: bold;
+}
+.imglist{
+  width: 92%;
+  margin: 0 auto;
+}
+.imglist image{
+  width: 208rpx;
+  height: 208rpx;
+  display: inline-block;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  
+}
+.imglist image:nth-child(3n){
+  margin-right: 0rpx;
+}
+.post-text{
+  margin-top: 10rpx;
+  font-size: 30rpx;
+}
+.btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50rpx 0rpx;
+}
+.btns view{
+  border: 1rpx solid #ccc;
+  border-radius: 50rpx;
+  padding: 10rpx 30rpx;
+  font-size: 30rpx;
+  color: rgb(161, 159, 159);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  }
+  .btns view image{
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+  }
+  .reply{
+    border-top: 10rpx solid rgb(238, 227, 227);
+    padding: 10rpx 20rpx;
+    box-sizing: border-box;
+  }
+  .replydetail{
+    display: flex;
+    flex-direction: row;
+  }
+  .replypho image{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+  }
+  .reply-text{
+    font-size: 34rpx;
+    width: 76%;
+    margin-left: 150rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx solid rgb(245, 241, 241);
+  }
+  .peritem{
+
+  }

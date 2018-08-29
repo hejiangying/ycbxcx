@@ -1,0 +1,75 @@
+/* pages/mine/mine.wxss */
+.cen{
+  width: 96%;
+  margin: 0 auto;
+}
+.mydata-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0rpx;
+}
+.myinfo{
+  display: flex;
+  flex-direction: row;
+}
+.mysign{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 30rpx;
+}
+.mysign>text{
+  font-size: 32rpx;
+  color: #b0b1b2;
+}
+.myphoto image{
+  width: 160rpx;
+  height: 160rpx;
+  display: block;
+  border-radius: 50%;
+}
+.myname image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}
+.arrow image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.mynum{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-top: 1px solid rgb(231, 229, 229);
+  border-bottom: 10rpx solid rgb(231, 229, 229);
+  padding: 10rpx 0rpx;
+}
+.mynum .num-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mynum .num-item text:nth-child(2){
+  font-size: 34rpx;
+  color: #b0b1b2;
+  margin-top: 10rpx;
+}
+.infoitem {
+  box-sizing: border-box;
+  padding: 30rpx 40rpx;
+  border-bottom: 1px solid rgb(231, 229, 229);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.infoitem image{
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 30rpx;
+}
+.infoitem text{
+  color: #373737;
+}

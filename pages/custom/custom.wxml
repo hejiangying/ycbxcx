@@ -1,0 +1,33 @@
+<!--pages/custom/custom.wxml-->
+<view class="container">
+<view>
+    <text>联系人</text>
+    <input placeholder='请输入联系人姓名' bindinput='nameinput' value="{{_name}}"></input>
+  </view>
+  <view>
+    <text>联系方式</text>
+    <input placeholder='请输入联系方式' bindinput='phoneinput' maxlength='11'></input>
+  </view>
+  <view>
+    <text>目的地</text>
+    <input placeholder='您要去的地方' bindinput="bourninput"></input>
+  </view>
+  <view>
+    <text>出发地</text>
+    <input placeholder='您的出发地点' bindinput='origininput'></input>
+  </view>
+  <view>
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange"> <view style="width:30%;">出发时间</view>{{date}}</picker>
+  </view>
+  <view>
+    <text>出行天数</text>
+    <input placeholder='请输入出行天数' type='number'></input>
+  </view>
+  <view>
+    <text>出行人数</text>
+    <input type='number' placeholder='请输入出行人数' bindinput='numinput'></input>
+  </view>
+  <button bindtap='customClick'>提交定制</button>
+
+
+</view>

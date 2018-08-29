@@ -1,0 +1,297 @@
+/* pages/cart/cart.wxss */
+
+page {
+  height: 100%;
+  min-height: 100%;
+  background: #f4f4f4;
+}
+
+.service-policy {
+  width: 660rpx;
+  height: 73rpx;
+  background: #f4f4f4;
+  padding: 0 31.25rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.service-policy .item {
+  background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
+  background-size: 10rpx;
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 25rpx;
+  color: #666;
+}
+
+.no-cart {
+  width: 100%;
+  margin-top:300rpx;
+}
+
+.no-cart .c {
+  width: 100%;
+  height: auto;
+}
+
+.no-cart .c image {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  width: 258rpx;
+  height: 258rpx;
+}
+
+.no-cart .c text {
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.cart-view {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+}
+
+.cart-view .list {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 120rpx;
+}
+
+.cart-view .group-item {
+  height: auto;
+  width: 100%;
+  background: #f4f4f4;
+  margin-bottom: 18rpx;
+}
+
+.cart-view .item {
+  height: 195rpx;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+
+.cart-view .item .checkbox {
+  float: left;
+  height: 34rpx;
+  width: 34rpx;
+  margin: 75rpx 18rpx 65rpx 26rpx;
+  background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-0e09baa37e.png) no-repeat;
+  background-size: 34rpx;
+}
+
+.cart-view .item .checkbox.checked {
+  background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-checked-822e54472a.png) no-repeat;
+  background-size: 34rpx;
+}
+
+.cart-view .item .cart-goods {
+  height: 164rpx;
+  width: 672rpx;
+  margin: 10rpx 0 0rpx 90rpx;
+  /* border-bottom: 1px solid #f4f4f4; */
+}
+
+.cart-view .item .img {
+  float: left;
+  height: 140rpx;
+  width: 140rpx;
+  background: #f4f4f4;
+  margin: 19.5rpx 18rpx 19.5rpx 0;
+}
+
+.cart-view .item .info {
+  height: 125rpx;
+  padding-top: 18rpx;
+  width: 635rpx;
+}
+
+.cart-view .item .t {
+  margin: 8rpx 0;
+  height: 30rpx;
+  font-size: 25rpx;
+  color: #666;
+  overflow: hidden;
+}
+
+.cart-view .item .name {
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 26rpx;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.cart-view .item .num {
+  height: 28rpx;
+  line-height: 28rpx;
+  float: right;
+}
+
+.cart-view .item .attr {
+  margin-top: 14rpx;
+  margin-bottom: 12rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  font-size: 22rpx;
+  color: #888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cart-view .item .b {
+  display: flex;
+  justify-content: space-between;
+  line-height: 28rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.cart-view .item .price {
+  font-size: 30rpx;
+  color: #555;
+  margin-top: 16rpx;
+}
+
+.cart-view .group-item .header {
+  width: 100%;
+  height: 94rpx;
+  line-height: 94rpx;
+  padding: 0 26rpx;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.cart-view .promotion .icon {
+  display: inline-block;
+  height: 24rpx;
+  width: 15rpx;
+}
+
+.cart-view .promotion {
+  margin-top: 25.5rpx;
+  float: left;
+  height: 43rpx;
+  width: 480rpx;
+  /*margin-right: 84rpx;*/
+  line-height: 43rpx;
+  font-size: 0;
+}
+
+.cart-view .promotion .tag {
+  border: 1px solid #f48f18;
+  height: 37rpx;
+  line-height: 31rpx;
+  padding: 0 9rpx;
+  margin-right: 10rpx;
+  color: #f48f18;
+  font-size: 24.5rpx;
+}
+
+.cart-view .promotion .txt {
+  height: 43rpx;
+  line-height: 43rpx;
+  padding-right: 10rpx;
+  color: #333;
+  font-size: 29rpx;
+  overflow: hidden;
+}
+
+.cart-view .get {
+  margin-top: 18rpx;
+  float: right;
+  height: 58rpx;
+  padding-left: 14rpx;
+  border-left: 1px solid #d9d9d9;
+  line-height: 58rpx;
+  font-size: 29rpx;
+  color: #333;
+}
+
+.cart-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  color: #666;
+}
+
+.cart-bottom .checkbox {
+  height: 34rpx;
+  padding-left: 60rpx;
+  line-height: 34rpx;
+  margin: 33rpx 18rpx 33rpx 26rpx;
+  background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-0e09baa37e.png) no-repeat;
+  background-size: 34rpx;
+  font-size: 29rpx;
+}
+
+.cart-bottom .checkbox.checked {
+  background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-checked-822e54472a.png) no-repeat;
+  background-size: 34rpx;
+}
+
+
+.cart-bottom .total {
+  height: 34rpx;
+  flex: 1;
+  padding: 33rpx 10rpx;
+  font-size: 32rpx;
+  color: #f63264;
+}
+
+.cart-bottom .edit {
+  height: 34rpx;
+  width: auto;
+  padding: 33rpx;
+  margin-right:10rpx;
+  font-size: 29rpx;
+}
+
+.cart-bottom .checkout {
+  height: 100rpx;
+  width: 210rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 29rpx;
+  background: #f63264;
+  color: #fff;
+}
+
+.cart-bottom .checkout.active {
+  background: #f63264;
+}
+
+.login-btn {
+  background: #f63264;
+  text-align: center;
+  width: 500rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 0;
+  border: none;
+  color: #fff;
+  font-size: 29rpx;
+  margin: 0 auto;
+  margin-top: 50rpx;
+}
