@@ -131,9 +131,9 @@ Page({
     console.log("goodsId:", goodsId)
     var url = api.appHotel.housedetail + '?id=' + goodsId;
     toolkit.get(url, function (res) {
-      var goods = res.data.result.goods
+      var goods = res.data.result.content
       console.log("商品详情：", goods)
-      var goodsimg = goods.goodsImg;
+      var goodsimg = goods.litpic;
       var reg = /,$/gi;
       var img = goodsimg.replace(reg, '')
       var imgres = img.split(",")

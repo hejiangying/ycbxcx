@@ -11,17 +11,18 @@
   </view>
   <!-- 产品列表 -->
   <view class="tourlist">
-    <view class="touritem" bindtap='goDetail'>
+  <block wx:for="{{linelist}}" wx:key="{{index}}">
+    <view class="touritem" bindtap='goDetail' data-id="{{item.id}}" >
       <view class="search-con">
-        <image src="http://img.zcool.cn/community/012f6f59cf44aea80121ae0cbb1ad3.jpg@3000w_1l_2o_100sh.jpg"></image>
-        <text>可订明日</text>
+        <image src="{{'http://192.168.190.243:8081'+item.litpic}}"></image>
+        <!-- <text>可订明日</text> -->
       </view>
       <view class="tourinfo">
-        <text class="tour-title">大理360度洱海旅拍一日游.敞篷吉普+单反跟拍.底片全送</text>
+        <text class="tour-title">{{item.title}}</text>
         <view class="tour-tag">
-          <text>大理出发</text>
-          <text>无自费</text>
-          <text>无购物</text>
+          <text>{{item.sellPoint}}</text>
+           <!-- <text>无自费</text>
+          <text>无购物</text>  -->
         </view>
         <view class="tour-sell">
           <view class="sell-num">
@@ -29,12 +30,13 @@
             <text>|</text>
             <text>4.8分</text>
           </view>
-          <view class="sell-price">￥196
+          <view class="sell-price">￥{{item.price}}
             <text>起</text>
           </view>
         </view>
       </view>
     </view>
+  </block>  
     <view class="touritem">
       <view class="search-con">
         <image src="http://img10.3lian.com/show2014/1/73/105.jpg"></image>

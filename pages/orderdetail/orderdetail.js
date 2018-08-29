@@ -1,4 +1,7 @@
 // pages/orderdetail/orderdetail.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
+var lineid = '';//线路id
 Page({
 
   /**
@@ -6,14 +9,16 @@ Page({
    */
   data: {
     xc:1,//默认选择行程介绍
-    iscol:false//默认不收藏该商品
+    iscol:false,//默认不收藏该商品
+    linedetail:'',//线路详情
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+   lineid = options.id
+   console.log('111:',lineid)
   },
   // 行程、费用及使用的选择
   xcSelect:function(e){
@@ -46,6 +51,18 @@ Page({
       url: '../../pages/booking/booking',
     })
   },
+  getLinedetail:function(){
+    var that = this;
+    console.log('222:', lineid)
+    var url = api.appLine.linedetail + '?id=' + lineid;
+    toolkit.get(url , function(res){
+      console.log("线路详情：",res)
+      var linedetail = res.data.result.line
+      that.setData({
+        linedetail:linedetail
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -57,7 +74,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    that.getLinedetail();
   },
 
   /**

@@ -18,7 +18,8 @@ Page({
     _type: '',
     goods:'',
     goodsimg:[],
-    imgres:[]
+    imgres:[],
+    pathList:[]
 
   },
   xcSelect: function(e) {
@@ -132,6 +133,7 @@ Page({
     var  url = api.appGoods.goodsdetail + '?id=' + goodsId;
     toolkit.get(url,function(res){
       var goods = res.data.result.goods
+      var pathList = res.data.result.pathList
       console.log("商品详情：",goods)
       var goodsimg = goods.goodsImg;
       var reg = /,$/gi;
@@ -139,7 +141,8 @@ Page({
       var imgres = img.split(",")
       that.setData({
         goods:goods,
-        imgres:imgres
+        imgres:imgres,
+        pathList:pathList
       })
     })
   },

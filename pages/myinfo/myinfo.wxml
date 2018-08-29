@@ -4,7 +4,7 @@
     <input bindinput='iName' type='text' placeholder="请输入昵称..." auto-focus/>
     <textarea bindinput='iSign' type='text' placeholder="请输入个性签名..."></textarea>
   </modal>
-  <view class="mine-item" bindtap='photoSel'>
+  <!-- <view class="mine-item" bindtap='photoSel'>
     <text>头像</text>
     <view class="mine-r">
       <view class="myzp">
@@ -19,7 +19,7 @@
       <text>{{name}}</text>
       <image src="../../image/arrow.png"></image>
     </view>
-  </view>
+  </view> -->
   <view class="mine-item" bindtap="infoChange">
     <text>个性签名</text>
     <view class="mine-r">
@@ -37,13 +37,13 @@
       <image src="../../image/arrow.png"></image>
     </view>
   </view>
-  <view class="mine-item" bindtap='selSex'>
+  <!-- <view class="mine-item" bindtap='selSex'>
     <text>性别</text>
     <view class="mine-r">
       <text>{{sex}}</text>
       <image src="../../image/arrow.png"></image>
     </view>
-  </view>
+  </view> -->
   <view class="mine-item">
     <text>现居城市</text>
     <view class="mine-r">

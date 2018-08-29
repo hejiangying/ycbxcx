@@ -4,13 +4,12 @@
     <view class="mydata-top" bindtap="seeInfo">
       <view class="mydata-left">
         <view class="myinfo">
-          <view class="myphoto">
-            <open-data type="userAvatarUrl" style="width: 160rpx;height: 160rpx;display: block;border-radius:50rpx;"></open-data>
+          <view class="myphoto" style="border-radius:50%;width: 160rpx;height: 160rpx;display: block;overflow:hidden;">
+            <open-data type="userAvatarUrl"></open-data>
           </view>
           <view class="mysign">
             <view class="myname">
              <open-data type="userNickName" open-gid="xxxxxx"></open-data>
-              <image src="../../image/sexm.png"></image>
             </view>
             <text>这是个性签名...........</text>
           </view>
@@ -38,19 +37,19 @@
   </view>
   <view class="infolist">
     <view class="infoitem">
-      <image src="../../image/zuche.png"></image>
+      <image src="../../image/col.png"></image>
       <text>我的收藏</text>
     </view>
-    <view class="infoitem">
-      <image src="../../image/zuche.png"></image>
-      <text>卡包</text>
+    <view class="infoitem" bindtap='couponClick'>
+      <image src="../../image/coupon.png" ></image>
+      <text>我的优惠券</text>
     </view>
     <view class="infoitem" bindtap='helpClick'>
-      <image src="../../image/zuche.png"></image>
+      <image src="../../image/help.png"></image>
       <text>帮助中心</text>
     </view>
     <view class="infoitem" bindtap="aboutClick">
-      <image src="../../image/zuche.png"></image>
+      <image src="../../image/about.png"></image>
       <text>关于我们</text>
     </view>
 

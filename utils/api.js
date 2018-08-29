@@ -11,6 +11,10 @@ const api = {
   appHotel:{
     houselist: host +'/appHotel/list',
     housedetail:host +'/appUser/getHotelById'
+  },
+  appLine:{
+    linelist:host + '/appLine/list',
+    linedetail: host + '/appUser/getLineById'
   }
  
 }

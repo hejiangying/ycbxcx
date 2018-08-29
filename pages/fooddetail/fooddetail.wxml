@@ -2,7 +2,7 @@
 <view class="container">
 <block>
   <view class="tourdetail">
-    <swiper indicator-dots="true" autoplay="true" interval="3000">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
       <block wx:for="{{imgres}}" wx:key="{{index}}">
         <swiper-item>
           <image src="{{'http://192.168.190.243:8081'+ item}}" width="100%" height="150" />
@@ -82,9 +82,9 @@
     <view class="mask-con">
       <view class="img-con">
         <view class="img-left">
-          <image src="{{'http://192.168.190.243:8081'+ item}}"></image>
+          <image src="{{'http://192.168.190.243:8081'+ pathList[0]}}"></image>
           <view class="kc">
-            <text class="price">￥{{goods.marketPrice*num}}</text>
+            <text class="price">￥{{(goods.marketPrice*100)*num/100}}</text>
             <text class="num">库存{{goods.goodsNumber}}件</text>
           </view>
         </view>

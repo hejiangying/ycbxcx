@@ -25,7 +25,7 @@
   color: rgb(114, 109, 109);
 }
 .sell-state .t-money text:last-child{
-  margin-left: 30rpx;
+  margin-left: 10rpx;
 }
 .sell-state .sold{
   font-size: 30rpx;

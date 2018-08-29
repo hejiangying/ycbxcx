@@ -11,6 +11,7 @@
   box-sizing: border-box;
   position: fixed;
   top: 0;
+  align-items: center
 }
 
 .found image {

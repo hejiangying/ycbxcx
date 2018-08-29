@@ -49,6 +49,12 @@ Page({
       url: '../../pages/help/help',
     })
   },
+  //跳转到优惠券页面
+  couponClick:function(){
+    wx.navigateTo({
+      url: '../../pages/coupon/coupon',
+    })
+  },
   // 跳转到关于我们页面
   aboutClick:function(){
     wx.navigateTo({

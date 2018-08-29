@@ -1,28 +1,31 @@
 <!--pages/orderdetail/orderdetail.wxml-->
 <view class="container">
   <view class="tourdetail">
-    <image src="http://img.zcool.cn/community/01490655cade9a6ac72558084f5e6d.jpg@1280w_1l_2o_100sh.jpg"></image>
+     <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+      <!-- <block wx:for="{{imgres}}" wx:key="{{index}}"> -->
+        <swiper-item>
+         <image src="http://img.zcool.cn/community/01490655cade9a6ac72558084f5e6d.jpg@1280w_1l_2o_100sh.jpg" style='width:100%;height:150px;'></image>
+        </swiper-item>
+      <!-- </block> -->
+    </swiper>
     <view class="t-name cen">
-      <text>【上新特惠】</text> 大理洱海游船+三塔+蝴蝶泉纯玩一日游
+      <!-- <text>【上新特惠】</text>  -->
+      {{linedetail.title}}
     </view>
     <view class="sell-state cen">
       <view class="t-money">
         <text class="t-symbol">￥</text>
-        <text class="t-much">320</text>
+        <text class="t-much">{{linedetail.price}}</text>
         <text class="t-min">起</text>
-        <text>可订明日</text>
+        <!-- <text>可订明日</text> -->
       </view>
       <text class="sold">已售:91</text>
     </view>
     <view class="advantages cen">
-      <view>
-        <image src="../../image/ok.png"></image> 条件退</view>
-      <view>
-        <image src="../../image/ok.png"></image>铁定成团</view>
-      <view>
-        <image src="../../image/ok.png"></image>无自费</view>
-      <view>
-        <image src="../../image/ok.png"></image>无购物</view>
+      <view><image src="../../image/ok.png"></image>  {{linedetail.sellPoint}}</view>
+      <!-- <view><image src="../../image/ok.png"></image>铁定成团</view>
+      <view><image src="../../image/ok.png"></image>无自费</view>
+      <view><image src="../../image/ok.png"></image>无购物</view> -->
     </view>
   </view>
   <view class="kong"></view>

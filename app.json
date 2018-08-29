@@ -34,7 +34,8 @@
     "pages/search/search",
     "pages/goodsdetail/goodsdetail",
     "pages/food/food",
-    "pages/housedetail/housedetail"
+    "pages/housedetail/housedetail",
+    "pages/coupon/coupon"
   ],
   "window": {
     "backgroundTextStyle": "light",

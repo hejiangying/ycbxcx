@@ -1,11 +1,14 @@
 // pages/tourroute/tourroute.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    _way:1
+    _way:1,
+    linelist:[],//自助游路线列表
   },
 
   /**
@@ -22,9 +25,24 @@ Page({
     })
 
   },
-  goDetail:function(){
+  goDetail:function(e){
+    console.log("e:",e)
+    var that = this;
+    var lineid = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/orderdetail/orderdetail',
+      url: '../../pages/orderdetail/orderdetail?id=' + lineid,
+    })
+  },
+  getLine:function(){
+    var that = this;
+    var url = api.appLine.linelist;
+    toolkit.get(url,function(res){
+      console.log("res444:",res)
+      var linelist = res.data.result.content
+      console.log("555:",linelist)
+      that.setData({
+        linelist:linelist
+      })
     })
   },
 
@@ -39,7 +57,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    that.getLine()
   },
 
   /**
