@@ -72,6 +72,10 @@
   font-size: 34rpx;
   width: 100%;
 }
+.tour-title{
+  color: #666;
+  font-size: 28rpx;
+}
 
 .tourlist .tourinfo .tour-sell {
   display: flex;
@@ -86,15 +90,15 @@
 
 .tourlist .tourinfo .sell-price text {
   font-size: 24rpx;
-  color: #ccc;
+  color: #999;
   margin-left: 10rpx;
 }
 
 .tourlist .tourinfo .tour-tag text {
-  border-right: 1rpx solid #ccc;
+  border-right: 1rpx solid #999;
   padding: 0rpx 10rpx;
   font-size: 30rpx;
-  color: #ccc;
+  color: #999;
 }
 
 .tourlist .tourinfo .tour-tag text:nth-child(1) {
@@ -106,8 +110,8 @@
 }
 
 .tourlist .tourinfo .sell-num text {
-  font-size: 30rpx;
-  color: #ccc;
+  font-size: 26rpx;
+  color: #999;
   margin-left: 10rpx;
 }
 

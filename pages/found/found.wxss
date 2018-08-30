@@ -95,6 +95,7 @@
   margin: 0rpx 20rpx;
   display: block;
   color:#666;
+  margin-bottom: 8rpx;
 }
 .mesimage{
   display: flex;
@@ -106,7 +107,9 @@
 .mesimage image{
   width: 100px;
   height: 100px;
-  margin-bottom: 5rpx;
+  margin: 1px;
+  border: 1px solid #f7f7fa;
+  border-radius: 5px;
 }
 .mesoperation{
   display: flex;

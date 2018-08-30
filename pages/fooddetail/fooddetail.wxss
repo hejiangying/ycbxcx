@@ -47,9 +47,11 @@
 .mask-con .img-con .kc .price{
   color: #f63264;
   font-weight: bold;
+  font-size: 28rpx;
 }
 .mask-con .img-con .kc .num{
-  font-size: 34rpx;
+  font-size: 26rpx;
+  color: #999;
 }
 .mask-con .type-con{
   margin-bottom: 30rpx;
@@ -73,7 +75,9 @@
 }
 .mask-con .num-con text{
   margin-bottom: 10rpx;
-  display: block
+  display: block;
+  color: #666;
+  font-size:28rpx;
 }
 .mask-con .numsel {
   display: flex;
@@ -89,6 +93,8 @@
   text-align: center;
   border-top: 1rpx solid rgb(119, 119, 119);
   border-bottom: 1rpx solid rgb(119, 119, 119);
+  font-size: 24rpx;
+  color: #999;
 }
 .type-con text.on{
   color: #f63264;

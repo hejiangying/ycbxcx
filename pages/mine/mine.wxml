@@ -9,7 +9,7 @@
           </view>
           <view class="mysign">
             <view class="myname">
-             <open-data type="userNickName" open-gid="xxxxxx" style="color:#666;"></open-data>
+             <open-data type="userNickName" open-gid="xxxxxx" style="color:#666;font-size:28rpx;"></open-data>
             </view>
           </view>
         </view>

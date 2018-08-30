@@ -1,8 +1,10 @@
 /* pages/booking/booking.wxss */
 .booking-title {
-  border-bottom: 1rpx solid rgb(245, 241, 241);
+  border-bottom: 1rpx solid #f7f7fa;
   box-sizing: border-box;
   padding: 20rpx;
+  color: #666;
+  font-size: 28rpx;
 }
 
 .time {
@@ -15,6 +17,8 @@
 .time text {
   width: 160rpx;
   margin-right: 20rpx;
+  font-size: 28rpx;
+  color: #666
 }
 
 .time picker {
@@ -22,11 +26,13 @@
 }
 
 .selnum {
-  background-color: rgb(243, 237, 237);
+  background-color:#f7f7fa;
   width: 100%;
   display: block;
   box-sizing: border-box;
   padding: 20rpx;
+  font-size: 28rpx;
+  color: #666
 }
 
 .per {
@@ -36,8 +42,9 @@
   align-items: center;
   box-sizing: border-box;
   padding: 20rpx;
-  border-bottom: 1rpx solid rgb(245, 241, 241);
-  font-size: 34rpx;
+  border-bottom: 1rpx solid#f7f7fa;
+  font-size: 26rpx;
+  color: #666;
 }
 
 .per .p-l text {
@@ -72,16 +79,17 @@
   flex-direction: row;
   box-sizing: border-box;
   padding: 20rpx;
-  border-bottom: 1rpx solid rgb(245, 241, 241);
+  border-bottom: 1rpx solid#f7f7fa;
 }
 
 .form-item>view text {
   width: 160rpx;
-  font-size: 34rpx;
+  font-size: 26rpx;
+  color: #666
 }
 
 .form-item>view input {
-  font-size: 34rpx;
+  font-size: 28rpx;
 }
 .form-item button{
   display: block;
@@ -92,8 +100,8 @@
 .form-item button{
   border-bottom-left-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
-  font-size: 30rpx;
-  color: #d4237a;
+  font-size: 26rpx;
+  color: #f63264;
 }
 
 .form-item button::after{
@@ -102,7 +110,7 @@
 }
 
 .normal {
-  color: black;
+  color: #666;
 }
 
 .disabled {
@@ -113,7 +121,7 @@
   bottom: 0;
   box-sizing: border-box;
   padding: 10rpx 30rpx;
-  background-color: rgb(250, 247, 247);
+  background-color:#fff;
   width: 100%;
   z-index: 999
 }
@@ -124,15 +132,19 @@
   float: left;
 }
 .allmoney .num text:nth-child(1){
-  font-size: 30rpx;
-  color: #ccc;
+  font-size: 28rpx;
+  color: #999;
+}
+.allmoney .num text:nth-child(2){
+  color: #f63264;
+  font-size: 28rpx;
 }
 .allmoney .gopay{
   display: inline-block;
-  background-color:#d4237a;
+  background-color:#f63264;
   padding: 20rpx 50rpx;
   border-radius: 20rpx;
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #fff;
   margin-top: 5rpx;
 }
