@@ -31,7 +31,7 @@
 .order-item image{
   width: 320rpx;
   height: 320rpx;
-  margin-right: 30rpx;
+  margin-right: 20rpx;
 }
 .order-item .order-info{
   display: flex;

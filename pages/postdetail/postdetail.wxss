@@ -31,7 +31,7 @@
 }
 .perinfo-addre text{
   font-size: 32rpx;
-  color: #ccc;
+  color: #999;
   margin-left:15rpx;
 }
 
@@ -61,7 +61,7 @@
 }
 .perinfop-r text.replyop{
   background-color: white;
-  color: #000;
+  color: #f63264;
   letter-spacing: 5rpx;
   font-weight: bold;
 }
@@ -83,6 +83,7 @@
 .post-text{
   margin-top: 10rpx;
   font-size: 30rpx;
+  color: #666
 }
 .btns{
   display: flex;
@@ -126,6 +127,6 @@
     padding-bottom: 20rpx;
     border-bottom: 1rpx solid rgb(245, 241, 241);
   }
-  .peritem{
-
+  .reply-text text{
+    color: #666;
   }

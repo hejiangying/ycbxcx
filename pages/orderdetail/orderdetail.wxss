@@ -6,6 +6,7 @@
 }
 .tourdetail image{
   height: 360rpx;
+  width: 100%;
 }
 .sell-state{
   margin: 20rpx !important;
@@ -54,6 +55,9 @@
   margin: 0 auto;
   margin-top: 10rpx;
 }
+.t-name{
+  color: #666;
+}
 .kong{
   height: 30rpx;
   background-color: #f5f5f5;
@@ -70,7 +74,7 @@
 }
 .time{
   padding: 20rpx 0rpx;
-  color: #a1a09f;
+  color: #999;
   font-size: 32rpx;
 }
 .satisfaction{
@@ -82,12 +86,13 @@
 }
 .comments-con{
   font-size: 34rpx;
+  color: #999;
 }
 .satisfaction text:nth-child(1){
   font-size:40rpx;
 }
 .score .com-num{
-  color: rgb(129, 126, 126);
+  color:#999;
 }
 /* .tab-con{
   border-bottom: 1px solid #dbdad8;
@@ -112,6 +117,7 @@
   margin: 0 auto;
   line-height: 52rpx;
   padding-bottom: 100rpx;
+  color: #999;
 }
 .tab .xcon{
   color: #f63264;

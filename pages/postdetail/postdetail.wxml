@@ -2,7 +2,7 @@
 <view class="container">
   <!-- 帖子详情 -->
   <view class="post-item">
-    <text>远方去不了那就来个周末北京一日游吧——北京一日游攻略</text>
+    <!-- <text>远方去不了那就来个周末北京一日游吧——北京一日游攻略</text> -->
     <view class="perinfo">
       <view class="perinfo-l">
         <view class="perinfo-pho">
@@ -23,6 +23,9 @@
       </view>
     </view>
     <view class="imglist">
+      <image src="../../image/kezhan.png"></image>
+      <image src="http://pic-cdn.35pic.com/58pic/18/32/34/04d58PICiGN_1024.jpg"></image>
+      <image src="../../image/zuche.png"></image>
       <image src="../../image/kezhan.png"></image>
       <image src="http://pic-cdn.35pic.com/58pic/18/32/34/04d58PICiGN_1024.jpg"></image>
       <image src="../../image/zuche.png"></image>
@@ -54,7 +57,7 @@
           <view class="perinfo-id">
             <text>ID某某</text>
             <view class="perinfo-addre">
-              <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+              <image src="../../image/address1.png"></image>
               <text>北京</text>
               <text>|</text>
               <text>一分钟前</text>

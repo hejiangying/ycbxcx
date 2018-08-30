@@ -21,12 +21,14 @@
 }
 .fooditem .foodprice text{
   font-size: 32rpx;
+  color: #999;
 }
 .fooditem>text{
   display: block;
   font-size: 34rpx;
   overflow: hidden;
   padding: 10rpx;
+  color: #666;
 }
 .fooditem .foodprice text:nth-child(1){
   color: #f63264;
