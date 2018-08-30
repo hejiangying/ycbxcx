@@ -19,7 +19,7 @@
 }
 .sell-state .t-money .t-much{
   font-weight: bold;
-  font-size: 48rpx;
+  font-size: 30rpx;
   margin-right:6rpx;
 }
 .sell-state .t-money .t-min,.sell-state .t-money text:last-child{
@@ -29,7 +29,7 @@
   margin-left: 10rpx;
 }
 .sell-state .sold{
-  font-size: 30rpx;
+  font-size: 26rpx;
   color:  rgb(114, 109, 109);
 }
 .advantages{
@@ -38,7 +38,7 @@
   padding-bottom: 20rpx;
 }
 .advantages view{
-  font-size: 30rpx;
+  font-size: 26rpx;
   margin-right: 30rpx;
   color: rgb(114, 109, 109);
   display: flex;
@@ -57,6 +57,7 @@
 }
 .t-name{
   color: #666;
+  font-size: 30rpx;
 }
 .kong{
   height: 30rpx;
@@ -75,17 +76,17 @@
 .time{
   padding: 20rpx 0rpx;
   color: #999;
-  font-size: 32rpx;
+  font-size: 26rpx;
 }
 .satisfaction{
   color: #f63264;
-  font-size: 36rpx;
+  font-size: 26rpx;
 }
 .comments{
   padding: 20rpx 0rpx;
 }
 .comments-con{
-  font-size: 34rpx;
+  font-size: 26rpx;
   color: #999;
 }
 .satisfaction text:nth-child(1){
@@ -93,6 +94,7 @@
 }
 .score .com-num{
   color:#999;
+  font-size: 26rpx;
 }
 /* .tab-con{
   border-bottom: 1px solid #dbdad8;
@@ -108,10 +110,10 @@
 }
 .tab .tab-top text{
   padding: 20rpx;
-  font-size: 34rpx;
+  font-size:28rpx;
 }
 .tab .tab-con>view{
-  font-size: 34rpx;
+  font-size: 26rpx;
   text-indent: 70rpx;
   width: 96%;
   margin: 0 auto;

@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  font-size:28rpx;
 }
 .perinfo{
   display: flex;
@@ -30,7 +31,7 @@
   align-items: center;
 }
 .perinfo-addre text{
-  font-size: 32rpx;
+  font-size: 26rpx;
   color: #999;
   margin-left:15rpx;
 }
@@ -52,7 +53,7 @@
   border-radius: 10rpx;
   background-color: #f63264;
   color: #fff;
-  font-size: 34rpx;
+  font-size: 26rpx;
 }
 .perinfop-r text.old{
   background: #fff;
@@ -70,8 +71,8 @@
   margin: 0 auto;
 }
 .imglist image{
-  width: 208rpx;
-  height: 208rpx;
+  width: 206rpx;
+  height: 206rpx;
   display: inline-block;
   margin-right: 20rpx;
   margin-top: 20rpx;
@@ -95,21 +96,24 @@
   border: 1rpx solid #ccc;
   border-radius: 50rpx;
   padding: 10rpx 30rpx;
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: rgb(161, 159, 159);
   display: flex;
   flex-direction: row;
   align-items: center;
   }
   .btns view image{
-    width: 40rpx;
-    height: 40rpx;
+    width: 34rpx;
+    height:30rpx;
     margin-right: 10rpx;
   }
   .reply{
     border-top: 10rpx solid rgb(238, 227, 227);
     padding: 10rpx 20rpx;
     box-sizing: border-box;
+  }
+  .reply text{
+    font-size: 26rpx;
   }
   .replydetail{
     display: flex;
@@ -121,7 +125,7 @@
     border-radius: 50%;
   }
   .reply-text{
-    font-size: 34rpx;
+    font-size: 26rpx;
     width: 76%;
     margin-left: 150rpx;
     padding-bottom: 20rpx;

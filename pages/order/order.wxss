@@ -40,7 +40,7 @@
   justify-content: space-between
 }
 .order-item .order-info .order-time,.order-item .order-info .order-people{
-  font-size: 32rpx;
+  font-size: 26rpx;
   color: #999;
 }
 .order-info{
@@ -49,9 +49,10 @@
 }
 .order-info .order-title{
   color: #666;
+  font-size: 28rpx;
 }
 .order-info .order-money{
-  font-size: 34rpx;
+  font-size: 26rpx;
   color: #666;
 }
 .order-info .order-money .poundage{
@@ -61,7 +62,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 34rpx;
+  font-size: 24rpx;
   padding: 0rpx 20rpx;
   box-sizing: border-box;
   color: #666;
@@ -71,5 +72,5 @@
   border: 1rpx solid #ccc;
   border-radius: 50rpx;
   margin-left: 40rpx;
-  font-size: 30rpx;
+  font-size: 24rpx;
 }

@@ -56,7 +56,7 @@
 }
 
 .hot-people>text {
-  font-size: 34rpx;
+  font-size: 28rpx;
   color: #666;
 }
 
@@ -86,12 +86,12 @@
 
 .hot-addre text {
   color: rgb(122, 119, 119);
-  font-size: 34rpx;
+  font-size: 26rpx;
   margin-right: 20rpx;
 }
 
 .messagecon {
-  font-size: 34rpx;
+  font-size: 26rpx;
   margin: 0rpx 20rpx;
   display: block;
   color:#666;
@@ -126,7 +126,7 @@
 .mesoperation .operation text{
   color: rgb(122, 119, 119);
   margin-left: 10rpx;
-  font-size: 30rpx;
+  font-size: 25rpx;
 }
 .kong{
   height: 10rpx;
