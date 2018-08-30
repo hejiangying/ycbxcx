@@ -75,7 +75,7 @@
       <image src="../../image/techan.jpg"></image>
       <view class="active_name">
         <text class="name">活动名称</text>
-        <text class="active_status">招募中</text>
+        <text class="active_status">￥99</text>
       </view>
       <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
     </view>
@@ -100,11 +100,35 @@
       <image src="../../image/zuche.png"></image>
       <view class="active_name">
         <text class="name">活动名称</text>
-        <text class="active_status">招募中</text>
+        <text class="active_status">￥99</text>
       </view>
       <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
     </view>
   </view>
-
+<!-- 推荐客栈 -->
+  <view class="active_recruiting">
+    <view class="active_subtitle">
+      <text class="subtitle">客栈信息</text>
+      <text class="more" bindtap='moreClick'>更多></text>
+    </view>
+  </view>
+  <view class="active_list">
+    <view class="active_item" bindtap='goBuy'>
+      <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg"></image>
+      <view class="active_name">
+        <text class="name">万客来客栈</text>
+        <text class="active_status">￥99</text>
+      </view>
+      <view class="active_info">好评如潮</view>
+    </view>
+    <view class="active_item">
+      <image src="../../image/techan.jpg"></image>
+      <view class="active_name">
+        <text class="name">洱海庄园</text>
+        <text class="active_status">￥99</text>
+      </view>
+      <view class="active_info">地理位置优越</view>
+    </view>
+  </view>
 
 </view>

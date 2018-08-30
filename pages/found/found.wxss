@@ -57,7 +57,7 @@
 
 .hot-people>text {
   font-size: 34rpx;
-  color: rgb(53, 52, 52);
+  color: #666;
 }
 
 .hot-message {
@@ -71,7 +71,9 @@
   display: flex;
   flex-direction: row;
 }
-
+.hot-r{
+  color: #999;
+}
 .hot-addre {
   display: flex;
   flex-direction: row;
@@ -92,20 +94,19 @@
   font-size: 34rpx;
   margin: 0rpx 20rpx;
   display: block;
-  color: rgb(99, 97, 97);
+  color:#666;
 }
-
-.mesimage image {
-  display: block;
-  width: 32%;
-  height: 200rpx;
-}
-
-.mesimage {
+.mesimage{
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
-  margin: 20rpx;
+  margin: 0 auto;
+  width: 320px;
+}
+.mesimage image{
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5rpx;
 }
 .mesoperation{
   display: flex;
@@ -128,8 +129,8 @@
   font-size: 30rpx;
 }
 .kong{
-  height: 20rpx;
-  background: #cdcdcd;
+  height: 10rpx;
+  background:  #f7f7fa;
 }
 .add-con{
   position: fixed;

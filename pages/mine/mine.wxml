@@ -9,9 +9,8 @@
           </view>
           <view class="mysign">
             <view class="myname">
-             <open-data type="userNickName" open-gid="xxxxxx"></open-data>
+             <open-data type="userNickName" open-gid="xxxxxx" style="color:#666;"></open-data>
             </view>
-            <text>这是个性签名...........</text>
           </view>
         </view>
       </view>

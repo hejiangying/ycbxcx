@@ -37,12 +37,17 @@
         <image src="../../image/zuche.png"></image>
         <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
         <image src="../../image/zuche.png"></image>
+         <image src="../../image/kezhan.png"></image>
+        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
+        <image src="../../image/kezhan.png"></image>
+         <image src="../../image/zuche.png"></image>
+        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
+        <image src="../../image/zuche.png"></image>
       </view>
       <view class="mesoperation">
-        <!-- <view class="operation">
-          <image src="../../image/share.png"></image>
-          <text>2</text>
-        </view> -->
+        <view class="operation">
+          <text>23分钟前</text>
+        </view>
         <view class="operation">
           <image src="../../image/comment.png" bindtap="replyClick"></image>
           <text>2</text>
@@ -77,10 +82,9 @@
         <image src="../../image/zuche.png"></image>
       </view>
       <view class="mesoperation">
-        <!-- <view class="operation">
-          <image src="../../image/share.png"></image>
-          <text>2</text>
-        </view> -->
+        <view class="operation">
+          <text>23分钟前</text>
+        </view>
         <view class="operation">
          <image src="../../image/comment.png" bindtap="replyClick"></image>
           <text>2</text>
@@ -115,10 +119,9 @@
         <image src="../../image/zuche.png"></image>
       </view>
       <view class="mesoperation">
-        <!-- <view class="operation">
-          <image src="../../image/share.png"></image>
-          <text>2</text>
-        </view> -->
+        <view class="operation">
+           <text>23分钟前</text>
+        </view>
         <view class="operation">
           <image src="../../image/comment.png" bindtap="replyClick"></image>
           <text>2</text>
@@ -156,10 +159,9 @@
         <image src="../../image/zuche.png"></image>
       </view>
       <view class="mesoperation">
-        <!-- <view class="operation">
-          <image src="../../image/share.png"></image>
-          <text>2</text>
-        </view> -->
+        <view class="operation">
+          <text>23分钟前</text>
+        </view>
         <view class="operation">
           <image src="../../image/comment.png" bindtap="replyClick"></image>
           <text>2</text>
@@ -197,10 +199,9 @@
         <image src="../../image/zuche.png"></image>
       </view>
       <view class="mesoperation">
-        <!-- <view class="operation">
-          <image src="../../image/share.png"></image>
-          <text>2</text>
-        </view> -->
+        <view class="operation">
+          <text>23分钟前</text>
+        </view>
         <view class="operation">
           <image src="../../image/comment.png" bindtap="replyClick"></image>
           <text>2</text>

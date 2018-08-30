@@ -12,6 +12,7 @@
 }
 .order-status text.on{
   border-bottom: 2rpx solid #f63264;
+  color: #f63264
 }
 .order-list{
   width: 96%;
@@ -40,14 +41,18 @@
 }
 .order-item .order-info .order-time,.order-item .order-info .order-people{
   font-size: 32rpx;
-  color: #ddd;
+  color: #999;
 }
 .order-info{
   padding: 10rpx 0rpx;
   box-sizing: border-box;
 }
+.order-info .order-title{
+  color: #666;
+}
 .order-info .order-money{
   font-size: 34rpx;
+  color: #666;
 }
 .order-info .order-money .poundage{
   font-size: 30rpx;
@@ -59,6 +64,7 @@
   font-size: 34rpx;
   padding: 0rpx 20rpx;
   box-sizing: border-box;
+  color: #666;
 }
 .order-state .operation text{
   padding: 10rpx 20rpx;
