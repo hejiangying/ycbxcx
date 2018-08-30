@@ -57,7 +57,7 @@ Page({
         token: wx.getStorageSync('token')
       };
     console.log('api.appGoods.goodlist,', api.appGoods.goodslist)
-    toolkit.get(api.appGoods.goodslist, params, function (res) {
+    toolkit.get(api.appGoods.goodslist, params, (res)=> {
       var goodslist = res.data.result.content
       var img = goodslist.goodsImg
       console.log("res111:", goodslist)

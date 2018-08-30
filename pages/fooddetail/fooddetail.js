@@ -131,7 +131,7 @@ Page({
     var that = this;
     console.log("goodsId:",goodsId)
     var  url = api.appGoods.goodsdetail + '?id=' + goodsId;
-    toolkit.get(url,function(res){
+    toolkit.get(url,(res) => {
       var goods = res.data.result.goods
       var pathList = res.data.result.pathList
       console.log("商品详情：",goods)
