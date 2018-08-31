@@ -144,15 +144,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100rpx;
-  height: 100rpx;
+  width: 90rpx;
+  height: 90rpx;
   background-color: #f63264;
   border-radius: 50%;
   margin-bottom: 30rpx;
 }
 .add-con view image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 36rpx;
+  height: 36rpx;
   display: block;
   margin-top: 26rpx;
 }

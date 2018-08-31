@@ -5,16 +5,16 @@ const api = {
     get_union: host +'/apiUser/info',
   },
   appGoods:{
-    goodslist: host + '/appGoods/list',
-    goodsdetail: host +'/appUser/getGoodsById'
+    goodslist: host + '/apiGoods/list',
+    goodsdetail: host +'/apiGoods/getGoodsById'
   },
   appHotel:{
-    houselist: host +'/appHotel/list',
-    housedetail:host +'/appUser/getHotelById'
+    houselist: host +'/apiHotel/list',
+    housedetail: host +'/apiHotel/getHotelById'
   },
   appLine:{
-    linelist:host + '/appLine/list',
-    linedetail: host + '/appUser/getLineById'
+    linelist:host + '/apiLine/list',
+    linedetail: host + '/apiLine/getLineById'
   }
  
 }

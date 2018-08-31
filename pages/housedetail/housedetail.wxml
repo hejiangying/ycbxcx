@@ -13,24 +13,21 @@
       </block>
     </swiper>
     <view class="t-name cen">
-      <text>{{goods.goodsName}}</text>
+      <text>{{goods.title}}</text>
     </view>
     <view class="sell-state cen">
       <view class="t-money">
         <text class="t-symbol">￥</text>
-        <text class="t-much">{{goods.marketPrice}}</text>
+        <text class="t-much">{{goods.price}}</text>
         <text class="t-min">起</text>
         <text>可订明日</text>
       </view>
       <text class="sold">已售：91</text>
     </view>
     <view class="advantages cen">
-      <view>
-        <image src="../../image/ok.png"></image> 正品保障</view>
-      <view>
-        <image src="../../image/ok.png"></image>极速发货</view>
-      <view>
-        <image src="../../image/ok.png"></image>7天退换货</view>
+      <view><image src="../../image/ok.png"></image>{{goods.sellpoint}}</view>
+      <!-- <view><image src="../../image/ok.png"></image>极速发货</view>
+      <view><image src="../../image/ok.png"></image>7天退换货</view> -->
       <view>
       </view>
     </view>
@@ -58,13 +55,21 @@
     <!-- tab -->
     <view class="tab">
       <view class="tab-top">
-        <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">商品详情</text>
-        <!-- <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">费用说明</text>
-      <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text> -->
+        <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">酒店信息</text>
+         <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">酒店介绍</text>
+      <!-- <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text>  -->
       </view>
       <view class="tab-con">
         <view class="tab1" wx:if="{{xc==1}}">
-         {{goods.goodsDesc}}
+          <view> 联系电话：{{goods.telephone}}</view>
+          <view> 地理位置：{{goods.address}}</view>
+          <view> 店内设备：{{goods.equipment}}</view>
+          <view> 开业时间：{{goods.opentime}}</view>
+          <view> 酒店星级：{{goods.hotel_rankid}}</view>
+          
+        </view>
+        <view class="tab1" wx:if="{{xc==2}}">
+         {{goods.content}}
         </view>
       </view>
     </view>

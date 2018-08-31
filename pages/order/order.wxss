@@ -33,6 +33,7 @@
   width: 320rpx;
   height: 320rpx;
   margin-right: 20rpx;
+  border-top-left-radius: 20rpx;
 }
 .order-item .order-info{
   display: flex;
@@ -57,7 +58,7 @@
   color: #666;
 }
 .order-info .order-money .poundage{
-  font-size: 30rpx;
+  font-size: 24rpx;
 }
 .order-state{
   display: flex;

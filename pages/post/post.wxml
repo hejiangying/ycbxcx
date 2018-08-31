@@ -1,10 +1,10 @@
 <!--pages/post/post.wxml-->
 <view class="container">
   <view class="post-tit cen">
-    <input placeholder='标题写这里哟(最多20字)...' maxlength="20" value="{{posttitle}}" bindinput="getTitle"></input>
+    <input placeholder='标题写这里哟(最多20字)...' maxlength="20" value="{{posttitle}}" bindinput="getTitle" placeholder-style='color:#666;font-size:26rpx;'></input>
   </view>
   <view class="post-con cen">
-    <textarea placeholder='尽情发挥你的文采吧(最多5万字)...' maxlength="50000" value="{{postcon}}" bindinput="getContent"></textarea>
+    <textarea placeholder='尽情发挥你的文采吧(最多5万字)...' maxlength="50000" value="{{postcon}}" bindinput="getContent" placeholder-style='color:#999;font-size:26rpx;'></textarea>
   </view>
   <view class="post-image">
     <view class="imgitem" wx:for="{{imglist}}" wx:key="{{index}}">

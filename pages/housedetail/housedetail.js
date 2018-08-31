@@ -131,7 +131,7 @@ Page({
     console.log("goodsId:", goodsId)
     var url = api.appHotel.housedetail + '?id=' + goodsId;
     toolkit.get(url, function (res) {
-      var goods = res.data.result.content
+      var goods = res.data.result
       console.log("商品详情：", goods)
       var goodsimg = goods.litpic;
       var reg = /,$/gi;

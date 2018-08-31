@@ -57,7 +57,7 @@ Page({
     var url = api.appLine.linedetail + '?id=' + lineid;
     toolkit.get(url , function(res){
       console.log("线路详情：",res)
-      var linedetail = res.data.result.line
+      var linedetail = res.data.result
       that.setData({
         linedetail:linedetail
       })

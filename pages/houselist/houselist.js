@@ -53,7 +53,7 @@ Page({
         token: wx.getStorageSync('token')
       };
     console.log('api.appHotel.houselist,', api.appHotel.houselist)
-    toolkit.get(api.appHotel.houselist, params, function (res) {
+    toolkit.get(api.appHotel.houselist, params,  (res) => {
       console.log("123:",res)
       var houselist = res.data.result.content
       that.setData({

@@ -132,8 +132,8 @@ Page({
     console.log("goodsId:",goodsId)
     var  url = api.appGoods.goodsdetail + '?id=' + goodsId;
     toolkit.get(url,(res) => {
-      var goods = res.data.result.goods
-      var pathList = res.data.result.pathList
+      var goods = res.data.result
+      var pathList = res.data.result.imgList
       console.log("商品详情：",goods)
       var goodsimg = goods.goodsImg;
       var reg = /,$/gi;

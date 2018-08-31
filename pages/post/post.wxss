@@ -46,3 +46,11 @@ button{
   margin-top: 50rpx;
   font-size: 34rpx
 }
+input{
+  color: #666;
+  font-size: 26rpx;
+}
+textarea{
+  color: #999;
+  font-size: 26rpx;
+}
