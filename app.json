@@ -9,10 +9,8 @@
     "pages/shopping/shopping",
     "pages/booking/booking",
     "pages/comments/comments",
-    "pages/start/start",
     "pages/postdetail/postdetail",
     "pages/seeorder/seeorder",
-    "pages/myinfo/myinfo",
     "pages/mine/mine",
     "pages/order/order",
     "pages/logs/logs",
@@ -35,7 +33,8 @@
     "pages/goodsdetail/goodsdetail",
     "pages/food/food",
     "pages/housedetail/housedetail",
-    "pages/coupon/coupon"
+    "pages/coupon/coupon",
+    "pages/mypost-comm/mypost-comm"
   ],
   "window": {
     "backgroundTextStyle": "light",

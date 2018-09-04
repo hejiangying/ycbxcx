@@ -1,0 +1,14 @@
+/* pages/mypost-comm/mypost-comm.wxss */
+@import '../../pages/postdetail/postdetail.wxss';
+.myper{
+  width: 100%;
+  display: flex;
+  align-items: center
+}
+.posttime{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  color: #666;
+}

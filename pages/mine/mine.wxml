@@ -15,7 +15,7 @@
         </view>
       </view>
       <view class="arrow">
-        <image src="../../image/arrow.png"></image>
+        <!-- <image src="../../image/arrow.png"></image> -->
       </view>
     </view>
   </view>
@@ -29,7 +29,7 @@
       <text>粉丝</text>
     </view>
     <view class="num-item" bindtap='seePost'>
-      <text>99</text>
+      <text>{{myinfo.articleNum}}</text>
       <text>帖子</text>
     </view>
 

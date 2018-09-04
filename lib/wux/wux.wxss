@@ -1284,7 +1284,7 @@
   text-align: right;
   font-size: 26rpx;
   line-height: 48rpx;
-  color: #f23030;
+  color: #f63264;
 }
 .wux-filterbar__groups {
   overflow: hidden;

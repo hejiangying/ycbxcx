@@ -11,6 +11,7 @@ Page({
     est:1    ,//默认显示最热
     isLike: false,//默认未点赞
     likenum:1,//点赞人数
+    postList:[],//帖子列表
 
   },
 
@@ -68,6 +69,26 @@ Page({
     })
 
   },
+  closeNews:function(){
+    var that = this;
+    
+  },
+  //获取帖子列表
+  getpostList: function () {
+    var that = this,
+      params = {
+        token: wx.getStorageSync('token')
+      },
+      url = api.post.postList;
+    toolkit.get(url, params, (res) => {
+      console.log("帖子列表：", res)
+      var postList = res.data.result.content
+      that.setData({
+        postList: postList,
+      })
+    })
+
+  },
   
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -80,6 +101,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    that.getpostList()
   },
 
   /**

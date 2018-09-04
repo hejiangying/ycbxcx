@@ -20,6 +20,7 @@
   width: 90rpx;
   height: 90rpx;
   margin-left: 12rpx;
+  margin-right: 36rpx;
 }
 .address_con .search{
   position: relative;
@@ -28,7 +29,7 @@
   border-radius: 50rpx;
   background-color:#fff;
   opacity: 0.5;
-  width:370rpx;
+  width:430rpx;
   height: 70rpx;
   font-size: 30rpx;
   padding: 0rpx 40rpx;

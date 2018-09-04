@@ -264,13 +264,7 @@ Page({
         })
       }
     } else if (that.data.lists.length != 1) {
-      console.log("有多个人a：", that.data.lists)
-      console.log("有多个人b：", that.data._ids)
-      console.log("lists的长度：",that.data.lists.length)
-      console.log("_name的长度：", that.data._name.length)
-      console.log("_ids的长度：", that.data._ids.length)
       if (that.data._name.length != that.data.lists.length || that.data._ids.length != that.data.lists.length) {
-        console.log(777)
         wx.showToast({
           title: '请输入合法的身份证信息',
           icon: 'none'

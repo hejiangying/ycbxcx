@@ -1,7 +1,34 @@
 <!--pages/mypost/mypost.wxml-->
 <view class="container">
   <view class="post-list">
-    <view class="post-item">
+  <block wx:for="{{postList}}" wx:key="{{item.id}}">
+    <view class="post-item" data-id="{{item.id}}">
+      <view class="post-time">{{item.createTime}}</view>
+      <view class="post-con">{{item.content}}</view>
+      <view class="post-photo" >
+      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+        </block>
+      </view>
+      <view class="post-operation">
+        <view class="oper-l">
+          <!-- <text bindtap='postEdit'>编辑</text> -->
+          <text bindtap='postDel' data-id="{{item.id}}">删除</text>
+        </view>
+        <view class="oper-r">
+          <view class="oper-comment" bindtap="commSee" data-id="{{item.id}}">
+            <image src="../../image/comment.png"></image>
+            <text>2</text>
+          </view>
+          <view class="oper-like">
+            <image src="../../image/like.png"></image>
+            <text>2</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>  
+     <view class="post-item">
       <view class="post-time">2016-5-6</view>
       <view class="post-con">远方去不了那就来个北京一日游吧-北京一日游攻略。</view>
       <view class="post-photo">
@@ -15,11 +42,7 @@
           <text bindtap='postDel'>删除</text>
         </view>
         <view class="oper-r">
-          <view class="oper-share">
-            <image src="../../image/share.png"></image>
-            <text>2</text>
-          </view>
-          <view class="oper-comment">
+          <view class="oper-comment" bindtap="commSee">
             <image src="../../image/comment.png"></image>
             <text>2</text>
           </view>
@@ -45,40 +68,6 @@
           <text bindtap='postDel'>删除</text>
         </view>
         <view class="oper-r">
-          <view class="oper-share">
-            <image src="../../image/share.png"></image>
-            <text>2</text>
-          </view>
-          <view class="oper-comment">
-            <image src="../../image/comment.png"></image>
-            <text>2</text>
-          </view>
-          <view class="oper-like">
-            <image src="../../image/like.png"></image>
-            <text>2</text>
-          </view>
-        </view>
-      </view>
-
-    </view>
-     <view class="post-item">
-      <view class="post-time">2016-5-6</view>
-      <view class="post-con">远方去不了那就来个北京一日游吧-北京一日游攻略。</view>
-      <view class="post-photo">
-        <image src="../../image/techan.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img10.3lian.com/show2014/1/73/105.jpg"></image>
-      </view>
-      <view class="post-operation">
-        <view class="oper-l">
-          <!-- <text bindtap='postEdit'>编辑</text> -->
-          <text bindtap='postDel'>删除</text>
-        </view>
-        <view class="oper-r">
-          <view class="oper-share">
-            <image src="../../image/share.png"></image>
-            <text>2</text>
-          </view>
           <view class="oper-comment">
             <image src="../../image/comment.png"></image>
             <text>2</text>

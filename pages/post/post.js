@@ -1,5 +1,9 @@
 // pages/post/post.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
 var originalList = [],
+  index = 0,
+  uploadpic = [],
   edit = false;
 Page({
 
@@ -8,8 +12,8 @@ Page({
    */
   data: {
     imglist:[],//图片集合
-    posttitle:"",//帖子的标题
-    postcon:""//帖子的内容
+    postcon:"",//帖子的内容
+    picList:'',
   },
 
   /**
@@ -28,14 +32,15 @@ Page({
   // 选择图片
   photoSel:function(){
     var that = this
-    console.log("that.data",that.data)
     if (that.data.imglist.length < 9) {
       wx.chooseImage({
         count: 9 - that.data.imglist.length,
         success: function (res) {
+          that.uploadImg()
           that.setData({
             imglist: that.data.imglist.concat(res.tempFilePaths)
           })
+          that.uploadImg()
         },
       })
     } else {
@@ -45,6 +50,30 @@ Page({
         duration: 2000
       })
     }
+  },
+  //上传图片
+  uploadImg:function(){
+    var that = this;
+    var url = api.img.upload;
+    console.log("654:", that.data.imglist[index])
+    wx.uploadFile({
+      url: url,
+      filePath: that.data.imglist[index],
+      name: 'file',
+      formData: {
+        file: 'file',
+        identify:'article'
+      },
+      success: function (res) {
+        var json = JSON.parse(res.data);
+        console.log("666:",index,res)
+        var picList = json.result.relativePaths;
+        // wx.setStorageSync('imglist', picList)
+        index++;
+        uploadpic.push(picList)
+        console.log(uploadpic)
+      }
+    })
   },
   // 删除某个图片
   deletePic: function (e) {
@@ -57,14 +86,7 @@ Page({
       imglist: that.data.imglist
     })
   },
-  // 获取标题
-  getTitle:function(e){
-    var that = this;
-     console.log('创建题目：', e.detail.value);
-    that.setData({
-      posttitle: e.detail.value
-    })
-  },
+  
   // 获取内容
   getContent: function (e) {
     var that = this;
@@ -76,13 +98,32 @@ Page({
 // 发布帖子
   creatPost:function(){
     var that = this;
-    console.log("imglist:",that.data.imglist.length)
-    console.log("that.data.postcon:", that.data.postcon)
-    console.log("that.data.posttitle:", that.data.posttitle)
-
-    if (that.data.posttitle != "" || that.data.postcon != "" || that.data.imglist.length != 0){
-      wx.navigateTo({
-        url: '../../pages/mypost/mypost',
+    // var nn = wx.getStorageSync('imglist')
+    var params = {
+        token: wx.getStorageSync('token'),
+        content: that.data.postcon,
+        picList:uploadpic.toString()
+    },
+    url = api.post.postCreat;
+    if ( that.data.postcon != "" || uploadpic.length != 0){
+      toolkit.post(url,params,(res)=>{
+        if(res.data.code == 200){
+          console.log("帖子内容：", res)
+          wx.showToast({
+            title: '帖子发布成功，审核通过后方可查看',
+            icon: 'none'
+          })
+          // wx.navigateTo({
+          //   url: '../../pages/mypost/mypost',
+          // })
+        }else{
+          wx.showToast({
+            title: '网络请求错误',
+            icon:'loading',
+            duration:3000
+          })
+        }
+        
       })
     }else{
       wx.showToast({
@@ -91,8 +132,8 @@ Page({
       })
     }
     that.setData({
-      posttitle:'',
-      postcon:""
+      postcon:'',
+      imglist:[]
     })
    
   },

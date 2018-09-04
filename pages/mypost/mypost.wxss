@@ -2,47 +2,55 @@
 .post-item{
   width: 96%;
   margin:0 auto;
-  border-bottom: 1px solid #ebecee;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  padding: 10rpx;
+  margin-bottom: 20rpx;
 }
 .post-item .post-time{
-  font-size: 30rpx;
-  color: #b0b1b2;
-  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+  margin: 10rpx;
 }
 .post-item .post-con{
-  font-size: 34rpx;
-  color: #000;
+  font-size: 28rpx;
+  color: #666;
+  margin: 10rpx;
 }
 .post-item .post-photo {
   display: flex;
   flex-direction: row;
-  justify-content: space-around
+  flex-wrap: wrap;
+  width: 320px;
+  margin: 0 auto;
 }
 .post-item .post-photo image{
-  width: 32%;
+  width: 200rpx;
   display: block;
-  height: 160rpx;
+  height: 200rpx;
+  border: 1rpx solid #eee;
+  border-radius: 5rpx;
+  margin: 5rpx;
 }
 .post-operation {
-  margin-top: 30rpx;
-  margin-bottom: 30rpx;
+  margin: 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 .post-operation .oper-l text{
-  font-size: 30rpx;
-  border: 1px solid #b0b1b2;
+  font-size: 26rpx;
+  border: 1px solid #999;
   border-radius: 10rpx;
-  padding:8rpx 10rpx;
+  padding:5rpx 10rpx;
   margin-right: 30rpx;
-  color: #b0b1b2;
+  color: #999;
 }
 .oper-r{
-  width: 40%;
+  width: 70%;
 }
 .oper-r {
-  width:60%;
+  width:30%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -53,11 +61,11 @@
   align-items: center;
 }
 .oper-r view image{
-  width: 40rpx;
-  height: 40rpx;
+  width:34rpx;
+  height: 34rpx;
   margin-right: 10rpx;
 }
 .oper-r view text{
-  font-size: 30rpx;
-  color: #b0b1b2
+  font-size: 26rpx;
+  color: #999;
 }

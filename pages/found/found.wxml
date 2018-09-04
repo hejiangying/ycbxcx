@@ -16,38 +16,27 @@
   <view class="kt"></view>
   <!-- 最热 -->
   <view class="hottest" wx:if="{{est==1}}">
+  <block wx:for="{{postList}}" wx:key="{{index}}">
     <view class="hot-meslist">
       <view class="hot-message">
         <view class="hot-l">
-          <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
+          <image src="{{item.avatar}}"></image>
           <view class="hot-people">
-            <text>呵呵哈嘿</text>
+            <text>{{item.author}}</text>
             <view class="hot-addre">
-              <image src="../../image/address1.png"></image>
-              <text>北京</text>
-              <text>|</text>
-              <text>一分钟前</text>
+              <text>{{item.createTime}}</text>
             </view>
           </view>
         </view>
-        <view class="hot-r">×</view>
+        <view class="hot-r" bindtap="closeNews">×</view>
       </view>
-      <text class="messagecon" bindtap="replyClick">远方去不了那就来个周末北京一日游吧——北京一日游攻略 </text>
+      <text class="messagecon" bindtap="replyClick">{{item.content}} </text>
       <view class="mesimage" bindtap="replyClick">
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-         <image src="../../image/kezhan.png"></image>
-        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-        <image src="../../image/kezhan.png"></image>
-         <image src="../../image/zuche.png"></image>
-        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-        <image src="../../image/zuche.png"></image>
+      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+        <image src="{{'http://192.168.190.243:8081' + item }}"></image>
+      </block>
       </view>
       <view class="mesoperation">
-        <view class="operation">
-          <text>23分钟前</text>
-        </view>
         <view class="operation">
           <image src="../../image/comment.png" bindtap="replyClick"></image>
           <text>2</text>
@@ -59,6 +48,7 @@
       </view>
       <view class="kong"></view>
     </view>
+</block>
     <view class="hot-meslist">
       <view class="hot-message">
         <view class="hot-l">
@@ -66,14 +56,11 @@
           <view class="hot-people">
             <text>呵呵哈嘿</text>
             <view class="hot-addre">
-              <image src="../../image/address1.png"></image>
               <text>北京</text>
-              <text>|</text>
-              <text>一分钟前</text>
             </view>
           </view>
         </view>
-        <view class="hot-r">×</view>
+        <view class="hot-r" bindtap="closeNews">×</view>
       </view>
       <text class="messagecon" bindtap="replyClick">远方去不了那就来个周末北京一日游吧——北京一日游攻略 </text>
       <view class="mesimage">
@@ -82,9 +69,6 @@
         <image src="../../image/zuche.png"></image>
       </view>
       <view class="mesoperation">
-        <view class="operation">
-          <text>23分钟前</text>
-        </view>
         <view class="operation">
          <image src="../../image/comment.png" bindtap="replyClick"></image>
           <text>2</text>
@@ -105,8 +89,6 @@
             <view class="hot-addre">
               <image src="../../image/address1.png"></image>
               <text>北京</text>
-              <text>|</text>
-              <text>一分钟前</text>
             </view>
           </view>
         </view>
@@ -120,7 +102,6 @@
       </view>
       <view class="mesoperation">
         <view class="operation">
-           <text>23分钟前</text>
         </view>
         <view class="operation">
           <image src="../../image/comment.png" bindtap="replyClick"></image>
@@ -145,8 +126,6 @@
             <view class="hot-addre">
               <image src="../../image/address1.png"></image>
               <text>北京</text>
-              <text>|</text>
-              <text>一分钟前</text>
             </view>
           </view>
         </view>
@@ -160,7 +139,6 @@
       </view>
       <view class="mesoperation">
         <view class="operation">
-          <text>23分钟前</text>
         </view>
         <view class="operation">
           <image src="../../image/comment.png" bindtap="replyClick"></image>
@@ -185,12 +163,10 @@
             <view class="hot-addre">
               <image src="../../image/address1.png"></image>
               <text>北京</text>
-              <text>|</text>
-              <text>一分钟前</text>
             </view>
           </view>
         </view>
-        <view class="hot-r">×</view>
+        <view class="hot-r" bindtap="closeNews">×</view>
       </view>
       <text class="messagecon" bindtap="replyClick">远方去不了那就来个周末北京一日游吧——北京一日游攻略 </text>
       <view class="mesimage">

@@ -20,10 +20,6 @@
       <view class="logo">
         <image src="../../image/logo.png"></image>
       </view>
-      <view class="address" bindtap='getLocation'>
-        <image src="../../image/address.png"></image>
-        <text>{{addressname}}</text>
-      </view>
       <view class="search" bindtap='goSearch'>
         <input placeholder='输入你想去的地方'></input>
         <image src="../../image/search.png"></image>
@@ -59,7 +55,7 @@
   <view class="active_recruiting">
     <view class="active_subtitle">
       <text class="subtitle">自助游路线</text>
-      <text class="more" bindtap='moreClick'>更多></text>
+      <text class="more" bindtap='gotour'>更多></text>
     </view>
   </view>
   <view class="active_list">
@@ -80,11 +76,11 @@
       <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
     </view>
   </view>
-  <!-- 热门景点 -->
+  <!-- 美食推荐 -->
   <view class="active_recruiting">
     <view class="active_subtitle">
-      <text class="subtitle">热门景点</text>
-      <text class="more" bindtap='moreClick'>更多></text>
+      <text class="subtitle">美食推荐</text>
+      <text class="more" bindtap="gofood">更多></text>
     </view>
   </view>
   <view class="active_list">
@@ -109,7 +105,7 @@
   <view class="active_recruiting">
     <view class="active_subtitle">
       <text class="subtitle">客栈信息</text>
-      <text class="more" bindtap='moreClick'>更多></text>
+      <text class="more" bindtap="gohouse">更多></text>
     </view>
   </view>
   <view class="active_list">

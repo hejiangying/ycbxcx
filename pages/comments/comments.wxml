@@ -15,7 +15,14 @@
         <view class="comm-r">2018-8-3</view>
       </view>
       <view class="comm-con">惊艳之作 很好用</view>
-      <image src="../../image/kezhan.png"></image>
+      <view class="commimg">
+        <image src="../../image/kezhan.png"></image>
+        <image src="../../image/kezhan.png"></image>
+        <image src="../../image/kezhan.png"></image>
+         <image src="../../image/kezhan.png"></image>
+        <image src="../../image/kezhan.png"></image>
+        <image src="../../image/kezhan.png"></image>
+      </view>
     </view>
     <view class="commcon">
       <view class="comm-t">
@@ -39,7 +46,10 @@
         <view class="comm-r">2018-8-3</view>
       </view>
       <view class="comm-con">惊艳之作 很好用</view>
-      <image src="../../image/kezhan.png"></image>
+      <view class="commimg">
+        <image src="../../image/kezhan.png"></image>
+        <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg"></image>
+      </view>
     </view>
 </view>
 

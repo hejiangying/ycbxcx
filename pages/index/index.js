@@ -27,38 +27,6 @@ Page({
   onShow:function(){
     var that = this;
   },
-  // 获取当前定位地址
-  getLocation:function(){
-    var that = this;
-    wx.getLocation({
-      type: 'gcj02',
-      altitude: true,
-      success: function(res) {
-        wx.chooseLocation({
-          latitude: res.latitude,
-          longitude: res.longitude,
-          scale: 28,
-          name: "",
-          address:"",
-          success: function (res) {
-            console.log("555:",res)
-            var address = res.name
-            console.log("111:", address)
-            that.setData({
-              addressname: address
-            })
-          },
-          fail: function (err) {
-            console.log(555)
-          },
-        })
-
-      },
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-    
-  },
  
   // 跳转搜索页
   goSearch:function(){

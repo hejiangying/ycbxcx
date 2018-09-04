@@ -5,7 +5,7 @@
 				<view class="wux-rater__inner">
 					{{ star }}
 					<view class="wux-rater__outer" style="color: {{ activeColor }}; width: {{ cutPercent + '%' }}" wx:if="{{ cutPercent > 0 && cutIndex === index }}">
-						{{ star }}
+					{{ star }}
 					</view>
 				</view>
 			</view>

@@ -1,5 +1,5 @@
 /* pages/ucenter/addressAdd/addressAdd.wxss */
-@import "../../../pages/myinfo/myinfo.wxss";
+/* @import "../../../pages/myinfo/myinfo.wxss"; */
 
 page {
   height: 100%;
@@ -20,8 +20,9 @@ page {
   width: 100%;
   border-bottom: 1rpx solid rgb(238, 233, 233);
   height: 80rpx;
-  font-size: 36rpx;
+  font-size: 28rpx;
   line-height: 80rpx;
+  color: #666;
 }
 
 .zan-cell-switch {
