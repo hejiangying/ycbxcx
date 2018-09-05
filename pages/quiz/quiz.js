@@ -1,4 +1,7 @@
 // pages/quiz/quiz.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
+var articleId='';
 Page({
 
   /**
@@ -15,7 +18,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log("99955:",options)
+    articleId = options.id
   },
   // 获取输入框内容
   getContent: function (e) {
@@ -37,8 +41,23 @@ Page({
         icon:'none'
       })
     } else {
-      wx.navigateBack({
-        delta: 1
+      var token = wx.getStorageSync("token");
+      var url = api.post.comment + '?articleId=' + articleId +'&content=' + that.data.content + '&token=' + token;
+      console.log("url:",url)
+      toolkit.post(url,(res)=>{
+        console.log("8855:",res)
+        wx.showToast({
+          title: '评论成功',
+          icon:'none',
+          duration:1000,
+          success:function(res){
+            setTimeout(function () {
+              wx.navigateBack({
+              delta: 1
+            })
+            }, 2000)
+          }
+        })
       })
     }
 

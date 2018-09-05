@@ -25,7 +25,7 @@
     <view class="btns">
       <view class="btn-comm">
         <image src="../../image/comment.png"></image>
-        <text>5条评论</text>
+        <text>{{postdetail.commentNum}}条评论</text>
       </view>
       <view class="btn-like" bindtap="likeClick">
         <image src="../../image/like.png"></image>
@@ -37,16 +37,17 @@
   <!-- 帖子回复 -->
   <view class="reply">
     <text>全部回复</text>
+    <block wx:for="{{postdetail.commentList}}" wx:key="{{index}}">
     <view class="peritem">
       <view class="perinfo">
         <view class="perinfo-l">
           <view class="perinfo-pho">
-            <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+            <image src="{{item.thumbImg}}"></image>
           </view>
           <view class="perinfo-id">
-            <text>ID某某</text>
+            <text>{{item.nickname}}</text>
             <view class="perinfo-addre">
-              <text>一分钟前</text>
+             {{item.createTime}}
             </view>
           </view>
         </view>
@@ -55,10 +56,10 @@
         </view>
       </view>
       <view class="reply-text">
-        <text>这是评论这是评论这是评论这是评论这是评论这是评论这</text>
+        <text>{{item.content}}</text>
       </view>
     </view>
-
+    </block>
     <view class="peritem">
       <view class="perinfo">
         <view class="perinfo-l">

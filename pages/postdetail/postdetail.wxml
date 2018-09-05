@@ -6,15 +6,12 @@
     <view class="perinfo">
       <view class="perinfo-l">
         <view class="perinfo-pho">
-          <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+          <image src="{{postdetail.avatar}}"></image>
         </view>
         <view class="perinfo-id">
-          <text>ID某某</text>
+          <text>{{postdetail.author}}</text>
           <view class="perinfo-addre">
-            <image src="../../image/address1.png"></image>
-            <text>北京</text>
-            <text>|</text>
-            <text>一分钟前</text>
+            <text>{{postdetail.createTime}}</text>
           </view>
         </view>
       </view>
@@ -23,20 +20,17 @@
       </view>
     </view>
      <view class="post-text">
-      hahhahahahha哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈还好还好
+     {{postdetail.content}}
     </view>
     <view class="imglist">
-      <image src="../../image/kezhan.png"></image>
-      <image src="http://pic-cdn.35pic.com/58pic/18/32/34/04d58PICiGN_1024.jpg"></image>
-      <image src="../../image/zuche.png"></image>
-      <image src="../../image/kezhan.png"></image>
-      <image src="http://pic-cdn.35pic.com/58pic/18/32/34/04d58PICiGN_1024.jpg"></image>
-      <image src="../../image/zuche.png"></image>
+    <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
+      <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+      </block>
     </view>
     <view class="btns">
-      <view class="btn-comm" bindtap="goComment">
+      <view class="btn-comm" bindtap="goComment" data-commid="{{postdetail.id}}">
         <image src="../../image/comment.png"></image>
-        <text>评论</text>
+        <text>{{postdetail.commentNum}}评论</text>
       </view>
       <view class="btn-like" bindtap="likeClick">
         <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
@@ -48,19 +42,17 @@
   <!-- 帖子回复 -->
   <view class="reply">
     <text>全部回复</text>
+    <block wx:for="{{postdetail.commentList}}" wx:key="{{index}}">
     <view class="peritem">
       <view class="perinfo">
         <view class="perinfo-l">
           <view class="perinfo-pho">
-            <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
+            <image src="{{item.thumbImg}}"></image>
           </view>
           <view class="perinfo-id">
-            <text>ID某某</text>
+            <text>{{item.nickname}}</text>
             <view class="perinfo-addre">
-              <image src="../../image/address1.png"></image>
-              <text>北京</text>
-              <text>|</text>
-              <text>一分钟前</text>
+             {{item.createTime}}
             </view>
           </view>
         </view>
@@ -69,10 +61,10 @@
         </view>
       </view>
       <view class="reply-text">
-        <text>这是评论这是评论这是评论这是评论这是评论这是评论这</text>
+        <text>{{item.content}}</text>
       </view>
     </view>
-
+</block>
     <view class="peritem">
       <view class="perinfo">
         <view class="perinfo-l">

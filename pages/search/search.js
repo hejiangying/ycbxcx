@@ -19,19 +19,10 @@ Page({
         isHot: false
       }
     ],
-    historyKeyword: [
-      '洱海公园',
-      '小普陀'
-    ],
     keyword: '',
     searchStatus: false,
     currentSortType: 'default',
     currentSortOrder: '',
-    helpKeyword: [
-      "IPone X",
-      "IPhone 8",
-      "IPhone 手机壳"
-    ],
     goodsList: [
       {
         picUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534156447499&di=4623ca7551caa8cbf63b80470bc80d35&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F5bafa40f4bfbfbedc5597ab474f0f736aec31ffc.jpg',
@@ -68,15 +59,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '搜索'
     })
-
-    //举例演示 初始化数据
-    let history = wx.getStorageSync('historyKeyword')
-    if (history == "") {
-      let array = new Array("小普陀", "来大理")
-      wx.setStorageSync('historyKeyword', array)
-    }
-
-    this.getHistoryKeyword()
   },
 
   /**
@@ -127,28 +109,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getHistoryKeyword: function () {
-    let history = wx.getStorageSync('historyKeyword')
-    if (history != "") {
-      this.setData({
-        historyKeyword: history
-      })
-    }
-  },
   onKeywordConfirm: function (e) {
-    //记录搜索历史
-    let value = e.detail.value
-    if (value == "") {
-      return
-    }
-    let array = new Array(value)
-    let history = wx.getStorageSync('historyKeyword')
-    if (history != "") {
-      history.push(value)
-      wx.setStorageSync('historyKeyword', history)
-    } else {
-      wx.setStorageSync('historyKeyword', array)
-    }
     //开始搜索
     this.setData({
       searchStatus: true
@@ -164,9 +125,6 @@ Page({
     this.setData({
       searchStatus: false,
     });
-    if (this.data.keyword) {
-      this.getHelpKeyword();
-    }
   },
   clearKeyword: function () {
     this.setData({
@@ -184,24 +142,6 @@ Page({
     this.setData({
       keyword: value,
       searchStatus: true
-    })
-  },
-  clearHistory: function () {
-    let that = this;
-    wx.showModal({
-      title: '提示',
-      content: '确认要删除搜索历史记录？',
-      confirmColor: '#b4282d',
-      success: function (res) {
-        if (res.confirm) {
-          that.setData({
-            historyKeyword: []
-          })
-          wx.removeStorageSync('historyKeyword')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
     })
   },
   getHelpKeyword: function () {

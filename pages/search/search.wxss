@@ -204,7 +204,7 @@ page {
 }
 
 .cate-item {
-  margin-top: 210rpx;
+  margin-top: 130rpx;
   height: auto;
   overflow: hidden;
 }

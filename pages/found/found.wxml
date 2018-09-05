@@ -16,7 +16,7 @@
   <view class="kt"></view>
   <!-- 最热 -->
   <view class="hottest" wx:if="{{est==1}}">
-  <block wx:for="{{postList}}" wx:key="{{index}}">
+  <block wx:for="{{postList}}" wx:key="{{item.id}}">
     <view class="hot-meslist">
       <view class="hot-message">
         <view class="hot-l">
@@ -30,16 +30,16 @@
         </view>
         <view class="hot-r" bindtap="closeNews">×</view>
       </view>
-      <text class="messagecon" bindtap="replyClick">{{item.content}} </text>
-      <view class="mesimage" bindtap="replyClick">
+      <text class="messagecon" bindtap="replyClick" >{{item.content}} </text>
+      <view class="mesimage" bindtap="replyClick" data-id="{{item.id}}">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
         <image src="{{'http://192.168.190.243:8081' + item }}"></image>
       </block>
       </view>
       <view class="mesoperation">
-        <view class="operation">
-          <image src="../../image/comment.png" bindtap="replyClick"></image>
-          <text>2</text>
+        <view class="operation" >
+          <image src="../../image/comment.png" bindtap="replyClick" data-id="{{item.id}}"></image>
+          <text>{{item.commentNum}}</text>
         </view>
         <view class="operation" bindtap="likeClick">
           <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>

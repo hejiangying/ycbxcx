@@ -19,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log("options")
   },
   // 悬浮按钮展开判断
   addClick:function(){
@@ -47,9 +47,10 @@ Page({
     })
   },
   // 跳转到消息详情页面
-  replyClick:function(){
+  replyClick:function(e){
+    var id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/postdetail/postdetail',
+      url: '../../pages/postdetail/postdetail?id='+ id,
     })
   },
   // 点赞取消点赞

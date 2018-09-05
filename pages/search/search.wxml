@@ -8,16 +8,7 @@
     <view class="right" wx:if="{{keyword}}" bindtap="onKeywordConfirm">搜索</view>
     <view class="right" wx:if="{{!keyword}}" bindtap="closeSearch">取消</view>
   </view>
-  <view class="no-search" wx:if="{{ !searchStatus}}">
-    <view class="serach-keywords search-history" wx:if="{{!keyword  && historyKeyword.length}}">
-      <view class="h">
-        <text class="title">历史记录</text>
-        <image class="icon" bindtap="clearHistory" src="/image/delete.png"></image>
-      </view>
-      <view class="b">
-        <view class="item" bindtap="onKeywordTap" data-keyword="{{item}}" wx:key="{{item}}" wx:for="{{historyKeyword}}" hover-class="navigator-hover">{{item}}</view>
-      </view>
-    </view>
+  <view class="no-search" wx:if="{{!searchStatus}}">
     <view class="serach-keywords search-hot" wx:if="{{!keyword}}">
       <view class="h">
         <text class="title">热门搜索</text>
@@ -32,7 +23,7 @@
   </view>
 
   <view class="search-result" wx:if="{{ searchStatus && goodsList.length}}">
-    <view class="sort">
+    <!-- <view class="sort">
       <view class="sort-box">
         <view class="item {{currentSortType == 'default' ? 'active' : ''}}" bindtap="openSortFilter" id="default">
           <text class="txt">综合</text>
@@ -41,7 +32,7 @@
           <text class="txt">价格</text>
         </view>
       </view>
-    </view>
+    </view> -->
     <view class="cate-item">
       <view class="b">
         <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/goods/goods?id={{iitem.id}}" wx:for="{{goodsList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">

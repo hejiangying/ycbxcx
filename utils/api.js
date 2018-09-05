@@ -22,10 +22,16 @@ const api = {
     postList: host + '/apiArticle/list',
     postDel: host + '/apiArticle/delete',
     postDetail: host +'/apiArticle/getArticleById',
-    mypost: host +'/apiArticle/myArticle'
+    mypost: host +'/apiArticle/myArticle',
+    comment: host + '/apiArticle/review'
   },
   img:{
     upload: host + '/upload/uploadImg'
+  },
+  shop:{
+    addShop: host + '/apiCart/create',
+    shopList: host + '/apiCart/list',
+    shopInfo: host + '/apiCart/info'
   }
  
 }

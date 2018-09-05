@@ -1,7 +1,7 @@
 // pages/fooddetail/fooddetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var goodsId = '';//商品id
+var goodsId = '',num = 1,goodsPrice='';//商品id,数量,价格
 Page({
 
   /**
@@ -11,7 +11,7 @@ Page({
     xc: 1, //默认选择行程介绍
     iscol: false, //默认不收藏该商品
     // input默认是1
-    num: 1,
+     num: 1,
     // 使用data数据对象设置样式名
     minusStatus: 'disabled',
     status: false,
@@ -57,19 +57,19 @@ Page({
         status: true
       })
     } else {
-      // if (that.data._type == '') {
-      //   wx.showToast({
-      //     title: '请选择款式',
-      //     icon: 'none'
-      //   })
-      // } else {
+      var token = wx.getStorageSync('token'),
+        goodsNumber = num,
+        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&goodsPrice=' + goodsPrice +'&goodsNumber='+ goodsNumber;
+        console.log("url", url)
+        toolkit.post(url,(res)=>{
+          console.log("666:",res)
+        })
         that.setData({
           status:false
         })
-        wx.navigateTo({
-          url: '/pages/buy/checkout/checkout',
-        })
-      // }
+        // wx.navigateTo({
+        //   url: '/pages/buy/checkout/checkout',
+        // })
 
     }
   },
@@ -84,7 +84,7 @@ Page({
   },
   /* 点击减号 */
   bindMinus: function() {
-    var num = this.data.num;
+    // var num = this.data.num;
     // 如果大于1时，才可以减
     if (num > 1) {
       num--;
@@ -99,7 +99,7 @@ Page({
   },
   /* 点击加号 */
   bindPlus: function() {
-    var num = this.data.num;
+    // var num = this.data.num;
     // 不作过多考虑自增1
     num++;
     // 只有大于一件的时候，才能normal状态，否则disable状态
@@ -134,6 +134,7 @@ Page({
     toolkit.get(url,(res) => {
       var goods = res.data.result
       var pathList = res.data.result.imgList
+      goodsPrice = res.data.result.marketPrice
       console.log("商品详情：",goods)
       var goodsimg = goods.goodsImg;
       var reg = /,$/gi;

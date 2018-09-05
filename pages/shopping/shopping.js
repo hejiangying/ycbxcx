@@ -1,56 +1,47 @@
 // pages/shopping/shopping.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cartGoods: [{
-        id: '1',
-        checked: true,
-        picUrl: 'http://www.situcms.com/uploads/2018/0726/6ad4175aad9a64e791c68f432331ae45_750x375.jpg',
-        name: '大理双廊一日游',
-        spec: '无购物',
-        number: 1,
-        price: '199.00',
-        stepper: {
-          stepper: 1,
-          min: 1,
-          max: 50
-        },
-      },
-      {
-        id: '2',
-        checked: true,
-        picUrl: 'http://www.situcms.com/uploads/2018/0726/af10e00f351588219a3db191953d4ac1_750x375.png',
-        name: '喜洲古镇一日游',
-        spec: '无购物',
-        number: 1,
-        price: '179.00',
-        stepper: {
-          stepper: 1,
-          min: 1,
-          max: 50
-        },
-      }
-    ],
+     cartGoods: [],
+    // cartGoods: [{
+    //     id: '1',
+    //     checked: true,
+    //     picUrl: 'http://www.situcms.com/uploads/2018/0726/6ad4175aad9a64e791c68f432331ae45_750x375.jpg',
+    //     goodsName: '大理双廊一日游',
+    //     spec: '无购物',
+    //     number: 1,
+    //     goodsPrice: '199.00',
+    //     stepper: {
+    //       stepper: 1,
+    //       min: 1,
+    //       max: 50
+    //     },
+    //   },
+    //   {
+    //     id: '2',
+    //     checked: true,
+    //     picUrl: 'http://www.situcms.com/uploads/2018/0726/af10e00f351588219a3db191953d4ac1_750x375.png',
+    //     goodsName: '喜洲古镇一日游',
+    //     spec: '无购物',
+    //     number: 1,
+    //     goodsPrice: '179.00',
+    //     stepper: {
+    //       stepper: 1,
+    //       min: 1,
+    //       max: 50
+    //     },
+    //   }
+    // ],
     checkedGoodsCount: 2,
     checkedGoodsAmount: '',
     isEditCart: false,
     isLogin: false,
     checkedAllStatus: true
-  },
-  handleZanStepperChange(e) {
-    var componentId = e.componentId;
-    var stepper = e.stepper;
-    this.setData({
-      [`cartGoods[${componentId}].stepper.stepper`]: stepper,
-      [`cartGoods[${componentId}].number`]: stepper,
-    });
-    this.setData({
-      checkedGoodsCount: this.getCheckedGoodsCount(),
-      checkedGoodsAmount: this.getCheckedGoodsAmount()
-    })
   },
 
   /**
@@ -92,6 +83,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.getGoods();
     let isLogin = wx.getStorageSync('isLogin');
     if (isLogin) {
       this.setData({
@@ -126,7 +118,7 @@ Page({
     let totalPrice = 0
     this.data.cartGoods.forEach(function(v) {
       if (v.checked === true) {
-        totalPrice += v.price * v.number
+        totalPrice += v.goodsPrice * v.number
       }
     })
     return totalPrice.toFixed(2)
@@ -190,6 +182,22 @@ Page({
   checkoutOrder: function() {
     wx.navigateTo({
       url: '/pages/buy/checkout/checkout',
+    })
+  },
+  getGoods:function(){
+    var that = this,
+    token = wx.getStorageSync('token'),
+    url = api.shop.shopList +'?token=' + token;
+    toolkit.post(url,(res)=>{
+      console.log("shopres:",res)
+      var cartGoods = res.data.result;
+      for (var i of cartGoods) {
+        i.checked = true,
+        i.number = 1;
+      }
+      that.setData({
+        cartGoods: cartGoods
+      })
     })
   },
 

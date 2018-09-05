@@ -21,14 +21,14 @@
           <view class="item edit" wx:for="{{cartGoods}}" wx:key="{{item.id}}" wx:for-index="index">
              <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-index="{{index}}" data-id="{{item.id}}"></view>
             <view class="cart-goods">
-              <image class="img" src="{{item.picUrl}}"></image>
+              <image class="img" src="{{'http://192.168.190.243:8081'+item.goodsImg}}"></image>
               <view class="info">
                 <view class="t">
-                  <text class="name">{{item.name}}</text>
+                  <text class="name">{{item.goodsName}}</text>
                 </view>
                 <view class="attr">{{item.spec}}</view>
                 <view class="b">
-                  <text class="price">￥{{item.price}}</text>
+                  <text class="price">￥{{item.goodsPrice}}</text>
                 </view>
               </view>
             </view>

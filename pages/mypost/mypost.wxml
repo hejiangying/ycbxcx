@@ -2,7 +2,7 @@
 <view class="container">
   <view class="post-list">
   <block wx:for="{{postList}}" wx:key="{{item.id}}">
-    <view class="post-item" data-id="{{item.id}}">
+    <view class="post-item" data-id="{{item.id}}" bindtap="commSee">
       <view class="post-time">{{item.createTime}}</view>
       <view class="post-con">{{item.content}}</view>
       <view class="post-photo" >
@@ -16,9 +16,9 @@
           <text bindtap='postDel' data-id="{{item.id}}">删除</text>
         </view>
         <view class="oper-r">
-          <view class="oper-comment" bindtap="commSee" data-id="{{item.id}}">
+          <view class="oper-comment">
             <image src="../../image/comment.png"></image>
-            <text>2</text>
+            <text>{{item.commentNum}}</text>
           </view>
           <view class="oper-like">
             <image src="../../image/like.png"></image>
