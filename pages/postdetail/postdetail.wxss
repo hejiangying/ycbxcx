@@ -10,9 +10,10 @@
 }
 .perinfo-id{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   font-size:28rpx;
+  color: #666;
 }
 .perinfo{
   display: flex;

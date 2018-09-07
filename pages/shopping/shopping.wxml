@@ -43,8 +43,6 @@
       {{checkedAllStatus ? '已选(' : '全选'}}{{checkedGoodsCount}}{{checkedAllStatus ? ')' : ''}}
       </view>
       <view class="total">{{!isEditCart ? '￥'+checkedGoodsAmount : ''}}</view>
-      <view class="edit" bindtap="editCart">{{!isEditCart ? '编辑' : '完成'}}</view>
-      <view class="checkout" hover-class="active" bindtap="deleteCart" wx:if="{{isEditCart}}">删除所选</view>
       <view class="checkout" hover-class="active" bindtap="checkoutOrder" wx:if="{{!isEditCart}}">下单</view>
     </view>
   </view>

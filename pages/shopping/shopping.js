@@ -100,12 +100,6 @@ Page({
     })
     return checkedGoodsCount
   },
-  editCart: function() {
-    var that = this;
-    that.setData({
-      isEditCart: !that.data.isEditCart
-    });
-  },
   //全选
   checkedAll: function() {
     if (this.data.checkedAllStatus) {

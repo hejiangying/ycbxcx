@@ -52,9 +52,6 @@
               </view>
               <view class="perinfo-id">
                 <text>{{item.nickname}}</text>
-                <!-- <view class="perinfo-addre">
-                  {{item.createTime}}
-                </view> -->
               </view>
             </view>
             <view class="perinfop-r">
@@ -67,14 +64,14 @@
           <!-- //回复评论 -->
           <block wx:for="{{item.commentReplyList}}" wx:key="{{index}}">
             <view class="hf">
-              <view class="myreply">
+              <view class="myreply" bindtap="replayClick" data-index="3" data-reid="{{item.commentId}}">
                 <view class="perinfo">
                   <view class="perinfo-l">
                     <view class="perinfo-pho">
                       <image src="{{item.fromThumbImg}}"></image>
                     </view>
                     <view class="perinfo-id">
-                      <text>{{item.fromNickname}}</text>
+                      <text>{{item.fromNickname}} </text><text> 回复 </text><text> {{item.toNickname}}</text>
                     </view>
                   </view>
                 </view>

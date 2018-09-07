@@ -66,6 +66,13 @@ Page({
       url: '../../pages/quiz/quiz?replyid=' + replyid+'&index='+2,
     })
   },
+  replayClick:function(e){
+    var commentId = e.currentTarget.dataset.reid;
+    console.log("commentId:", commentId)
+    wx.navigateTo({
+      url: '../../pages/quiz/quiz?commentId=' + commentId + '&index=' + 3,
+    })
+  },
   getpostDetail: function () {
     var that = this,
       token = wx.getStorageSync('token'),
