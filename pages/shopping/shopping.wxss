@@ -160,15 +160,15 @@ page {
 .cart-view .item .b {
   display: flex;
   justify-content: space-between;
-  line-height: 28rpx;
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #333;
+  align-items: center;
+   margin-top: 28rpx;
 }
 
 .cart-view .item .price {
   font-size: 30rpx;
   color: #555;
-  margin-top: 16rpx;
 }
 
 .cart-view .group-item .header {

@@ -1,20 +1,20 @@
 <!--pages/shopping/address/address.wxml-->
 <view class="container">
   <view class="no-address" wx:if="{{addressList.length == 0}}">
-    <image class="i" src="/images/noAddress.png"></image>
     <view class="t">收货地址在哪里</view>
   </view>
   <view class="address-list" wx:if="{{ addressList.length > 0 }}">
     <view class="items">
-      <view class="item {{item.selected ? 'select' : ''}}" wx:for="{{addressList}}" wx:key="{{item.id}}" bindtap="chooseAddress" data-address="{{item}}">
-        <view class="l">
-          <view class="name">{{item.name}}</view>
+      <view class="item {{item.selected ? 'select' : ''}}" wx:for="{{addressList}}" wx:key="{{item.id}}" >
+        <view class="l" bindtap="chooseAddress" data-address="{{item}}">
+          <view class="name">{{item.consignee}}</view>
           <view class="default" wx:if="{{item.isDefault}}">默认</view>
         </view>
-        <view class="c">
+        <view class="c" bindtap="chooseAddress" data-address="{{item}}">
           <view class="mobile">{{item.mobile}}</view>
-          <view class="address">{{item.region + item.address}}</view>
+          <view class="address">{{item.addressName+   item.address}}</view>
         </view>
+        <view class="d" bindtap="addressSee" data-id="{{item.id}}"><image src="/image/arrow.png"></image></view>
       </view>
     </view>
   </view>

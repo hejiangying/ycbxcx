@@ -42,7 +42,7 @@ Page({
   // 跳转旅游路线页面
   gotour:function(){
     wx.navigateTo({
-      url: "../../pages/tourroute/tourroute"
+      url: '../../pages/tourroute/tourroute?itemId='+2
     })
   },
   //跳转定制旅游页面
@@ -54,12 +54,17 @@ Page({
   //跳转美食列表
   gofood:function(){
     wx.navigateTo({
-      url: '../../pages/food/food',
+      url: '../../pages/foodclass/foodclass?itemId='+0,
+    })
+  },
+  goanother:function(){
+    wx.navigateTo({
+      url: '../../pages/food/food?itemId=' + 3,
     })
   },
   gohouse:function(){
     wx.navigateTo({
-      url: '../../pages/houselist/houselist',
+      url: '../../pages/houselist/houselist?itemId=' + 1,
     })
   },
   // 跳转订单详情页

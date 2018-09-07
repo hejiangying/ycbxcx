@@ -32,7 +32,6 @@
   </view>
   <view class="project_list">
     <view class="project_item">
-      <!-- <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg" bindtap='gotour'></image> -->
       <image src="../../image/ad1.png" bindtap='gotour'></image>
       <text>自助游路线</text>
     </view>
@@ -49,6 +48,10 @@
     <view class="project_item">
       <image src="../../image/ad4.png" bindtap="gohouse"></image>
       <text>客栈信息</text>
+    </view>
+    <view class="project_item">
+      <image src="../../image/ad5.png" bindtap="goanother"></image>
+      <text>其他商品</text>
     </view>
   </view>
   <!-- 自助游路线 -->

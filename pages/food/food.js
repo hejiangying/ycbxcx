@@ -25,7 +25,7 @@ Page({
     console.log("555", id)
     var that = this;
     wx.navigateTo({
-      url: '../../pages/fooddetail/fooddetail?id='+ id,
+      url: '../../pages/anotherfood/anotherfood?id='+ id,
     })
   },
 
@@ -56,14 +56,15 @@ Page({
       params = {
         token: wx.getStorageSync('token')
       };
-    console.log('api.appGoods.goodlist,', api.appGoods.goodslist)
-    toolkit.get(api.appGoods.goodslist, params, (res)=> {
+      wx.showLoading({
+        title: '加载中...'
+      })
+    console.log('api.appGoods.another,', api.appGoods.another)
+    toolkit.get(api.appGoods.another, params, (res)=> {
+      wx.hideLoading()
       var goodslist = res.data.result.content
-      var img = goodslist.goodsImg
-      console.log("res111:", goodslist)
       that.setData({
         goodslist:goodslist
-        // imglist:imglist
       })
     })
 

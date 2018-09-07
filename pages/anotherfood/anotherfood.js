@@ -1,7 +1,7 @@
-// pages/fooddetail/fooddetail.js
+
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var goodsId = '',num = 1,goodsPrice='',itemId='';//商品id,数量,价格
+var goodsId = '',num = 1,goodsPrice='';//商品id,数量,价格
 Page({
 
   /**
@@ -59,7 +59,7 @@ Page({
     } else {
       var token = wx.getStorageSync('token'),
         goodsNumber = num,
-        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&goodsPrice=' + goodsPrice + '&goodsNumber=' + goodsNumber +'&recType='+itemId;
+        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&goodsPrice=' + goodsPrice +'&goodsNumber='+ goodsNumber;
         console.log("url", url)
         toolkit.post(url,(res)=>{
           wx.showToast({
@@ -132,25 +132,19 @@ Page({
   },
   //获取商品详情
   getgoodsdetail:function(){
-    var that = this;
+    var that = this,
+    token = wx.getStorageSync('token');
     wx.showLoading({
       title: '加载中...',
     })
-    var  url = api.appGoods.goodsdetail + '?id=' + goodsId;
+    var url = api.appGoods.anotherDetail + '?id=' + goodsId+'&token='+token;
     toolkit.get(url,(res) => {
       wx.hideLoading()
       var goods = res.data.result
-      var pathList = res.data.result.imgList
       goodsPrice = res.data.result.marketPrice
       console.log("商品详情：",goods)
-      var goodsimg = goods.goodsImg;
-      var reg = /,$/gi;
-      var img = goodsimg.replace(reg,'')
-      var imgres = img.split(",")
       that.setData({
         goods:goods,
-        imgres:imgres,
-        pathList:pathList
       })
     })
   },
@@ -160,9 +154,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("option:",options)
+    console.log("option:",options.id)
     goodsId = options.id
-    itemId = options.itemId
   },
 
   /**

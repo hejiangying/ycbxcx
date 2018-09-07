@@ -1,4 +1,6 @@
 // pages/shopping/address/address.js
+const toolkit = require('../../../utils/ToolKit.js');
+const api = require('../../../utils/api.js');
 Page({
 
   /**
@@ -6,26 +8,7 @@ Page({
    */
   data: {
     selectId: '',
-    addressList: [
-      {
-        id: '1',
-        name: 'Exrick',
-        mobile: '17621230884',
-        region: '四川省 成都市 武侯区',
-        address: '益州大道888号香月湖7栋',
-        isDefault: true,
-        selected: true
-      },
-      {
-        id: '2',
-        name: 'xhy',
-        mobile: '17621238888',
-        region: '四川省 成都市 武侯区',
-        address: '益州大道888号香月湖666栋',
-        isDefault: false,
-        selected: false
-      }
-    ]
+    addressList: []
   },
 
   /**
@@ -52,7 +35,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    that.getshopList();
     //加载地址数据
+  },
+  getshopList:function(){
+    var that = this,
+    token = wx.getStorageSync('token'),
+    url = api.address.addressList+'?token='+token;
+    toolkit.post(url,(res)=>{
+      var addressList = res.data.result
+      that.setData({
+        addressList: addressList
+      })
+    })
+  },
+  addressSee:function(e){
+    var that = this;
+    var addressId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../../ucenter/updateaddress/updateaddress?id=' + addressId,
+    })
   },
 
   /**
@@ -88,23 +91,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  deleteAddress: function () {
-    let that = this
-    wx.showModal({
-      title: '提示',
-      content: '确认要删除所选地址？',
-      confirmColor: '#b4282d',
-      success: function (res) {
-        if (res.confirm) {
-          that.setData({
-            addressList: []
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
   },
   addressAddOrUpdate: function () {
     wx.navigateTo({

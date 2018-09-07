@@ -1,5 +1,4 @@
 /* pages/ucenter/addressAdd/addressAdd.wxss */
-/* @import "../../../pages/myinfo/myinfo.wxss"; */
 
 page {
   height: 100%;
@@ -23,6 +22,11 @@ page {
   font-size: 28rpx;
   line-height: 80rpx;
   color: #666;
+}
+.add-form input.picker{
+  padding: 0;
+  font-size: 24rpx;
+  border-bottom: none;
 }
 
 .zan-cell-switch {
@@ -145,6 +149,47 @@ page {
   background: url(https://img.yzcdn.cn/public_files/2017/02/24/9acec77d91106cd15b8107c4633d9155.png) no-repeat;
   background-size: 16px 16px;
   animation: zan-switch-loading 0.8s infinite linear;
+}
+.mine-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1rpx solid rgb(238, 233, 233);
+  padding:0rpx 30rpx;
+  box-sizing: border-box;
+  font-size: 36rpx;
+  color: rgb(78, 77, 77);
+  align-items: center;
+}
+.mine-item>text{
+  font-size: 26rpx;
+  color: #666;
+}
+.mine-item .mine-r image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+.mine-item .mine-r {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mine-item .mine-r picker{
+  width: 518rpx;
+}
+.mine-item .mine-r picker view{
+  font-size:20rpx;
+}
+.mine-r .myzp image{
+  width: 80rpx;
+  height: 80rpx;
+  display: block;
+  border-radius: 50%;
+}
+.zan-cell__bd{
+  color: #666;
+  font-size: 26rpx;
 }
 
 @keyframes zan-switch-loading {

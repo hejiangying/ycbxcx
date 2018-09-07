@@ -1,7 +1,7 @@
 // pages/postdetail/postdetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var postId = '';
+var postId = '',index='',replyId='';
 Page({
 
   /**
@@ -55,12 +55,15 @@ Page({
   goComment:function(e){
     var commid = e.currentTarget.dataset.commid;
     wx.navigateTo({
-      url: '../../pages/quiz/quiz?id='+commid,
+      url: '../../pages/quiz/quiz?id='+commid +'&index='+1,
     })
   },
+  //回复
   commClick:function(e){
+    var replyid = e.currentTarget.dataset.replyid;
+    console.log("replyid:",replyid)
     wx.navigateTo({
-      url: '../../pages/quiz/quiz',
+      url: '../../pages/quiz/quiz?replyid=' + replyid+'&index='+2,
     })
   },
   getpostDetail: function () {
@@ -71,6 +74,7 @@ Page({
     toolkit.get(url, (res) => {
       var postdetail = res.data.result
       console.log('postdetail:', postdetail)
+      // console.log(postdetail.commentList.length)
       that.setData({
         postdetail: postdetail
       })

@@ -2,18 +2,18 @@
 
 <view class="add-address">
   <view class="add-form">
-    <input placeholder='姓名' value="{{consignee}}" bindinput='nameInput'></input>
-    <input placeholder='电话' value="{{mobile}}" bindinput='phoneInput' type="number" maxlength='11'></input>
+    <input placeholder='姓名' value="{{addressDetail.consignee}}" bindinput='nameInput'></input>
+    <input placeholder='电话' value="{{addressDetail.mobile}}" bindinput='phoneInput' type="number" maxlength='11'></input>
     <view class="mine-item">
       <text>现居城市</text>
       <view class="mine-r">
         <picker mode="region" bindchange="bindRegionChange">
-          <input value="{{addressName}}" class="picker"/>
+          <input value="{{addressDetail.addressName}}" class="picker"/>
         </picker>
         <image src="../../../image/arrow.png"></image>
       </view>
     </view>
-    <input placeholder='详细地址' value="{{address}}" bindinput='addressInput'></input>
+    <input placeholder='详细地址' value="{{addressDetail.address}}" bindinput='addressInput'></input>
   </view>
 
   <view class="zan-panel">
@@ -27,6 +27,11 @@
           <view class="zan-switch__bg"></view>
         </view>
       </view>
+    </view>
+  </view>
+  <view class="zan-panel" bindtap="addressDel">
+    <view class="zan-cell zan-cell-switch">
+      <view class="zan-cell__bd" style="color:#f63264">删除地址</view>
     </view>
   </view>
 

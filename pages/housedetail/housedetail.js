@@ -1,7 +1,7 @@
 // pages/fooddetail/fooddetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var goodsId = '';//商品id
+var goodsId = '', itemId= '';//商品id
 Page({
 
   /**
@@ -151,6 +151,7 @@ Page({
   onLoad: function (options) {
     console.log("option:", options.id)
     goodsId = options.id
+    itemId = option.itemId
   },
 
   /**

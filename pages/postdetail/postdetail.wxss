@@ -35,12 +35,11 @@
 .perinfo-addre text{
   font-size: 26rpx;
   color: #999;
-  margin-left:15rpx;
 }
 
 .perinfo-l .perinfo-pho>image {
-  width: 120rpx;
-  height: 120rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
   display: block;
   margin-right: 30rpx;
@@ -130,10 +129,42 @@
   .reply-text{
     font-size: 26rpx;
     width: 76%;
-    margin-left: 150rpx;
-    padding-bottom: 20rpx;
-    border-bottom: 1rpx solid rgb(245, 241, 241);
+    margin-left: 115rpx;
+    padding-top: 10rpx;
   }
   .reply-text text{
     color: #666;
+  }
+  .hf{
+    margin-left: 115rpx;
+    border-bottom: 1rpx solid rgb(245, 241, 241);
+    padding-bottom: 10rpx;
+  }
+  .myreply .another-re{
+    color: #666;
+    font-size: 26rpx;
+    margin-left: 115rpx;
+  }
+  .peritem,.peritem .hf{
+    border-bottom: 1rpx dotted rgb(226, 225, 225);
+    padding-bottom: 20rpx;
+  }
+  .peritem:last-child,.peritem .hf:last-child{
+    border-bottom: none
+  }
+  .first{
+    color: #fff;
+    font-size: 26rpx;
+    background: #f63264;
+    width: 50%;
+    text-align: center;
+    padding: 10rpx 0rpx;
+    border-radius: 50rpx;
+    margin: 20px auto;
+  }
+  .nodata{
+    width: 150rpx;
+    height: 150rpx;
+    margin: 80px auto;
+    display: block
   }

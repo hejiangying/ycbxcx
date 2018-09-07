@@ -1,0 +1,27 @@
+<!--pages/footclass/foodclass.wxml-->
+
+<view class="container">
+  <view class="search">
+    <view>搜索产品</view>
+  </view>
+  <view class="foodclass">
+    <view class="food-l">
+      <text bindtap="allGood" class="normal">全部商品</text>
+      <block wx:for="{{foodList}}" wx:key="{{index}}">
+        <text bindtap='classcLick' data-id="{{item.catId}}" class="normal {{isChecked == item.catId ? 'on' : ''}}" data-isCkecked="{{isChecked}}">{{item.catName}}</text>
+      </block>
+    </view>
+    <view class="food-r">
+      <block wx:for="{{goodsList}}" wx:key="{{index}}">
+        <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
+          <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+          <text>{{item.goodsName}}</text>
+          <view class="foodprice">
+            <text>￥{{item.marketPrice}}</text>
+            <text>已售51份</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

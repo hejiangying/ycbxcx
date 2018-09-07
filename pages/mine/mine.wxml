@@ -29,7 +29,8 @@
       <text>粉丝</text>
     </view>
     <view class="num-item" bindtap='seePost'>
-      <text>{{myinfo.articleNum}}</text>
+      <text wx:if="{{myinfo.articleNum ==''}}">0</text>
+      <text wx:if="{{myinfo.articleNum !=''}}">{{myinfo.articleNum}}</text>
       <text>帖子</text>
     </view>
 

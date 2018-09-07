@@ -57,6 +57,7 @@ page {
   flex: 1;
   height: 72.25rpx;
   color: #999;
+  font-size: 32rpx
 }
 
 .address-box .mobile {
@@ -85,8 +86,8 @@ page {
 }
 
 .address-box .r image {
-  width: 52rpx;
-  height: 52rpx;
+  width: 40rpx;
+  height: 40rpx;
   display: inline-block;
 }
 
@@ -187,8 +188,8 @@ page {
 }
 .zan-cell__ft image{
   display: inline-block;
-  width: 52rpx;
-  height: 52rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .goods-items .t {

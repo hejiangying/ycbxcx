@@ -70,9 +70,10 @@ Page({
   commSee:function(e){
     console.log("e1:",e)
     var that = this,
-    id = e.currentTarget.dataset.id
+    id = e.currentTarget.dataset.id;
+    console.log("id1,",id)
     wx.navigateTo({
-      url: '../../pages/mypost-comm/mypost-comm?id=' + id,
+      url: '../../pages/mypost-comm/mypost-comm?id='+id,
     })
   },
 

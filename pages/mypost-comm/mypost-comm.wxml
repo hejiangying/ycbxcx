@@ -17,7 +17,7 @@
      {{postdetail.content}}
     </view>
     <view class="imglist">
-    <block wx:for="{{postdetail.imgList}}">
+    <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
       <image src="{{'http://192.168.190.243:8081'+item}}"></image>
       </block>
     </view>

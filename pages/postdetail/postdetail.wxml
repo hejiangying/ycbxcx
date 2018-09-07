@@ -19,16 +19,16 @@
         <text bindtap="attenClick" class="{{att_status == true ? 'old' :''}}">{{att_status == true ? '已关注' :'+关注'}}</text>
       </view>
     </view>
-     <view class="post-text">
-     {{postdetail.content}}
+    <view class="post-text">
+      {{postdetail.content}}
     </view>
     <view class="imglist">
-    <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
-      <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+      <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
+        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
       </block>
     </view>
     <view class="btns">
-      <view class="btn-comm" bindtap="goComment" data-commid="{{postdetail.id}}">
+      <view class="btn-comm" bindtap="goComment" data-commid="{{postdetail.id}}" data-index='1'>
         <image src="../../image/comment.png"></image>
         <text>{{postdetail.commentNum}}评论</text>
       </view>
@@ -41,53 +41,55 @@
   </view>
   <!-- 帖子回复 -->
   <view class="reply">
-    <text>全部回复</text>
-    <block wx:for="{{postdetail.commentList}}" wx:key="{{index}}">
-    <view class="peritem">
-      <view class="perinfo">
-        <view class="perinfo-l">
-          <view class="perinfo-pho">
-            <image src="{{item.thumbImg}}"></image>
-          </view>
-          <view class="perinfo-id">
-            <text>{{item.nickname}}</text>
-            <view class="perinfo-addre">
-             {{item.createTime}}
+    <view wx:if="{{postdetail.commentList.length > 0}}">
+      <text>全部回复</text>
+      <block wx:for="{{postdetail.commentList}}" wx:key="{{index}}">
+        <view class="peritem">
+          <view class="perinfo">
+            <view class="perinfo-l">
+              <view class="perinfo-pho">
+                <image src="{{item.thumbImg}}"></image>
+              </view>
+              <view class="perinfo-id">
+                <text>{{item.nickname}}</text>
+                <!-- <view class="perinfo-addre">
+                  {{item.createTime}}
+                </view> -->
+              </view>
+            </view>
+            <view class="perinfop-r">
+              <text class="replyop" bindtap="commClick" data-replyid="{{item.id}}" data-index='2'>...</text>
             </view>
           </view>
+          <view class="reply-text">
+            <text>{{item.content}}</text>
+          </view>
+          <!-- //回复评论 -->
+          <block wx:for="{{item.commentReplyList}}" wx:key="{{index}}">
+            <view class="hf">
+              <view class="myreply">
+                <view class="perinfo">
+                  <view class="perinfo-l">
+                    <view class="perinfo-pho">
+                      <image src="{{item.fromThumbImg}}"></image>
+                    </view>
+                    <view class="perinfo-id">
+                      <text>{{item.fromNickname}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class="another-re">{{item.content}}</view>
+              </view>
+            </view>
+          </block>
+
+          
         </view>
-        <view class="perinfop-r">
-          <text class="replyop" bindtap="commClick">...</text>
-        </view>
-      </view>
-      <view class="reply-text">
-        <text>{{item.content}}</text>
-      </view>
+      </block>
     </view>
-</block>
-    <view class="peritem">
-      <view class="perinfo">
-        <view class="perinfo-l">
-          <view class="perinfo-pho">
-            <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
-          </view>
-          <view class="perinfo-id">
-            <text>ID某某</text>
-            <view class="perinfo-addre">
-              <image src="../../image/address1.png"></image>
-              <text>北京</text>
-              <text>|</text>
-              <text>一分钟前</text>
-            </view>
-          </view>
-        </view>
-        <view class="perinfop-r">
-          <text class="replyop">...</text>
-        </view>
-      </view>
-      <view class="reply-text">
-        <text>这是评论这是评论这是评论这是评论这是评论这是评论这</text>
-      </view>
+    <view wx:if="{{postdetail.commentList == null }}">
+      <image src="../../image/nonedata.png" class="nodata"></image>
+      <view class="first"  bindtap="goComment" data-commid="{{postdetail.id}}" data-index='1'>我来写第一个评论吧</view>
     </view>
   </view>
 </view>

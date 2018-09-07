@@ -29,12 +29,16 @@
     "pages/buy/checkout/checkout",
     "pages/buy/address/address",
     "pages/ucenter/addressAdd/addressAdd",
+    "pages/ucenter/updateaddress/updateaddress",
     "pages/search/search",
     "pages/goodsdetail/goodsdetail",
     "pages/food/food",
     "pages/housedetail/housedetail",
     "pages/coupon/coupon",
-    "pages/mypost-comm/mypost-comm"
+    "pages/mypost-comm/mypost-comm",
+    "pages/foodclass/foodclass",
+    "pages/anotherfood/anotherfood"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

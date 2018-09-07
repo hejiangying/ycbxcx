@@ -16,13 +16,13 @@ Page({
    */
   onLoad: function (options) {
      postId = options.id
-
+    console.log(options)
   },
   getpostDetail:function(){
     var that =this,
     token = wx.getStorageSync('token'),
     id = postId,
-    url = api.post.postDetail + '?id=' + id + '&token=' + token;
+    url = api.post.postDetail + '?id=' + postId + '&token=' + token;
     toolkit.get(url,(res)=>{
       var postdetail = res.data.result
       console.log('postdetail:',postdetail)
@@ -30,7 +30,6 @@ Page({
         postdetail: postdetail
       })
     })
-    
   },
 
   /**

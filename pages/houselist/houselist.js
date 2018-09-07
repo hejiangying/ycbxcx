@@ -1,6 +1,7 @@
 // pages/food/food.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
+var itemId = '';
 Page({
 
   /**
@@ -15,13 +16,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    itemId = options.itemId
   },
   foodClick: function (e) {
     console.log("客栈id：",e)
     var houseid = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/housedetail/housedetail?id=' + houseid,
+      url: '../../pages/housedetail/housedetail?id=' + houseid + '&itemId=' + itemId,
     })
   },
 

@@ -3,20 +3,20 @@
   <view class="address-box">
     <view class="address-item" bindtap="chooseAddress" wx:if="{{checkedAddress.id}}">
       <view class="l">
-        <text class="name">{{checkedAddress.name}}</text>
+        <text class="name">{{checkedAddress.consignee}}</text>
         <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
       </view>
       <view class="m">
         <text class="mobile">{{checkedAddress.mobile}}</text>
-        <text class="address">{{checkedAddress.region + checkedAddress.address}}</text>
+        <text class="address">{{checkedAddress.addressName + checkedAddress.address}}</text>
       </view>
       <view class="r">
          <image src="/image/arrow.png"></image>
       </view>
     </view>
-    <view class="address-item address-empty" bindtap="addAddress" wx:if="{{!checkedAddress.id}}">
+    <view class="address-item address-empty" bindtap="chooseAddress" wx:if="{{!checkedAddress.id}}">
       <view class="m">
-        还没有收货地址，去添加
+       选择收货地址
       </view>
       <view class="r">
         <image src="/image/arrow.png"></image>

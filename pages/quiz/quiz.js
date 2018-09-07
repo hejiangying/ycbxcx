@@ -1,7 +1,7 @@
 // pages/quiz/quiz.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var articleId='';
+var articleId='',index='',replyid='';
 Page({
 
   /**
@@ -20,6 +20,8 @@ Page({
   onLoad: function (options) {
     console.log("99955:",options)
     articleId = options.id
+    index = options.index
+    replyid= options.replyid
   },
   // 获取输入框内容
   getContent: function (e) {
@@ -40,12 +42,15 @@ Page({
         title: '评论内容不能为空',
         icon:'none'
       })
-    } else {
+    } else if(index == 1) {//index=1是评论，2是回复
       var token = wx.getStorageSync("token");
       var url = api.post.comment + '?articleId=' + articleId +'&content=' + that.data.content + '&token=' + token;
       console.log("url:",url)
       toolkit.post(url,(res)=>{
         console.log("8855:",res)
+        that.setData({
+          content: ''
+        })
         wx.showToast({
           title: '评论成功',
           icon:'none',
@@ -55,6 +60,27 @@ Page({
               wx.navigateBack({
               delta: 1
             })
+            }, 2000)
+          }
+        })
+      })
+    }else if(index == 2){
+      var token = wx.getStorageSync('token');
+      var url = api.post.replycomment + '?id=' + replyid + '&token=' + token+'&content=' + that.data.content;
+      toolkit.post(url,(res)=>{
+        console.log("999999914555",res)
+        that.setData({
+          content:''
+        })
+        wx.showToast({
+          title: '评论成功',
+          icon: 'none',
+          duration: 1000,
+          success: function (res) {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
             }, 2000)
           }
         })

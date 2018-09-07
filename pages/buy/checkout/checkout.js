@@ -5,14 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    checkedAddress: {
-      id: 1,
-      isDefault: true,
-      name: 'Exrick',
-      mobile: '17621230884',
-      region: '四川省成都市武侯区',
-      address: '益州大道香月湖7栋188号'
-    },
+    checkedAddress: {},
     couponId: '',
     couponName: '',
     couponCount: 1,
@@ -20,15 +13,15 @@ Page({
     goodsTotalPrice: 1.00,
     freightPrice: 0.00,
     checkedGoodsList: [
-      {
-        id: '1',
-        picUrl: 'http://img4.imgtn.bdimg.com/it/u=3381060308,3456742770&fm=27&gp=0.jpg',
-        name: '双廊跟团一日游',
-        specValue: '2人',
-        number: 1,
-        retailPrice: '1.00',
-        originPrice: '9599.00'
-      },
+      // {
+      //   id: '1',
+      //   picUrl: 'http://img4.imgtn.bdimg.com/it/u=3381060308,3456742770&fm=27&gp=0.jpg',
+      //   name: '双廊跟团一日游',
+      //   specValue: '2人',
+      //   number: 1,
+      //   retailPrice: '1.00',
+      //   originPrice: '9599.00'
+      // },
     ],
     actualPrice: 1.00
   },

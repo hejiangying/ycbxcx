@@ -3,9 +3,9 @@
 <block wx:for="{{goodslist}}" wx:key="{{index}}">
   <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
     <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}" ></image>
-    <text>{{item.goodsName}}</text>
+    <text>{{item.itemName}}</text>
     <view class="foodprice">
-      <text>￥{{item.marketPrice}}</text>
+      <text>￥{{item.itemPrice}}</text>
       <text>已售51份</text>
     </view>
   </view>

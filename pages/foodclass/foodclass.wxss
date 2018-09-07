@@ -1,0 +1,73 @@
+/* pages/footclass/foodclass.wxss */
+.search{
+  width: 100%;
+  background: #000;
+  opacity: 0.3;
+  padding: 15rpx 0rpx;
+  position: fixed;
+  top: 0;
+}
+.search view{
+  font-size: 26rpx;
+  color: #fff;
+  text-align: center;
+}
+.foodclass{
+  display: flex;
+  flex-direction: row;
+  margin-top:62rpx; 
+}
+.foodclass .food-l{
+  display: flex;
+  flex-direction: column;
+  color: #666;
+  font-size: 26rpx;
+  background: #f6f6f6;
+  flex: 0 0 160rpx;
+}
+.foodclass .food-l text.normal{
+  padding: 20rpx 0rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #ebe9e9;
+}
+.foodclass .food-l text.on{
+  color: #f63264;
+}
+.foodclass .fool-r{
+  flex: 1;
+}
+.fooditem{
+  width: 45%;
+  float: left;
+  margin-bottom: 20rpx;
+  box-shadow: 0rpx 0rpx 2rpx #ccc;
+}
+.fooditem{
+  margin-left: 3.3%;
+  margin-top: 10rpx;
+}
+.fooditem image{
+  width: 100%;
+  display: block;
+  height: 160rpx;
+}
+.fooditem .foodprice{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0rpx 10rpx 10rpx 10rpx;
+}
+.fooditem .foodprice text{
+  font-size: 22rpx;
+  color: #999;
+}
+.fooditem>text{
+  display: block;
+  font-size: 24rpx;
+  overflow: hidden;
+  padding: 10rpx;
+  color: #666;
+}
+.fooditem .foodprice text:nth-child(1){
+  color: #f63264;
+}

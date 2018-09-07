@@ -1,6 +1,7 @@
 // pages/tourroute/tourroute.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
+var itemId = '';
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    itemId = options.itemId
   },
   tapSelect:function(e){
     var that = this;
@@ -30,7 +31,7 @@ Page({
     var that = this;
     var lineid = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/orderdetail/orderdetail?id=' + lineid,
+      url: '../../pages/orderdetail/orderdetail?id=' + lineid +'&itemId=' +itemId,
     })
   },
   getLine:function(){

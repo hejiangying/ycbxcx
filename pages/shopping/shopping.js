@@ -1,42 +1,14 @@
 // pages/shopping/shopping.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+var id = [];
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     cartGoods: [],
-    // cartGoods: [{
-    //     id: '1',
-    //     checked: true,
-    //     picUrl: 'http://www.situcms.com/uploads/2018/0726/6ad4175aad9a64e791c68f432331ae45_750x375.jpg',
-    //     goodsName: '大理双廊一日游',
-    //     spec: '无购物',
-    //     number: 1,
-    //     goodsPrice: '199.00',
-    //     stepper: {
-    //       stepper: 1,
-    //       min: 1,
-    //       max: 50
-    //     },
-    //   },
-    //   {
-    //     id: '2',
-    //     checked: true,
-    //     picUrl: 'http://www.situcms.com/uploads/2018/0726/af10e00f351588219a3db191953d4ac1_750x375.png',
-    //     goodsName: '喜洲古镇一日游',
-    //     spec: '无购物',
-    //     number: 1,
-    //     goodsPrice: '179.00',
-    //     stepper: {
-    //       stepper: 1,
-    //       min: 1,
-    //       max: 50
-    //     },
-    //   }
-    // ],
+    cartGoods: [],
     checkedGoodsCount: 2,
     checkedGoodsAmount: '',
     isEditCart: false,
@@ -83,49 +55,45 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.getGoods();
-    let isLogin = wx.getStorageSync('isLogin');
-    if (isLogin) {
-      this.setData({
-        isLogin: true
-      })
-    }
-
-    this.setData({
-      checkedGoodsCount: this.getCheckedGoodsCount(),
-      checkedGoodsAmount: this.getCheckedGoodsAmount()
+    var that = this;
+    that.getGoods();
+    that.setData({
+      checkedGoodsCount: that.getCheckedGoodsCount(),
+      checkedGoodsAmount: that.getCheckedGoodsAmount()
     });
   },
-  goLogin: function() {
-    wx.navigateTo({
-      url: '/pages/auth/tologin/tologin',
-    })
-  },
+  //点击切换商品选中状态
   checkedItem: function(e) {
+    var that = this;
     let index = e.target.dataset.index
     let id = e.target.dataset.id
-    this.setData({
-      [`cartGoods[${index}].checked`]: !this.data.cartGoods[index].checked,
-      checkedGoodsCount: this.getCheckedGoodsCount(),
-      checkedGoodsAmount: this.getCheckedGoodsAmount()
+    console.log("ids:", id)
+    that.setData({
+      [`cartGoods[${index}].checked`]: !that.data.cartGoods[index].checked,
+      checkedGoodsCount: that.getCheckedGoodsCount(),
+      checkedGoodsAmount: that.getCheckedGoodsAmount()
     });
-    this.setData({
-      checkedGoodsCount: this.getCheckedGoodsCount(),
-      checkedGoodsAmount: this.getCheckedGoodsAmount()
-    });
+    console.log("购物车列表长度：", that.data.cartGoods.length)
+    for (let i = 0; i < that.data.cartGoods.length; i++){
+      
+    }
   },
+  //获取选中商品的价格
   getCheckedGoodsAmount: function() {
+    var that = this;
     let totalPrice = 0
-    this.data.cartGoods.forEach(function(v) {
+    that.data.cartGoods.forEach(function(v) {
       if (v.checked === true) {
         totalPrice += v.goodsPrice * v.number
       }
     })
     return totalPrice.toFixed(2)
   },
+  //获取选中商品的数量
   getCheckedGoodsCount: function() {
+    var that = this;
     let checkedGoodsCount = 0
-    this.data.cartGoods.forEach(function(v) {
+    that.data.cartGoods.forEach(function(v) {
       if (v.checked === true) {
         checkedGoodsCount += v.number
       }
@@ -133,10 +101,12 @@ Page({
     return checkedGoodsCount
   },
   editCart: function() {
-    this.setData({
-      isEditCart: !this.data.isEditCart
+    var that = this;
+    that.setData({
+      isEditCart: !that.data.isEditCart
     });
   },
+  //全选
   checkedAll: function() {
     if (this.data.checkedAllStatus) {
       this.setData({
@@ -162,7 +132,9 @@ Page({
       });
     }
   },
-  deleteCart: function() {
+  //删除
+  deleteCart: function(e) {
+    console.log("e.id",e)
     let that = this
     wx.showModal({
       title: '提示',
@@ -170,6 +142,8 @@ Page({
       confirmColor: '#b4282d',
       success: function(res) {
         if (res.confirm) {
+          var token = wx.getStorageSync('token');
+          // toolkit.post(url,)
           that.setData({
             cartGoods: []
           })
