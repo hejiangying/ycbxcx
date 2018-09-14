@@ -6,7 +6,7 @@
   </view>
   <view class="foodclass">
     <view class="food-l">
-      <text bindtap="allGood" class="normal">全部商品</text>
+      <text bindtap="allGood" class="normal {{allon == 1 ? 'onn' : ''}}">全部商品</text>
       <block wx:for="{{foodList}}" wx:key="{{index}}">
         <text bindtap='classcLick' data-id="{{item.catId}}" class="normal {{isChecked == item.catId ? 'on' : ''}}" data-isCkecked="{{isChecked}}">{{item.catName}}</text>
       </block>

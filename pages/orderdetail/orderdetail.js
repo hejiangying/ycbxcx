@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
    lineid = options.id
-   console.log('111:',lineid)
+   console.log('111:',options)
   },
   // 行程、费用及使用的选择
   xcSelect:function(e){
@@ -47,8 +47,9 @@ Page({
     })
   },
   buyClick:function(){
+    console.log(lineid)
     wx.navigateTo({
-      url: '../../pages/booking/booking',
+      url: '../../pages/booking/booking?lineid=' + lineid,
     })
   },
   getLinedetail:function(){

@@ -126,3 +126,34 @@ page, .container {
   width: 150rpx;
   height: 150rpx;
 }
+.post-image{
+  width: 664rpx;
+  margin:  0 auto;
+  margin-top: 20rpx;
+}
+.post-image>image{
+  display: inline-block;
+  width: 208rpx;
+  height: 200rpx;
+}
+ .post-image .imgitem{
+  position: relative;
+   display: inline-block;
+  width: 208rpx;
+  height: 208rpx;
+  margin-right: 20rpx;
+}
+.post-image .imgitem image{
+  width: 208rpx;
+  height: 208rpx;
+}
+.post-image image.del{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 12rpx;
+  top: 12rpx;
+}
+.post-image .imgitem:nth-child(3n){
+  margin-right: 0%;
+}

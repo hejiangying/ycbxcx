@@ -15,7 +15,6 @@ Page({
   
   },
   commClick:function(e){
-   
     var that = this;
     var _comm = e.currentTarget.dataset.comm
     console.log(_comm)

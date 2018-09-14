@@ -35,9 +35,13 @@ Page({
     })
   },
   getLine:function(){
+    wx.showLoading({
+      title: '正在加载...',
+    })
     var that = this;
     var url = api.appLine.linelist;
-    toolkit.get(url,function(res){
+    toolkit.get(url,(res)=>{
+      wx.hideLoading()
       console.log("res444:",res)
       var linelist = res.data.result.content
       console.log("555:",linelist)

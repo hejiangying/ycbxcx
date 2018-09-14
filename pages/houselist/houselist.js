@@ -49,17 +49,26 @@ Page({
   },
   //获取商品列表
   getgoods: function () {
+    wx.showLoading({
+      title: '正在加载...',
+    })
     var that = this,
       params = {
         token: wx.getStorageSync('token')
       };
     console.log('api.appHotel.houselist,', api.appHotel.houselist)
     toolkit.get(api.appHotel.houselist, params,  (res) => {
-      console.log("123:",res)
+      wx.hideLoading()
       var houselist = res.data.result.content
       that.setData({
         houselist:houselist
       })
+    },()=>{
+        wx.hideLoading()
+        wx.showToast({
+          title: '网络出错',
+          image:'../../image/error.png'
+        })
     })
 
   },

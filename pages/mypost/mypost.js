@@ -55,7 +55,7 @@ Page({
     console.log("id:",id)
     wx.showActionSheet({
       itemList: ['删除'],
-      success: function (res) {
+      success: () =>{
         console.log("111:", res.tapIndex)
         if (res.tapIndex === 0) {
           toolkit.post(url, (res) =>{

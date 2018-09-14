@@ -1,0 +1,29 @@
+<!--pages/anotherdetail/anotherdetail.wxml-->
+<view class="container">
+  <view class="top">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264" style="width:100%;">
+      <block>
+        <swiper-item style="width:100%;">
+          <image src="../../image/banner2.jpg" style="width:100%;height:100%;"/>
+        </swiper-item>
+        <swiper-item>
+          <image src="http://img.zcool.cn/community/01238655a521e032f8758bed2f7a40.jpg@1280w_1l_2o_100sh.jpg" style="width:100%;height:100%;" />
+        </swiper-item>
+        <swiper-item>
+          <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535263889&di=a4173a28c8649f561f10eb34d14d3ef8&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0146a0574b983332f875a4291b8607.png%401280w_1l_2o_100sh.png" style="width:100%;height:100%;"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="con">
+    <view class="title">{{orderdetail.goodsName}}</view>
+    <view class="price"><text>￥{{orderdetail.toalFee}}</text></view>
+    <view class="address">地址：大理白族自治州永平县功果桥</view>
+    <view>消费者姓名：{{orderdetail.linkman}}</view>
+    <view>预留电话：{{orderdetail.linkphone}}</view>
+    <view>身份证号码：{{orderdetail.linkcode}}</view>
+    <view>消费日期：{{orderdetail.startPlay}}</view>
+    <view>订单号：{{orderdetail.orderSn}}</view>
+    <view class="info"><text>商家介绍：</text> 哈哈哈哈哈这是商家详情和介绍，比如今天你在这里可以吃很多好吃的,还能划船,打cs,刨幺呀,哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈还好还好,是不是很开心呢！</view>
+  </view>
+</view>

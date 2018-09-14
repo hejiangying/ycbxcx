@@ -3,39 +3,38 @@
   <view class="order-img">
     <image src="{{'http://192.168.190.243:8081'+orderdetail.goodsImg}}"></image>
     <view class="tour-name">
-     {{orderdetail.ordersHotel.goodsName}}
+      {{orderdetail.ordersLine.goodsName}}
     </view>
     <view class="tour-time">
-      <view><text>入住时间</text>{{orderdetail.ordersHotel.checkInTime}}</view>
-      <view><text>离店时间</text>{{orderdetail.ordersHotel.checkOutTime}}</view>
-      <view><text>下单时间</text>{{orderdetail.ordersHotel.updateTime}}</view>
+      <view><text>开始日期</text>{{orderdetail.ordersLine.playTime}}</view>
+      <view><text>下单时间</text>{{orderdetail.ordersLine.createTime}}</view>
     </view>
     <view class="tour-num">
       <!-- <text>成人2人</text> -->
     </view>
     <view class="tour-price">
-      <text>￥{{orderdetail.ordersHotel.payRoom}}</text>
+      <text>￥{{orderdetail.ordersLine.toalFee}}</text>
     </view>
   </view>
   <view class="order-con">
     <text>身份信息</text>
-    <view class="idname">
-      <text>姓名</text>{{orderdetail.ordersHotel.clientName}}
-    </view>
-    <view class="idnum">
-      <text>身份证</text> {{orderdetail.ordersHotel.identitfy}}
-    </view>
+    <block wx:for="{{orderdetail.ordersLine.nameCode}}">
+      <view class="idname">
+       <text>{{item.name}}</text> 
+       <text>{{item.code}}</text>
+      </view>
+    </block>
   </view>
   <!-- 身份信息 -->
   <view class="order-id">
     <view>
       <text> 订单号</text> {{orderdetail.orderSn}}
     </view>
-    <!-- <view>
+    <view>
       <text>  怎么取票></text>
-    </view> -->
-    <!-- <view>
+    </view>
+    <view>
       <text>  我要退票</text>
-    </view> -->
+    </view>
   </view>
 </view>

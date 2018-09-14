@@ -9,10 +9,8 @@ Page({
    */
   data: {
     cartGoods: [],
-    checkedGoodsCount: 2,
+    checkedGoodsCount: '',
     checkedGoodsAmount: '',
-    isEditCart: false,
-    isLogin: false,
     checkedAllStatus: true
   },
 
@@ -98,6 +96,9 @@ Page({
         checkedGoodsCount += v.number
       }
     })
+    that.setData({
+      checkedGoodsCount: checkedGoodsCount
+    })
     return checkedGoodsCount
   },
   //全选
@@ -127,45 +128,59 @@ Page({
     }
   },
   //删除
-  deleteCart: function(e) {
-    console.log("e.id",e)
-    let that = this
+  delGoods(e){
+    var that = this;
+    var goodsid = e.currentTarget.dataset.goodsid,
+    token = wx.getStorageSync('token'),
+    url = api.shop.delGoods+'?id='+goodsid+'&token='+token;
     wx.showModal({
-      title: '提示',
-      content: '确认要删除所选购物车商品？',
-      confirmColor: '#b4282d',
-      success: function(res) {
-        if (res.confirm) {
-          var token = wx.getStorageSync('token');
-          // toolkit.post(url,)
-          that.setData({
-            cartGoods: []
+      title:'提示',
+      content:'确认删除该商品吗？',
+      confirmColor:'#f63264',
+      success:(res)=>{
+        if(res.confirm){
+          toolkit.post(url,(res)=>{
+            wx.showToast({
+              title: '成功删除商品',
+            })
+            that.getGoods()
           })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+        }else if(res.cancel){
+          that.getGoods()
         }
       }
     })
+
   },
   checkoutOrder: function() {
     wx.navigateTo({
       url: '/pages/buy/checkout/checkout',
     })
   },
+  //获取购物车列表
   getGoods:function(){
     var that = this,
     token = wx.getStorageSync('token'),
     url = api.shop.shopList +'?token=' + token;
     toolkit.post(url,(res)=>{
-      console.log("shopres:",res)
       var cartGoods = res.data.result;
-      for (var i of cartGoods) {
-        i.checked = true,
-        i.number = 1;
+      if(res.data.code == 200){
+        for (var i of cartGoods) {
+          i.checked = true,
+             i.number = 1;
+        }
+      }else if(res.data.code == 500){
       }
       that.setData({
         cartGoods: cartGoods
       })
+      
+    })
+  },
+  goClick:function(){
+    var that = this;
+    wx.navigateBack({
+      delta:'1'
     })
   },
 

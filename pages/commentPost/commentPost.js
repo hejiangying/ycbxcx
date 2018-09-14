@@ -1,6 +1,11 @@
 // pages/commentPost/commentPost.js
 import { $wuxRater } from '../../lib/wux/wux'
-
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
+var originalList = [],
+  index = 0,
+  edit = false,
+  uploadpic = [];
 Page({
 
   /**
@@ -18,9 +23,11 @@ Page({
 
         ],
         commented: false,
-        imagePath: '/image/addp.png'
+        // imagePath: '/image/addp.png'
       }
     ],
+    imglist: [], //图片集合
+    picList: '',
 
   },
 
@@ -41,6 +48,75 @@ Page({
         }
       })
     }
+  },
+  // 选择图片
+  photoSel() {
+    if (this.data.imglist.length < 9) {
+      wx.chooseImage({
+        count: 9 - this.data.imglist.length,
+        success: (res) => {
+          for (let i = 0; i <= res.tempFilePaths.length - 1; i++) {
+            this.data.imglist.push(res.tempFilePaths[i]);
+          }
+          this.setData({
+            imglist: this.data.imglist
+          })
+          this.uploadImg()
+        },
+      })
+    } else {
+      wx.showToast({
+        title: '最多选择9张图片',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+
+  //上传图片
+  uploadImg() {
+    var url = api.img.upload;
+    wx.showLoading({
+      title: '正在上传',
+    })
+    console.log("that:", this)
+    console.log(this.data.imglist[index]);
+    wx.uploadFile({
+      url: url,
+      filePath: this.data.imglist[index],
+      name: 'file',
+      formData: {
+        file: 'file',
+        identify: 'article'
+      },
+      success: (res) => {
+        var json = JSON.parse(res.data);
+        console.log("图片:", index, res)
+        var picList = json.result.relativePaths;
+        if (index == this.data.imglist.length - 1) {
+          console.log("已是最后一张图片")
+          wx.hideLoading()
+          uploadpic.push(picList)
+        } else {
+          index++;
+          uploadpic.push(picList)
+          console.log('上传图片集合', uploadpic)
+          this.uploadImg()
+        }
+      }
+    })
+  },
+
+  // 删除某个图片
+  deletePic: function (e) {
+    var that = this;
+    that.data.imglist.splice(e.currentTarget.id, 1);
+    if (edit == 'true') {
+      originalList.splice(e.currentTarget.id, 1)
+    }
+    that.setData({
+      imglist: that.data.imglist
+    })
   },
 
   /**

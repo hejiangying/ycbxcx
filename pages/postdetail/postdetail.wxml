@@ -8,7 +8,7 @@
         <view class="perinfo-pho">
           <image src="{{postdetail.avatar}}"></image>
         </view>
-        <view class="perinfo-id">
+        <view class="perinfo1-id">
           <text>{{postdetail.author}}</text>
           <view class="perinfo-addre">
             <text>{{postdetail.createTime}}</text>

@@ -19,10 +19,9 @@ Page({
     var that = this,
       token = wx.getStorageSync('token'),
       url = api.apiUser.info + '?token=' + token;
-      // url = api.apiUser.info;
-      console.log("token:",token)
       toolkit.post(url,(res)=>{
         var myinfo = res.data.result
+       
         console.log("444:",res)
         that.setData({
           myinfo:myinfo
@@ -56,7 +55,7 @@ Page({
   // 跳转到用户协议
   helpClick:function(){
     wx.navigateTo({
-      url: '../../pages/help/help',
+      url: '../../pages/buy/address/address',
     })
   },
   //跳转到优惠券页面
@@ -65,10 +64,10 @@ Page({
       url: '../../pages/coupon/coupon',
     })
   },
-  // 跳转到关于我们页面
+  // 跳转到我的购物车
   aboutClick:function(){
     wx.navigateTo({
-      url: '../../pages/about/about',
+      url: '../../pages/shopping/shopping',
     })
   },
 

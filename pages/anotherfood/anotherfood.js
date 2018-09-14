@@ -1,7 +1,7 @@
 
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var goodsId = '',num = 1,goodsPrice='';//商品id,数量,价格
+var goodsId = '', num = 1, goodsPrice = '', recType = '';//商品id,数量,价格
 Page({
 
   /**
@@ -57,24 +57,12 @@ Page({
         status: true
       })
     } else {
-      var token = wx.getStorageSync('token'),
-        goodsNumber = num,
-        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&goodsPrice=' + goodsPrice +'&goodsNumber='+ goodsNumber;
-        console.log("url", url)
-        toolkit.post(url,(res)=>{
-          wx.showToast({
-            title: '添加成功',
-            icon:'success'
-          })
-          console.log("666:",res)
-        })
+         wx.navigateTo({
+           url: '../../pages/tyyding/tyyding?id=' + goodsId + '&price=' + goodsPrice,
+         })
         that.setData({
           status:false
         })
-        // wx.navigateTo({
-        //   url: '/pages/buy/checkout/checkout',
-        // })
-
     }
   },
   //款式选择
@@ -141,7 +129,7 @@ Page({
     toolkit.get(url,(res) => {
       wx.hideLoading()
       var goods = res.data.result
-      goodsPrice = res.data.result.marketPrice
+      goodsPrice = res.data.result.itemPrice
       console.log("商品详情：",goods)
       that.setData({
         goods:goods,
@@ -156,6 +144,8 @@ Page({
   onLoad: function(options) {
     console.log("option:",options.id)
     goodsId = options.id
+    recType = options.itemid
+    console.log("参数",recType)
   },
 
   /**

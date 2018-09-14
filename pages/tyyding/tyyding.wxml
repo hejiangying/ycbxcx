@@ -1,0 +1,38 @@
+<!--pages/booking/booking.wxml-->
+<view class="container">
+  <view class="time">
+    <picker mode="date" value="{{_date}}" bindchange='dateSel'>
+      <text>游玩日期</text> {{_date}}
+    </picker>
+  </view>
+  <view class="time">
+    价格：￥{{price}}
+  </view>
+  <text class="selnum">个人信息登记</text>
+  <view class="myform">
+    <view class="form-item">
+      <view class="fo-name">
+        <text>姓名</text>
+        <input placeholder='请填写真实姓名' bindinput='getName' value="{{name}}"></input>
+      </view>
+      <view class="fo-id">
+        <text>电话</text>
+        <input placeholder='请填写电话号码' bindinput='getId' value="{{ids}}" maxlength='11'></input>
+      </view>
+      <view class="fo-id">
+        <text>身份证号码</text>
+        <input placeholder='请填写身份证号码' bindinput='getCode' value="{{code}}" maxlength='18'></input>
+      </view>
+    </view>
+  </view>
+  <text class="selnum">注意事项</text>
+  <view class="dec">身份证作为兑换服务的有效凭证,请认真校对；订单生成后,只有在游玩日期前一天方可联系商家退订,游玩日期当天不可退订,游玩日期结束仍未消费视为自动放弃买家权益。如有疑问，请联系商家。</view>
+  <!-- 底部结算按钮 -->
+  <view class="foot">
+    <view class="allmoney">
+      <view class="gopay" bindtap='goPay'>
+        去下单
+      </view>
+    </view>
+  </view>
+</view>

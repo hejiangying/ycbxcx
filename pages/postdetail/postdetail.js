@@ -1,28 +1,36 @@
 // pages/postdetail/postdetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var postId = '',index='',replyId='';
+var postId = '',
+  index = '',
+  replyId = '',
+  userid = '',
+  read='',
+  formid = '';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isLike:false,//默认未点赞
-    att_status:false,//默认未关注
-    postdetail:'',//帖子详情
+    isLike: false, //默认未点赞
+    att_status: false, //默认未关注
+    postdetail: '', //帖子详情
+    userid: '', //帖子id
+    formid: '' //评论人id
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     postId = options.id
-    console.log("postid:",postId)
+    console.log("postid:", postId)
   },
   // 点赞和取消点赞
-  likeClick: function (e) {
-    var that = this, _isLike, _likenum;
+  likeClick: function(e) {
+    var that = this,
+      _isLike, _likenum;
     var llike = that.data.likenum;
     if (that.data.isLike == false) {
       _isLike = true
@@ -38,52 +46,101 @@ Page({
 
   },
 
-// 关注和取消关注
-  attenClick:function(e){
-    var that = this,status;
-    if(that.data.att_status == false){
+  // 关注和取消关注
+  attenClick: function(e) {
+    var that = this,
+      status;
+    if (that.data.att_status == false) {
       console.log("that.data.att_status:", that.data.att_status)
       status = true
-    }else{
+    } else {
       status = false
     }
     that.setData({
-      att_status:status
+      att_status: status
     })
   },
   //跳转到评论页面
-  goComment:function(e){
+  goComment: function(e) {
     var commid = e.currentTarget.dataset.commid;
     wx.navigateTo({
-      url: '../../pages/quiz/quiz?id='+commid +'&index='+1,
+      url: '../../pages/quiz/quiz?id=' + commid + '&index=' + 1,
     })
   },
   //回复
-  commClick:function(e){
-    var replyid = e.currentTarget.dataset.replyid;
-    console.log("replyid:",replyid)
-    wx.navigateTo({
-      url: '../../pages/quiz/quiz?replyid=' + replyid+'&index='+2,
-    })
+  commClick: function(e) {
+    var that = this,
+      replyid = e.currentTarget.dataset.replyid,
+      token = wx.getStorageSync('token'),
+      url = api.post.remove + '?id=' + replyid + '&token=' + token,
+      myId = wx.getStorageSync("myid");
+    console.log("replyid:", replyid)
+    console.log("userid", myId, userid, formid)
+    if (myId == userid || myId == formid) {
+      wx.showActionSheet({
+        itemList: ['评论', '删除'],
+        success: function(res) {
+          console.log("111:", res.tapIndex)
+          if (res.tapIndex === 0) {
+            wx.navigateTo({
+              url: '../../pages/quiz/quiz?replyid=' + replyid + '&index=' + 2,
+            })
+          } else if (res.tapIndex === 1) {
+            toolkit.post(url, (res) => {
+              wx.showToast({
+                title: '成功删除',
+                success: function() {
+                  that.getpostDetail()
+                }
+              })
+            })
+          }
+
+        }
+      })
+    }else{
+      wx.showActionSheet({
+        itemList: ['评论'],
+        success: function (res) {
+          console.log("111:", res.tapIndex)
+          if (res.tapIndex === 0) {
+            wx.navigateTo({
+              url: '../../pages/quiz/quiz?replyid=' + replyid + '&index=' + 2,
+            })
+          } 
+        }
+      })
+    }
+
   },
-  replayClick:function(e){
+  replayClick: function(e) {
     var commentId = e.currentTarget.dataset.reid;
     console.log("commentId:", commentId)
     wx.navigateTo({
       url: '../../pages/quiz/quiz?commentId=' + commentId + '&index=' + 3,
     })
   },
-  getpostDetail: function () {
+  getpostDetail: function() {
     var that = this,
       token = wx.getStorageSync('token'),
       id = postId,
       url = api.post.postDetail + '?id=' + id + '&token=' + token;
     toolkit.get(url, (res) => {
-      var postdetail = res.data.result
+      var postdetail = res.data.result,
+      userid = res.data.result.userId,
+        read = res.data.result.commentList; 
+        for(let i=0;i<read.length;i++){
+          console.log("评论标识：", read[i].signRead)
+        }
+      if (res.data.result.commentList != null) {
+        formid = res.data.result.commentList[0].fromUid
+      }
+      console.log("formid:", formid)
       console.log('postdetail:', postdetail)
-      // console.log(postdetail.commentList.length)
       that.setData({
-        postdetail: postdetail
+        postdetail: postdetail,
+        userid: userid,
+        formid: formid
       })
     })
 
@@ -91,14 +148,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var that = this;
     that.getpostDetail()
   },
@@ -106,35 +163,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   }
 })

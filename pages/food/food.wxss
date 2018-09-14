@@ -1,12 +1,10 @@
 /* pages/food/food.wxss */
 .fooditem{
-  width: 49%;
+  width: 47%;
   float: left;
   margin-bottom: 20rpx;
   box-shadow: 0rpx 0rpx 2rpx #ccc;
-}
-.fooditem:nth-child(2n+1){
-  margin-right: 2%;
+  margin-left: 2%;
 }
 .fooditem image{
   width: 100%;

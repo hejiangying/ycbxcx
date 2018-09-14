@@ -45,7 +45,7 @@
     <view class="form-item" wx:for="{{lists}}" wx:key="{{index}}" data-index="{{index}}"> 
       <view class="fo-name">
         <text>姓名</text>
-        <input placeholder='请填写真实姓名' bindinput='getName' value="{{item.name}}" data-index="{{index}}"></input>
+        <input placeholder='请填写真实姓名' bindinput='getName' value="{{item.name}}" data-index="{{index}}" ></input>
       </view>
       <view class="fo-id">
         <text>身份证</text>

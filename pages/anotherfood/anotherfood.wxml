@@ -72,7 +72,7 @@
       <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
       <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
     </view>
-    <view class="buybtn" bindtap="buyClick">{{status == true ? '加入购物车' : '选择商品'}}</view>
+    <view class="buybtn" bindtap="buyClick">{{status == true ? '立即预订' : '选择商品'}}</view>
   </view>
   <view class="mask" wx:if="{{status}}">
     <view class="mask-cover"></view>
@@ -94,14 +94,14 @@
         <text data-id="3" bindtap="typeClick" class="{{_type == 3 ? 'on' : ''}}">百花蜜+精美礼品</text>
         <text data-id="4" bindtap="typeClick" class="{{_type == 4 ? 'on' : ''}}">红花蜜+精美礼品</text>
       </view> -->
-      <view class="num-con">
+      <!-- <view class="num-con">
         <text>数量</text>
         <view class="numsel">
           <view class="numdes" class="{{minusStatus}}" bindtap="bindMinus">-</view>
           <input type="number" bindchange="bindManual" value="{{num}}"></input>
           <view class="normal" bindtap="bindPlus">+</view>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
 </block>

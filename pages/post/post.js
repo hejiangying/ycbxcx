@@ -3,6 +3,7 @@ const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
 var originalList = [],
   index = 0,
+  edit = false,
   uploadpic = [];
 Page({
 
@@ -122,7 +123,13 @@ Page({
           console.log("帖子内容：", res)
           wx.showToast({
             title: '帖子发布成功，审核通过后方可查看',
-            icon: 'none'
+            icon: 'none',
+            duration:2000,
+            success:(res)=>{
+              wx.navigateBack({
+                delta:'1'
+              })
+            }
           })
         } else {
           wx.showToast({

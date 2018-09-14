@@ -1,6 +1,7 @@
 //app.js
 const toolkit = require('utils/ToolKit.js');
 const api = require('utils/api.js');
+
 App({
  
   onLaunch: function (options) {
@@ -42,7 +43,9 @@ App({
             iv: user.iv
           },
           function (res) {
-            console.log("res:", res)
+            console.log("res1111:", res)
+             var myid = res.data.result.user.id
+             wx.setStorageSync('myid', myid)
              wx.setStorageSync('token', res.data.result.token)
           }
         )

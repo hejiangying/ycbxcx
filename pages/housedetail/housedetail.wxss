@@ -1,3 +1,65 @@
 /* pages/housedetail/housedetail.wxss */
 @import '../../pages/orderdetail/orderdetail.wxss';
-@import '../../pages/fooddetail/fooddetail.wxss'
+@import '../../pages/fooddetail/fooddetail.wxss';
+.housesel{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx dashed #eee;
+}
+.housesel view.l image{
+  width: 200rpx;
+  height: 160rpx;
+}
+.housesel view.l{
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx;
+  box-sizing: border-box
+}
+.housedes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+.housedes text{
+  margin-right: 10rpx;
+  margin-left: 20rpx;
+}
+.housesel view image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.housemask .type-con text{
+  width: 50%;
+  border: none;
+  margin-right: 0;
+  margin-bottom: 10rpx;
+}
+.mask-cover{
+  left:0;
+}
+.mask-con{
+  left: 0;
+}
+.footbtn{
+  left: 0;
+}
+.tab .tab-con>view{
+  text-indent: 0rpx;
+} 
+.mask-con .img-con .img-left {
+  width: 100%;
+}
+.close{
+  float: right;
+  display: block;
+}
+.mask-con .img-con {
+  display: block
+}
+.kc .price{
+  font-size: 30rpx;
+  color: #f63264;
+}

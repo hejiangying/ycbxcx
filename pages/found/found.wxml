@@ -28,7 +28,8 @@
             </view>
           </view>
         </view>
-        <view class="hot-r" bindtap="closeNews">×</view>
+        <view class="hot-r" wx:if="{{myId != item.userId}}"></view>
+        <view class="hot-r" bindtap="closeNews" wx:if="{{myId==item.userId}}" data-postid ="{{item.id}}" >×</view>
       </view>
       <text class="messagecon" bindtap="replyClick" >{{item.content}} </text>
       <view class="mesimage" bindtap="replyClick" data-id="{{item.id}}">
@@ -39,6 +40,7 @@
       <view class="mesoperation">
         <view class="operation" >
           <image src="../../image/comment.png" bindtap="replyClick" data-id="{{item.id}}"></image>
+          <view class="status" wx:if="{{myId==item.userId}}" ></view>
           <text>{{item.commentNum}}</text>
         </view>
         <view class="operation" bindtap="likeClick">

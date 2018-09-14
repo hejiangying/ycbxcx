@@ -1,0 +1,80 @@
+/* pages/kezhan/kezhan.wxss */
+.house{
+  font-size: 28rpx;
+  color: #666;
+  box-sizing: border-box;
+  padding: 0rpx 20rpx;
+  margin-bottom: 10rpx;
+}
+.houseform{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom:1rpx solid #f7f7fa;
+  padding:10rpx 20rpx;
+}
+.houseform input{
+  font-size: 26rpx;
+}
+.kong{
+  padding: 10rpx 0rpx;
+  background: #f7f7fa;
+}
+.houseform picker{
+  width: 100%;
+}
+.houseform picker view{
+  display: inline-block
+}
+.allmoney{
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 10rpx 30rpx;
+  background-color:#fff;
+  width: 100%;
+  z-index: 999;
+  align-items: center
+}
+.allmoney{
+  display: flex;
+  flex-direction: row;
+  float: left;
+}
+.allmoney .num {
+   width: 70%;
+  font-size: 28rpx;
+  color: #f63264
+}
+.allmoney .gopay{
+  display: inline-block;
+  background-color:#f63264;
+  padding: 20rpx 50rpx;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  color: #fff;
+  margin-top: 5rpx;
+}
+.num-con text{
+  float: left;
+  line-height: 52rpx;
+}
+.numsel {
+  display: flex;
+  flex-direction: row;
+  float: left
+}
+.numsel view{
+  border: 1rpx solid rgb(119, 119, 119);
+  width: 50rpx;
+  line-height: 52rpx;
+  text-align: center;
+}
+.numsel input{
+  width: 80rpx;
+  text-align: center;
+  border-top: 1rpx solid rgb(119, 119, 119);
+  border-bottom: 1rpx solid rgb(119, 119, 119);
+  font-size: 24rpx;
+  color: #999;
+}

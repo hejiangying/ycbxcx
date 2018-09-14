@@ -10,7 +10,8 @@ Page({
   data: {
     foodList:'',//食品分类
     goodsList:'',//分类情况
-    isChecked:''
+    isChecked:'',
+    allon:1,//默认全部商品
   },
 
   /**
@@ -25,16 +26,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    var that = this;
+    that.getfoodList()
+    that.getList()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    that.getfoodList()
-    that.getList()
   },
   //加载分类列表
   getfoodList:function(){
@@ -48,6 +48,13 @@ Page({
       that.setData({
         foodList:foodList
       })
+    },()=>{
+        console.log('网络出错')
+        wx.hideLoading()
+        wx.showToast({
+          title: '网络出错',
+          image: '../../image/error.png'
+        })
     })
   },
   //分类加载每一项
@@ -64,6 +71,7 @@ Page({
       that.setData({
         goodsList: goodsList,
         isChecked: catId,
+        allon:0,
         foodList: that.data.foodList
       })
     })
@@ -72,6 +80,10 @@ Page({
   allGood:function(){
     var that = this;
     that.getList()
+    that.setData({
+      isChecked: '',
+      allon:1
+    })
   },
   //加载全部商品
   getList:function(){
@@ -85,6 +97,13 @@ Page({
       that.setData({
         goodsList: goodsList
       })
+    },()=>{
+        console.log('网络出错')
+        wx.hideLoading()
+        wx.showToast({
+          title: '网络出错',
+          image: '../../image/error.png'
+        })
     })
   },
   //商品详情

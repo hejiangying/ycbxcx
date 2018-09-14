@@ -1,0 +1,5 @@
+/* pages/seeorder/seeorder.wxss */
+@import '../../pages/seeorder/seeorder.wxss';
+.idname text{
+  margin-right: 65rpx;
+}

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/anotherdetail/anotherdetail",
     "pages/houselist/houselist",
     "pages/wxis/wxis",
     "pages/custom/custom",
@@ -37,8 +38,10 @@
     "pages/coupon/coupon",
     "pages/mypost-comm/mypost-comm",
     "pages/foodclass/foodclass",
-    "pages/anotherfood/anotherfood"
-    
+    "pages/anotherfood/anotherfood",
+    "pages/kezhan/kezhan",
+    "pages/lineorder/lineorder",
+    "pages/tyyding/tyyding"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,116 +1,135 @@
 <!--pages/orderdetail/orderdetail.wxml-->
 <view class="container">
-<block>
-  <view class="tourdetail">
-    <swiper indicator-dots="true" autoplay="true" interval="3000">
-      <block wx:for="{{imgres}}" wx:key="{{index}}">
-        <swiper-item>
-          <image src="{{'http://192.168.190.243:8081'+ item}}" width="100%" height="150" />
-        </swiper-item>
-        <!-- <swiper-item>
+  <block>
+    <view class="tourdetail">
+      <swiper indicator-dots="true" autoplay="true" interval="3000">
+        <block wx:for="{{imgres}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{'http://192.168.190.243:8081'+ item}}" width="100%" height="150" />
+          </swiper-item>
+          <!-- <swiper-item>
           <image src="http://img.zcool.cn/community/01238655a521e032f8758bed2f7a40.jpg@1280w_1l_2o_100sh.jpg" width="100%" height="150" />
         </swiper-item> -->
-      </block>
-    </swiper>
-    <view class="t-name cen">
-      <text>{{goods.title}}</text>
-    </view>
-    <view class="sell-state cen">
-      <view class="t-money">
-        <text class="t-symbol">￥</text>
-        <text class="t-much">{{goods.price}}</text>
-        <text class="t-min">起</text>
-        <text>可订明日</text>
+        </block>
+      </swiper>
+      <view class="t-name cen">
+        <text>{{goods.title}}</text>
       </view>
-      <text class="sold">已售：91</text>
-    </view>
-    <view class="advantages cen">
-      <view><image src="../../image/ok.png"></image>{{goods.sellpoint}}</view>
-      <!-- <view><image src="../../image/ok.png"></image>极速发货</view>
+      <view class="sell-state cen">
+        <view class="t-money">
+          <text class="t-symbol">￥</text>
+          <text class="t-much">{{goods.price}}</text>
+          <text class="t-min">起</text>
+        </view>
+        <text class="sold">已售：91</text>
+      </view>
+      <view class="advantages cen">
+        <view>
+          <image src="../../image/ok.png"></image>{{goods.sellpoint}}</view>
+        <!-- <view><image src="../../image/ok.png"></image>极速发货</view>
       <view><image src="../../image/ok.png"></image>7天退换货</view> -->
-      <view>
-      </view>
-    </view>
-    <view class="kong"></view>
-    <view class="comments">
-      <view class="score cen">
-        <view class="satisfaction">
-          <text>4.8 </text> 分
-          <text>非常满意</text>
-        </view>
-        <view class="com-num" bindtap='commSee'>21条评论 ></view>
-      </view>
-      <view class="time cen">
-        <view>4.8</view>
-        <view class="who">
-          <text>平旷</text>
-          <text>2018-05-15</text>
+        <view>
         </view>
       </view>
-      <view class="comments-con cen">
-        很开心呀，很好玩呀，哈哈哈哈哈哈，服务不错哦，风景很美
-      </view>
-    </view>
-    <view class="kong"></view>
-    <!-- tab -->
-    <view class="tab">
-      <view class="tab-top">
-        <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">酒店信息</text>
-         <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">酒店介绍</text>
-      <!-- <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text>  -->
-      </view>
-      <view class="tab-con">
-        <view class="tab1" wx:if="{{xc==1}}">
-          <view> 联系电话：{{goods.telephone}}</view>
-          <view> 地理位置：{{goods.address}}</view>
-          <view> 店内设备：{{goods.equipment}}</view>
-          <view> 开业时间：{{goods.opentime}}</view>
-          <view> 酒店星级：{{goods.hotel_rankid}}</view>
-          
+      <view class="kong"></view>
+      <view class="comments">
+        <view class="score cen">
+          <view class="satisfaction">
+            <text>4.8 </text> 分
+            <text>非常满意</text>
+          </view>
+          <view class="com-num" bindtap='commSee'>21条评论 ></view>
         </view>
-        <view class="tab1" wx:if="{{xc==2}}">
-         {{goods.content}}
-        </view>
-      </view>
-    </view>
-  </view>
-  <!-- 底部悬浮按钮 -->
-  <view class="footbtn">
-    <view class="scbtn" bindtap="isCollect">
-      <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
-      <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
-    </view>
-    <view class="buybtn" bindtap="buyClick">{{status == true ? '立即购买' : '加入购物车'}}</view>
-  </view>
-  <view class="mask" wx:if="{{status}}">
-    <view class="mask-cover"></view>
-    <view class="mask-con">
-      <view class="img-con">
-        <view class="img-left">
-          <image src="http://pic33.photophoto.cn/20141021/0037037596597769_b.jpg"></image>
-          <view class="kc">
-            <text class="price">￥138</text>
-            <text class="num">库存114件</text>
+        <view class="time cen">
+          <view>4.8</view>
+          <view class="who">
+            <text>平旷</text>
+            <text>2018-05-15</text>
           </view>
         </view>
-        <text class="close" bindtap="closeClick">×</text>
+        <view class="comments-con cen">
+          很开心呀，很好玩呀，哈哈哈哈哈哈，服务不错哦，风景很美
+        </view>
       </view>
-      <view class="type-con">
-        <view>类型</view>
-        <text data-id="1" bindtap="typeClick" class="{{_type == 1 ? 'on' : ''}}">百花蜜+精美礼品</text>
-        <text data-id="2" bindtap="typeClick" class="{{_type == 2 ? 'on' : ''}}">红花蜜+精美礼品</text>
-        <text data-id="3" bindtap="typeClick" class="{{_type == 3 ? 'on' : ''}}">百花蜜+精美礼品</text>
-        <text data-id="4" bindtap="typeClick" class="{{_type == 4 ? 'on' : ''}}">红花蜜+精美礼品</text>
-      </view>
-      <view class="num-con">
-        <text>数量</text>
-        <view class="numsel">
-          <view class="numdes" class="{{minusStatus}}" bindtap="bindMinus">-</view>
-          <input type="number" bindchange="bindManual" value="{{num}}"></input>
-          <view class="normal" bindtap="bindPlus">+</view>
+      <view class="kong"></view>
+      <!-- tab -->
+      <view class="tab">
+        <view class="tab-top">
+          <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">住宿选择</text>
+          <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">酒店信息</text>
+        </view>
+        <view class="tab-con">
+          <view class="tab1" wx:if="{{xc==2}}">
+            <view> 联系电话：{{goods.telephone}}</view>
+            <view> 地理位置：{{goods.address}}</view>
+            <view> 店内设备：{{goods.equipment}}</view>
+            <view> 开业时间：{{goods.opentime}}</view>
+            <view> 酒店星级：{{goods.hotel_rankid}}</view>
+
+          </view>
+          <view class="tab1" wx:if="{{xc==1}}">
+            <!-- {{goods.content}} -->
+            <block wx:for="{{houselist}}" wx:key="{{index}}">
+              <view class="housesel">
+                <view class="l">
+                  <image src="../../../image/banner2.jpg"></image>
+                  <view class="housedes">
+                    <text>{{item.roomName}}</text>
+                    <view>
+                      <text>{{item.description}}</text>
+                    </view>
+                    <text>￥{{item.price}}</text>
+                  </view>
+                </view>
+                <view class="arr" bindtap="orderClick" data-houseid="{{item.id}}">
+                  <image src="../../../image/arrow.png"></image>
+                </view>
+              </view>
+            </block>
+            <!-- 底部悬浮按钮 -->
+
+            <view class="mask housemask" wx:if="{{status}}">
+                <view class="footbtn">
+                  <view class="scbtn" bindtap="isCollect">
+                    <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
+                    <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
+                  </view>
+                  <view class="buybtn" bindtap="buyClick">{{status == true ? '立即预订' : '加入购物车'}}</view>
+                </view>
+                 <view class="mask-cover"></view>
+                <view class="mask-con">
+                  <text class="close" bindtap="closeClick">×</text>
+                  <view class="img-con">
+                    <view class="img-left">
+                      <swiper indicator-dots="true" style="width:100%;" indicator-active-color="#f63264">
+                        <!-- <block wx:for="{{item.piclist}}"> -->
+                        <swiper-item style="width:100%; height:150rpx;">
+                          <image src="http://pic33.photophoto.cn/20141021/0037037596597769_b.jpg" style="width:100%;height:100%;"></image>
+                          <!-- <image src="{{item}}" class="slide-image"  /> -->
+                        </swiper-item>
+                        <!-- </block> -->
+                      </swiper>
+                    </view>
+                  </view>
+                  <view class="kc">
+                    <text class="price">￥{{houseDetail.price}}</text>
+                    <!-- <text class="num">剩余10间</text> -->
+                  </view>
+                  <view class="type-con">
+                    <view>{{houseDetail.roomName}}</view>
+                    <view>{{houseDetail.roomstyle}}</view>
+                    <view>{{houseDetail.roomstyle}}</view>
+                    <text>上网：{{houseDetail.computer}}</text>
+                    <text>卫浴：{{houseDetail.roomfloor}}</text>
+                    <text>早餐：{{houseDetail.breakfast}}</text>
+                    
+                  </view>
+                </view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
-  </view>
-</block>
+
+  </block>
 </view>

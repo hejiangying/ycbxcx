@@ -15,7 +15,7 @@
 .foodclass{
   display: flex;
   flex-direction: row;
-  margin-top:62rpx; 
+  margin-top:64rpx; 
 }
 .foodclass .food-l{
   display: flex;
@@ -32,6 +32,9 @@
 }
 .foodclass .food-l text.on{
   color: #f63264;
+}
+.onn{
+ color:#f63264;
 }
 .foodclass .fool-r{
   flex: 1;

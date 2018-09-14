@@ -1,4 +1,7 @@
 // pages/booking/booking.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
+var itemId = '',lineid='';
 Page({
 
   /**
@@ -36,7 +39,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    itemId = options.itemid
+    lineid = options.lineid
   },
   // 日期选择
   dateSel: function(e) {
@@ -248,7 +252,7 @@ Page({
           title: '请选择游玩日期',
           icon: 'none'
         })
-      }else if(status == false){
+      } else if(status == false){
         console.log("身份证信息校验未通过6666")
         wx.showToast({
           title: '身份证信息校验未通过',
@@ -260,7 +264,7 @@ Page({
           _name:[]
         })
         wx.navigateTo({
-          url: '../../pages/shopping/shopping',
+          url: '/pages/order/order',
         })
       }
     } else if (that.data.lists.length != 1) {
@@ -274,9 +278,24 @@ Page({
           _ids:[],
           _name:[]
         })
-        wx.navigateTo({
-          url: '../../pages/shopping/shopping',
+        // console.log("lists",that.data.lists.toSting())
+        var token = wx.getStorageSync('token');
+        var params = that.data.lists;
+        var url = api.order.orderline + '?lineId=' + lineid + '&playTime=' + that.data._date + '&lineNum=' +  that.data.totalCount + '&toalFee=' + that.data.totalPrice +'&token='+token;
+        toolkit.post(url,params,(res)=>{
+          wx.showToast({
+            title: '预订成功',
+            duration:1000,
+            success(){
+              wx.switchTab({
+                url: '/pages/order/order',
+              })
+            }
+          })
         })
+        // wx.navigateTo({
+        //   url: '../../pages/shopping/shopping?itemid=' + itemId,
+        // })
       }
 
     }

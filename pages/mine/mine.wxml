@@ -45,12 +45,12 @@
       <text>我的优惠券</text>
     </view>
     <view class="infoitem" bindtap='helpClick'>
-      <image src="../../image/help.png"></image>
-      <text>帮助中心</text>
+      <image src="../../image/tab33.png"></image>
+      <text>地址管理</text>
     </view>
     <view class="infoitem" bindtap="aboutClick">
       <image src="../../image/about.png"></image>
-      <text>关于我们</text>
+      <text>我的购物车</text>
     </view>
 
     

@@ -1,50 +1,63 @@
 const host = 'http://192.168.190.243:8080';
 const api = {
   apiUser: {
-    onLogin: host + '/apiUser/auth',
-    get_union: host +'/apiUser/login',
-    info: host + '/apiUser/info'
+    onLogin: host + '/apiUser/auth',//授权
+    get_union: host +'/apiUser/login',//登录
+    info: host + '/apiUser/info'//获取用户信息
   },
   appGoods:{
-    goodslist: host + '/apiGoods/list',
-    goodsdetail: host +'/apiGoods/getGoodsById',
-    goodsClass: host +'/apiGoods/getGoodsType',
-    goodsItem: host +'/apiGoods/list',
+    goodslist: host + '/apiGoods/list',//特产商品列表
+    goodsdetail: host +'/apiGoods/getGoodsById',//特产商品详情
+    goodsClass: host +'/apiGoods/getGoodsType',//特产分类
+    goodsItem: host + '/apiGoods/list',//通用商品列表
     another:host+'/apiGoodsItem/list',//通过商品接口
     anotherDetail: host +'/apiGoodsItem/getItemById',//通用商品详情
   },
   appHotel:{
-    houselist: host +'/apiHotel/list',
-    housedetail: host +'/apiHotel/getHotelById'
+    houselist: host +'/apiHotel/list',//客栈列表
+    housedetail: host +'/apiHotel/getHotelById',//客栈详情
+    order: host +'/apiOrders_hotel/create',//酒店预订
+    houseDetail: host +'/apiHotel/getRoomById'//房间详情
   },
   appLine:{
-    linelist:host + '/apiLine/list',
-    linedetail: host + '/apiLine/getLineById'
+    linelist:host + '/apiLine/list',//线路列表
+    linedetail: host + '/apiLine/getLineById'//线路详情
   },
   post:{
-    postCreat: host + '/apiArticle/create',
-    postList: host + '/apiArticle/list',
-    postDel: host + '/apiArticle/delete',
-    postDetail: host +'/apiArticle/getArticleById',
-    mypost: host +'/apiArticle/myArticle',
-    comment: host + '/apiArticle/review',
-    replycomment: host +'/apiArticle/reply'
+    postCreat: host + '/apiArticle/create',//创建帖子
+    postList: host + '/apiArticle/list',//帖子列表
+    postDel: host + '/apiArticle/delete',//删除帖子
+    postDetail: host +'/apiArticle/getArticleById',//帖子详情
+    mypost: host +'/apiArticle/myArticle',//我的帖子列表
+    comment: host + '/apiArticle/review',//评论帖子
+    replycomment: host +'/apiArticle/reply',//回复评论
+    remove: host +'/apiArticle/remove',//删除评论
+    noread: host +'/apiArticle/unread'//未读消息
   },
   img:{
-    upload: host + '/upload/uploadImg'
+    upload: host + '/upload/uploadImg'//上传图片
   },
   shop:{
-    addShop: host + '/apiCart/create',
-    shopList: host + '/apiCart/list',
-    shopInfo: host + '/apiCart/info',
-    delGoods: host +'/apiCart/delete'
+    addShop: host + '/apiCart/create',//加入购物车
+    shopList: host + '/apiCart/list',//购物车列表
+    shopInfo: host + '/apiCart/info',//
+    delGoods: host +'/apiCart/delete'//删除商品
   },
   address:{
-    addressList: host +'/apiMember_address/list',
+    addressList: host +'/apiMember_address/list',//地址列表
     addressDetail: host +'/apiMember_address/info',//地址详情
     addressDel: host +'/apiMember_address/delete',//删除地址
     addressAdd: host +'/apiMember_address/create',//添加地址
-    addressUpdate: host + '/apiMember_address/update'
+    addressUpdate: host + '/apiMember_address/update'//修改地址
+  },
+  order:{
+    orderList: host +'/apiOrders/list',//客栈列表
+    orderdetail: host +'/apiOrders/info',//客栈详情
+    orderline: host +'/apiOrders_line/create',//自助游路线
+    orderGoods: host +'/apiOrders_item/create',//通用商品预订
+    ordercancle:host + '/apiOrders/cancel',//取消订单
+    ordercomm: host +'/apiOrders/evaluate',//评价订单
+    orderDel: host +'/apiOrders/delete',//删除订单
   }
  
 }

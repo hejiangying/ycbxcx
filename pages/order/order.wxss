@@ -76,3 +76,9 @@
   margin-left: 40rpx;
   font-size: 24rpx;
 }
+.no{
+  font-size: 30rpx;
+  color: #f63264;
+  text-align: center;
+  margin: 20% auto;
+}

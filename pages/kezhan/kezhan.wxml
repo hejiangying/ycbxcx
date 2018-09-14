@@ -1,0 +1,53 @@
+<!--pages/kezhan/kezhan.wxml-->
+<view class="container">
+    <!-- <view class="num-con">
+      <text>房间数：</text>
+      <view class="numsel">
+        <view class="numdes" class="{{minusStatus}}" bindtap="bindMinus">-</view>
+        <input type="number" bindchange="bindManual" value="{{num}}"></input>
+        <view class="normal" bindtap="bindPlus">+</view>
+      </view>
+    </view> -->
+  <view class="house houseform">
+    <view>入住人：</view>
+    <input placeholder='请填写入住人' bindinput='inputper'></input>
+  </view>
+  <view class="house houseform">
+    <input placeholder='请填写身份证号码' maxlength='18' bindinput='inputid'></input>
+  </view>
+  <view class="house houseform">
+    <view>联系方式：</view>
+    <input placeholder="请填写联系方式" maxlength='11' bindinput='inputtel'></input>
+  </view>
+  <view class="house houseform">
+    <picker mode="date" value="{{date}}" end="{{date2}}" bindchange="bindDateChange">
+      <view>入住日期：</view>
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class="house houseform">
+    <picker mode="date" value="{{date2}}" start="{{date}}" end="2050-01-01" bindchange="bindDateChange2">
+      <view>离店日期：</view>
+      <view class="picker">
+        {{date2}}
+      </view>
+    </picker>
+  </view>
+  <view class="house houseform">
+    <view>总入住天数：</view>
+    <view>{{d3}} 天</view>
+  </view>
+  <!-- 底部结算按钮 -->
+  <view class="foot">
+    <view class="allmoney">
+      <view class="num">
+      ￥{{price}}
+      </view>
+      <view class="gopay" bindtap='goOrder'>
+        去下单
+      </view>
+    </view>
+  </view>
+</view>

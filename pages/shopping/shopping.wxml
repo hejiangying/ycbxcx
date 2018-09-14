@@ -1,25 +1,18 @@
 <!--pages/shopping/shopping.wxml-->
 <view class="container">
-  <!-- <view class="no-cart" wx:if="{{!isLogin}}">
-    <view class="c">
-      <image src="/images/emptyCart.png" />
-      <text>未登录</text>
-      <view class="login-btn" bindtap="goLogin">登录</view>
+  
+  <view class="cat-view" wx:if="{{cartGoods == null}}">
+    <view class="none">
+      <image src="../../../image/nn.png" />
+      <text bindtap='goClick'>去添加点什么吧!</text>
     </view>
   </view>
-  <view class="no-cart" wx:if="{{cartGoods.length == 0 && isLogin}}">
-    <view class="c">
-      <image src="/images/emptyCart.png" />
-      <text>去添加点什么吧</text>
-    </view>
-  </view> -->
-  <!-- <view class="cart-view" wx:if="{{cartGoods.length > 0 && isLogin}}"> -->
   <view class="cart-view" wx:if="{{cartGoods.length > 0}}">
     <view class="list">
       <view class="group-item">
         <view class="goods">
           <view class="item edit" wx:for="{{cartGoods}}" wx:key="{{item.id}}" wx:for-index="index">
-             <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-index="{{index}}" data-id="{{item.id}}"></view>
+            <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-index="{{index}}" data-id="{{item.id}}"></view>
             <view class="cart-goods">
               <image class="img" src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
               <view class="info">
@@ -28,8 +21,11 @@
                 </view>
                 <view class="attr">{{item.spec}}</view>
                 <view class="b">
-                  <text class="price">￥{{item.goodsPrice}}</text>
-                  <text class="number">X {{item.goodsNumber}}</text>
+                  <view class="jia">
+                    <text class="price">￥{{item.goodsPrice}}</text>
+                    <text class="number">X {{item.goodsNumber}}</text>
+                  </view>
+                  <view class="del" data-goodsid="{{item.id}}" bindtap="delGoods">删除</view>
                 </view>
               </view>
             </view>
@@ -37,10 +33,9 @@
         </view>
       </view>
     </view>
-    <!-- <view class="cart-bottom" wx:if="{{isLogin}}"> -->
     <view class="cart-bottom">
       <view class="checkbox {{checkedAllStatus ? 'checked' : ''}}" bindtap="checkedAll">
-      {{checkedAllStatus ? '已选(' : '全选'}}{{checkedGoodsCount}}{{checkedAllStatus ? ')' : ''}}
+        {{checkedAllStatus ? '已选(' : '全选'}}   {{checkedGoodsCount}}   {{checkedAllStatus ? ')' : ''}}
       </view>
       <view class="total">{{!isEditCart ? '￥'+checkedGoodsAmount : ''}}</view>
       <view class="checkout" hover-class="active" bindtap="checkoutOrder" wx:if="{{!isEditCart}}">下单</view>

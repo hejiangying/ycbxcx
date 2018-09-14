@@ -53,7 +53,7 @@ Page({
           content: ''
         })
         wx.showToast({
-          title: '评论成功',
+          title: '评论成功,待审查',
           icon:'none',
           duration:1000,
           success:function(res){

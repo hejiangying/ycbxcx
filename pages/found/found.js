@@ -12,6 +12,7 @@ Page({
     isLike: false,//默认未点赞
     likenum:1,//点赞人数
     postList:[],//帖子列表
+    myId:''
 
   },
 
@@ -70,8 +71,26 @@ Page({
     })
 
   },
-  closeNews:function(){
-    var that = this;
+  closeNews(e){
+    var that = this,
+    postid = e.currentTarget.dataset.postid,
+    token=wx.getStorageSync('token'),
+    url = api.post.postDel+'?id='+postid+'&token='+token;
+    wx.showModal({
+      title:'提示',
+      content:'是否确定删除该帖子',
+      confirmColor:'#f63264',
+      success:(res)=>{
+        if(res.confirm){
+          console.log('用户点击确定')
+          toolkit.post(url,(res)=>{
+            that.getpostList()
+          })
+        } else if (res.cancel){
+          console.log('用户点击取消')
+        }
+      }
+    })
     
   },
   //获取帖子列表
@@ -81,11 +100,13 @@ Page({
         token: wx.getStorageSync('token')
       },
       url = api.post.postList;
+      var myid = wx.getStorageSync('myid')
     toolkit.get(url, params, (res) => {
       console.log("帖子列表：", res)
       var postList = res.data.result.content
       that.setData({
         postList: postList,
+        myId:myid
       })
     })
 
