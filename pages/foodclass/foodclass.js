@@ -48,13 +48,6 @@ Page({
       that.setData({
         foodList:foodList
       })
-    },()=>{
-        console.log('网络出错')
-        wx.hideLoading()
-        wx.showToast({
-          title: '网络出错',
-          image: '../../image/error.png'
-        })
     })
   },
   //分类加载每一项
@@ -62,11 +55,7 @@ Page({
     var that = this;
     var catId = e.currentTarget.dataset.id,
       url = api.appGoods.goodsItem + '?catId=' + catId;
-      wx.showLoading({
-        title: '数据加载中...',
-      })
     toolkit.get(url,(res)=>{
-      wx.hideLoading()
       var goodsList = res.data.result.content
       that.setData({
         goodsList: goodsList,
@@ -97,13 +86,6 @@ Page({
       that.setData({
         goodsList: goodsList
       })
-    },()=>{
-        console.log('网络出错')
-        wx.hideLoading()
-        wx.showToast({
-          title: '网络出错',
-          image: '../../image/error.png'
-        })
     })
   },
   //商品详情

@@ -7,6 +7,9 @@
   padding:0rpx 20rpx;
   margin-bottom: 14rpx;
 }
+.con view.title{
+  margin-top: 10rpx;
+}
 .con view text{
   display: block;
   color: #f63264;

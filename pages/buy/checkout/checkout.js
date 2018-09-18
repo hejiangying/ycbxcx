@@ -1,4 +1,7 @@
 // pages/shopping/checkout/checkout.js
+const toolkit = require('../../../utils/ToolKit.js');
+const api = require('../../../utils/api.js');
+var goodsid = '', totalPrice=0;
 Page({
 
   /**
@@ -10,34 +13,38 @@ Page({
     couponName: '',
     couponCount: 1,
     couponPrice: '',
-    goodsTotalPrice: 1.00,
-    freightPrice: 0.00,
-    checkedGoodsList: [
-      // {
-      //   id: '1',
-      //   picUrl: 'http://img4.imgtn.bdimg.com/it/u=3381060308,3456742770&fm=27&gp=0.jpg',
-      //   name: '双廊跟团一日游',
-      //   specValue: '2人',
-      //   number: 1,
-      //   retailPrice: '1.00',
-      //   originPrice: '9599.00'
-      // },
-    ],
-    actualPrice: 1.00
+    checkedGoodsList: [],
+    totalPrice:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("opyions",options)
+    goodsid = options.ids
     wx.setNavigationBarTitle({
       title: '确认订单'
     })
-    this.setData({
-      goodsTotalPrice: this.data.goodsTotalPrice.toFixed(2),
-      freightPrice: this.data.freightPrice.toFixed(2),
-      actualPrice: this.data.actualPrice.toFixed(2),
-    })
+  },
+  //获取购买数据
+  getGooddetail(){
+    var that = this,
+    token = wx.getStorageSync('token'),
+      url = api.shop.shopInfo + '?token=' + token + '&ids=' + goodsid;
+      toolkit.post(url,(res)=>{
+        totalPrice=0;
+        var checkedGoodsList = res.data.result
+        for (var i = 0; i < checkedGoodsList.length; i++) {
+          console.log(i, checkedGoodsList[i].goodsPrice, checkedGoodsList[i].goodsNumber)
+          totalPrice += (checkedGoodsList[i].goodsPrice * 100 * checkedGoodsList[i].goodsNumber) / 100
+          console.log(i, totalPrice)
+        }
+        that.setData({
+          checkedGoodsList: checkedGoodsList,
+          totalPrice: totalPrice
+        })
+      })
   },
 
   /**
@@ -51,7 +58,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.getGooddetail()
   },
 
   /**
@@ -90,48 +98,50 @@ Page({
   },
   chooseAddress: function () {
     let checkedAddressId = this.data.checkedAddress.id
+    console.log("checkedAddressId0000", checkedAddressId)
     let url = ''
     if (checkedAddressId) {
-      // url = '/pages/buy/address/address?addressId=' + checkedAddressId
       url = '/pages/buy/address/address'
     }else {
-      // url = '/pages/buy/address/address?addressId='
       url = '/pages/buy/address/address'
     }
+    console.log("checkedAddressId", checkedAddressId)
     wx.navigateTo({
       url: url,
     })
   },
-  chooseCoupon: function () {
-    wx.navigateTo({
-      url: '/pages/buy/coupon/coupon?couponId=' + this.data.couponId,
-    })
-  },
   submitOrder: function () {
-    wx.showModal({
-      title: '提示',
-      content: '此处需调用微信支付接口',
-      showCancel: false,
-      confirmColor: '#b4282d',
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          wx.redirectTo({
-            url: '/pages/payResult/payResult?status=true',
-          })
-        }
-      }
-    })
-    wx.requestPayment({
-      'timeStamp': '',
-      'nonceStr': '',
-      'package': '',
-      'signType': 'MD5',
-      'paySign': '',
-      'success': function (res) {
-      },
-      'fail': function (res) {
-      }
-    })
+    var addressId=wx.getStorageSync('addressId'),
+    token=wx.getStorageSync('token'),
+      url = api.pay.payall + '?ids=' + goodsid + '&token=' + token + '&addressId=' + addressId +'&paymentType='+1;
+      toolkit.post(url,(res)=>{
+        
+      })
+    // console.log("checkedAddressId333", this.data.couponId)
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '此处需调用微信支付接口',
+    //   showCancel: false,
+    //   confirmColor: '#b4282d',
+    //   success: function (res) {
+    //     if (res.confirm) {
+    //       console.log('用户点击确定')
+    //       wx.redirectTo({
+    //         url: '/pages/payResult/payResult?status=true',
+    //       })
+    //     }
+    //   }
+    // })
+    // wx.requestPayment({
+    //   'timeStamp': '',
+    //   'nonceStr': '',
+    //   'package': '',
+    //   'signType': 'MD5',
+    //   'paySign': '',
+    //   'success': function (res) {
+    //   },
+    //   'fail': function (res) {
+    //   }
+    // })
   }
 })

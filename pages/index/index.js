@@ -2,6 +2,9 @@ const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
 Page({
   data: {
+    lineList:'',
+    goodsList:'',
+    hotelList:''
   },
   onLoad: function () {
     var that = this;
@@ -26,6 +29,21 @@ Page({
   },
   onShow:function(){
     var that = this;
+    that.gethome()
+  },
+  gethome(){
+    var that = this,
+    url=api.home.home;
+    toolkit.get(url,(res)=>{
+      var goodsList = res.data.result.goodsList
+      var hotelList = res.data.result.hotelList
+      var lineList = res.data.result.lineList
+      that.setData({
+        goodsList: goodsList,
+        hotelList: hotelList,
+        lineList: lineList
+      })
+    })
   },
  
   // 跳转搜索页

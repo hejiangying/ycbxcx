@@ -4,7 +4,7 @@
     <view class="address-item" bindtap="chooseAddress" wx:if="{{checkedAddress.id}}">
       <view class="l">
         <text class="name">{{checkedAddress.consignee}}</text>
-        <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
+        <text class="default" wx:if="{{checkedAddress.isDefault}}">常用</text>
       </view>
       <view class="m">
         <text class="mobile">{{checkedAddress.mobile}}</text>
@@ -24,7 +24,7 @@
     </view>
   </view>
 
-  <view class="order-box">
+  <!-- <view class="order-box">
     <view class="zan-cell zan-item" bindtap="chooseCoupon">
       <view class="zan-cell__bd">优惠券：{{couponId === '' ? '未选择' : couponName }}</view>
       <view class="zan-cell__ft arrow">
@@ -44,27 +44,27 @@
       <view class="zan-cell__bd">优惠券</view>
       <view class="zan-cell__ft">-￥{{couponPrice}}</view>
     </view>
-  </view>
+    
+  </view> -->
 
   <view class="goods-items">
     <view class="item" wx:for="{{checkedGoodsList}}" wx:key="{{item.id}}">
       <view class="img">
-        <image src="{{item.picUrl}}"></image>
+        <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
       </view>
       <view class="info">
         <view class="t">
-          <text class="name">{{item.name}}</text>
-          <text class="number">x{{item.number}}</text>
+          <text class="name">{{item.goodsName}} {{addressId}}</text>
+          <text class="number">x{{item.goodsNumber}}</text>
         </view>
         <view class="m">{{item.specValue}}</view>
-        <view class="b">￥{{item.retailPrice}}</view>
-        <view class="originPrice">￥{{item.originPrice}}</view>
+        <view class="b">￥{{item.goodsPrice}}</view>
       </view>
     </view>
   </view>
 
   <view class="order-total">
-    <view class="l">实付: ￥{{actualPrice}}</view>
+    <view class="l">实付: ￥{{totalPrice}}</view>
     <view class="r" hover-class="active" bindtap="submitOrder">去付款</view>
   </view>
 </view>

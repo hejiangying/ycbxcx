@@ -62,22 +62,24 @@
     </view>
   </view>
   <view class="active_list">
+  <block wx:for="{{lineList}}" wx:key="{{index}}">
     <view class="active_item" bindtap='goBuy'>
       <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg"></image>
       <view class="active_name">
-        <text class="name">活动名称</text>
-        <text class="active_status">￥99</text>
+        <text class="name">{{item.title}}</text>
+        <text class="active_status">￥{{item.price}}</text>
       </view>
-      <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
+      <view class="active_info">{{item.lineContent}}</view>
     </view>
-    <view class="active_item">
+    </block>
+    <!-- <view class="active_item">
       <image src="../../image/techan.jpg"></image>
       <view class="active_name">
         <text class="name">活动名称</text>
         <text class="active_status">￥99</text>
       </view>
       <view class="active_info">这是很有意思的活动哦哈哈哈哈</view>
-    </view>
+    </view> -->
   </view>
   <!-- 美食推荐 -->
   <view class="active_recruiting">

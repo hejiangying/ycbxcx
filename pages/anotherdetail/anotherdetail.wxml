@@ -24,6 +24,6 @@
     <view>身份证号码：{{orderdetail.linkcode}}</view>
     <view>消费日期：{{orderdetail.startPlay}}</view>
     <view>订单号：{{orderdetail.orderSn}}</view>
-    <view class="info"><text>商家介绍：</text> 哈哈哈哈哈这是商家详情和介绍，比如今天你在这里可以吃很多好吃的,还能划船,打cs,刨幺呀,哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈还好还好,是不是很开心呢！</view>
+    <view class="info"><text>商家介绍：</text> {{orderdetail.itemDesc}}</view>
   </view>
 </view>

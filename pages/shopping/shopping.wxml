@@ -12,12 +12,12 @@
       <view class="group-item">
         <view class="goods">
           <view class="item edit" wx:for="{{cartGoods}}" wx:key="{{item.id}}" wx:for-index="index">
-            <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-index="{{index}}" data-id="{{item.id}}"></view>
             <view class="cart-goods">
               <image class="img" src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
               <view class="info">
                 <view class="t">
                   <text class="name">{{item.goodsName}}</text>
+                  <text class="del" data-goodsid="{{item.id}}" bindtap="delGoods">删除</text>
                 </view>
                 <view class="attr">{{item.spec}}</view>
                 <view class="b">
@@ -25,7 +25,7 @@
                     <text class="price">￥{{item.goodsPrice}}</text>
                     <text class="number">X {{item.goodsNumber}}</text>
                   </view>
-                  <view class="del" data-goodsid="{{item.id}}" bindtap="delGoods">删除</view>
+                  <view class="jie" data-goodsid="{{item.id}}" bindtap="jieClick">结算</view>
                 </view>
               </view>
             </view>
@@ -34,11 +34,11 @@
       </view>
     </view>
     <view class="cart-bottom">
-      <view class="checkbox {{checkedAllStatus ? 'checked' : ''}}" bindtap="checkedAll">
-        {{checkedAllStatus ? '已选(' : '全选'}}   {{checkedGoodsCount}}   {{checkedAllStatus ? ')' : ''}}
+       <view bindtap="checkedAll" class="sel">
+       已选 (  {{checkedGoodsCount}} )
       </view>
-      <view class="total">{{!isEditCart ? '￥'+checkedGoodsAmount : ''}}</view>
-      <view class="checkout" hover-class="active" bindtap="checkoutOrder" wx:if="{{!isEditCart}}">下单</view>
+      <view class="total">{{ '￥'+totalPrice }}</view>
+       <view class="checkout" hover-class="active" bindtap="checkoutOrder"  >一键结算</view>
     </view>
   </view>
 

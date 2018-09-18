@@ -1,5 +1,8 @@
 const host = 'http://192.168.190.243:8080';
 const api = {
+  home:{
+    home: host +'/apiUser/home',//首页
+  },
   apiUser: {
     onLogin: host + '/apiUser/auth',//授权
     get_union: host +'/apiUser/login',//登录
@@ -40,7 +43,7 @@ const api = {
   shop:{
     addShop: host + '/apiCart/create',//加入购物车
     shopList: host + '/apiCart/list',//购物车列表
-    shopInfo: host + '/apiCart/info',//
+    shopInfo: host + '/apiCart/info',//购物车商品详情
     delGoods: host +'/apiCart/delete'//删除商品
   },
   address:{
@@ -58,6 +61,9 @@ const api = {
     ordercancle:host + '/apiOrders/cancel',//取消订单
     ordercomm: host +'/apiOrders/evaluate',//评价订单
     orderDel: host +'/apiOrders/delete',//删除订单
+  },
+  pay:{
+    payall: host +'/apiCart/account',//结算所有
   }
  
 }

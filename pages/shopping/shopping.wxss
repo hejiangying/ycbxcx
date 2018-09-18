@@ -101,8 +101,9 @@ page {
 
 .cart-view .item .cart-goods {
   height: 164rpx;
-  width: 672rpx;
-  margin: 10rpx 0 0rpx 90rpx;
+  width: 100%;
+  padding: 10rpx 20rpx 0rpx 20rpx;
+  box-sizing: border-box;
   /* border-bottom: 1px solid #f4f4f4; */
 }
 
@@ -117,7 +118,6 @@ page {
 .cart-view .item .info {
   height: 125rpx;
   padding-top: 18rpx;
-  width: 635rpx;
 }
 
 .cart-view .item .t {
@@ -126,6 +126,9 @@ page {
   font-size: 25rpx;
   color: #666;
   overflow: hidden;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .cart-view .item .name {
@@ -234,7 +237,15 @@ page {
   width: 100%;
   background: #fff;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   color: #666;
+}
+.cart-bottom view.sel{
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
 }
 
 .cart-bottom .checkbox {
@@ -254,9 +265,6 @@ page {
 
 
 .cart-bottom .total {
-  height: 34rpx;
-  flex: 1;
-  padding: 33rpx 10rpx;
   font-size: 32rpx;
   color: #f63264;
 }
@@ -271,7 +279,7 @@ page {
 
 .cart-bottom .checkout {
   height: 100rpx;
-  width: 210rpx;
+  width: 55%;
   text-align: center;
   line-height: 100rpx;
   font-size: 29rpx;
@@ -301,11 +309,12 @@ page {
   flex-direction: row;
   align-items: center;
 }
-.info .b .del{
+.info .b .jie{
   font-size: 24rpx;
-  color: #999;
-  border: 1rpx solid #999;
-  padding: 5rpx;
+  color: #f63264;
+  border: 1rpx solid #f63264;
+  padding: 5rpx 8rpx;
+  border-radius: 12rpx;
 }
 .cat-view .none image{
   width: 200rpx;

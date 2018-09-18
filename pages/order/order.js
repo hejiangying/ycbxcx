@@ -2,7 +2,7 @@
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
 var _order = '',
-  recType = '',
+  recType = [],
   status = '';
 Page({
 
@@ -13,6 +13,11 @@ Page({
     ortp: 1,
     orderList: '',
     orderstatus: '',
+    name1:'',
+    name2: '',
+    name3: '',
+    name4:'',
+    recType:[],
   },
   // 订单状态的选择
   orderSelect: function(e) {
@@ -117,8 +122,35 @@ Page({
     toolkit.post(url, (res) => {
       wx.hideLoading()
       var orderlist = res.data.result.content
+      for(var i=0;i<orderlist.length;i++){
+        var recType = orderlist[i].recType;
+        if(orderlist[i].recType == 1){
+          var name1 = orderlist[i].ordersHotel.goodsName
+          console.log("rectype1:", orderlist[i].recType)
+          console.log("rectype555：", name1)
+        } else if (orderlist[i].recType == 2) {
+          var name2 = orderlist[i].ordersLine.goodsName
+          console.log("rectype2:", orderlist[i].recType)
+          console.log("rectype555：", name2)
+        } else if (orderlist[i].recType == 3) {
+          var name3 = orderlist[i].ordersItem.goodsName
+          console.log("rectype3:", orderlist[i].recType)
+          console.log("rectype555：", name3)
+        }else if (orderlist[i].recType == 0) {
+          var name4 = orderlist[i].ordersGoods.goodsName
+          console.log("rectype3:", orderlist[i].recType)
+          console.log("rectype555：", name4)
+        }
+        that.data.recType.push(recType)
+        console.log("666:", that.data.recType)
+      }
       that.setData({
         orderList: orderlist,
+        name1: name1,
+        name2: name2,
+        name3: name3,
+        name4:name4,
+        recType: that.data.recType
       })
     })
   },

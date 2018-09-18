@@ -8,7 +8,8 @@ Page({
    */
   data: {
     selectId: '',
-    addressList: []
+    addressList: [],
+    addressId:''
   },
 
   /**
@@ -98,11 +99,15 @@ Page({
     })
   },
   chooseAddress: function (e) {
+    console.log("eeeee",e)
+    let addressId = e.currentTarget.dataset.address.id
     let address = e.currentTarget.dataset.address
-
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];  //上一个页面
-
+    wx.setStorage({
+      key: 'addressId',
+      data: e.currentTarget.dataset.address.id,
+    })
     //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
     prevPage.setData({
       checkedAddress: address
