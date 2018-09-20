@@ -1,4 +1,7 @@
 // pages/myattention/myattention.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
+var attList = '';
 Page({
 
   /**
@@ -11,13 +14,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  attenClick:function(){
-    var that = this;
-    // console.log("点击控制关注")
-    var status = that.data.status
-    that.setData({
-      status:!status
+  
+  getattList(){
+    var that = this, token = wx.getStorageSync('token'), url = api.attention.myattention+'?token='+token+'&type='+0;
+    toolkit.get(url,(res)=>{
+      var attenList = res.data.result;
+      attList = attenList;
+      that.setData({
+        attenList:attenList
+      })
     })
+
+  },
+  //取消关注
+  attClick: function (e) {
+    var that = this, token = wx.getStorageSync('token'), id=e.currentTarget.dataset.id;
+    console.log("id", id,attList)
+    for (let i = 0; i < attList.length; i++) {
+      if (attList[i].followId == id) {
+        var url1 = api.attention.removeatten + '?token=' + token + '&followId=' + id;
+        toolkit.post(url1, (res) => {
+          that.getattList()
+        })
+      }
+    }
   },
   onLoad: function (options) {
   
@@ -34,7 +54,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    that.getattList()
   },
 
   /**

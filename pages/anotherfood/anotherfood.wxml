@@ -56,21 +56,24 @@
     <view class="tab">
       <view class="tab-top">
         <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">商品详情</text>
-        <!-- <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">费用说明</text>
-      <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text> -->
+        <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">商家地址</text>
+        <!-- <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text> -->
       </view>
       <view class="tab-con">
         <view class="tab1" wx:if="{{xc==1}}">
          {{goods.itemDesc}}
+        </view>
+        <view class="tab1" wx:if="{{xc==2}}">
+        商家地址
         </view>
       </view>
     </view>
   </view>
   <!-- 底部悬浮按钮 -->
   <view class="footbtn">
-    <view class="scbtn" bindtap="isCollect">
-      <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
-      <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
+    <view class="scbtn" bindtap="isCollect" data-id="{{goods.id}}">
+      <image src="{{collectstatus ==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
+      <text>{{collectstatus ==  1 ? '收藏成功' : '点击收藏'}}</text>
     </view>
     <view class="buybtn" bindtap="buyClick">{{status == true ? '立即预订' : '选择商品'}}</view>
   </view>
@@ -79,7 +82,7 @@
     <view class="mask-con">
       <view class="img-con">
         <view class="img-left">
-          <image src="{{'http://192.168.190.243:8081'+ pathList[0]}}"></image>
+          <image src="{{'http://192.168.190.243:8081'+ goods.imgList[0]}}"></image>
           <view class="kc">
             <text class="price">￥{{(goods.itemPrice*100)*num/100}}</text>
             <text class="num">库存{{goods.goodsNumber}}件</text>

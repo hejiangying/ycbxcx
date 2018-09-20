@@ -5,7 +5,8 @@ const api = require('../..//utils/api.js');
 var originalList = [],
   index = 0,
   edit = false,
-  uploadpic = [];
+  uploadpic = [],
+  goodsid='';
 Page({
 
   /**
@@ -35,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var goodsid= options.id
     let goodList = this.data.goodsList
     for (let i = 0; i < goodList.length; i++) {
       $wuxRater.init(goodList[i].id, {
@@ -116,6 +118,22 @@ Page({
     }
     that.setData({
       imglist: that.data.imglist
+    })
+  },
+  getDetail() {
+    wx.showLoading({
+      title: '正在加载...'
+    })
+    var that = this,
+      token = wx.getStorageSync('token'),
+      url = api.order.orderdetail + '?id=' + goodsid + "&token=" + token;
+    toolkit.post(url, (res) => {
+      wx.hideLoading()
+      var orderdetail = res.data.result
+      console.log(res)
+      that.setData({
+        orderdetail: orderdetail
+      })
     })
   },
 

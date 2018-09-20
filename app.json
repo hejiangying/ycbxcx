@@ -24,7 +24,7 @@
     "pages/found/found",
     "pages/post/post",
     "pages/about/about",
-    "pages/help/help",
+    "pages/collection/collection",
     "pages/moreroute/moreroute",
     "pages/quiz/quiz",
     "pages/buy/checkout/checkout",
@@ -41,7 +41,8 @@
     "pages/anotherfood/anotherfood",
     "pages/kezhan/kezhan",
     "pages/lineorder/lineorder",
-    "pages/tyyding/tyyding"
+    "pages/tyyding/tyyding",
+    "pages/specialty/specialty"
   ],
   "window": {
     "backgroundTextStyle": "light",

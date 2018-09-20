@@ -39,11 +39,11 @@ Page({
   },
   //获取商品详情
   getgoodsdetail: function() {
-    var that = this;
+    var that = this,token=wx.getStorageSync('token');
     wx.showLoading({
       title: '正在加载...',
     })
-    var url = api.appHotel.housedetail + '?id=' + goodsId;
+    var url = api.appHotel.housedetail + '?id=' + goodsId+'&token='+token;
     toolkit.get(url, function(res) {
       var goods = res.data.result.hotel
       var houselist = res.data.result.hotelRoomList

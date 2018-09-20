@@ -1,7 +1,7 @@
 // pages/orderdetail/orderdetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var lineid = '';//线路id
+var lineid = '', collectStatus = '';//线路id
 Page({
 
   /**
@@ -9,7 +9,7 @@ Page({
    */
   data: {
     xc:1,//默认选择行程介绍
-    iscol:false,//默认不收藏该商品
+    collectstatus:'',//默认不收藏该商品
     linedetail:'',//线路详情
   },
 
@@ -28,18 +28,7 @@ Page({
       xc:_xc
     })
   },
-  // 是否收藏该商品
-  isCollect:function(){
-    var that = this ,_iscol ="";
-    if(that.data.iscol == false){
-      _iscol = true
-    }else{
-      _iscol = false
-    }
-    that.setData({
-      iscol:_iscol
-    })
-  },
+  
 // 查看评论
   commSee:function(){
     wx.navigateTo({
@@ -53,16 +42,46 @@ Page({
     })
   },
   getLinedetail:function(){
-    var that = this;
+    var that = this,token=wx.getStorageSync('token');
     console.log('222:', lineid)
-    var url = api.appLine.linedetail + '?id=' + lineid;
-    toolkit.get(url , function(res){
+    var url = api.appLine.linedetail + '?id=' + lineid+'&token='+token;
+    toolkit.get(url ,(res)=>{
       console.log("线路详情：",res)
-      var linedetail = res.data.result
+      var linedetail = res.data.result.line;
+        collectStatus = res.data.result.collectStatus;
+        console.log("收藏：",collectStatus)
       that.setData({
-        linedetail:linedetail
+        linedetail:linedetail,
+        collectstatus: collectStatus
       })
     })
+  },
+  // 是否收藏该商品
+  isCollect: function (e) {
+    var that = this, productId=e.currentTarget.dataset.id,token=wx.getStorageSync('token'),collentUrl=that.route;
+    if (collectStatus ==0){
+      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.linedetail.price + '&productName=' + that.data.linedetail.title + '&collentUrl=' + collentUrl;
+      toolkit.post(url,(res)=>{
+        wx.showToast({
+          title: '收藏成功',
+        })
+        that.setData({
+          collectstatus: 1
+        })
+      })
+      collectStatus =1
+    } else if (collectStatus == 1){
+      var reurl = api.collection.remove + '?productId=' + productId + '&token=' + token;
+      toolkit.post(reurl,(res)=>{
+        wx.showToast({
+          title: '取消成功',
+        })
+        that.setData({
+          collectstatus: 0
+        })
+      })
+      collectStatus = 0
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

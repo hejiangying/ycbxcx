@@ -64,6 +64,19 @@ const api = {
   },
   pay:{
     payall: host +'/apiCart/account',//结算所有
+  },
+  collection:{
+    save: host +'/apiCollection/create',//收藏商品
+    remove: host +'/apiCollection/remove',//取消收藏
+    mycollection: host +'/apiCollection/list',//我的收藏
+  },
+  attention:{
+    addatten:host+'/apiUser/follow',//关注
+    removeatten: host +'/apiUser/remove',//取消关注
+    myattention: host +'/apiUser/myFollow',//我的关注和我的粉丝
+  },
+  buy:{
+    buy: host +'/apiOrders/payment',//支付
   }
  
 }

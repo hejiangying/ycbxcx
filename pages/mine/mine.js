@@ -64,6 +64,12 @@ Page({
       url: '../../pages/coupon/coupon',
     })
   },
+  //跳转到收藏页面
+  scClick(){
+    wx.navigateTo({
+      url: '../../pages/collection/collection',
+    })
+  },
   // 跳转到我的购物车
   aboutClick:function(){
     wx.navigateTo({

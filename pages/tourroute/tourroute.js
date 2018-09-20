@@ -31,7 +31,7 @@ Page({
     var that = this;
     var lineid = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/orderdetail/orderdetail?id=' + lineid +'&itemId=' +itemId,
+      url: '../../pages/orderdetail/orderdetail?id=' + lineid,
     })
   },
   getLine:function(){

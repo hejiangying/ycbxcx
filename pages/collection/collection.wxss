@@ -1,0 +1,8 @@
+/* pages/cart/cart.wxss */
+@import '../../pages/shopping/shopping.wxss';
+.cart-view .item .info {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top:24rpx;
+}

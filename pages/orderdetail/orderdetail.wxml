@@ -71,9 +71,9 @@
   </view>
   <!-- 底部悬浮按钮 -->
   <view class="footbtn">
-    <view class="scbtn" bindtap="isCollect">
-      <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}" ></image>
-      <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
+    <view class="scbtn" bindtap="isCollect" data-id="{{linedetail.id}}">
+      <image src="{{collectstatus ==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}" ></image>
+      <text>{{collectstatus ==  1 ? '收藏成功' : '点击收藏'}}</text>
     </view>
     <view class="buybtn" bindtap="buyClick">立即购买</view>
   </view>

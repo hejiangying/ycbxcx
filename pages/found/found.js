@@ -1,6 +1,7 @@
 // pages/found/found.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
+var needLoadMore = false, currentPage=1,totalpage='';//是否需要上拉加载数据,当前页,总页数，
 Page({
 
   /**
@@ -103,7 +104,13 @@ Page({
       var myid = wx.getStorageSync('myid')
     toolkit.get(url, params, (res) => {
       console.log("帖子列表：", res)
-      var postList = res.data.result.content
+      var postList = res.data.result.content;
+      totalpage = res.data.result.totalPages
+      if(postList.length >9){
+        needLoadMore = true
+      }else{
+        needLoadMore = false
+      }
       that.setData({
         postList: postList,
         myId:myid
@@ -152,7 +159,23 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    var that = this;
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    if (needLoadMore = true && currentPage != totalpage){
+      currentPage++
+      that.getpostList()
+      wx.hideLoading();
+    }else{
+      wx.showLoading({
+        title:'没有更多了',
+        icon:'none',
+        success:function(){
+          wx.hideLoading();
+        }
+      })
+    }
   },
 
   /**

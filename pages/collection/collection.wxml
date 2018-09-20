@@ -1,0 +1,34 @@
+<!--pages/shopping/shopping.wxml-->
+<view class="container">
+  
+  <view class="cat-view" wx:if="{{goods.length==0}}">
+    <view class="none">
+      <image src="../../../image/nn.png" />
+      <text bindtap='goClick'>去添加点什么吧!</text>
+    </view>
+  </view>
+  <view class="cart-view" wx:if="{{goods.length>0}}">
+    <view class="list">
+      <view class="group-item" wx:for="{{goods}}" wx:key="{{index}}" >
+        <view class="goods" data-id='{{item.productId}}' bindtap='goDetail'>
+          <view class="item edit">
+            <view class="cart-goods">
+              <image class="img" src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
+              <view class="info">
+                <view class="t">
+                  <text class="name">{{item.productName}}</text>
+                </view>
+                <view class="b">
+                  <view class="jia">
+                    <text class="price">￥{{item.price}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

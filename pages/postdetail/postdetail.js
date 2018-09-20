@@ -4,9 +4,10 @@ const api = require('../..//utils/api.js');
 var postId = '',
   index = '',
   replyId = '',
-  userid = '',
+  userId = '',
   read='',
-  formid = '';
+  formid = '',
+  attenStatus = '';
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
    */
   data: {
     isLike: false, //默认未点赞
-    att_status: false, //默认未关注
+    att_status: '', //关注状态
     postdetail: '', //帖子详情
     userid: '', //帖子id
     formid: '' //评论人id
@@ -44,21 +45,6 @@ Page({
       likenum: _likenum
     })
 
-  },
-
-  // 关注和取消关注
-  attenClick: function(e) {
-    var that = this,
-      status;
-    if (that.data.att_status == false) {
-      console.log("that.data.att_status:", that.data.att_status)
-      status = true
-    } else {
-      status = false
-    }
-    that.setData({
-      att_status: status
-    })
   },
   //跳转到评论页面
   goComment: function(e) {
@@ -120,30 +106,56 @@ Page({
       url: '../../pages/quiz/quiz?commentId=' + commentId + '&index=' + 3,
     })
   },
+  //帖子详情
   getpostDetail: function() {
     var that = this,
       token = wx.getStorageSync('token'),
       id = postId,
       url = api.post.postDetail + '?id=' + id + '&token=' + token;
     toolkit.get(url, (res) => {
-      var postdetail = res.data.result,
-      userid = res.data.result.userId,
-        read = res.data.result.commentList; 
-        for(let i=0;i<read.length;i++){
+      var postdetail = res.data.result.article,
+        userid = res.data.result.article.userId,
+        read = res.data.result.article.commentList; 
+      attenStatus = res.data.result.followStatus;
+      userId = userid;
+      if (res.data.result.commentList != null) {
+        for (let i = 0; i < read.length; i++) {
           console.log("评论标识：", read[i].signRead)
         }
-      if (res.data.result.commentList != null) {
-        formid = res.data.result.commentList[0].fromUid
+        formid = res.data.result.article.commentList[0].fromUid
       }
       console.log("formid:", formid)
       console.log('postdetail:', postdetail)
       that.setData({
         postdetail: postdetail,
         userid: userid,
-        formid: formid
+        formid: formid,
+        att_status: attenStatus
       })
     })
+  },
 
+  // 关注和取消关注
+  attenClick: function (e) {
+    var that = this,  token = wx.getStorageSync('token'); 
+    if (attenStatus == 0) {
+      var url = api.attention.addatten + '?token=' + token + '&userId=' + userId;
+      toolkit.post(url,(res)=>{
+        that.setData({
+          att_status: 1
+        })
+      })
+      attenStatus = 1
+    } else if (attenStatus == 1) {
+      var url1 = api.attention.removeatten + '?token=' + token + '&userId=' + userId;
+      toolkit.post(url1,(res)=>{
+        that.setData({
+          att_status: 0
+        })
+      })
+      attenStatus = 0
+    }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

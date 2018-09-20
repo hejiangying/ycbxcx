@@ -1,22 +1,21 @@
-// pages/anotherdetail/anotherdetail.js
+// pages/shopping/shopping.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
-var goodsid = '';
+const api = require('../../utils/api.js');
+var goodsList = [];
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    ordersn:''
+    goods: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    goodsid = options.id
+
   },
 
   /**
@@ -31,26 +30,34 @@ Page({
    */
   onShow: function () {
     var that = this;
-    that.getDetail()
+    that.getGoods();
   },
-  getDetail() {
-    wx.showLoading({
-      title: '正在加载...'
-    })
-    var that = this,
-      token = wx.getStorageSync('token'),
-      url = api.order.orderdetail + '?id=' + goodsid + "&token=" + token;
-    toolkit.post(url, (res) => {
-      wx.hideLoading()
-      var orderdetail = res.data.result.ordersItem
-      var ordersn = res.data.result.orderSn
-      console.log(res)
+  getGoods(){
+    var that = this, token = wx.getStorageSync('token'), url = api.collection.mycollection+'?token='+token;
+    toolkit.post(url,(res)=>{
+      var goods = res.data.result.content;
+      goodsList= goods;
       that.setData({
-        orderdetail: orderdetail,
-        ordersn:ordersn
+        goods:goods
       })
     })
   },
+  goDetail(e){
+    var goodsid = e.currentTarget.dataset.id;
+    console.log("999", goodsid)
+    console.log("888:", goodsList[0].collentUrl)
+    var goodsurl='';
+    console.log("666:", goodsList)
+    for (let i = 0; i < goodsList.length; i++) {
+      if (goodsList[i].productId == goodsid)
+         goodsurl = goodsList[i].collentUrl
+    }
+    console.log("777:", goodsurl)
+    wx.navigateTo({
+      url: '../../'+goodsurl+'?id='+goodsid,
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面隐藏

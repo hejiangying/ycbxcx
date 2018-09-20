@@ -41,7 +41,7 @@
           <view class="complete">已完成</view>
           <view class="operation">
             <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
-            <text bindtap='payClick' data-id='{{item.id}}'>立即付款</text>
+            <text bindtap='commClick' data-id='{{item.id}}'>评价订单</text>
           </view>
         </view>
         <view class="order-state" wx:if="{{item.status == 3}}">

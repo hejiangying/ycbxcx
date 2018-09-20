@@ -118,6 +118,7 @@ Page({
   jieClick(e) {
     var that = this;
     var goodsid = e.currentTarget.dataset.goodsid;
+    console.log("iddddddddd", goodsid)
     wx.navigateTo({
       url: '../../pages/buy/checkout/checkout?ids=' + goodsid,
     })

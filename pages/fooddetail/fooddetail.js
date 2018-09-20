@@ -1,7 +1,11 @@
 // pages/fooddetail/fooddetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var goodsId = '',num = 1,goodsPrice='',itemId='';//商品id,数量,价格
+var goodsId = '',
+  num = 1,
+  goodsPrice = '',
+  itemId = '',
+  collectStatus = ''; //商品id,数量,价格,,收藏
 Page({
 
   /**
@@ -9,17 +13,18 @@ Page({
    */
   data: {
     xc: 1, //默认选择行程介绍
-    iscol: false, //默认不收藏该商品
+    iscol: '', //默认不收藏该商品
     // input默认是1
-     num: 1,
+    num: 1,
     // 使用data数据对象设置样式名
     minusStatus: 'disabled',
-    status: false,
+    status: '',
     _type: '',
-    goods:'',
-    goodsimg:[],
-    imgres:[],
-    pathList:[]
+    goods: '',
+    goodsimg: [],
+    imgres: [],
+    pathList: [],
+    collectstatus: '', //收藏
 
   },
   xcSelect: function(e) {
@@ -29,54 +34,13 @@ Page({
       xc: _xc
     })
   },
-  // 是否收藏该商品
-  isCollect: function() {
-    var that = this,
-      _iscol = "";
-    if (that.data.iscol == false) {
-      _iscol = true
-    } else {
-      _iscol = false
-    }
-    that.setData({
-      iscol: _iscol
-    })
-  },
   // 查看评论
   commSee: function() {
     wx.navigateTo({
       url: '../../pages/comments/comments',
     })
   },
-  //立即购买
-  buyClick: function() {
-    var that = this;
-    var status = that.data.status
-    if (status == false) {
-      that.setData({
-        status: true
-      })
-    } else {
-      var token = wx.getStorageSync('token'),
-        goodsNumber = num,
-        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&goodsPrice=' + goodsPrice + '&goodsNumber=' + goodsNumber +'&recType='+itemId;
-        console.log("url", url)
-        toolkit.post(url,(res)=>{
-          wx.showToast({
-            title: '添加成功',
-            icon:'success'
-          })
-          console.log("666:",res)
-        })
-        that.setData({
-          status:false
-        })
-        // wx.navigateTo({
-        //   url: '/pages/buy/checkout/checkout',
-        // })
-
-    }
-  },
+  
   //款式选择
   typeClick: function(e) {
     var that = this;
@@ -131,36 +95,97 @@ Page({
 
   },
   //获取商品详情
-  getgoodsdetail:function(){
-    var that = this;
+  getgoodsdetail: function() {
+    var that = this,
+      token = wx.getStorageSync('token');
     wx.showLoading({
       title: '加载中...',
     })
-    var  url = api.appGoods.goodsdetail + '?id=' + goodsId;
-    toolkit.get(url,(res) => {
+    var url = api.appGoods.goodsdetail + '?id=' + goodsId + '&token=' + token;
+    toolkit.get(url, (res) => {
       wx.hideLoading()
-      var goods = res.data.result
-      var pathList = res.data.result.imgList
-      goodsPrice = res.data.result.marketPrice
-      console.log("商品详情：",goods)
+      var goods = res.data.result.goods;
+      collectStatus = res.data.result.collectStatus;
+      goodsPrice = res.data.result.goods.marketPrice
+      console.log("商品详情：", goods)
       var goodsimg = goods.goodsImg;
       var reg = /,$/gi;
-      var img = goodsimg.replace(reg,'')
+      var img = goodsimg.replace(reg, '')
       var imgres = img.split(",")
       that.setData({
-        goods:goods,
-        imgres:imgres,
-        pathList:pathList
+        goods: goods,
+        imgres: imgres,
+        collectstatus: collectStatus
       })
     })
   },
+  //立即购买
+  buyClick: function () {
+    var that = this;
+    var status = that.data.status
+    if (status == false) {
+      that.setData({
+        status: true
+      })
+    } else {
+      var token = wx.getStorageSync('token'),
+        goodsNumber = num,
+        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&goodsPrice=' + goodsPrice + '&goodsNumber=' + goodsNumber + '&recType=' + itemId;
+      console.log("url", url)
+      toolkit.post(url, (res) => {
+        wx.showToast({
+          title: '添加成功',
+          icon: 'success'
+        })
+      })
+      that.setData({
+        status: false
+      })
+      // wx.navigateTo({
+      //   url: '/pages/buy/checkout/checkout',
+      // })
 
+    }
+  },
+  // 是否收藏该商品
+  isCollect: function(e) {
+    console.log('zahungtai',collectStatus)
+    var that = this,
+      productId = e.currentTarget.dataset.id,
+      token = wx.getStorageSync('token'),
+      collentUrl = that.route;
+    if (collectStatus == 0) {
+      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.goods.marketPrice + '&productName=' + that.data.goods.goodsName + '&collentUrl=' + collentUrl;
+      toolkit.post(url, (res) => {
+        console.log("收藏成功")
+        wx.showToast({
+          title: '收藏成功',
+        })
+        that.setData({
+          collectstatus: 1
+        })
+      })
+      collectStatus = 1
+    } else if (collectStatus == 1) {
+      var reurl = api.collection.remove + '?productId=' + productId + '&token=' + token;
+      toolkit.post(reurl, (res) => {
+        console.log("取消收藏")
+        wx.showToast({
+          title: '取消成功',
+        })
+        that.setData({
+          collectstatus: 0
+        })
+      })
+      collectStatus = 0
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("option:",options)
+    console.log("option:", options)
     goodsId = options.id
     itemId = options.itemId
   },

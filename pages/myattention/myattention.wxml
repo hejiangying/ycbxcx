@@ -1,57 +1,23 @@
 <!--pages/myattention/myattention.wxml-->
 <view class="container">
-  <view class="att-list">
-    <view class="att-item">
-      <view class="att-l">
-        <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
+  <view class="att-list" wx:if="{{attenList != ''}}">
+    <block wx:for="{{attenList}}" wx:key="{{index}}">
+      <view class="att-item">
+        <view class="att-l">
+          <view class="att-photo">
+            <image src="{{'http://192.168.190.243:8081'+item.avatar}}"></image>
+          </view>
+          <view class="att-name">
+            <view>{{item.nickName}}</view>
+          </view>
         </view>
-        <view class="att-name">
-          <view>张晓明</view>
-        </view>
-      </view>
-      <view class="att-state" bindtap="attenClick">
-        <text class="{{ status == true ? '_on' : ''}}" bindtap='attClick'> {{ status == true ? '+关注' : '已关注'}}</text>
-      </view>
-    </view>
-    <view class="att-item">
-      <view class="att-l">
-        <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
-        </view>
-        <view class="att-name">
-          <view>张晓明</view>
+        <view class="att-state">
+          <text bindtap='attClick' data-id="{{item.followId}}"> 取消关注</text>
         </view>
       </view>
-      <view class="att-state">
-        <text>取消关注</text>
-      </view>
-    </view>
-    <view class="att-item">
-      <view class="att-l">
-        <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
-        </view>
-        <view class="att-name">
-          <view>张晓明</view>
-        </view>
-      </view>
-      <view class="att-state">
-        <text>取消关注</text>
-      </view>
-    </view>
-    <view class="att-item">
-      <view class="att-l">
-        <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
-        </view>
-        <view class="att-name">
-          <view>张晓明</view>
-        </view>
-      </view>
-      <view class="att-state">
-        <text>取消关注</text>
-      </view>
-    </view>
+    </block>
+  </view>
+  <view wx:if="{{attenList == ''}}" class="noatten">
+     暂无关注
   </view>
 </view>

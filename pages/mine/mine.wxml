@@ -20,13 +20,15 @@
     </view>
   </view>
   <view class="mynum">
-    <view class="num-item" bindtap='goAtt'>
-      <text>99</text>
-      <text>关注</text>
-    </view>
     <view class="num-item" bindtap='seeFans'>
-      <text>99</text>
+      <text wx:if="{{myinfo.fanNum == 0}}">0</text>
+      <text wx:if="{{myinfo.fanNum != 0}}">{{myinfo.followNum}}</text>
       <text>粉丝</text>
+    </view>
+    <view class="num-item"  bindtap='goAtt'>
+      <text wx:if="{{myinfo.followNum == 0}}">0</text>
+      <text wx:if="{{myinfo.followNum != 0}}">{{myinfo.followNum}}</text>
+      <text>关注</text>
     </view>
     <view class="num-item" bindtap='seePost'>
       <text wx:if="{{myinfo.articleNum ==''}}">0</text>
@@ -36,7 +38,7 @@
 
   </view>
   <view class="infolist">
-    <view class="infoitem">
+    <view class="infoitem" bindtap='scClick'>
       <image src="../../image/col.png"></image>
       <text>我的收藏</text>
     </view>

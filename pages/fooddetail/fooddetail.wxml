@@ -71,18 +71,18 @@
   </view>
   <!-- 底部悬浮按钮 -->
   <view class="footbtn">
-    <view class="scbtn" bindtap="isCollect">
-      <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
-      <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
+    <view class="scbtn" bindtap="isCollect" data-id='{{goods.id}}'>
+      <image src="{{collectstatus==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
+      <text>{{collectstatus ==  1 ? '收藏成功' : '点击收藏'}}</text>
     </view>
-    <view class="buybtn" bindtap="buyClick">{{status == true ? '加入购物车' : '选择商品'}}</view>
+    <view class="buybtn" bindtap="buyClick" hover-class='clickcss'>{{status == true ? '加入购物车' : '选择商品'}}</view>
   </view>
   <view class="mask" wx:if="{{status}}">
     <view class="mask-cover"></view>
     <view class="mask-con">
       <view class="img-con">
         <view class="img-left">
-          <image src="{{'http://192.168.190.243:8081'+ pathList[0]}}"></image>
+          <image src="{{'http://192.168.190.243:8081'+ goods.imgList[0]}}"></image>
           <view class="kc">
             <text class="price">￥{{(goods.marketPrice*100)*num/100}}</text>
             <text class="num">库存{{goods.goodsNumber}}件</text>

@@ -96,6 +96,7 @@
   display: block;
   color:#666;
   margin-bottom: 8rpx;
+  width: 360rpx;
 }
 .mesimage{
   display: flex;

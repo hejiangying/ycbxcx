@@ -35,7 +35,7 @@ Page({
     var that = this,
     url=api.home.home;
     toolkit.get(url,(res)=>{
-      var goodsList = res.data.result.goodsList
+      var goodsList = res.data.result.goodsList.content
       var hotelList = res.data.result.hotelList
       var lineList = res.data.result.lineList
       that.setData({
@@ -94,6 +94,30 @@ Page({
   goShop:function(){
     wx.navigateTo({
       url: '../../pages/shopping/shopping',
+    })
+  },
+  goDetail: function (e) {
+    console.log("e:", e)
+    var that = this;
+    var lineid = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../../pages/orderdetail/orderdetail?id=' + lineid ,
+    })
+  },
+  //客栈
+  hotelClick: function (e) {
+    console.log("客栈id：", e)
+    var houseid = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../../pages/housedetail/housedetail?id=' + houseid,
+    })
+  },
+  //美食
+  foodClick: function (e) {
+    var id = e.currentTarget.dataset.id;
+    var that = this;
+    wx.navigateTo({
+      url: '../../pages/fooddetail/fooddetail?id=' + id ,
     })
   },
   

@@ -100,3 +100,6 @@
   color: #f63264;
   border: 1rpx solid #f63264;
 }
+view.clickcss{
+  background-color:#fc0c49; 
+}
