@@ -16,6 +16,7 @@ Page({
     goodsimg: [],
     imgres: [],
     houselist:[],
+    commentlist:[],
     seindex:'',
     houseDetail:'',
     iscol: false, //默认不收藏该商品
@@ -47,15 +48,13 @@ Page({
     toolkit.get(url, function(res) {
       var goods = res.data.result.hotel
       var houselist = res.data.result.hotelRoomList
+      var commentlist = res.data.result.commentList
       wx.hideLoading()
       var goodsimg = goods.litpic;
-      // var reg = /,$/gi;
-      // var img = goodsimg.replace(reg, '')
-      // var imgres = img.split(",")
       that.setData({
         goods: goods,
-        houselist: houselist
-        // imgres: imgres
+        houselist: houselist,
+        commentlist: commentlist
       })
     })
   },
@@ -123,6 +122,12 @@ Page({
     console.log("option:", options)
     goodsId = options.id
     itemId = options.itemId
+  },
+  commSee(){
+    var that = this;
+    wx.navigateTo({
+      url: '../../pages/comments/comments?id=' + goodsId + '&itemid=' + itemId,
+    })
   },
 
   /**

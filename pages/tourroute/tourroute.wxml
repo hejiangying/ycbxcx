@@ -1,115 +1,73 @@
 <!--pages/tourroute/tourroute.wxml-->
 <view class="container">
-  <view class="toursearch">
-    <input placeholder='搜索目的地/产品名称' placeholder-style='font-size:28rpx;'></input>
+  <view class="search">
+    <input placeholder='请输入目的地' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff;'></input>
+    <view bindtap='searchClick'>
+      <image src="../../image/search.png"></image>
+    </view>
   </view>
   <!-- 产品列表 -->
   <view class="tourlist">
-  <block wx:for="{{linelist}}" wx:key="{{index}}">
-    <view class="touritem" bindtap='goDetail' data-id="{{item.id}}" >
-      <view class="search-con">
-        <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
-        <!-- <text>可订明日</text> -->
-      </view>
-      <view class="tourinfo">
-        <text class="tour-title">{{item.title}}</text>
-        <view class="tour-tag">
-          <text>{{item.sellPoint}}</text>
-           <!-- <text>无自费</text>
-          <text>无购物</text>  -->
-        </view>
-        <view class="tour-sell">
-          <view class="sell-num">
-            <text>已售423</text>
-            <text>|</text>
-            <text>4.8分</text>
+    <view class="foodclass" wx:if="{{typeclass==1}}">
+      <block wx:for="{{linelist}}" wx:key="{{index}}">
+        <view class="touritem" bindtap='goDetail' data-id="{{item.id}}">
+          <view class="search-con">
+            <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+            <!-- <text>可订明日</text> -->
           </view>
-          <view class="sell-price">￥{{item.price}}
-            <text>起</text>
+          <view class="tourinfo">
+            <text class="tour-title">{{item.title}}</text>
+            <view class="tour-tag">
+              <text>出发地：{{item.startCity}}</text>
+              <text>目的地：{{item.overCity}}</text>
+            </view>
+            <view class="tour-sell">
+              <view class="sell-num">
+                <text>已售423</text>
+                <text>|</text>
+                <text>4.8分</text>
+              </view>
+              <view class="sell-price">￥{{item.price}}
+                <text>起</text>
+              </view>
+            </view>
           </view>
         </view>
-      </view>
+      </block>
     </view>
-  </block>  
-    <view class="touritem">
-      <view class="search-con">
-        <image src="http://img10.3lian.com/show2014/1/73/105.jpg"></image>
-        <text>可订明日</text>
+    <view class="foodclass" wx:if="{{typeclass==2}}">
+      <view wx:if="{{searchList != ''}}">
+        <block wx:for="{{searchList}}" wx:key="{{index}}">
+          <view class="touritem" bindtap='goDetail' data-id="{{item.id}}">
+            <view class="search-con">
+              <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+              <!-- <text>可订明日</text> -->
+            </view>
+            <view class="tourinfo">
+              <text class="tour-title">{{item.title}}</text>
+              <view class="tour-tag">
+                <text>{{item.sellPoint}}</text>
+                <!-- <text>无自费</text>
+              <text>无购物</text>  -->
+              </view>
+              <view class="tour-sell">
+                <view class="sell-num">
+                  <text>已售423</text>
+                  <text>|</text>
+                  <text>4.8分</text>
+                </view>
+                <view class="sell-price">￥{{item.price}}
+                  <text>起</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
       </view>
-      <view class="tourinfo">
-        <text class="tour-title">大理360度洱海旅拍一日游.敞篷吉普+单反跟拍.底片全送</text>
-        <view class="tour-tag">
-          <text>大理出发</text>
-          <text>无自费</text>
-          <text>无购物</text>
-        </view>
-        <view class="tour-sell">
-          <view class="sell-num">
-            <text>已售423</text>
-            <text>|</text>
-            <text>4.8分</text>
-          </view>
-          <view class="sell-price">￥196
-            <text>起</text>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="touritem">
-      <view class="search-con">
-        <image src="http://img1.3lian.com/2015/a1/30/d/5.jpg"></image>
-        <text>可订明日</text>
-      </view>
-      <view class="tourinfo">
-        <text class="tour-title">大理360度洱海旅拍一日游.敞篷吉普+单反跟拍.底片全送</text>
-        <view class="tour-tag">
-          <text>大理出发</text>
-          <text>无自费</text>
-          <text>无购物</text>
-        </view>
-        <view class="tour-sell">
-          <view class="sell-num">
-            <text>已售423</text>
-            <text>|</text>
-            <text>4.8分</text>
-          </view>
-          <view class="sell-price">￥196
-            <text>起</text>
-          </view>
-        </view>
+      <view wx:if="{{searchList == ''}}" class="nogoods">
+        <image src="../../image/nn.png"></image>
+        <view>抱歉,暂无该商品。</view>
       </view>
     </view>
   </view>
-  <!-- <view class="search-bottom">
-    <view class="search-way">
-      <text bindtap='tapSelect' data-way="1" class="{{_way == 1 ? 'onway' : ''}}">筛选</text>
-      <text bindtap='tapSelect' data-way="2" class="{{_way == 2 ? 'onway' : ''}}">排序</text>
-    </view>
-    <view class="screening" wx:if="{{_way == 1}}">
-      <view class="choose">
-        <text>取消</text>
-        <text>确定</text>
-      </view>
-      <view class="choose-item">
-        <view class="choose-title">
-          <text>目的地</text>
-          <text>出发地</text>
-          <text>游玩时间</text>
-        </view>
-        <view class="choose-name">
-          <text>111</text>
-          <text>111</text>
-          <text>111</text>
-          <text>111</text>
-        </view>
-      </view>
-    </view>
-    <view class="rank" wx:elif="{{_way == 2}}">
-      <text>推荐排序</text>
-      <text>销量最高</text>
-      <text>价格最高</text>
-      <text>价格最低</text>
-      <text>热门评论</text>
-    </view>
-  </view> -->
 </view>

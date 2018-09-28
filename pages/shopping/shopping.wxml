@@ -35,7 +35,7 @@
     </view>
     <view class="cart-bottom">
        <view bindtap="checkedAll" class="sel">
-       已选 (  {{checkedGoodsCount}} )
+       已有 (  {{checkedGoodsCount}} )  件
       </view>
       <view class="total">{{ '￥'+totalPrice }}</view>
        <view class="checkout" hover-class="active" bindtap="checkoutOrder"  >一键结算</view>

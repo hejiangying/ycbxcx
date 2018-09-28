@@ -288,7 +288,7 @@ page {
 }
 
 .cart-bottom .checkout.active {
-  background: #f63264;
+  background: #fc0240;
 }
 
 .login-btn {

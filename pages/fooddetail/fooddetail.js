@@ -5,7 +5,8 @@ var goodsId = '',
   num = 1,
   goodsPrice = '',
   itemId = '',
-  collectStatus = ''; //商品id,数量,价格,,收藏
+  collectStatus = '',
+  itemId=''; //商品id,数量,价格,,收藏
 Page({
 
   /**
@@ -35,9 +36,10 @@ Page({
     })
   },
   // 查看评论
-  commSee: function() {
+  commSee() {
+    var that = this;
     wx.navigateTo({
-      url: '../../pages/comments/comments',
+      url: '../../pages/comments/comments?id=' + goodsId + '&itemid=' + itemId,
     })
   },
   
@@ -104,18 +106,19 @@ Page({
     var url = api.appGoods.goodsdetail + '?id=' + goodsId + '&token=' + token;
     toolkit.get(url, (res) => {
       wx.hideLoading()
-      var goods = res.data.result.goods;
+      var goods = res.data.result.goods,commentlist = res.data.result.commentList;
       collectStatus = res.data.result.collectStatus;
       goodsPrice = res.data.result.goods.marketPrice
       console.log("商品详情：", goods)
-      var goodsimg = goods.goodsImg;
-      var reg = /,$/gi;
-      var img = goodsimg.replace(reg, '')
-      var imgres = img.split(",")
+      // var goodsimg = goods.goodsImg;
+      // var reg = /,$/gi;
+      // var img = goodsimg.replace(reg, '')
+      // var imgres = img.split(",")
       that.setData({
         goods: goods,
-        imgres: imgres,
-        collectstatus: collectStatus
+        // imgres: imgres,
+        collectstatus: collectStatus,
+        commentlist:commentlist
       })
     })
   },

@@ -1,37 +1,39 @@
 <!--pages/food/food.wxml-->
 <view class="container">
-<block wx:for="{{goodslist}}" wx:key="{{index}}">
-  <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
-    <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}" ></image>
-    <text>{{item.itemName}}</text>
-    <view class="foodprice">
-      <text>￥{{item.itemPrice}}</text>
-      <text>已售51份</text>
+  <view class="search">
+    <input placeholder='请输入...' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff'></input>
+    <view bindtap='searchClick'>
+      <image src="../../image/search.png"></image>
     </view>
   </view>
-</block>
-  <!-- <view class="fooditem">
-    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534224308838&di=23eb3489132bf6d9a6bbec75779165ee&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fd62a6059252dd42a84e3af8c083b5bb5c9eab82b.jpg"></image>
-    <text>这是特别好的作料，很多菜都能用这些作料</text>
-    <view class="foodprice">
-      <text>￥90.00</text>
-      <text>已售51份</text>
+  <view class="tongyong" wx:if="{{typeclass==1}}">
+    <block wx:for="{{goodslist}}" wx:key="{{index}}">
+      <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
+        <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+        <text>{{item.itemName}}</text>
+        <view class="foodprice">
+          <text>￥{{item.itemPrice}}</text>
+          <text>已售51份</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="tongyong" wx:if="{{typeclass==2}}">
+    <view wx:if="{{searchList != ''}}">
+      <block wx:for="{{searchList}}" wx:key="{{index}}">
+        <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
+          <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+          <text>{{item.itemName}}</text>
+          <view class="foodprice">
+            <text>￥{{item.itemPrice}}</text>
+            <text>已售51份</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:if="{{searchList == ''}}" class="nogoods">
+      <image src="../../image/nn.png"></image>
+      <view>抱歉,暂无该商品。</view>
     </view>
   </view>
-   <view class="fooditem">
-    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534224308838&di=d3b9864a5dabba4e5eabf4d997129037&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F7e3e6709c93d70cf59b2cd31f3dcd100baa12b45.jpg"></image>
-    <text>这是特别好的作料，很多菜都能用这些作料</text>
-    <view class="foodprice">
-      <text>￥90.00</text>
-      <text>已售51份</text>
-    </view>
-  </view>
-   <view class="fooditem">
-    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534224308831&di=5d40ebfcf93bfe70d5422ad779f72133&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F1c950a7b02087bf4185d64c7f9d3572c11dfcf6e.jpg"></image>
-    <text>串串香</text>
-    <view class="foodprice">
-      <text>￥90.00</text>
-      <text>已售51份</text>
-    </view>
-  </view> -->
 </view>

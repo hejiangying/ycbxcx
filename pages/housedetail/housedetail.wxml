@@ -2,14 +2,11 @@
 <view class="container">
   <block>
     <view class="tourdetail">
-      <swiper indicator-dots="true" autoplay="true" interval="3000">
-        <block wx:for="{{imgres}}" wx:key="{{index}}">
+      <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+        <block wx:for="{{goods.imgList}}" wx:key="{{index}}">
           <swiper-item>
             <image src="{{'http://192.168.190.243:8081'+ item}}" width="100%" height="150" />
           </swiper-item>
-          <!-- <swiper-item>
-          <image src="http://img.zcool.cn/community/01238655a521e032f8758bed2f7a40.jpg@1280w_1l_2o_100sh.jpg" width="100%" height="150" />
-        </swiper-item> -->
         </block>
       </swiper>
       <view class="t-name cen">
@@ -32,23 +29,12 @@
         </view>
       </view>
       <view class="kong"></view>
-      <view class="comments">
+      <view class="comments" wx:if="{{commentlist !=''}}">
         <view class="score cen">
           <view class="satisfaction">
-            <text>4.8 </text> 分
-            <text>非常满意</text>
+            <text>查看评论</text>
           </view>
-          <view class="com-num" bindtap='commSee'>21条评论 ></view>
-        </view>
-        <view class="time cen">
-          <view>4.8</view>
-          <view class="who">
-            <text>平旷</text>
-            <text>2018-05-15</text>
-          </view>
-        </view>
-        <view class="comments-con cen">
-          很开心呀，很好玩呀，哈哈哈哈哈哈，服务不错哦，风景很美
+          <view class="com-num" bindtap='commSee' data-item="{{commentlist[0].id}}">{{commentlist.length}}条评论 ></view>
         </view>
       </view>
       <view class="kong"></view>
@@ -76,7 +62,7 @@
                   <view class="housedes">
                     <text>{{item.roomName}}</text>
                     <view>
-                      <text>{{item.description}}</text>
+                      <text wx:if="{{item.description != null}}">{{item.description}}</text>
                     </view>
                     <text>￥{{item.price}}</text>
                   </view>
@@ -113,16 +99,15 @@
                   </view>
                   <view class="kc">
                     <text class="price">￥{{houseDetail.price}}</text>
-                    <!-- <text class="num">剩余10间</text> -->
+                    <text class="num">剩余{{houseDetail.number}}间</text>
                   </view>
                   <view class="type-con">
                     <view>{{houseDetail.roomName}}</view>
                     <view>{{houseDetail.roomstyle}}</view>
-                    <view>{{houseDetail.roomstyle}}</view>
                     <text>上网：{{houseDetail.computer}}</text>
-                    <text>卫浴：{{houseDetail.roomfloor}}</text>
+                    <text>楼层：{{houseDetail.roomfloor}}</text>
                     <text>早餐：{{houseDetail.breakfast}}</text>
-                    
+                    <text>面积：{{houseDetail.roomarea}}</text>
                   </view>
                 </view>
             </view>

@@ -71,7 +71,6 @@
 .score{
   font-size: 36rpx;
   padding-bottom: 10rpx;
-  border-bottom: 1px solid rgb(224, 223, 223);
 }
 .time{
   padding: 20rpx 0rpx;
@@ -90,7 +89,7 @@
   color: #999;
 }
 .satisfaction text:nth-child(1){
-  font-size:40rpx;
+  font-size:26rpx;
 }
 .score .com-num{
   color:#999;

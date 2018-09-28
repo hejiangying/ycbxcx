@@ -1,9 +1,7 @@
 /* pages/commentPost/commentPost.wxss */
-@import "../../lib/wux/wux.wxss";
-
 page, .container {
   height: 100%;
-  background: #f4f4f4;
+  background: #fff;
 }
 
 .post-comment {
@@ -26,6 +24,12 @@ page, .container {
   margin-left: 20rpx;
   width: 80%;
 }
+.starimg image{
+  height: 21px;
+  width: 180px;
+  display: block;
+  margin-left: 40px;
+  }
 
 .goods {
   display: flex;
@@ -39,6 +43,17 @@ page, .container {
   width: 145.83rpx;
   background: #f4f4f4;
 }
+.star view text{
+  margin-left: 10px;
+  font-size: 18px;
+}
+.star view text.on{
+  color: #f63264
+}
+.star view.name text{
+  font-size: 26rpx;
+  color: #666;
+  }
 
 .goods .img image {
   height: 145.83rpx;
@@ -96,6 +111,9 @@ page, .container {
 
 .post-comment .btns {
   height: 90rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0px;
 }
 
 .post-comment .post {

@@ -2,209 +2,103 @@
 <view class="container">
   <view class="found">
     <view class="f-search">
-      <image src="../../image/search.png"></image>
-    </view>
-    <view class="f-item">
-      <text class="{{est==1 ? 'on' : ''}}" data-est="1" bindtap="estClick">最热</text>
-      <text class="{{est==2 ? 'on' : ''}}"  data-est="2" bindtap="estClick">最新</text>
-      <text class="{{est==3 ? 'on' : ''}}"  data-est="3" bindtap="estClick">关注</text>
-    </view>
-    <view class="f-message">
-      <image src="../../image/message.png"></image>
+      <input placeholder='请输入关键字' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff;font-size:26rpx;'></input>
+      <image src="../../image/search.png" bindtap='searchClick'></image>
     </view>
   </view>
   <view class="kt"></view>
   <!-- 最热 -->
-  <view class="hottest" wx:if="{{est==1}}">
-  <block wx:for="{{postList}}" wx:key="{{item.id}}">
-    <view class="hot-meslist">
-      <view class="hot-message">
-        <view class="hot-l">
-          <image wx:if="{{item.userStatus==0}}" src="{{'http://192.168.190.243:8081'+ item.avatar}}"></image>
-          <image wx:if="{{item.userStatus==1}}" src="{{item.avatar}}"></image>
-          <view class="hot-people">
-            <text>{{item.author}}</text>
-            <view class="hot-addre">
-              <text>{{item.createTime}}</text>
+  <view wx:if="{{typeclass == 1}}">
+    <view class="hottest" wx:if="{{postList != '' }}">
+      <block wx:for="{{postList}}" wx:key="{{index}}">
+        <view class="hot-meslist">
+          <view class="hot-message">
+            <view class="hot-l">
+              <image wx:if="{{item.userStatus==0}}" src="{{'http://192.168.190.243:8081'+ item.avatar}}"></image>
+              <image wx:if="{{item.userStatus==1}}" src="{{item.avatar}}"></image>
+              <view class="hot-people">
+                <text>{{item.author}}</text>
+                <view class="hot-addre">
+                  <text>{{item.createTime}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="hot-r" wx:if="{{myId != item.userId}}"></view>
+            <view class="hot-r" bindtap="closeNews" wx:if="{{myId==item.userId}}" data-postid="{{item.id}}">×</view>
+          </view>
+          <view class="messagecon" bindtap="replyClick">{{item.content}} </view>
+          <view class="mesimage" bindtap="replyClick" data-id="{{item.id}}">
+            <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+              <image src="{{'http://192.168.190.243:8081' + item }}"></image>
+            </block>
+          </view>
+          <view class="mesoperation">
+            <view class="operation">
+              <image src="../../image/comment.png" bindtap="replyClick" data-id="{{item.id}}"></image>
+              <view class="status" wx:if="{{myId==item.userId}}"></view>
+              <text>{{item.commentNum}}</text>
+            </view>
+            <view class="operation" bindtap="likeClick" data-id="{{item.id}}">
+              <image wx:if="{{item.thumbsStatus == 0}}" src="../../image/like.png"></image>
+              <image wx:if="{{item.thumbsStatus == 1}}" src="../../image/like1.png"></image>
+              <text>{{item.clickCount}}</text>
             </view>
           </view>
+          <view class="kong"></view>
         </view>
-        <view class="hot-r" wx:if="{{myId != item.userId}}"></view>
-        <view class="hot-r" bindtap="closeNews" wx:if="{{myId==item.userId}}" data-postid ="{{item.id}}" >×</view>
-      </view>
-      <view class="messagecon" bindtap="replyClick" >{{item.content}} </view>
-      <view class="mesimage" bindtap="replyClick" data-id="{{item.id}}">
-      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="{{'http://192.168.190.243:8081' + item }}"></image>
       </block>
-      </view>
-      <view class="mesoperation">
-        <view class="operation" >
-          <image src="../../image/comment.png" bindtap="replyClick" data-id="{{item.id}}"></image>
-          <view class="status" wx:if="{{myId==item.userId}}" ></view>
-          <text>{{item.commentNum}}</text>
-        </view>
-        <view class="operation" bindtap="likeClick">
-          <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
-          <text>{{likenum}}</text>
-        </view>
-      </view>
-      <view class="kong"></view>
     </view>
-</block>
-    <view class="hot-meslist">
-      <view class="hot-message">
-        <view class="hot-l">
-          <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-          <view class="hot-people">
-            <text>呵呵哈嘿</text>
-            <view class="hot-addre">
-              <text>北京</text>
-            </view>
-          </view>
-        </view>
-        <view class="hot-r" bindtap="closeNews">×</view>
-      </view>
-      <text class="messagecon" bindtap="replyClick">远方去不了那就来个周末北京一日游吧——北京一日游攻略 </text>
-      <view class="mesimage">
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-      </view>
-      <view class="mesoperation">
-        <view class="operation">
-         <image src="../../image/comment.png" bindtap="replyClick"></image>
-          <text>2</text>
-        </view>
-        <view class="operation" bindtap="likeClick">
-          <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
-          <text>2</text>
-        </view>
-      </view>
-      <view class="kong"></view>
-    </view>
-    <view class="hot-meslist">
-      <view class="hot-message">
-        <view class="hot-l">
-          <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-          <view class="hot-people">
-            <text>呵呵哈嘿</text>
-            <view class="hot-addre">
-              <image src="../../image/address1.png"></image>
-              <text>北京</text>
-            </view>
-          </view>
-        </view>
-        <view class="hot-r">×</view>
-      </view>
-      <text class="messagecon" bindtap="replyClick">远方去不了那就来个周末北京一日游吧——北京一日游攻略 </text>
-      <view class="mesimage">
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-      </view>
-      <view class="mesoperation">
-        <view class="operation">
-        </view>
-        <view class="operation">
-          <image src="../../image/comment.png" bindtap="replyClick"></image>
-          <text>2</text>
-        </view>
-        <view class="operation" bindtap="likeClick">
-          <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
-          <text>2</text>
-        </view>
-      </view>
-      <view class="kong"></view>
+    <view class="hottest" wx:if="{{postList == ''}}">
+      <view class='nodata'>暂无帖子。</view>
     </view>
   </view>
-  <!-- 最新 -->
-  <view class="newest" wx:elif="{{est==2}}">
-    <view class="hot-meslist">
-      <view class="hot-message">
-        <view class="hot-l">
-          <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-          <view class="hot-people">
-            <text>呵呵哈嘿</text>
-            <view class="hot-addre">
-              <image src="../../image/address1.png"></image>
-              <text>北京</text>
+  <view class="hottest" wx:if="{{typeclass == 2}}">
+  <view wx:if="{{searchList != ''}}">
+    <block wx:for="{{searchList}}" wx:key="{{index}}">
+      <view class="hot-meslist">
+        <view class="hot-message">
+          <view class="hot-l">
+            <image wx:if="{{item.userStatus==0}}" src="{{'http://192.168.190.243:8081'+ item.avatar}}"></image>
+            <image wx:if="{{item.userStatus==1}}" src="{{item.avatar}}"></image>
+            <view class="hot-people">
+              <text>{{item.author}}</text>
+              <view class="hot-addre">
+                <text>{{item.createTime}}</text>
+              </view>
             </view>
           </view>
+          <view class="hot-r" wx:if="{{myId != item.userId}}"></view>
+          <view class="hot-r" bindtap="closeNews" wx:if="{{myId==item.userId}}" data-postid="{{item.id}}">×</view>
         </view>
-        <view class="hot-r">×</view>
-      </view>
-      <text class="messagecon" bindtap="replyClick">远方去不了那就来个周末北京一日游吧——北京一日游攻略 </text>
-      <view class="mesimage">
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-      </view>
-      <view class="mesoperation">
-        <view class="operation">
+        <view class="messagecon" bindtap="replyClick">{{item.content}} </view>
+        <view class="mesimage" bindtap="replyClick" data-id="{{item.id}}">
+          <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+            <image src="{{'http://192.168.190.243:8081' + item }}"></image>
+          </block>
         </view>
-        <view class="operation">
-          <image src="../../image/comment.png" bindtap="replyClick"></image>
-          <text>2</text>
-        </view>
-        <view class="operation" bindtap="likeClick">
-           <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
-          <text>2</text>
-        </view>
-      </view>
-      <view class="kong"></view>
-    </view>
-  </view>
-  <!-- 关注 -->
-  <view class="focus" wx:elif="{{est==3}}">
-    <view class="hot-meslist">
-      <view class="hot-message">
-        <view class="hot-l">
-          <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-          <view class="hot-people">
-            <text>呵呵哈嘿</text>
-            <view class="hot-addre">
-              <image src="../../image/address1.png"></image>
-              <text>北京</text>
-            </view>
+        <view class="mesoperation">
+          <view class="operation">
+            <image src="../../image/comment.png" bindtap="replyClick" data-id="{{item.id}}"></image>
+            <view class="status" wx:if="{{myId==item.userId}}"></view>
+            <text>{{item.commentNum}}</text>
+          </view>
+          <view class="operation" bindtap="likeClick" data-id="{{item.id}}">
+            <image wx:if="{{item.thumbsStatus == 0}}" src="../../image/like.png"></image>
+            <image wx:if="{{item.thumbsStatus == 1}}" src="../../image/like1.png"></image>
+            <text>{{item.clickCount}}</text>
           </view>
         </view>
-        <view class="hot-r" bindtap="closeNews">×</view>
+        <view class="kong"></view>
       </view>
-      <text class="messagecon" bindtap="replyClick">远方去不了那就来个周末北京一日游吧——北京一日游攻略 </text>
-      <view class="mesimage">
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img5.imgtn.bdimg.com/it/u=4194403647,3630027324&fm=27&gp=0.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-      </view>
-      <view class="mesoperation">
-        <view class="operation">
-          <text>23分钟前</text>
-        </view>
-        <view class="operation">
-          <image src="../../image/comment.png" bindtap="replyClick"></image>
-          <text>2</text>
-        </view>
-        <view class="operation" bindtap="likeClick">
-          <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
-          <text>2</text>
-        </view>
-      </view>
-      <view class="kong"></view>
+    </block>
+  </view>  
+     <view class="hottest" wx:if="{{searchList == ''}}">
+      <view class='nodata'>暂无相关帖子。</view>
     </view>
   </view>
-
   <view class="add-con">
-    <!-- <block wx:if="{{_add}}"> -->
-      <!-- <view class="camerabtn addhide">
-        <image src="../../image/camera.png"></image>
-      </view> -->
-      <view class="penbtn addhide" bindtap="goPost">
-        <image src="../../image/pen.png"></image>
-      </view>
-    <!-- </block> -->
-    <!-- <view class="addbtn" bindtap='addClick'>
-      <image src="{{_add == false ? '../../image/add.png' : '../../image/des.png'}}"></image>
-    </view> -->
+    <view class="penbtn addhide" bindtap="goPost">
+      <image src="../../image/pen.png"></image>
+    </view>
   </view>
 </view>

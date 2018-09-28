@@ -1,7 +1,7 @@
 // pages/orderdetail/orderdetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var lineid = '', collectStatus = '';//线路id
+var lineid = '', collectStatus = '', itemId='';//线路id
 Page({
 
   /**
@@ -11,6 +11,7 @@ Page({
     xc:1,//默认选择行程介绍
     collectstatus:'',//默认不收藏该商品
     linedetail:'',//线路详情
+    commentlist:[]
   },
 
   /**
@@ -18,6 +19,7 @@ Page({
    */
   onLoad: function (options) {
    lineid = options.id
+    itemId = options.itemId
    console.log('111:',options)
   },
   // 行程、费用及使用的选择
@@ -29,12 +31,14 @@ Page({
     })
   },
   
-// 查看评论
-  commSee:function(){
+  // 查看评论
+  commSee() {
+    var that = this;
     wx.navigateTo({
-      url: '../../pages/comments/comments',
+      url: '../../pages/comments/comments?id=' + lineid + '&itemid=' + itemId,
     })
   },
+
   buyClick:function(){
     console.log(lineid)
     wx.navigateTo({
@@ -47,17 +51,19 @@ Page({
     var url = api.appLine.linedetail + '?id=' + lineid+'&token='+token;
     toolkit.get(url ,(res)=>{
       console.log("线路详情：",res)
-      var linedetail = res.data.result.line;
-        collectStatus = res.data.result.collectStatus;
+      var linedetail = res.data.result.line, commentlist = res.data.result.commentList;;
+        collectStatus = res.data.result.collectStatus,
         console.log("收藏：",collectStatus)
       that.setData({
         linedetail:linedetail,
-        collectstatus: collectStatus
+        collectstatus: collectStatus,
+        commentlist: commentlist
       })
     })
   },
   // 是否收藏该商品
   isCollect: function (e) {
+    console.log("jjjjjjjjj",lineid)
     var that = this, productId=e.currentTarget.dataset.id,token=wx.getStorageSync('token'),collentUrl=that.route;
     if (collectStatus ==0){
       var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.linedetail.price + '&productName=' + that.data.linedetail.title + '&collentUrl=' + collentUrl;

@@ -2,6 +2,7 @@
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../../utils/api.js');
 var ids = [];
+var currentPage = 1, totalpage = '', sumList = [], isLoadmore = false;//当前页，总页数，总列表数，是否需要加载更多
 Page({
 
   /**
@@ -80,11 +81,13 @@ Page({
     })
     var that = this,
       token = wx.getStorageSync('token'),
-      url = api.shop.shopList + '?token=' + token;
+      url = api.shop.shopList + '?token=' + token+'&pageNumber='+currentPage;
     toolkit.post(url, (res) => {
+      wx.stopPullDownRefresh()
       ids=[];
       wx.hideLoading()
       var cartGoods = res.data.result;
+      // totalpage = res.data.result.
       if (cartGoods != null) {
         var checkedGoodsCount = cartGoods.length;
         var totalPrice = 0;
@@ -149,7 +152,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    that.getGoods()
   },
 
   /**

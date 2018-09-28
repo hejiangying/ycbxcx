@@ -45,6 +45,7 @@ Page({
     token = wx.getStorageSync('token'),
     url = api.address.addressList+'?token='+token;
     toolkit.post(url,(res)=>{
+      wx.stopPullDownRefresh()
       var addressList = res.data.result
       that.setData({
         addressList: addressList
@@ -77,7 +78,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    that.getshopList()
   },
 
   /**

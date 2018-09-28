@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ordersn:''
+    ordersn:'',//订单号
+    address:'',//收货地址
   },
 
   /**
@@ -42,12 +43,14 @@ Page({
       url = api.order.orderdetail + '?id=' + goodsid + "&token=" + token;
     toolkit.post(url, (res) => {
       wx.hideLoading()
-      var orderdetail = res.data.result.ordersGoods
-      var ordersn = res.data.result.orderSn
+      var orderdetail = res.data.result.ordersGoodsList
+      var ordersn = res.data.result.orderSn,
+        address = res.data.result.address
       console.log(res)
       that.setData({
         orderdetail: orderdetail,
-        ordersn:ordersn
+        ordersn:ordersn,
+        address:address
       })
     })
   },

@@ -23,29 +23,17 @@
     </view>
     <view class="advantages cen">
       <view><image src="../../image/ok.png"></image>  {{linedetail.sellPoint}}</view>
-      <!-- <view><image src="../../image/ok.png"></image>铁定成团</view>
-      <view><image src="../../image/ok.png"></image>无自费</view>
-      <view><image src="../../image/ok.png"></image>无购物</view> -->
+      <view><image src="../../image/ok.png"></image>出发地：{{linedetail.startCity}}</view>
+      <view><image src="../../image/ok.png"></image>目的地：{{linedetail.overCity}}</view>
     </view>
   </view>
   <view class="kong"></view>
-  <view class="comments">
-    <view class="score cen">
+  <view class="comments" wx:if="{{commentlist != ''}}">
+    <view class="score cen" bindtap='commSee' data-item="{{linedetail.id}}">
       <view class="satisfaction">
-        <text>4.8 </text> 分
-        <text>非常满意</text>
+        <text>查看评论</text>
       </view>
-      <view class="com-num" bindtap='commSee'>21条评论 ></view>
-    </view>
-    <view class="time cen">
-      <view>4.8</view>
-      <view class="who">
-        <text>平旷</text>
-        <text>2018-05-15</text>
-      </view>
-    </view>
-    <view class="comments-con cen">
-      很开心呀，很好玩呀，哈哈哈哈哈哈，服务不错哦，风景很美
+      <view class="com-num" >{{commentlist.length}}条评论 ></view>
     </view>
   </view>
   <view class="kong"></view>

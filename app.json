@@ -45,10 +45,12 @@
     "pages/specialty/specialty"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "云彩帮",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+     "enablePullDownRefresh": true,
+     "onReachBottomDistance": 50
   },
   "tabBar": {
     "selectedColor": "#f63264",

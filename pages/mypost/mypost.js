@@ -1,6 +1,7 @@
 // pages/mypost/mypost.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
+var currentPage = 1, totalpage = '', sumList = [], isLoadmore = false;//当前页，总页数，总列表数，是否需要加载更多
 Page({
 
   /**
@@ -25,16 +26,28 @@ Page({
   },
   //获取帖子列表
   getpostList:function(){
+    wx.showLoading({
+      title: '加载中...',
+    })
     var that = this,
     params = {
-      token: wx.getStorageSync('token')
+      token: wx.getStorageSync('token'),
+      pageNumber:currentPage
     },
     url = api.post.mypost;
     toolkit.get(url,params,(res)=>{
+      wx.stopPullDownRefresh()
+      wx.hideLoading()
       console.log("帖子列表：",res)
-      var postList = res.data.result.content
+      var postList = res.data.result.content;
+      totalpage = res.data.result.totalPages
+      if(isLoadmore==true){
+        sumList = sumList.concat(postList)
+      }else{
+        sumList = postList
+      }
     that.setData({
-      postList:postList,
+      postList: sumList,
     })
     })
 
@@ -103,14 +116,31 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this;
+    isLoadmore = false
+    currentPage = 1
+    that.getpostList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    var that = this
+    if(currentPage !=totalpage){
+      currentPage++
+      isLoadmore=true
+      that.getpostList()
+    }else{
+      wx.showLoading({
+        title: '没有更多了',
+        success:()=>{
+          setTimeout(function(){
+            wx.hideLoading()
+          },3000)
+        }
+      })
+    }
   },
 
   /**

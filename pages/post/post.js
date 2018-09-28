@@ -4,7 +4,7 @@ const api = require('../..//utils/api.js');
 var originalList = [],
   index = 0,
   edit = false,
-  uploadpic = [];
+  uploadpic = [];//上传图片集合
 Page({
 
   /**

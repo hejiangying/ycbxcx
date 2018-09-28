@@ -1,7 +1,7 @@
 // pages/kezhan/kezhan.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var d1='',d2='',roomId='',hotelld='',itemid='',price='';
+var d1='',d2='',roomId='',hotelld='',itemid='',price='',sum=1;
 Page({
 
   /**
@@ -11,8 +11,8 @@ Page({
     date:'',
     date2:'',
     d3:'',
-    // input默认是1
-    num: 1,
+    // input默认是0
+    num: 0,
     // 使用data数据对象设置样式名
     minusStatus: 'disabled',
     status: false,
@@ -55,8 +55,11 @@ Page({
     let d3 = (d2-d1)/(60*60*24)/1000
     console.log("d3:",d3)
     var that = this;
+    var totalprice = price *d3*sum
+    console.log('结果：', price,d3,sum)
     that.setData({
-      d3:d3
+      d3:d3,
+      price: totalprice
     })
   },
   // 查看评论
@@ -79,6 +82,7 @@ Page({
       num: num,
       minusStatus: minusStatus
     });
+    sum = num
   },
   /* 点击加号 */
   bindPlus: function () {
@@ -90,8 +94,9 @@ Page({
     // 将数值与状态写回
     this.setData({
       num: num,
-      minusStatus: minusStatus
+      minusStatus: minusStatus,
     });
+    sum = num
   },
   /* 输入框事件 */
   bindManual: function (e) {
@@ -124,14 +129,11 @@ Page({
     var that = this;
     if(that.data.per != '' && that.data.id != '' && that.data.tel != '' && that.data.date != '' && that.data.date2 !='' && that.data.d3 != ''){
       var token = wx.getStorageSync('token'),
-        url = api.appHotel.order + '?roomId=' + hotelld + '&hotelId=' + roomId + '&clientName=' + that.data.per + '&identitfy=' + that.data.id + '&telephone=' + that.data.tel + '&checkInTime=' + that.data.date + '&checkOutTime=' + that.data.date2 + '&recType='+itemid +'&token='+token;
+        url = api.appHotel.order + '?roomId=' + hotelld + '&hotelId=' + roomId + '&clientName=' + that.data.per + '&identitfy=' + that.data.id + '&telephone=' + that.data.tel + '&checkInTime=' + that.data.date + '&checkOutTime=' + that.data.date2 + '&recType=' + itemid + '&token=' + token +'&roomNum='+that.data.num;
       toolkit.post(url,(res)=>{
         wx.showToast({
           title: '下单成功,请及尽快结算',
           icon:'none'
-        })
-        that.setData({
-          price:price
         })
       })
     }else{

@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderdetail:''
+    orderdetail:'',
+    sn:''
   },
 
   /**
@@ -42,10 +43,12 @@ Page({
     url=api.order.orderdetail+'?id='+goodsid+"&token="+token;
     toolkit.post(url,(res)=>{
       wx.hideLoading()
-      var orderdetail = res.data.result
+      var orderdetail = res.data.result.ordersLineList
+      var sn = res.data.result.orderSn
       console.log(res)
       that.setData({
-        orderdetail:orderdetail
+        orderdetail:orderdetail,
+        sn:sn
       })
     })
   },

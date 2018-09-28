@@ -1,7 +1,8 @@
 // pages/found/found.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var needLoadMore = false, currentPage=1,totalpage='';//是否需要上拉加载数据,当前页,总页数，
+var isLoadmore=false,currentPage = 1, totalpage = '',thumbsStatus='',postlike=[],postsum=[];//是否需要上拉加载数据,当前页,总页数，点赞状态，当前帖子数,总帖子数
+
 Page({
 
   /**
@@ -9,12 +10,13 @@ Page({
    */
   data: {
     _add:false,//悬浮按钮默认为加号
-    est:1    ,//默认显示最热
-    isLike: false,//默认未点赞
-    likenum:1,//点赞人数
+    isLike: '',//默认未点赞
+    likenum:'',//点赞人数
     postList:[],//帖子列表
-    myId:''
-
+    myId:'',
+    inputcon:'',//输入的内容
+    searchList:[],//搜索结果
+    typeclass: 1,//1为列表，2为搜索
   },
 
   /**
@@ -30,14 +32,6 @@ Page({
       _add:(!that.data._add)
     })
 
-  },
-  // 最新最热和关注的切换
-  estClick:function(e){
-    var that = this;
-    var _est = e.currentTarget.dataset.est;
-    that.setData({
-      est:_est
-    })
   },
   // 跳转到发布帖子页面
   goPost:function(){
@@ -57,20 +51,23 @@ Page({
   },
   // 点赞取消点赞
   likeClick:function(e){
-    var that = this,_isLike,_likenum;
-    var llike = that.data.likenum;
-    if(that.data.isLike == false){
-     _isLike = true
-      _likenum = ++llike
-    }else{
-      _isLike = false
-      _likenum = --llike
-    }
-    that.setData({
-      isLike:_isLike,
-      likenum:_likenum
-    })
-
+    var token = wx.getStorageSync('token'),
+    that = this,
+      typeId = e.currentTarget.dataset.id;
+      for(let i=0; i<postlike.length; i++){
+        if(postlike[i].id == typeId){
+          if (postlike[i].thumbsStatus == 0){
+            var url1 = api.like.like + '?token=' + token + '&typeId=' + typeId
+            toolkit.post(url1, (res) => {
+            })
+          } else if (postlike[i].thumbsStatus == 1){
+            var url1 = api.like.removelike + '?token=' + token + '&typeId=' + typeId
+            toolkit.post(url1,(res)=>{
+            })
+          }
+        }
+      }
+    that.getpostList()
   },
   closeNews(e){
     var that = this,
@@ -96,27 +93,56 @@ Page({
   },
   //获取帖子列表
   getpostList: function () {
+    wx.showLoading({
+      title: '加载中...',
+    })
     var that = this,
       params = {
-        token: wx.getStorageSync('token')
+        token: wx.getStorageSync('token'),
+        pageNumber: currentPage
       },
       url = api.post.postList;
       var myid = wx.getStorageSync('myid')
     toolkit.get(url, params, (res) => {
+      wx.stopPullDownRefresh()
+      wx.hideLoading()
       console.log("帖子列表：", res)
       var postList = res.data.result.content;
+      postlike = postList;
       totalpage = res.data.result.totalPages
-      if(postList.length >9){
-        needLoadMore = true
+      if(isLoadmore == true){
+        postsum = postsum.concat(postList)
       }else{
-        needLoadMore = false
+        postsum = postList
       }
       that.setData({
-        postList: postList,
-        myId:myid
+        postList: postsum,
+        myId:myid,
+        typeclass: 1
       })
     })
 
+  },
+  //获取输入的内容
+  getcon(e) {
+    console.log(e.detail.value)
+    var that = this;
+    that.setData({
+      inputcon: e.detail.value
+    })
+  },
+  //搜索
+  searchClick() {
+    var that = this,token=wx.getStorageSync('token');
+    var goodsName = that.data.inputcon, url = api.post.postList + '?keyword=' + goodsName+'&token='+token;
+    toolkit.get(url, (res) => {
+      var searchList = res.data.result.content
+      that.setData({
+        searchList: searchList,
+        foodList: '',
+        typeclass: 2
+      })
+    })
   },
   
   /**
@@ -152,27 +178,31 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this;
+    isLoadmore=false
+    currentPage = 1
+    that.getpostList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log("加载更多")
     var that = this;
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    if (needLoadMore = true && currentPage != totalpage){
+    if ( currentPage != totalpage){
       currentPage++
+      isLoadmore=true
       that.getpostList()
-      wx.hideLoading();
     }else{
       wx.showLoading({
         title:'没有更多了',
         icon:'none',
+        duration:1000,
         success:function(){
-          wx.hideLoading();
+          setTimeout(function(){
+            wx.hideLoading();
+          },3000)
         }
       })
     }

@@ -1,7 +1,7 @@
 // pages/footclass/foodclass.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var itemId ='';
+var itemId = '', currentPage = 1, totalpage = '',goodssum=[];
 Page({
 
   /**
@@ -12,6 +12,9 @@ Page({
     goodsList:'',//分类情况
     isChecked:'',
     allon:1,//默认全部商品
+    inputcon:'',//搜索内容
+    searchList:'',//搜索结果
+    typeclass:1,//1为列表，2为搜索
   },
 
   /**
@@ -46,7 +49,8 @@ Page({
       wx.hideLoading()
       var foodList = res.data.result;
       that.setData({
-        foodList:foodList
+        foodList:foodList,
+        typeclass:1
       })
     })
   },
@@ -61,7 +65,8 @@ Page({
         goodsList: goodsList,
         isChecked: catId,
         allon:0,
-        foodList: that.data.foodList
+        foodList: that.data.foodList,
+        typeclass: 1
       })
     })
   },
@@ -71,7 +76,8 @@ Page({
     that.getList()
     that.setData({
       isChecked: '',
-      allon:1
+      allon:1,
+      typeclass: 1
     })
   },
   //加载全部商品
@@ -80,11 +86,36 @@ Page({
     wx.showLoading({
       title: '数据加载中...',
     })
-    toolkit.get(api.appGoods.goodsItem,(res)=>{
+    var url = api.appGoods.goodsItem +'?pageNumber='+currentPage
+    toolkit.get(url,(res)=>{
       wx.hideLoading()
-      var goodsList = res.data.result.content
+      var goodsList = res.data.result.content;
+      totalpage = res.data.result.totalPages
+      goodssum = goodssum.concat(goodsList)
       that.setData({
-        goodsList: goodsList
+        goodsList: goodssum,
+        typeclass: 1
+      })
+    })
+  },
+  //获取输入的内容
+  getcon(e){
+    console.log(e.detail.value)
+    var that = this;
+    that.setData({
+      inputcon:e.detail.value
+    })
+ },
+ //搜索
+  searchClick(){
+    var that = this;
+    var goodsName = that.data.inputcon, url = api.appGoods.goodsItem + '?goodsName=' + goodsName;
+    toolkit.get(url,(res)=>{
+      var searchList = res.data.result.content
+      that.setData({
+        searchList: searchList,
+        foodList:'',
+        typeclass: 2
       })
     })
   },
@@ -115,14 +146,29 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    console.log("没有更多了")
+    var that = this;
+    if (currentPage != totalpage) {
+      currentPage++
+      that.getfoodList()
+      that.classcLick()
+    }else{
+      wx.showLoading({
+        title: '没有更多了',
+        success(){
+          setTimeout(function(){
+            wx.hideLoading()
+          },3000)
+        }
+      })
+    }
   },
 
   /**

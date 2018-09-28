@@ -47,6 +47,7 @@
   display: block;
   border-radius: 50%;
   margin-right: 20rpx;
+  border: 1rpx solid #eee;
 }
 
 .hot-people {
@@ -92,11 +93,11 @@
 
 .messagecon {
   font-size: 26rpx;
-  margin: 0rpx 20rpx;
+  margin: 0rpx 60rpx;
   display: block;
   color:#666;
   margin-bottom: 8rpx;
-  width: 360rpx;
+  word-break:break-all;
 }
 .mesimage{
   display: flex;
@@ -163,4 +164,21 @@
 .add-con view image{
   width: 40rpx;
   height: 40rpx;
+}
+.nodata{
+  color: #f63264;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 20%;
+}
+.f-search{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.f-search input{
+  width: 90%;
+  color: #fff;
+  font-size: 26rpx;
 }

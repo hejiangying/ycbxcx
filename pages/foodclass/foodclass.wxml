@@ -2,9 +2,12 @@
 
 <view class="container">
   <view class="search">
-    <view>搜索产品</view>
+    <input placeholder='搜索产品' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff'></input>
+    <view bindtap='searchClick'>
+      <image src="../../image/search.png"></image>
+    </view>
   </view>
-  <view class="foodclass">
+  <view class="foodclass" wx:if="{{typeclass==1}}">
     <view class="food-l">
       <text bindtap="allGood" class="normal {{allon == 1 ? 'onn' : ''}}">全部商品</text>
       <block wx:for="{{foodList}}" wx:key="{{index}}">
@@ -22,6 +25,24 @@
           </view>
         </view>
       </block>
+    </view>
+  </view>
+  <view class="searchclass" wx:if="{{typeclass==2}}">
+  <view wx:if="{{searchList != ''}}">
+    <block wx:for="{{searchList}}" wx:key="{{index}}">
+      <view class="searchitem" bindtap='foodClick' data-id="{{item.id}}">
+        <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+        <text>{{item.goodsName}}</text>
+        <view class="foodprice">
+          <text>￥{{item.marketPrice}}</text>
+          <text>已售51份</text>
+        </view>
+      </view>
+    </block>
+    </view>
+    <view wx:if="{{searchList == ''}}" class="nogoods">
+      <image src="../../image/nn.png"></image>
+      <view>抱歉,暂无该商品。</view>
     </view>
   </view>
 </view>

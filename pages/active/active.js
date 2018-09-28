@@ -1,4 +1,6 @@
 // pages/active/active.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
 Page({
 
   /**
@@ -7,27 +9,6 @@ Page({
   data: {
     _conlist: [],
     marks: [],
-    maplist: [{
-        id: 1,
-      latitude: 25.586326,
-      longitude: 100.227953,
-        title: '大关邑哈哈',
-        iconPath: '',
-        callout: {
-          content: '大关邑商业街',
-        }
-      },
-      {
-        id: 2,
-        latitude: 25.586326,
-        longitude: 100.233906,
-        title: '大关邑村委会', 
-        iconPath: '',
-        callout: {
-          content: '这是111',
-        }
-      }
-    ]
   },
 
   /**
@@ -44,15 +25,15 @@ Page({
           longitude: longitude,
           latitude: latitude
         })
-
-        var marklist = that.data.maplist;
+      toolkit.get(api.play.playList,(res)=>{
+        var marklist = res.data.result
+        console.log(marklist)
         var marks = that.data.marks;
         for (var i = 0; i < marklist.length; i++) {
           marks.push({})
           marks[i].id = marklist[i].id
           marks[i].iconPath = '/image/addr.png'
           marks[i].latitude = marklist[i].latitude
-
           marks[i].longitude = marklist[i].longitude
           marks[i].callout = {
             content: '22',
@@ -72,12 +53,14 @@ Page({
         that.setData({
           markers: marks
         })
+      })
       }
     });
   },
-  addrClick:function(){
+  addrClick:function(e){
+    console.log("e",e)
     wx.navigateTo({
-      url: '../../pages/goodsdetail/goodsdetail',
+      url: '../../pages/goodsdetail/goodsdetail?id=' + e.markerId,
     })
   },
 

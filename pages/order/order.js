@@ -3,16 +3,18 @@ const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
 var _order = '',
   recType = [],
-  status = '';
+  status = '',//订单状态
+  currentPage=1,totalpage='',sumList=[],isLoadmore=false;//当前页，总页数，总列表数，是否需要加载更多
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    ortp: 1,
+    ortp: 1, //默认全部订单
     orderList: '',
     orderstatus: '',
+    name: [],
     name1: '',
     name2: '',
     name3: '',
@@ -98,7 +100,7 @@ Page({
   commClick: function(e) {
     var id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/commentPost/commentPost?id='+id,
+      url: '../../pages/commentPost/commentPost?id=' + id,
     })
   },
   //取消订单
@@ -128,6 +130,7 @@ Page({
     var that = this;
     that.getList()
   },
+  
   onLoad: function(options) {
 
   },
@@ -138,37 +141,42 @@ Page({
     })
     var that = this,
       token = wx.getStorageSync('token'),
-      url = api.order.orderList + '?token=' + token;
+      url = api.order.orderList + '?token=' + token+'&pageNumber='+currentPage;
     toolkit.post(url, (res) => {
       wx.hideLoading()
-      var orderlist = res.data.result.content
+      wx: wx.stopPullDownRefresh()
+      var orderlist = res.data.result.content;
+      totalpage= res.data.result.totalPages
       if (orderlist.length > 0) {
-        for (var i = 0; i < orderlist.length; i++) {
+        var name = [];
+        for (var i in orderlist) {
           var recType = orderlist[i].recType;
-          if (orderlist[i].recType == 1) {
-            var name1 = orderlist[i].ordersHotel.goodsName
-          } else if (orderlist[i].recType == 2) {
-            var name2 = orderlist[i].ordersLine.goodsName
-          } else if (orderlist[i].recType == 3) {
-            var name3 = orderlist[i].ordersItem.goodsName
-          } else if (orderlist[i].recType == 0) {
-            var name4 = orderlist[i].ordersGoods.goodsName
+          if (orderlist[i].ordersLineList) {
+            name[i] = orderlist[i].ordersLineList[0].goodsName
+          }
+          if (orderlist[i].ordersHotelList) {
+            name[i] = orderlist[i].ordersHotelList[0].goodsName
+          }
+          if (orderlist[i].ordersItemList) {
+            name[i] = orderlist[i].ordersItemList[0].goodsName
+          }
+          if (orderlist[i].ordersGoodsList) {
+            name[i] = orderlist[i].ordersGoodsList[0].goodsName
           }
           that.data.recType.push(recType)
         }
+        if(isLoadmore==true){
+          sumList = sumList.concat(orderlist)
+        }else{
+          sumList = orderlist
+        }
         that.setData({
           orderList: orderlist,
-          name1: name1,
-          name2: name2,
-          name3: name3,
-          name4: name4,
-          recType: that.data.recType
+          name: name
         })
       } else if (orderlist.length == 0) {
 
       }
-
-
     })
   },
   delOrder(e) {
@@ -194,5 +202,35 @@ Page({
         } else if (res.confirm) {}
       }
     })
-  }
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    var that = this;
+    isLoadmore = false
+    currentPage = 1
+    that.getList() 
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    var that = this
+    if (currentPage != totalpage) {
+      currentPage++
+      isLoadmore = true
+      that.getList() 
+    } else {
+      wx.showLoading({
+        title: '没有更多了',
+        success: () => {
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 3000)
+        }
+      })
+    }
+  },
 })

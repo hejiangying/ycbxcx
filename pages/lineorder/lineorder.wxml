@@ -1,40 +1,48 @@
 <!--pages/seeorder/seeorder.wxml-->
 <view class="container">
   <view class="order-img">
-    <image src="{{'http://192.168.190.243:8081'+orderdetail.goodsImg}}"></image>
-    <view class="tour-name">
-      {{orderdetail.ordersLine.goodsName}}
-    </view>
-    <view class="tour-time">
-      <view><text>开始日期</text>{{orderdetail.ordersLine.playTime}}</view>
-      <view><text>下单时间</text>{{orderdetail.ordersLine.createTime}}</view>
-    </view>
-    <view class="tour-num">
-      <!-- <text>成人2人</text> -->
-    </view>
-    <view class="tour-price">
-      <text>￥{{orderdetail.ordersLine.toalFee}}</text>
-    </view>
-  </view>
-  <view class="order-con">
-    <text>身份信息</text>
-    <block wx:for="{{orderdetail.ordersLine.nameCode}}">
-      <view class="idname">
-       <text>{{item.name}}</text> 
-       <text>{{item.code}}</text>
+    <block wx:for="{{orderdetail}}" wx:key="{{index}}">
+      <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264" style="width:100%;" >
+      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+        <swiper-item style="width:100%;">
+          <image src="{{'http://192.168.190.243:8081'+item}}" style="width:100%;height:100%;" />
+        </swiper-item>
+        </block>
+      </swiper>
+      <view class="tour-name">
+        {{item.goodsName}}
+      </view>
+      <view class="tour-time">
+        <view>
+          <text>开始日期</text>{{item.playTime}}</view>
+        <view>
+          <text>下单时间</text>{{item.createTime}}</view>
+      </view>
+      <view class="tour-num">
+        <!-- <text>成人2人</text> -->
+      </view>
+      <view class="tour-price">
+        <text>￥{{item.toalFee}}</text>
+      </view>
+      <view class="order-con">
+        <text>身份信息</text>
+        <view class="idname" wx:for="{{item.nameCode}}" wx:key="{{index}}">
+          <text>{{item.name}}</text>
+          <text>{{item.code}}</text>
+        </view>
+      </view>
+      <!-- 身份信息 -->
+      <view class="order-id">
+        <view>
+          <text> 订单号</text> {{sn}}
+        </view>
+        <view>
+          <text>  怎么取票></text>
+        </view>
+        <view>
+          <text>  我要退票</text>
+        </view>
       </view>
     </block>
-  </view>
-  <!-- 身份信息 -->
-  <view class="order-id">
-    <view>
-      <text> 订单号</text> {{orderdetail.orderSn}}
-    </view>
-    <view>
-      <text>  怎么取票></text>
-    </view>
-    <view>
-      <text>  我要退票</text>
-    </view>
   </view>
 </view>

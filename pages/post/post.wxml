@@ -10,5 +10,5 @@
     </view>
     <image src="../../image/addp.png" bindtap='photoSel' wx:if="{{imglist.length>=0&&imglist.length<9}}"></image>
   </view>
-  <button bindtap='creatPost'>发布</button>
+  <button bindtap='creatPost' class="r " hover-class='active'>发布</button>
 </view>

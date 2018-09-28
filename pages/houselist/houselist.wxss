@@ -1,2 +1,5 @@
 /* pages/houselist/houselist.wxss */
-@import '../../pages/food/food.wxss'
+@import '../../pages/food/food.wxss';
+.address{
+  margin-top: 83rpx;
+}

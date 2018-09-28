@@ -1,4 +1,7 @@
 // pages/comments/comments.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../../utils/api.js');
+var goodsId = '', itemid='';
 Page({
 
   /**
@@ -6,13 +9,15 @@ Page({
    */
   data: {
     comm:1,
+    commentlist:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    goodsId = options.id;
+    itemid = options.itemid;
   },
   commClick:function(e){
     var that = this;
@@ -20,6 +25,21 @@ Page({
     console.log(_comm)
     that.setData({
       comm:_comm
+    })
+  },
+  getcomm(){
+    var that = this, token = wx.getStorageSync('token');
+    wx.showLoading({
+      title: '正在加载...',
+    })
+    var url = api.comment.commlist + '?goodsId=' + goodsId + '&token=' + token + '&recType=' + itemid;
+    toolkit.post(url, function (res) {
+      var commentlist = res.data.result
+      console.log("commentlist", commentlist)
+      wx.hideLoading()
+      that.setData({
+        commentlist:commentlist
+      })
     })
   },
 
@@ -34,7 +54,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    that.getcomm()
   },
 
   /**

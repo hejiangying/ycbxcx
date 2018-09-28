@@ -1,7 +1,6 @@
 // pages/commentPost/commentPost.js
-import { $wuxRater } from '../../lib/wux/wux'
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
 var originalList = [],
   index = 0,
   edit = false,
@@ -13,20 +12,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsList: [
-      {
-        id: '1',
-        picUrl: 'http://img4.imgtn.bdimg.com/it/u=3381060308,3456742770&fm=27&gp=0.jpg',
-        name: '双廊跟团一日游门票',
-        spec: '2位成人',
-        comment: '',
-        commentPicList: [
-
-        ],
-        commented: false,
-        // imagePath: '/image/addp.png'
-      }
-    ],
+    goods0: [],
+    goods1:[],
+    goods2:[],
+    goods3: [],
+    star:5,
+    rectype:'',
+    inputcon:'',
     imglist: [], //图片集合
     picList: '',
 
@@ -36,21 +28,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var goodsid= options.id
-    let goodList = this.data.goodsList
-    for (let i = 0; i < goodList.length; i++) {
-      $wuxRater.init(goodList[i].id, {
-        value: 5,
-        fontSize: 21,
-        margin: 6,
-        text: ['非常差', '很差', '一般', '很好', '非常满意'],
-        defaultTextColor: '#555',
-        callback(value, data, text) {
-          console.log(i, goodList[i].id, value)
-        }
-      })
-    }
+    console.log("eeeeeeeee", options)
+    goodsid= options.id
   },
+  clickstar(e){
+    var that = this;
+    var star = e.currentTarget.dataset.star;
+    that.setData({
+      star:star
+    })
+
+  },
+
   // 选择图片
   photoSel() {
     if (this.data.imglist.length < 9) {
@@ -120,7 +109,16 @@ Page({
       imglist: that.data.imglist
     })
   },
+  bindInpuntValue: function (e) {
+    console.log(e.detail.value)
+    let input = e.detail.value
+    this.setData({
+      inputcon: input,
+    })
+  },
+  //获取详情
   getDetail() {
+    var that = this
     wx.showLoading({
       title: '正在加载...'
     })
@@ -129,12 +127,51 @@ Page({
       url = api.order.orderdetail + '?id=' + goodsid + "&token=" + token;
     toolkit.post(url, (res) => {
       wx.hideLoading()
-      var orderdetail = res.data.result
-      console.log(res)
+      var rectype = res.data.result.recType
+      if(rectype == 0){
+        var goods0 = res.data.result.ordersHotelList
+        that.setData({
+          goods1: goods1
+        })
+      }else if(rectype == 1){
+        var goods1 = res.data.result.ordersHotelList
+        that.setData({
+          goods1:goods1
+        })
+      }else if(rectype == 2){
+        var goods2 = res.data.result.ordersLineList
+        that.setData({
+          goods2: goods2
+        })
+      }else if(rectype == 3){
+        var goods3 = res.data.result.ordersItemList
+        that.setData({
+          goods3:goods3
+        })
+      }
       that.setData({
-        orderdetail: orderdetail
+        rectype:rectype
       })
     })
+  },
+  //发表
+  onPost(){
+    var that = this;
+    if (that.data.inputcon == '' && uploadpic == ''){
+      wx.showToast({
+        title: '请填写评价',
+        icon:''
+      })
+    }else{
+      var that = this, token = wx.getStorageSync('token'), url = api.order.ordercomm + '?token=' + token + '&id=' + goodsid + '&content=' + that.data.inputcon + '&picList=' + uploadpic +'&score=' + that.data.star;
+      toolkit.post(url,(res)=>{
+        wx.showToast({
+          title: '评价成功',
+        })
+      })
+    }
+   
+
   },
 
   /**
@@ -148,7 +185,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.getDetail()
+    console.log(1111111111, that.data.imgList)
+    console.log(222222222222, uploadpic)
   },
 
   /**
@@ -185,61 +225,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  bindInpuntValue: function (e) {
-    let input = e.detail.value
-    let index = e.currentTarget.dataset.index
-    this.setData({
-      [`goodsList[${index}].comment`]: input,
-    })
-  },
-  chooseImage: function (e) {
-    let index = e.currentTarget.dataset.index
-    let that = this
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        let tempFilePaths = res.tempFilePaths
-        that.setData({
-          [`goodsList[${index}].imagePath`]: tempFilePaths,
-          [`goodsList[${index}].commentPicList`]: [tempFilePaths]
-        })
-      }
-    })
-  },
-  onPost: function (e) {
-    let index = e.currentTarget.dataset.index
-    if (this.data.goodsList[index].comment==''){
-      wx.showToast({
-        title: '请填写评价内容',
-        icon:'none'
-        // image: '/images/error.png',
-      })
-      // return
-     
-     
-    }else{
-       wx.showToast({
-        title: '提交成功',
-        icon: 'success',
-      })
-      this.setData({
-        [`goodsList[${index}].commented`]: true
-      })
-      wx.navigateBack({
-        delta: 1
-      })
-    }
-  },
-  previewImage: function (e) {
-    console.log(e)
-    let goodsIndex = e.target.dataset.goodsIndex
-    let picIndex = e.target.dataset.picIndex
-    wx.previewImage({
-      current: this.data.goodsList[goodsIndex].commentPicList[picIndex], // 当前显示图片的http链接
-      urls: this.data.goodsList[goodsIndex].commentPicList // 需要预览的图片http链接列表
-    })
-  },
+  
+  
+  
 })

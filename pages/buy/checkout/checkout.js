@@ -61,7 +61,7 @@ Page({
     var that = this;
     that.getGooddetail()
   },
-
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -113,35 +113,18 @@ Page({
   submitOrder: function () {
     var addressId=wx.getStorageSync('addressId'),
     token=wx.getStorageSync('token'),
-      url = api.pay.payall + '?ids=' + goodsid + '&token=' + token + '&addressId=' + addressId +'&paymentType='+1;
+      url = api.pay.payall + '?ids=' + goodsid + '&token=' + token + '&addressId=' + addressId + '&paymentType=' + 1 +'&postFee='+0;
       toolkit.post(url,(res)=>{
-        
+        wx.requestPayment({
+          'timeStamp': res.data.result.timeStamp,
+          'nonceStr': res.data.result.nonceStr,
+          'package': res.data.result.package,
+          'signType': res.data.result.signType,
+          'paySign': res.data.result.paySign,
+          'success': function (res) { },
+          'fail': function (res) { }
+        })
       })
-    // console.log("checkedAddressId333", this.data.couponId)
-    // wx.showModal({
-    //   title: '提示',
-    //   content: '此处需调用微信支付接口',
-    //   showCancel: false,
-    //   confirmColor: '#b4282d',
-    //   success: function (res) {
-    //     if (res.confirm) {
-    //       console.log('用户点击确定')
-    //       wx.redirectTo({
-    //         url: '/pages/payResult/payResult?status=true',
-    //       })
-    //     }
-    //   }
-    // })
-    // wx.requestPayment({
-    //   'timeStamp': '',
-    //   'nonceStr': '',
-    //   'package': '',
-    //   'signType': 'MD5',
-    //   'paySign': '',
-    //   'success': function (res) {
-    //   },
-    //   'fail': function (res) {
-    //   }
-    // })
+   
   }
 })

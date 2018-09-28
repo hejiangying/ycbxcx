@@ -1,35 +1,43 @@
 <!--pages/seeorder/seeorder.wxml-->
 <view class="container">
+<block wx:for="{{orderdetail}}" wx:key="{{index}}">
   <view class="order-img">
-    <image src="{{'http://192.168.190.243:8081'+orderdetail.goodsImg}}"></image>
+   <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+      <block wx:for="{{orderdetail.imgList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{'http://192.168.190.243:8081'+ item}}" width="100%" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <image src="{{'http://192.168.190.243:8081'+orderdetail.goodsImg}}"></image> -->
     <view class="tour-name">
-     {{orderdetail.ordersHotel.goodsName}}
+     {{item.goodsName}}
     </view>
     <view class="tour-time">
-      <view><text>入住时间</text>{{orderdetail.ordersHotel.checkInTime}}</view>
-      <view><text>离店时间</text>{{orderdetail.ordersHotel.checkOutTime}}</view>
-      <view><text>下单时间</text>{{orderdetail.ordersHotel.updateTime}}</view>
+      <view><text>入住时间</text>{{item.checkInTime}}</view>
+      <view><text>离店时间</text>{{item.checkOutTime}}</view>
+      <view><text>下单时间</text>{{item.updateTime}}</view>
     </view>
     <view class="tour-num">
       <!-- <text>成人2人</text> -->
     </view>
     <view class="tour-price">
-      <text>￥{{orderdetail.ordersHotel.payRoom}}</text>
+      <text>￥{{item.payRoom}}</text>
     </view>
   </view>
   <view class="order-con">
     <text>身份信息</text>
     <view class="idname">
-      <text>姓名</text>{{orderdetail.ordersHotel.clientName}}
+      <text>姓名</text>{{item.clientName}}
     </view>
     <view class="idnum">
-      <text>身份证</text> {{orderdetail.ordersHotel.identitfy}}
+      <text>身份证</text> {{item.identitfy}}
     </view>
   </view>
   <!-- 身份信息 -->
   <view class="order-id">
     <view>
-      <text> 订单号</text> {{orderdetail.orderSn}}
+      <text> 订单号</text> {{ordersn}}
     </view>
     <!-- <view>
       <text>  怎么取票></text>
@@ -38,4 +46,5 @@
       <text>  我要退票</text>
     </view> -->
   </view>
+  </block>
 </view>

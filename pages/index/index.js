@@ -4,7 +4,8 @@ Page({
   data: {
     lineList:'',
     goodsList:'',
-    hotelList:''
+    hotelList:'',
+    banner:[],//首页轮播
   },
   onLoad: function () {
     var that = this;
@@ -30,11 +31,13 @@ Page({
   onShow:function(){
     var that = this;
     that.gethome()
+    that.getBanner()
   },
   gethome(){
     var that = this,
     url=api.home.home;
     toolkit.get(url,(res)=>{
+      wx.stopPullDownRefresh();
       var goodsList = res.data.result.goodsList.content
       var hotelList = res.data.result.hotelList
       var lineList = res.data.result.lineList
@@ -44,6 +47,18 @@ Page({
         lineList: lineList
       })
     })
+  },
+  getBanner(){
+    var that = this;
+    toolkit.get(api.home.banner,(res)=>{
+      var banner = res.data.result
+      that.setData({
+        banner:banner
+      })
+    })
+  },
+  goBanner(e){
+    var that = this,bannerId = e.currentTarget.dataset.id;
   },
  
   // 跳转搜索页
@@ -75,11 +90,13 @@ Page({
       url: '../../pages/foodclass/foodclass?itemId='+0,
     })
   },
+  //跳转到通用商品
   goanother:function(){
     wx.navigateTo({
       url: '../../pages/food/food?itemId=' + 3,
     })
   },
+  //跳转到住宿
   gohouse:function(){
     wx.navigateTo({
       url: '../../pages/houselist/houselist?itemId=' + 1,
@@ -124,6 +141,12 @@ Page({
 
   onShareAppMessage:function(){
 
-  }
+  },
+  onPullDownRefresh: function () {
+    var that = this;
+    that.gethome()
+    that.getBanner()
+  },
+
   
 })

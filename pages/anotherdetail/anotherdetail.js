@@ -1,7 +1,7 @@
 // pages/anotherdetail/anotherdetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var goodsid = '';
+var goodsid = '',itemid='';
 Page({
 
   /**
@@ -16,7 +16,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    goodsid = options.id
+    goodsid = options.id;
+    itemid = options.itemid
   },
 
   /**
@@ -42,7 +43,7 @@ Page({
       url = api.order.orderdetail + '?id=' + goodsid + "&token=" + token;
     toolkit.post(url, (res) => {
       wx.hideLoading()
-      var orderdetail = res.data.result.ordersItem
+      var orderdetail = res.data.result.ordersItemList
       var ordersn = res.data.result.orderSn
       console.log(res)
       that.setData({

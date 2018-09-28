@@ -7,14 +7,14 @@ var postId = '',
   userId = '',
   read='',
   formid = '',
-  attenStatus = '';
+  attenStatus = '',
+  thumbsStatus='';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isLike: false, //默认未点赞
     att_status: '', //关注状态
     postdetail: '', //帖子详情
     userid: '', //帖子id
@@ -28,24 +28,7 @@ Page({
     postId = options.id
     console.log("postid:", postId)
   },
-  // 点赞和取消点赞
-  likeClick: function(e) {
-    var that = this,
-      _isLike, _likenum;
-    var llike = that.data.likenum;
-    if (that.data.isLike == false) {
-      _isLike = true
-      _likenum = ++llike
-    } else {
-      _isLike = false
-      _likenum = --llike
-    }
-    that.setData({
-      isLike: _isLike,
-      likenum: _likenum
-    })
-
-  },
+  
   //跳转到评论页面
   goComment: function(e) {
     var commid = e.currentTarget.dataset.commid;
@@ -117,6 +100,7 @@ Page({
         userid = res.data.result.article.userId,
         read = res.data.result.article.commentList; 
       attenStatus = res.data.result.followStatus;
+      thumbsStatus = res.data.result.article.thumbsStatus;
       userId = userid;
       if (res.data.result.commentList != null) {
         for (let i = 0; i < read.length; i++) {
@@ -133,6 +117,21 @@ Page({
         att_status: attenStatus
       })
     })
+  },
+  // 点赞和取消点赞
+  likeClick: function (e) {
+    var that = this, typeId = e.currentTarget.dataset.commid;
+    var token = wx.getStorageSync('token');
+    if (thumbsStatus == 0) {
+      var url1 = api.like.like + '?token=' + token + '&typeId=' + typeId
+      toolkit.post(url1, (res) => {
+      })
+    } else if (thumbsStatus == 1) {
+      var url = api.like.removelike + '?token=' + token + '&typeId=' + typeId
+      toolkit.post(url, (res) => {
+      })
+    }
+    that.getpostDetail()
   },
 
   // 关注和取消关注

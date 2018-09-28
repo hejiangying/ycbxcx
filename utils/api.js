@@ -2,6 +2,8 @@ const host = 'http://192.168.190.243:8080';
 const api = {
   home:{
     home: host +'/apiUser/home',//首页
+    banner: host +'/apiAd/list',//轮播
+    bannerdetail: host +'/apiAd/info',//轮播详情
   },
   apiUser: {
     onLogin: host + '/apiUser/auth',//授权
@@ -77,6 +79,17 @@ const api = {
   },
   buy:{
     buy: host +'/apiOrders/payment',//支付
+  },
+  like:{
+    like: host +'/apiThumbs/create',//点赞
+    removelike: host +'/apiThumbs/remove',//取消点赞
+  },
+  comment:{
+    commlist: host +'/apiComment/list',//评论列表
+  },
+  play:{
+    playList: host +'/apiSupplier/list',//附近玩列表
+    info:host + '/apiSupplier/info',//附近玩详情
   }
  
 }

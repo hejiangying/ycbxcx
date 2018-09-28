@@ -1,18 +1,32 @@
 // pages/goodsdetail/goodsdetail.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
+var id = '';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    info:'',//详情
+  },
+  getdetail(){
+    var that = this;
+    var url = api.play.info + '?id=' + id
+    toolkit.get(url, (res) => {
+      var info = res.data.result
+      that.setData({
+        info: info
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    id = options.id
+    
   },
 
   /**
@@ -26,7 +40,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    that.getdetail()
   },
 
   /**

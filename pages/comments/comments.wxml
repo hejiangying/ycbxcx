@@ -2,55 +2,80 @@
 <view class="container">
   <view class="commsel">
     <view data-comm="1" bindtap='commClick' class="{{comm == 1 ? 'on' : ''}}">全部评论</view>
-    <view data-comm="2" bindtap='commClick' class="{{comm == 2 ? 'on' : ''}}">有图</view>
+    <view data-comm="2" bindtap='commClick' class="{{comm == 2 ? 'on' : ''}}">好评</view>
+    <view data-comm="3" bindtap='commClick' class="{{comm == 3 ? 'on' : ''}}">中评</view>
+    <view data-comm="4" bindtap='commClick' class="{{comm == 4 ? 'on' : ''}}">差评</view>
   </view>
   <!-- 全部评论 -->
   <view class="allcomm" wx:if="{{comm == 1 ? 'on' : ''}}">
-    <view class="commcon">
+    <view class="commcon" wx:for="{{commentlist.allCommentList}}" wx:key="{{index}}">
       <view class="comm-t">
         <view class="comm-l">
-          <image src="../../image/kezhan.png"></image>
-          <text>哈哈哈哈</text>
+          <image src="{{item.thumbImg}}"></image>
+          <text>{{item.nickname}}</text>
         </view>
-        <view class="comm-r">2018-8-3</view>
+        <view class="comm-r">{{item.createTime}}</view>
       </view>
-      <view class="comm-con">惊艳之作 很好用</view>
+      <view class="comm-con">{{item.content}}</view>
       <view class="commimg">
-        <image src="../../image/kezhan.png"></image>
-        <image src="../../image/kezhan.png"></image>
-        <image src="../../image/kezhan.png"></image>
-         <image src="../../image/kezhan.png"></image>
-        <image src="../../image/kezhan.png"></image>
-        <image src="../../image/kezhan.png"></image>
+      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+        <image src="item"></image>
+        </block>
       </view>
-    </view>
-    <view class="commcon">
-      <view class="comm-t">
-        <view class="comm-l">
-          <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg"></image>
-          <text>哈哈哈哈</text>
-        </view>
-        <view class="comm-r">2018-8-3</view>
-      </view>
-      <view class="comm-con">很不错的一次体验</view>
     </view>
   </view>
-<!-- 图片评论 -->
+<!-- 好评 -->
 <view class="phtcomm"  wx:if="{{comm == 2 ? 'on' : ''}}">
-   <view class="commcon">
+   <view class="commcon" wx:for="{{commentlist.goodCommentList}}" wx:key="{{index}}">
       <view class="comm-t">
         <view class="comm-l">
-          <image src="../../image/kezhan.png"></image>
-          <text>哈哈哈哈</text>
+          <image src="{{item.thumbImg}}"></image>
+          <text>{{item.nickname}}</text>
         </view>
-        <view class="comm-r">2018-8-3</view>
+        <view class="comm-r">{{item.createTime}}</view>
       </view>
-      <view class="comm-con">惊艳之作 很好用</view>
-      <view class="commimg">
-        <image src="../../image/kezhan.png"></image>
-        <image src="http://img3.redocn.com/tupian/20150316/fenhonghuaduohehudieshiliangbeijing_3934424.jpg"></image>
+      <view class="comm-con">{{item.content}}</view>
+       <view class="commimg">
+      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+        <image src="item"></image>
+        </block>
       </view>
     </view>
 </view>
-
+<!-- 中评 -->
+<view class="phtcomm"  wx:if="{{comm == 3 ? 'on' : ''}}">
+  <view class="commcon" wx:for="{{commentlist.wellCommentList}}" wx:key="{{index}}">
+      <view class="comm-t">
+        <view class="comm-l">
+          <image src="{{item.thumbImg}}"></image>
+          <text>{{item.nickname}}</text>
+        </view>
+        <view class="comm-r">{{item.createTime}}</view>
+      </view>
+      <view class="comm-con">{{item.content}}</view>
+     <view class="commimg">
+      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+        <image src="item"></image>
+        </block>
+      </view>
+    </view>
+</view>
+<!-- 差评 -->
+<view class="phtcomm"  wx:if="{{comm == 4 ? 'on' : ''}}">
+  <view class="commcon" wx:for="{{commentlist.badCommentList}}" wx:key="{{index}}">
+      <view class="comm-t">
+        <view class="comm-l">
+          <image src="{{item.thumbImg}}"></image>
+          <text>{{item.nickname}}</text>
+        </view>
+        <view class="comm-r">{{item.createTime}}</view>
+      </view>
+      <view class="comm-con">{{item.content}}</view>
+      <view class="commimg">
+      <block wx:for="{{item.imgList}}" wx:key="{{index}}">
+        <image src="item"></image>
+        </block>
+      </view>
+    </view>
+</view>
 </view>

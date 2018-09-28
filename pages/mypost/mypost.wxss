@@ -16,6 +16,7 @@
   font-size: 28rpx;
   color: #666;
   margin: 10rpx;
+  word-break:break-all;
 }
 .post-item .post-photo {
   display: flex;

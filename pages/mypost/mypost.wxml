@@ -22,63 +22,11 @@
           </view>
           <view class="oper-like">
             <image src="../../image/like.png"></image>
-            <text>2</text>
+            <text>{{item.clickCount}}</text>
           </view>
         </view>
       </view>
     </view>
   </block>  
-     <view class="post-item">
-      <view class="post-time">2016-5-6</view>
-      <view class="post-con">远方去不了那就来个北京一日游吧-北京一日游攻略。</view>
-      <view class="post-photo">
-        <image src="../../image/techan.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img10.3lian.com/show2014/1/73/105.jpg"></image>
-      </view>
-      <view class="post-operation">
-        <view class="oper-l">
-          <!-- <text bindtap='postEdit'>编辑</text> -->
-          <text bindtap='postDel'>删除</text>
-        </view>
-        <view class="oper-r">
-          <view class="oper-comment" bindtap="commSee">
-            <image src="../../image/comment.png"></image>
-            <text>2</text>
-          </view>
-          <view class="oper-like">
-            <image src="../../image/like.png"></image>
-            <text>2</text>
-          </view>
-        </view>
-      </view>
-
-    </view>
-     <view class="post-item">
-      <view class="post-time">2016-5-6</view>
-      <view class="post-con">远方去不了那就来个北京一日游吧-北京一日游攻略。</view>
-      <view class="post-photo">
-        <image src="../../image/techan.jpg"></image>
-        <image src="../../image/zuche.png"></image>
-        <image src="http://img10.3lian.com/show2014/1/73/105.jpg"></image>
-      </view>
-      <view class="post-operation">
-        <view class="oper-l">
-          <!-- <text bindtap='postEdit'>编辑</text> -->
-          <text bindtap='postDel'>删除</text>
-        </view>
-        <view class="oper-r">
-          <view class="oper-comment">
-            <image src="../../image/comment.png"></image>
-            <text>2</text>
-          </view>
-          <view class="oper-like">
-            <image src="../../image/like.png"></image>
-            <text>2</text>
-          </view>
-        </view>
-      </view>
-
-    </view>
   </view>
 </view>

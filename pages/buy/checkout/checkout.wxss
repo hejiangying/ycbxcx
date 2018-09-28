@@ -302,5 +302,5 @@ color:#666;
 }
 
 .order-total .r.active {
-  background: #f63264;
+  background: #fc0240;
 }

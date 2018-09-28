@@ -6,8 +6,8 @@
     <view class="perinfo">
       <view class="perinfo-l">
         <view class="perinfo-pho">
-          <image wx:if="{{postdetail.userStatus ==0}}" src="{{'http://192.168.190.243:8081'+postdetail.avatar}}"></image>
-          <image wx:if="{{postdetail.userStatus ==1}}" src="{{postdetail.avatar}}"></image>
+          <image wx:if="{{postdetail.userFlag ==1}}" src="{{'http://192.168.190.243:8081'+postdetail.avatar}}"></image>
+          <image wx:if="{{postdetail.userFlag ==0}}" src="{{postdetail.avatar}}"></image>
         </view>
         <view class="perinfo1-id">
           <text>{{postdetail.author}}</text>
@@ -33,9 +33,10 @@
         <image src="../../image/comment.png"></image>
         <text>{{postdetail.commentNum}}评论</text>
       </view>
-      <view class="btn-like" bindtap="likeClick">
-        <image src="{{isLike == false ? '../../image/like.png' : '../../image/like1.png'}}"></image>
-        <text>{{isLike == false ? '点赞' : '已点赞'}}</text>
+      <view class="btn-like" bindtap="likeClick" data-commid="{{postdetail.id}}">
+        <image wx:if="{{postdetail.thumbsStatus == 0}}" src='../../image/like.png'></image>
+        <image wx:if="{{postdetail.thumbsStatus == 1}}" src="../../image/like1.png"></image>
+        <text>{{postdetail.thumbsStatus  == 0 ? '点赞' : '已点赞'}}</text>
       </view>
     </view>
 

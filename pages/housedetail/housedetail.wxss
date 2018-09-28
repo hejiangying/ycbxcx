@@ -63,3 +63,8 @@
   font-size: 30rpx;
   color: #f63264;
 }
+.kc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}

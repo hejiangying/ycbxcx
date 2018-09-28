@@ -20,6 +20,7 @@ Page({
       token = wx.getStorageSync('token'),
       url = api.apiUser.info + '?token=' + token;
       toolkit.post(url,(res)=>{
+        wx.stopPullDownRefresh()
         var myinfo = res.data.result
        
         console.log("444:",res)
@@ -110,7 +111,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this;
+    that.getInfo()
   },
 
   /**

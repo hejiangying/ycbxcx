@@ -65,6 +65,6 @@
 
   <view class="order-total">
     <view class="l">实付: ￥{{totalPrice}}</view>
-    <view class="r" hover-class="active" bindtap="submitOrder">去付款</view>
+    <view class="r" hover-class="active" bindtap="submitOrder" data-ids="{{}}">去付款</view>
   </view>
 </view>

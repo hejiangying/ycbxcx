@@ -20,7 +20,8 @@ Page({
     goodsimg:[],
     imgres:[],
     pathList:[],
-    collectstatus:''
+    collectstatus:'',
+    commentlist:[]
 
   },
   xcSelect: function(e) {
@@ -31,11 +32,13 @@ Page({
     })
   },
   // 查看评论
-  commSee: function() {
+  commSee() {
+    var that = this;
     wx.navigateTo({
-      url: '../../pages/comments/comments',
+      url: '../../pages/comments/comments?id=' + goodsId+ '&itemid=' + recType,
     })
   },
+
   
   //款式选择
   typeClick: function(e) {
@@ -101,12 +104,15 @@ Page({
     toolkit.get(url,(res) => {
       wx.hideLoading()
       var goods = res.data.result.goodsItem;
-        collectStatus = res.data.result.collectStatus;
+      collectStatus = res.data.result.collectStatus;
+       var commentlist = res.data.result.commentList;
       goodsPrice = res.data.result.goodsItem.itemPrice
+    
       console.log("商品详情：",goods)
       that.setData({
         goods:goods,
-        collectstatus: collectStatus
+        collectstatus: collectStatus,
+        commentlist:commentlist
       })
     })
   },

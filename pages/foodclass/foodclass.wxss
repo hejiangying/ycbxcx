@@ -1,21 +1,33 @@
 /* pages/footclass/foodclass.wxss */
 .search{
   width: 100%;
-  background: #000;
-  opacity: 0.3;
+  background: #f63264;
+  opacity: 0.7;
   padding: 15rpx 0rpx;
   position: fixed;
   top: 0;
+  display: flex;
+  flex-direction: row;
 }
-.search view{
+.search input{
   font-size: 26rpx;
   color: #fff;
   text-align: center;
+  width: 90%;
+}
+.search view {
+  width: 10%;
+  height: 52rpx;
+}
+.search view image{
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: -5rpx
 }
 .foodclass{
   display: flex;
   flex-direction: row;
-  margin-top:64rpx; 
+  margin-top:82rpx; 
 }
 .foodclass .food-l{
   display: flex;
@@ -73,4 +85,49 @@
 }
 .fooditem .foodprice text:nth-child(1){
   color: #f63264;
+}
+.searchclass{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 82rpx
+}
+.searchitem{
+  width: 48%;
+  border: 1px solid #ebe9e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  float: left
+}
+.searchitem:nth-child(2n+1){
+  margin-right: 2%;
+}
+.searchitem image{
+  width: 100%;
+  height:130px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.searchitem text{
+  font-size: 26rpx;
+  color: #666;
+}
+.searchitem>text{
+  margin-left: 10px;
+}
+.searchitem .foodprice{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10rpx;
+}
+.nogoods image{
+  width: 180px;
+  height: 180px;
+  margin: 20% auto 0;
+  display: block
+}
+.nogoods view{
+  color: #f63264;
+  font-size: 30rpx;
+  text-align: center
 }
