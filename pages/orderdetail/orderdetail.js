@@ -1,7 +1,9 @@
+
+
 // pages/orderdetail/orderdetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var lineid = '', collectStatus = '', itemId='';//线路id
+var lineid = '', collectStatus = '', itemId='';//线路id,是否收藏，自助游标识
 Page({
 
   /**
@@ -66,7 +68,7 @@ Page({
     console.log("jjjjjjjjj",lineid)
     var that = this, productId=e.currentTarget.dataset.id,token=wx.getStorageSync('token'),collentUrl=that.route;
     if (collectStatus ==0){
-      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.linedetail.price + '&productName=' + that.data.linedetail.title + '&collentUrl=' + collentUrl;
+      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&collentUrl=' + collentUrl +'&recType='+itemId;
       toolkit.post(url,(res)=>{
         wx.showToast({
           title: '收藏成功',

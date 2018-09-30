@@ -68,3 +68,12 @@
   flex-direction: row;
   justify-content: space-between
 }
+.footbtn view.buybtn {
+  width: 100%;
+}
+.scbtn{
+  width: 40rpx;
+}
+.scbtn image{
+  width: 100%;height: 40rpx;
+}

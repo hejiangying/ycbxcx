@@ -2,7 +2,7 @@
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
 var goodsId = '',houseid = '',
-  itemId = ''; //商品id
+  itemId = '', collectStatus='',price=''; //商品id,房间id，住宿标识，收藏状态,价格
 Page({
 
   /**
@@ -19,8 +19,7 @@ Page({
     commentlist:[],
     seindex:'',
     houseDetail:'',
-    iscol: false, //默认不收藏该商品
-
+    collectstatus:''
   },
   xcSelect: function(e) {
     var that = this;
@@ -49,27 +48,50 @@ Page({
       var goods = res.data.result.hotel
       var houselist = res.data.result.hotelRoomList
       var commentlist = res.data.result.commentList
+      collectStatus = res.data.result.collectStatus
       wx.hideLoading()
       var goodsimg = goods.litpic;
       that.setData({
         goods: goods,
         houselist: houselist,
-        commentlist: commentlist
+        commentlist: commentlist,
+        collectstatus: collectStatus
       })
     })
   },
   // 是否收藏该商品
-  isCollect: function () {
+  isCollect: function (e) {
+    console.log(e)
+    console.log('zahungtai', collectStatus)
     var that = this,
-      _iscol = "";
-    if (that.data.iscol == false) {
-      _iscol = true
-    } else {
-      _iscol = false
+      productId = e.currentTarget.dataset.id,
+      token = wx.getStorageSync('token'),
+      collentUrl = that.route;
+    if (collectStatus == 0) {
+      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&collentUrl=' + collentUrl + '&recType=' + itemId;
+      toolkit.post(url, (res) => {
+        console.log("收藏成功")
+        wx.showToast({
+          title: '收藏成功',
+        })
+        that.setData({
+          collectstatus: 1
+        })
+      })
+      collectStatus = 1
+    } else if (collectStatus == 1) {
+      var reurl = api.collection.remove + '?productId=' + productId + '&token=' + token;
+      toolkit.post(reurl, (res) => {
+        console.log("取消收藏")
+        wx.showToast({
+          title: '取消成功',
+        })
+        that.setData({
+          collectstatus: 0
+        })
+      })
+      collectStatus = 0
     }
-    that.setData({
-      iscol: _iscol
-    })
   },
   //点击出现详情
   orderClick(e) {

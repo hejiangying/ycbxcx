@@ -1,57 +1,24 @@
 <!--pages/myattention/myattention.wxml-->
 <view class="container">
-  <view class="att-list">
+  <view class="att-list" wx:if="{{attenList.length>0}}" >
+  <block wx:for="{{attenList}}" wx:key="{{index}}">
     <view class="att-item">
       <view class="att-l">
         <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
+           <image wx:if="{{item.userFlag==1}}" src="{{item.avatar}}"></image>
+          <image wx:if="{{item.userFlag==2}}" src="{{'http://192.168.190.243:8081'+item.avatar}}"></image>
         </view>
         <view class="att-name">
-          <view>张晓明</view>
+          <view>{{item.nickName}}</view>
         </view>
       </view>
-      <view class="att-state">
+      <view class="att-state" bindtap='blackClick' data-id="{{item.followId}}">
         <text>拉黑</text>
       </view>
     </view>
-    <view class="att-item">
-      <view class="att-l">
-        <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
-        </view>
-        <view class="att-name">
-          <view>张晓明</view>
-        </view>
-      </view>
-      <view class="att-state">
-        <text>拉黑</text>
-      </view>
-    </view>
-    <view class="att-item">
-      <view class="att-l">
-        <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
-        </view>
-        <view class="att-name">
-          <view>张晓明</view>
-        </view>
-      </view>
-      <view class="att-state">
-        <text>拉黑</text>
-      </view>
-    </view>
-    <view class="att-item">
-      <view class="att-l">
-        <view class="att-photo">
-          <image src="../../image/kezhan.png"></image>
-        </view>
-        <view class="att-name">
-          <view>张晓明</view>
-        </view>
-      </view>
-      <view class="att-state">
-        <text>拉黑</text>
-      </view>
-    </view>
+   </block> 
+  </view>
+  <view class="noatten" wx:if="{{attenList.length==0}}">
+    暂无粉丝
   </view>
 </view>

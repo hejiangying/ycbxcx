@@ -12,10 +12,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goods0: [],
+    goods0:[],
     goods1:[],
     goods2:[],
-    goods3: [],
+    goods3:[],
     star:5,
     rectype:'',
     inputcon:'',
@@ -128,22 +128,22 @@ Page({
     toolkit.post(url, (res) => {
       wx.hideLoading()
       var rectype = res.data.result.recType
-      if(rectype == 0){
-        var goods0 = res.data.result.ordersHotelList
+      if(rectype == 1){
+        var goods0 = res.data.result.ordersGoodsList
         that.setData({
-          goods1: goods1
+          goods0: goods0
         })
-      }else if(rectype == 1){
+      }else if(rectype == 2){
         var goods1 = res.data.result.ordersHotelList
         that.setData({
           goods1:goods1
         })
-      }else if(rectype == 2){
+      }else if(rectype == 3){
         var goods2 = res.data.result.ordersLineList
         that.setData({
           goods2: goods2
         })
-      }else if(rectype == 3){
+      }else if(rectype == 4){
         var goods3 = res.data.result.ordersItemList
         that.setData({
           goods3:goods3

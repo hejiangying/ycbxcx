@@ -62,12 +62,13 @@ page, .container {
 
 .goods .info {
   height: 145rpx;
-  flex: 1;
   padding-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
 }
 
 .goods .name {
-  margin-top: 30rpx;
   display: block;
   height: 44rpx;
   line-height: 44rpx;

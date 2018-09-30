@@ -11,6 +11,9 @@
       </swiper>
       <view class="t-name cen">
         <text>{{goods.title}}</text>
+        <view class="scbtn" bindtap="isCollect" data-id="{{goods.id}}">
+          <image src="{{collectstatus ==  1  ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
+        </view>
       </view>
       <view class="sell-state cen">
         <view class="t-money">
@@ -76,10 +79,10 @@
 
             <view class="mask housemask" wx:if="{{status}}">
                 <view class="footbtn">
-                  <view class="scbtn" bindtap="isCollect">
+                  <!-- <view class="scbtn" bindtap="isCollect" data-id="{{houseDetail.hotelId}}">
                     <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
                     <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
-                  </view>
+                  </view> -->
                   <view class="buybtn" bindtap="buyClick">{{status == true ? '立即预订' : '加入购物车'}}</view>
                 </view>
                  <view class="mask-cover"></view>

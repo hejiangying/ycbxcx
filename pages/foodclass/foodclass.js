@@ -1,7 +1,7 @@
 // pages/footclass/foodclass.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var itemId = '', currentPage = 1, totalpage = '',goodssum=[];
+var itemId = '', currentPage = 1, totalpage = '',goodssum=[],isLoadmore=false,classId='',classSum=[];//特产标识，当前页，总页数，总列表,是否加载更多,分类id,分类列表
 Page({
 
   /**
@@ -56,13 +56,22 @@ Page({
   },
   //分类加载每一项
   classcLick:function(e){
+
+    console.log(867)
+    wx.showLoading({
+      title: '加载中...',
+    })
     var that = this;
+    currentPage = 1
     var catId = e.currentTarget.dataset.id,
-      url = api.appGoods.goodsItem + '?catId=' + catId;
+      url = api.appGoods.goodsItem + '?catId=' + catId+'&pageNumber='+currentPage;
+      classId = catId
     toolkit.get(url,(res)=>{
+      wx.hideLoading()
       var goodsList = res.data.result.content
+      classSum = goodsList
       that.setData({
-        goodsList: goodsList,
+        goodsList: classSum,
         isChecked: catId,
         allon:0,
         foodList: that.data.foodList,
@@ -91,7 +100,11 @@ Page({
       wx.hideLoading()
       var goodsList = res.data.result.content;
       totalpage = res.data.result.totalPages
-      goodssum = goodssum.concat(goodsList)
+      if(isLoadmore == true){
+        goodssum = goodssum.concat(goodsList)
+      }else{
+        goodssum = goodsList
+      }
       that.setData({
         goodsList: goodssum,
         typeclass: 1
@@ -156,16 +169,34 @@ Page({
     console.log("没有更多了")
     var that = this;
     if (currentPage != totalpage) {
+      isLoadmore=true
       currentPage++
-      that.getfoodList()
-      that.classcLick()
+      if(that.data.allon==1){
+        that.getList()
+      }else{
+        console.log("666",classId)
+        var url = api.appGoods.goodsItem + '?catId=' + classId + '&pageNumber=' + currentPage;
+        toolkit.get(url, (res) => {
+          wx.hideLoading()
+          var goodsList = res.data.result.content
+          if(isLoadmore == true){
+            classSum = classSum.concat(goodsList)
+          }else{
+            classSum = goodsList
+          }
+          that.setData({
+            goodsList: classSum,
+          })
+        })
+      }
+      
     }else{
       wx.showLoading({
         title: '没有更多了',
         success(){
           setTimeout(function(){
             wx.hideLoading()
-          },3000)
+          },1000)
         }
       })
     }

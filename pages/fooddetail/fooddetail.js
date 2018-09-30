@@ -5,8 +5,7 @@ var goodsId = '',
   num = 1,
   goodsPrice = '',
   itemId = '',
-  collectStatus = '',
-  itemId=''; //商品id,数量,价格,,收藏
+  collectStatus = ''; //商品id,数量,价格,,收藏状态
 Page({
 
   /**
@@ -103,7 +102,7 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    var url = api.appGoods.goodsdetail + '?id=' + goodsId + '&token=' + token;
+    var url = api.appGoods.goodsdetail + '?id=' + goodsId + '&token=' + token ;
     toolkit.get(url, (res) => {
       wx.hideLoading()
       var goods = res.data.result.goods,commentlist = res.data.result.commentList;
@@ -133,7 +132,7 @@ Page({
     } else {
       var token = wx.getStorageSync('token'),
         goodsNumber = num,
-        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&goodsPrice=' + goodsPrice + '&goodsNumber=' + goodsNumber + '&recType=' + itemId;
+        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&recType=' + itemId;
       console.log("url", url)
       toolkit.post(url, (res) => {
         wx.showToast({
@@ -158,7 +157,7 @@ Page({
       token = wx.getStorageSync('token'),
       collentUrl = that.route;
     if (collectStatus == 0) {
-      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.goods.marketPrice + '&productName=' + that.data.goods.goodsName + '&collentUrl=' + collentUrl;
+      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.goods.marketPrice + '&productName=' + that.data.goods.goodsName + '&collentUrl=' + collentUrl + '&recType=' + itemId;
       toolkit.post(url, (res) => {
         console.log("收藏成功")
         wx.showToast({

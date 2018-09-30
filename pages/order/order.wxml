@@ -4,81 +4,80 @@
     <text class="{{ortp==1 ? 'on' : ''}}" bindtap='orderSelect' data-order='1'>全部订单</text>
     <text class="{{ortp==2 ? 'on' : ''}}" bindtap='orderSelect' data-order='2'>待付款订单</text>
     <text class="{{ortp==3 ? 'on' : ''}}" bindtap='orderSelect' data-order='3'>待评价</text>
+    <text class="{{ortp==4 ? 'on' : ''}}" bindtap='orderSelect' data-order='4'>退款/售后</text>
   </view>
 
   <!-- 全部订单 -->
   <view class="allorder">
-  <view wx:if="{{orderList != '' }}">
-    <block wx:for="{{orderList}}" wx:key="{{index}}">
-      <view class="order-list">
-        <view class="order-item" bindtap='seeDetail' data-id='{{item.id}}' data-rectype="{{item.recType}}">
-          <image src="{{'http://192.168.190.243:8081'+item.goodsImg}}"></image>
-          <view class="order-info">
-          <block wx:if="{{name}}" wx:key="{{index}}">
-            <text class="order-title">{{name[index]}}</text>
-          </block>  
-            <!-- <text class="order-guide">（带导游）</text> -->
-            <text class="order-time">{{item.createTime}}</text>
-            <text class="order-people">总计{{item.goodsCount}}件</text>
-            <view class="order-money">合计￥{{item.goodsAmountTotal}}
-              <text class="poundage" wx:if="{{item.postFee == null}}">(免邮费)</text>
-              <text class="poundage" wx:if="{{item.postFee != null}}">（含手续费￥{{item.postFee}}）</text>
+    <view wx:if="{{orderList != '' }}">
+      <block wx:for="{{orderList}}" wx:key="{{index}}">
+        <view class="order-list">
+          <view class="order-item" bindtap='seeDetail' data-id='{{item.id}}' data-rectype="{{item.recType}}">
+            <image src="{{'http://192.168.190.243:8081'+item.goodsImg}}"></image>
+            <view class="order-info">
+              <block wx:if="{{name}}" wx:key="{{index}}">
+                <text class="order-title">{{name[index]}}</text>
+              </block>
+              <!-- <text class="order-guide">（带导游）</text> -->
+              <text class="order-time">{{item.createTime}}</text>
+              <text class="order-people">总计{{item.goodsCount}}件</text>
+              <view class="order-money">合计￥{{item.goodsAmountTotal}}
+                <text class="poundage" wx:if="{{item.postFee == null}}">(免邮费)</text>
+                <text class="poundage" wx:if="{{item.postFee != null}}">（含手续费￥{{item.postFee}}）</text>
+              </view>
+            </view>
+          </view>
+          <view class="order-state" wx:if="{{item.status == 0}}">
+            <view class="complete">未支付</view>
+            <view class="operation">
+              <text bindtap='cancelOrder' data-id='{{item.id}}'>取消订单</text>
+              <text bindtap='payClick' data-id='{{item.id}}'>立即付款</text>
+            </view>
+          </view>
+          <view class="order-state" wx:if="{{item.status == 1}}">
+            <view class="complete">已支付</view>
+            <view class="operation">
+              <text bindtap='refundClick' data-id='{{item.id}}'>申请退款</text>
+            </view>
+          </view>
+          <view class="order-state" wx:if="{{item.status == 2}}">
+            <view class="complete">待收货</view>
+            <view class="operation">
+              <text bindtap='confirmOrder' data-id='{{item.id}}'>确认收货</text>
+            </view>
+          </view>
+          <view class="order-state" wx:if="{{item.status == 3}}">
+            <view class="complete">已收货</view>
+            <view class="operation">
+              <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
+              <text bindtap='refundClick' data-id='{{item.id}}'>申请退款</text>
+              <text bindtap='commClick' data-id='{{item.id}}'>评价订单</text>
+            </view>
+          </view>
+          <view class="order-state" wx:if="{{item.status == 4}}">
+            <view class="complete">交易完成</view>
+             <view class="operation">
+              <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
+            </view>
+          </view>
+          <view class="order-state" wx:if="{{item.status == 5}}">
+            <view class="complete"></view>
+            <view class="operation">
+              <view>退款申请处理中...</view>
+            </view>
+          </view>
+          <view class="order-state" wx:if="{{item.status == 6}}">
+            <view class="complete">交易关闭</view>
+            <view class="operation">
+              <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
             </view>
           </view>
         </view>
-        <view class="order-state" wx:if="{{item.status == 0}}">
-          <view class="complete">未支付</view>
-          <view class="operation">
-            <text bindtap='cancelOrder' data-id='{{item.id}}'>取消订单</text>
-            <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
-            <text bindtap='payClick' data-id='{{item.id}}'>立即付款</text>
-          </view>
-        </view>
-         <view class="order-state" wx:if="{{item.status == 1}}">
-          <view class="complete">已支付</view>
-          <view class="operation">
-            <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
-            <text bindtap='commClick' data-id='{{item.id}}'>评价订单</text>
-          </view>
-        </view>
-        <view class="order-state" wx:if="{{item.status == 2}}">
-          <view class="complete">已评价</view>
-          <view class="operation">
-            <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
-          </view>
-        </view>
-        <view class="order-state" wx:if="{{item.status == 3}}">
-          <view class="complete">交易关闭</view>
-          <view class="operation">
-            <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
-          </view>
-        </view>
-      </view>
-    </block>
-  </view>
-  <view wx:if="{{orderList == '' }}">
-    <view class="no">暂无订单，快去买一些商品吧！</view>
-  </view>
-    <!-- <view class="order-list">
-      <view class="order-item" bindtap='seeDetail'>
-        <image src="http://img4.imgtn.bdimg.com/it/u=3381060308,3456742770&fm=27&gp=0.jpg"></image>
-        <view class="order-info">
-          <text class="order-title">双廊跟团一日游门票</text>
-          <!-- <text class="order-guide">（带导游）</text> -->
-          <!-- <text class="order-time">2018年1月1日下午2:00</text>
-          <text class="order-people">12位成人</text>
-          <view class="order-money">合计￥99
-            <text class="poundage">（含手续费￥5）</text>
-          </view>
-        </view>
-      </view>
-      <view class="order-state">
-        <view class="complete">已完成</view>
-        <view class="operation">
-          <text bindtap='commClick'>评价订单</text>
-        </view>
-      </view>
-    </view> --> 
+      </block>
+    </view>
+    <view wx:if="{{orderList == '' }}">
+      <view class="no">暂无订单，快去买一些商品吧！</view>
+    </view>
 
   </view>
 </view>

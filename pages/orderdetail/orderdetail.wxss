@@ -58,6 +58,9 @@
 .t-name{
   color: #666;
   font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
 }
 .kong{
   height: 30rpx;

@@ -8,11 +8,15 @@
   padding: 20rpx 30rpx;
 }
 .att-item .att-l .att-photo image{
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   display: block;
   border-radius: 50%;
   margin-right: 20rpx;
+}
+.att-name{
+  color: #666;
+  font-size: 28rpx;
 }
 .att-item .att-l {
   display: flex;
@@ -20,9 +24,20 @@
   align-items: center;
 }
 .att-state text{
-  font-size: 32rpx;
-  background-color: rgb(167, 229, 240);
-  color: #fff;
+  font-size: 26rpx;
   border-radius: 50rpx;
-  padding: 10rpx 20rpx;
+  padding: 5rpx 10rpx;
+  border: 1rpx solid #ccc;
+  color: #ccc;
+  }
+  .att-state text._on{
+  background-color:#f63264;
+  color: #fff;
+  border: 1rpx solid #f63264
+  }
+  .noatten{
+    font-size: 30rpx;
+    color: #f63264;
+    text-align: center;
+    margin-top:30%;
   }

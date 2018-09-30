@@ -1,4 +1,7 @@
 // pages/myfans/myfans.js
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../..//utils/api.js');
+var currentPage = 1, totalpage = '', sumList = [], isLoadmore = false;//当前页，总页数，总列表数，是否需要加载更多
 Page({
 
   /**
@@ -14,6 +17,34 @@ Page({
   onLoad: function (options) {
   
   },
+  getattList() {
+    wx.showLoading({
+      title: '正在加载...',
+    })
+    var that = this, token = wx.getStorageSync('token'), url = api.attention.myattention + '?token=' + token + '&type=' + 1 + '&pageNumber=' + currentPage;
+    toolkit.get(url, (res) => {
+      wx.stopPullDownRefresh()
+      wx.hideLoading()
+      var attenList = res.data.result;
+      totalpage = res.data.result.totalPages
+      if (isLoadmore == true) {
+        sumList = sumList.concat(attenList)
+      } else {
+        sumList = attenList
+      }
+      that.setData({
+        attenList: sumList
+      })
+    })
+
+  },
+  blackClick(e){
+    var that = this,id=e.currentTarget.dataset.id,token=wx.getStorageSync('token');
+    var url = api.attention.black+'?token='+token+'&followId='+id
+    toolkit.post(url,(res)=>{
+      
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -26,7 +57,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    that.getattList()
   },
 
   /**

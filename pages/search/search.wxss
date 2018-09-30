@@ -204,7 +204,6 @@ page {
 }
 
 .cate-item {
-  margin-top: 130rpx;
   height: auto;
   overflow: hidden;
 }
@@ -303,3 +302,4 @@ page {
   text-align: center;
   color: #999;
 }
+.mt{height: 67px;background: #fff;}

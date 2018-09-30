@@ -13,7 +13,7 @@
         <view class="goods" data-id='{{item.productId}}' bindtap='goDetail'>
           <view class="item edit">
             <view class="cart-goods">
-              <image class="img" src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
+              <image class="img" src="{{'http://192.168.190.243:8081'+item.img}}"></image>
               <view class="info">
                 <view class="t">
                   <text class="name">{{item.productName}}</text>

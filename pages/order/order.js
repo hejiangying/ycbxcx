@@ -15,10 +15,6 @@ Page({
     orderList: '',
     orderstatus: '',
     name: [],
-    name1: '',
-    name2: '',
-    name3: '',
-    name4: '',
     recType: [],
   },
   // 订单状态的选择
@@ -36,6 +32,8 @@ Page({
       status = 0
     } else if (that.data.ortp == 3) {
       status = 1
+    } else if (that.data.ortp == 4) {
+      status = 2
     }
     var token = wx.getStorageSync('token'),
       url = api.order.orderList + '?token=' + token + '&status=' + status;
@@ -54,22 +52,22 @@ Page({
     console.log("order:", that.data.ortp)
     var goodsid = e.currentTarget.dataset.id;
     var recType = e.currentTarget.dataset.rectype;
-    if (recType == 1) { //客栈
+    if (recType == 2) { //客栈
       console.log("客栈：", recType)
       wx.navigateTo({
         url: '../../pages/seeorder/seeorder?id=' + goodsid,
       })
-    } else if (recType == 2) {
+    } else if (recType == 3) {
       console.log("线路：", recType)
       wx.navigateTo({
         url: '../../pages/lineorder/lineorder?id=' + goodsid,
       })
-    } else if (recType == 3) {
+    } else if (recType == 4) {
       console.log("通用：", recType)
       wx.navigateTo({
         url: '../../pages/anotherdetail/anotherdetail?id=' + goodsid,
       })
-    } else if (recType == 0) {
+    } else if (recType == 1) {
       console.log("特产：", recType)
       wx.navigateTo({
         url: '../../pages/specialty/specialty?id=' + goodsid,
@@ -77,6 +75,7 @@ Page({
     }
     console.log("58585:", recType)
   },
+  //立即支付
   payClick: function(e) {
     var orderId = e.currentTarget.dataset.id,
       token = wx.getStorageSync('token'),
@@ -91,10 +90,7 @@ Page({
         'success': function(res) {},
         'fail': function(res) {}
       })
-
     })
-
-
   },
   //评论
   commClick: function(e) {
@@ -124,7 +120,44 @@ Page({
         }
       }
     })
+  },
+  //申请退款
+  refundClick(e){
+    var that = this;
+    var refundId = e.currentTarget.dataset.id, token = wx.getStorageSync('token'), url = api.buy.refund + '?orderId=' + refundId+'&token='+token;
+    wx.showModal({
+      title: '提示',
+      content: '是否申请退款？',
+      confirmColor: '#f63264',
+      success(res) {
+        if (res.confirm) {
+          toolkit.post(url, (res) => {
+            that.getList()
+          })
+        } else if (res.cancel) {
 
+        }
+      }
+    })
+  },
+  //确认收货
+  confirmOrder(e){
+    var that = this;
+    var confirmId = e.currentTarget.dataset.id,token=wx.getStorageSync('token'),url=api.buy.confirm+'?token='+token+'&orderId='+confirmId;
+    wx.showModal({
+      title: '提示',
+      content: '是否确认收货？',
+      confirmColor: '#f63264',
+      success(res) {
+        if (res.confirm) {
+          toolkit.post(url, (res) => {
+            that.getList()
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
   },
   onShow: function() {
     var that = this;
@@ -144,7 +177,7 @@ Page({
       url = api.order.orderList + '?token=' + token+'&pageNumber='+currentPage;
     toolkit.post(url, (res) => {
       wx.hideLoading()
-      wx: wx.stopPullDownRefresh()
+      wx.stopPullDownRefresh()
       var orderlist = res.data.result.content;
       totalpage= res.data.result.totalPages
       if (orderlist.length > 0) {
@@ -164,6 +197,7 @@ Page({
             name[i] = orderlist[i].ordersGoodsList[0].goodsName
           }
           that.data.recType.push(recType)
+          console.log("name",name)
         }
         if(isLoadmore==true){
           sumList = sumList.concat(orderlist)
@@ -179,6 +213,7 @@ Page({
       }
     })
   },
+  //删除订单
   delOrder(e) {
     var that = this;
     var orderid = e.currentTarget.dataset.id,
@@ -221,7 +256,16 @@ Page({
     if (currentPage != totalpage) {
       currentPage++
       isLoadmore = true
-      that.getList() 
+      if (that.data.ortp==1){
+        that.getList() 
+      }else if(that.data.ortp == 2){
+
+      } else if (that.data.ortp == 3) {
+
+      } else if (that.data.ortp == 4) {
+
+      }
+      
     } else {
       wx.showLoading({
         title: '没有更多了',

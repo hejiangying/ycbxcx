@@ -112,7 +112,7 @@ Page({
         success:()=>{
           setTimeout(function(){
             wx.hideLoading()
-          },3000)
+          },1000)
         }
       })
     }

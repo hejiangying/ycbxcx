@@ -52,12 +52,6 @@ Page({
     })
 
   },
-// 跳转到编辑帖子页面
-  postEdit:function(){
-    wx.navigateTo({
-      url: '../../pages/post/post',
-    })
-  },
   // 删除帖子
   postDel:function(e){
     var that = this;
@@ -86,7 +80,7 @@ Page({
     id = e.currentTarget.dataset.id;
     console.log("id1,",id)
     wx.navigateTo({
-      url: '../../pages/mypost-comm/mypost-comm?id='+id,
+      url: '../../pages/postdetail/postdetail?id='+id,
     })
   },
 

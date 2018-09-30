@@ -1,14 +1,14 @@
 <!--pages/comments/comments.wxml-->
 <view class="container">
   <view class="commsel">
-    <view data-comm="1" bindtap='commClick' class="{{comm == 1 ? 'on' : ''}}">全部评论</view>
-    <view data-comm="2" bindtap='commClick' class="{{comm == 2 ? 'on' : ''}}">好评</view>
-    <view data-comm="3" bindtap='commClick' class="{{comm == 3 ? 'on' : ''}}">中评</view>
-    <view data-comm="4" bindtap='commClick' class="{{comm == 4 ? 'on' : ''}}">差评</view>
+    <view data-comm="1" bindtap='commClick' class="{{comm == 1 ? 'on' : ''}}">全部评论({{commentlist.allCommentList.content.length}})</view>
+    <view data-comm="2" bindtap='commClick' class="{{comm == 2 ? 'on' : ''}}">好评({{commentlist.goodCommentList.content.length}})</view>
+    <view data-comm="3" bindtap='commClick' class="{{comm == 3 ? 'on' : ''}}">中评({{commentlist.wellCommentList.content.length}})</view>
+    <view data-comm="4" bindtap='commClick' class="{{comm == 4 ? 'on' : ''}}">差评({{commentlist.badCommentList.content.length}})</view>
   </view>
   <!-- 全部评论 -->
   <view class="allcomm" wx:if="{{comm == 1 ? 'on' : ''}}">
-    <view class="commcon" wx:for="{{commentlist.allCommentList}}" wx:key="{{index}}">
+    <view class="commcon" wx:for="{{commentlist.allCommentList.content}}" wx:key="{{index}}">
       <view class="comm-t">
         <view class="comm-l">
           <image src="{{item.thumbImg}}"></image>
@@ -19,14 +19,14 @@
       <view class="comm-con">{{item.content}}</view>
       <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="item"></image>
+        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
         </block>
       </view>
     </view>
   </view>
 <!-- 好评 -->
 <view class="phtcomm"  wx:if="{{comm == 2 ? 'on' : ''}}">
-   <view class="commcon" wx:for="{{commentlist.goodCommentList}}" wx:key="{{index}}">
+   <view class="commcon" wx:for="{{commentlist.goodCommentList.content}}" wx:key="{{index}}">
       <view class="comm-t">
         <view class="comm-l">
           <image src="{{item.thumbImg}}"></image>
@@ -37,14 +37,14 @@
       <view class="comm-con">{{item.content}}</view>
        <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="item"></image>
+        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
         </block>
       </view>
     </view>
 </view>
 <!-- 中评 -->
 <view class="phtcomm"  wx:if="{{comm == 3 ? 'on' : ''}}">
-  <view class="commcon" wx:for="{{commentlist.wellCommentList}}" wx:key="{{index}}">
+  <view class="commcon" wx:for="{{commentlist.wellCommentList.content}}" wx:key="{{index}}">
       <view class="comm-t">
         <view class="comm-l">
           <image src="{{item.thumbImg}}"></image>
@@ -55,14 +55,14 @@
       <view class="comm-con">{{item.content}}</view>
      <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="item"></image>
+       <image src="{{'http://192.168.190.243:8081'+item}}"></image>
         </block>
       </view>
     </view>
 </view>
 <!-- 差评 -->
 <view class="phtcomm"  wx:if="{{comm == 4 ? 'on' : ''}}">
-  <view class="commcon" wx:for="{{commentlist.badCommentList}}" wx:key="{{index}}">
+  <view class="commcon" wx:for="{{commentlist.badCommentList.content}}" wx:key="{{index}}">
       <view class="comm-t">
         <view class="comm-l">
           <image src="{{item.thumbImg}}"></image>
@@ -73,7 +73,7 @@
       <view class="comm-con">{{item.content}}</view>
       <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="item"></image>
+        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
         </block>
       </view>
     </view>

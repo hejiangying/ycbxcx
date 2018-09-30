@@ -35,6 +35,7 @@ Page({
     that.getDetail()
   },
   getDetail(){
+    console.log(9)
     wx.showLoading({
       title:'正在加载...'
     })

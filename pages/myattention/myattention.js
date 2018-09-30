@@ -17,9 +17,13 @@ Page({
    */
   
   getattList(){
+    wx.showLoading({
+      title: '正在加载...',
+    })
     var that = this, token = wx.getStorageSync('token'), url = api.attention.myattention+'?token='+token+'&type='+0+'&pageNumber='+currentPage;
     toolkit.get(url,(res)=>{
       wx.stopPullDownRefresh()
+      wx.hideLoading()
       var attenList = res.data.result;
       attList = attenList;
       totalpage=res.data.result.totalPages
@@ -29,7 +33,7 @@ Page({
         sumList = attenList
       }
       that.setData({
-        attenList: attenList
+        attenList: sumList
       })
     })
 

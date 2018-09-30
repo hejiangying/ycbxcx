@@ -2,7 +2,7 @@
 <view>
   <view class="post-comment" >
   <!-- 通用 -->
-    <view class="goods" wx:if="{{rectype == 3}}" wx:for="{{goods3}}" wx:key="{{index}}">
+    <view class="goods" wx:if="{{rectype == 4}}" wx:for="{{goods3}}" wx:key="{{index}}">
       <view class="img">
         <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
       </view>
@@ -12,7 +12,7 @@
       </view>
     </view>
     <!-- 住宿 -->
-     <view class="goods" wx:if="{{rectype == 1}}" wx:for="{{goods1}}" wx:key="{{index}}">
+     <view class="goods" wx:if="{{rectype == 2}}" wx:for="{{goods1}}" wx:key="{{index}}">
       <view class="img">
         <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
       </view>
@@ -22,17 +22,17 @@
       </view>
     </view>
     <!-- 特产 -->
-     <view class="goods" wx:if="{{rectype == 0}}" wx:for="{{goods0}}" wx:key="{{index}}">
+     <view class="goods" wx:if="{{rectype == 1}}" wx:for="{{goods0}}" wx:key="{{index}}">
       <view class="img">
         <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
       </view>
       <view class="info">
         <text class="name">{{item.goodsName}}</text>
-        <text class="number">￥{{item.toalFee}}</text>
+        <text class="number">￥{{item.goodsPrice}}</text>
       </view>
     </view>
     <!-- 自助游 -->
-     <view class="goods" wx:if="{{rectype == 2}}" wx:for="{{goods2}}" wx:key="{{index}}">
+     <view class="goods" wx:if="{{rectype == 3}}" wx:for="{{goods2}}" wx:key="{{index}}">
       <view class="img">
         <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
       </view>

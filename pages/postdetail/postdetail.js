@@ -18,7 +18,8 @@ Page({
     att_status: '', //关注状态
     postdetail: '', //帖子详情
     userid: '', //帖子id
-    formid: '' //评论人id
+    formid: '' ,//评论人id
+    myId:'',//我的id
   },
 
   /**
@@ -95,6 +96,7 @@ Page({
       token = wx.getStorageSync('token'),
       id = postId,
       url = api.post.postDetail + '?id=' + id + '&token=' + token;
+    var myid = wx.getStorageSync('myid')
     toolkit.get(url, (res) => {
       var postdetail = res.data.result.article,
         userid = res.data.result.article.userId,
@@ -114,7 +116,8 @@ Page({
         postdetail: postdetail,
         userid: userid,
         formid: formid,
-        att_status: attenStatus
+        att_status: attenStatus,
+        myId:myid
       })
     })
   },

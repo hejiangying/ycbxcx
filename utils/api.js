@@ -76,9 +76,12 @@ const api = {
     addatten:host+'/apiUser/follow',//关注
     removeatten: host +'/apiUser/remove',//取消关注
     myattention: host +'/apiUser/myFollow',//我的关注和我的粉丝
+    black:host+'/apiUser/addBlack',//拉黑粉丝
   },
   buy:{
     buy: host +'/apiOrders/payment',//支付
+    confirm: host +'/apiOrders/confirm',//确认收货
+    refund:host+'/apiOrders/payment',//退款
   },
   like:{
     like: host +'/apiThumbs/create',//点赞

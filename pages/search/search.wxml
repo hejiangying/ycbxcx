@@ -8,44 +8,47 @@
     <view class="right" wx:if="{{keyword}}" bindtap="onKeywordConfirm">搜索</view>
     <view class="right" wx:if="{{!keyword}}" bindtap="closeSearch">取消</view>
   </view>
-  <view class="no-search" wx:if="{{!searchStatus}}">
-    <view class="serach-keywords search-hot" wx:if="{{!keyword}}">
-      <view class="h">
-        <text class="title">热门搜索</text>
-      </view>
+  <view class='mt'></view>
+  <view class="search-result" wx:if="{{ searchStatus && (goodsList.length>0 || hotelList.length>0 || lineList.length>0 || goodsitemList.length>0 )}}">
+    <view class="cate-item" wx:if="{{ hotelList.length>0 }}">
       <view class="b">
-        <view class="item {{item.isHot ? 'active' : ''}}" hover-class="navigator-hover" bindtap="onKeywordTap" data-keyword="{{item.keyword}}" wx:for="{{hotKeyword}}" wx:key="{{item.keyword}}">{{item.keyword}}</view>
-      </view>
-    </view>
-    <view class="shelper-list" wx:if="{{keyword}}">
-      <view class="item" wx:for="{{helpKeyword}}" bindtap="onKeywordTap" data-keyword="{{item}}" wx:key="{{item}}">{{item}}</view>
-    </view>
-  </view>
-
-  <view class="search-result" wx:if="{{ searchStatus && goodsList.length}}">
-    <!-- <view class="sort">
-      <view class="sort-box">
-        <view class="item {{currentSortType == 'default' ? 'active' : ''}}" bindtap="openSortFilter" id="default">
-          <text class="txt">综合</text>
-        </view>
-        <view class="item by-price {{currentSortType == 'price' ? 'active' : ''}} {{currentSortOrder == 'asc'  ? 'asc' : 'desc'}}" bindtap="openSortFilter" id="price">
-          <text class="txt">价格</text>
-        </view>
-      </view>
-    </view> -->
-    <view class="cate-item">
-      <view class="b">
-        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/goods/goods?id={{iitem.id}}" wx:for="{{goodsList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
-          <image class="img" src="{{iitem.picUrl}}" background-size="cover"></image>
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/housedetail/housedetail?id={{iitem.id}}" wx:for="{{hotelList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
+          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.name}}</text>
           <text class="price">￥{{iitem.price}}</text>
         </navigator>
       </view>
     </view>
+    <view class="cate-item" wx:if="{{ lineList.length>0}}">
+      <view class="b">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/orderdetail/orderdetail?id={{iitem.id}}" wx:for="{{lineList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
+          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
+          <text class="name">{{iitem.title}}</text>
+          <text class="price">￥{{iitem.price}}</text>
+        </navigator>
+      </view>
+    </view>
+    <view class="cate-item" wx:if="{{goodsitemList.length>0}}">
+      <view class="b">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/anotherfood/anotherfood?id={{iitem.id}}" wx:for="{{goodsitemList}}" wx:key="{{index}}" wx:for-item="iitem" wx:for-index="iindex">
+          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
+          <text class="name">{{iitem.itemName}}</text>
+          <text class="price">￥{{iitem.itemPrice}}</text>
+        </navigator>
+      </view>
+    </view>
+    <view class="cate-item" wx:if="{{goodsList.length>0}}">
+      <view class="b">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/fooddetail/fooddetail?id={{iitem.id}}" wx:for="{{goodsList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
+          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
+          <text class="name">{{iitem.goodsName}}</text>
+          <text class="price">￥{{iitem.marketPrice}}</text>
+        </navigator>
+      </view>
+    </view>
   </view>
 
-  <view class="search-result-empty" wx:if="{{!goodsList.length && searchStatus}}">
-    <image class="icon" src="/image/noSearch.png"></image>
+  <view class="search-result-empty" wx:if="{{!goodsList.length && searchStatus && !lineList.length && !hotelList.length && !goodsitemList.length}}">
     <text class="text">您寻找的商品还未上架</text>
   </view>
 </scroll-view>

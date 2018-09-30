@@ -1,7 +1,7 @@
 
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var goodsId = '', num = 1, goodsPrice = '', recType = '', collectStatus='';//商品id,数量,价格
+var goodsId = '', num = 1, goodsPrice = '', recType = '', collectStatus='';//商品id,数量,价格,通用商品标识，是否收藏
 Page({
 
   /**
@@ -142,7 +142,7 @@ Page({
       token = wx.getStorageSync('token'),
       collentUrl = that.route;
     if (collectStatus == 0) {
-      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.goods.itemPrice + '&productName=' + that.data.goods.itemName + '&collentUrl=' + collentUrl;
+      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&collentUrl=' + collentUrl + '&recType=' + recType;
       toolkit.post(url, (res) => {
         console.log("收藏成功")
         wx.showToast({

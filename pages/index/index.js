@@ -39,8 +39,8 @@ Page({
     toolkit.get(url,(res)=>{
       wx.stopPullDownRefresh();
       var goodsList = res.data.result.goodsList.content
-      var hotelList = res.data.result.hotelList
-      var lineList = res.data.result.lineList
+      var hotelList = res.data.result.hotelList.content
+      var lineList = res.data.result.lineList.content
       that.setData({
         goodsList: goodsList,
         hotelList: hotelList,
@@ -51,7 +51,7 @@ Page({
   getBanner(){
     var that = this;
     toolkit.get(api.home.banner,(res)=>{
-      var banner = res.data.result
+      var banner = res.data.result.content
       that.setData({
         banner:banner
       })
@@ -75,7 +75,7 @@ Page({
   // 跳转旅游路线页面
   gotour:function(){
     wx.navigateTo({
-      url: '../../pages/tourroute/tourroute?itemId='+2
+      url: '../../pages/tourroute/tourroute?itemId='+3
     })
   },
   //跳转定制旅游页面
@@ -87,19 +87,19 @@ Page({
   //跳转美食列表
   gofood:function(){
     wx.navigateTo({
-      url: '../../pages/foodclass/foodclass?itemId='+0,
+      url: '../../pages/foodclass/foodclass?itemId='+1,
     })
   },
   //跳转到通用商品
   goanother:function(){
     wx.navigateTo({
-      url: '../../pages/food/food?itemId=' + 3,
+      url: '../../pages/food/food?itemId=' + 4,
     })
   },
   //跳转到住宿
   gohouse:function(){
     wx.navigateTo({
-      url: '../../pages/houselist/houselist?itemId=' + 1,
+      url: '../../pages/houselist/houselist?itemId=' + 2,
     })
   },
   // 跳转订单详情页
