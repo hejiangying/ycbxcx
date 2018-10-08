@@ -81,6 +81,7 @@
   height: 100px;
   width: 100px;
   margin-right: 20rpx;
+  background: #f7f7fa;
 }
 
 .tourlist .touritem .search-con text {

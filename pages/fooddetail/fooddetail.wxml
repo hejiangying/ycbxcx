@@ -57,7 +57,7 @@
     <view class="mask-con">
       <view class="img-con">
         <view class="img-left">
-          <image src="{{'http://192.168.190.243:8081'+ goods.imgList[0]}}"></image>
+          <image src="{{'http://192.168.190.243:8080'+ goods.imgList[0]}}"></image>
           <view class="kc">
             <text class="price">￥{{(goods.marketPrice*100)*num/100}}</text>
             <text class="num">库存{{goods.goodsNumber}}件</text>

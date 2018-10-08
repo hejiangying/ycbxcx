@@ -83,6 +83,7 @@ const api = {
     confirm: host +'/apiOrders/confirm',//确认收货
     refund: host +'/apiOrders/refund',//退款
     buyok: host +'/wxPay/payNotifyUr',//支付成功
+    back:host+'/apiOrders/reback',//退货退款
   },
   like:{
     like: host +'/apiThumbs/create',//点赞

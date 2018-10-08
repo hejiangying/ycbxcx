@@ -44,15 +44,12 @@
             <view class="tourinfo">
               <text class="tour-title">{{item.title}}</text>
               <view class="tour-tag">
-                <text>{{item.sellPoint}}</text>
-                <!-- <text>无自费</text>
-              <text>无购物</text>  -->
-              </view>
+              <text>出发地：{{item.startCity}}</text>
+              <text>目的地：{{item.overCity}}</text>
+            </view>
               <view class="tour-sell">
                 <view class="sell-num">
-                  <text>已售423</text>
-                  <text>|</text>
-                  <text>4.8分</text>
+                   <text> {{item.lineDay}}天{{item.lineNight}}夜</text>
                 </view>
                 <view class="sell-price">￥{{item.price}}
                   <text>起</text>

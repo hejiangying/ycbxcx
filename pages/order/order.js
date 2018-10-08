@@ -45,7 +45,7 @@ Page({
     } else if (that.data.ortp == 2) {
       status = 1
     } else if (that.data.ortp == 3) {
-      status = 2
+      status = 5
     }
     currentPage = 1
     Status = status
@@ -185,6 +185,27 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否申请退款？',
+      confirmColor: '#f63264',
+      success(res) {
+        if (res.confirm) {
+          toolkit.post(url, (res) => {
+            that.getList()
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+  },
+  //退货退款
+  reClick(e){
+    var that = this;
+    var refundId = e.currentTarget.dataset.id,
+      token = wx.getStorageSync('token'),
+      url = api.buy.back + '?orderId=' + refundId + '&token=' + token;
+    wx.showModal({
+      title: '提示',
+      content: '是否申请退货？',
       confirmColor: '#f63264',
       success(res) {
         if (res.confirm) {

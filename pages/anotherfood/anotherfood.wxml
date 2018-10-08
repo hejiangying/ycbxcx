@@ -5,32 +5,26 @@
     <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
       <block wx:for="{{goods.imgList}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{'http://192.168.190.243:8080'+ item}}" width="100%" height="150" />
+          <image src="{{'http://192.168.190.243:8080'+ item}}" style="width:100%;height:150px;"/>
         </swiper-item>
       </block>
     </swiper>
     <view class="t-name cen">
       <text>{{goods.itemName}}</text>
-    </view>
-    <view class="sell-state cen">
+       <view class="sell-state">
       <view class="t-money">
         <text class="t-symbol">￥</text>
         <text class="t-much">{{goods.itemPrice}}</text>
         <text class="t-min">起</text>
         <!-- <text>可订明日</text> -->
       </view>
-      <text class="sold">已售：91</text>
     </view>
-    <!-- <view class="advantages cen">
-      <view>
-        <image src="../../image/ok.png"></image> 正品保障</view>
-      <view>
-        <image src="../../image/ok.png"></image>极速发货</view>
-      <view>
-        <image src="../../image/ok.png"></image>7天退换货</view>
+    </view>
+    <view class="advantages cen" wx:if="{{goods.sellPoint != ''}}">
+      <view><image src="../../image/ok.png"></image> {{goods.sellPoint}}</view>
       <view>
       </view>
-    </view> -->
+    </view>
     <view class="kong" wx:if="{{commentlist !=''}}"></view>
     <view class="comments" wx:if="{{commentlist !=''}}">
       <view class="score cen"  bindtap='commSee'>
@@ -71,7 +65,7 @@
     <view class="mask-con">
       <view class="img-con">
         <view class="img-left">
-          <image src="{{'http://192.168.190.243:8081'+ goods.imgList[0]}}"></image>
+          <image src="{{'http://192.168.190.243:8080'+ goods.imgList[0]}}"></image>
           <view class="kc">
             <text class="price">￥{{(goods.itemPrice*100)*num/100}}</text>
             <text class="num">库存{{goods.goodsNumber}}件</text>

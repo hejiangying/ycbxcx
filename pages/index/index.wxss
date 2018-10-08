@@ -13,9 +13,15 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
-  background-color: #000;
-  opacity: 0.6;
   height: 100rpx;
+}
+.search-top{
+  position: fixed;
+  top: 0rpx;
+  opacity: 0.6;
+  background-color: #000;
+  height: 100rpx;
+  width: 100%;
 }
 .address_con .logo image{
   width: 90rpx;

@@ -173,10 +173,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("option:",options.id)
     goodsId = options.id
-    recType = options.itemid
-    console.log("参数",recType)
+    if (options.recType) {
+      recType = options.recType
+    } else {
+      recType = options.itemid
+    }
   },
 
   /**

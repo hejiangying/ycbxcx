@@ -1,6 +1,6 @@
 // pages/post/post.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
 var originalList = [],
   index = 0,
   edit = false,

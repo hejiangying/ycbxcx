@@ -35,7 +35,7 @@
         <text>{{item.goodsName}}</text>
         <view class="foodprice">
           <text>￥{{item.marketPrice}}</text>
-          <text>已售51份</text>
+          <text>剩余{{item.goodsNumber}}份</text>
         </view>
       </view>
     </block>

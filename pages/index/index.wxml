@@ -12,6 +12,7 @@
       </block>
     </swiper>
     <!-- 顶部悬浮搜索框 -->
+    <view class="search-top"></view>
     <view class="address_con">
       <view class="logo">
         <image src="../../image/logo.png"></image>

@@ -1,4 +1,5 @@
-
+const toolkit = require('../../utils/ToolKit.js');
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -18,7 +19,26 @@ Page({
     })
   },
   getUserInfo: function (e) {
+    console.log(e)
+    var openid = wx.getStorageSync('openid')
+    console.log("openid000000000",openid)
     if (e.detail.errMsg == 'getUserInfo:ok') {
+      toolkit.post(api.apiUser.get_union,
+          {
+            openid: openid,
+            userInfo: e.detail.userInfo,
+            rawData: e.detail.rawData,
+            signature: e.detail.signature,
+            encryptedData: e.detail.encryptedData,
+            iv: e.detail.iv
+          },
+          function (res) {
+            console.log("res1111:", res)
+             var myid = res.data.result.user.id
+             wx.setStorageSync('myid', myid)
+             wx.setStorageSync('token', res.data.result.token)
+          }
+        )
       wx.switchTab({
         url: '../../pages/index/index',
       })

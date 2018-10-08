@@ -13,7 +13,7 @@
    <view wx:if="{{ hotelList.length>0 }}" class="tit">住宿</view>
     <view class="cate-item" wx:if="{{ hotelList.length>0 }}">
       <view class="b">
-        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/housedetail/housedetail?id={{iitem.id}}" wx:for="{{hotelList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/housedetail/housedetail?id={{iitem.id}}&recType=2" wx:for="{{hotelList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
           <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.title}}</text>
           <text class="price">￥{{iitem.price}}</text>
@@ -23,7 +23,7 @@
     <view wx:if="{{ lineList.length>0}}" class="tit">自助游路线</view>
     <view class="cate-item" wx:if="{{ lineList.length>0}}">
       <view class="b">
-        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/orderdetail/orderdetail?id={{iitem.id}}" wx:for="{{lineList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/orderdetail/orderdetail?id={{iitem.id}}&recType=3" wx:for="{{lineList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
           <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.title}}</text>
           <text class="price">￥{{iitem.price}}</text>
@@ -33,7 +33,7 @@
      <view wx:if="{{goodsitemList.length>0}}" class="tit">通用商品</view>
     <view class="cate-item" wx:if="{{goodsitemList.length>0}}">
       <view class="b">
-        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/anotherfood/anotherfood?id={{iitem.id}}" wx:for="{{goodsitemList}}" wx:key="{{index}}" wx:for-item="iitem" wx:for-index="iindex">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/anotherfood/anotherfood?id={{iitem.id}}&recType=4" wx:for="{{goodsitemList}}" wx:key="{{index}}" wx:for-item="iitem" wx:for-index="iindex">
           <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.itemName}}</text>
           <text class="price">￥{{iitem.itemPrice}}</text>
@@ -43,7 +43,7 @@
      <view wx:if="{{goodsList.length>0}}" class="tit">美食特产</view>
     <view class="cate-item" wx:if="{{goodsList.length>0}}">
       <view class="b">
-        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/fooddetail/fooddetail?id={{iitem.id}}" wx:for="{{goodsList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/fooddetail/fooddetail?id={{iitem.id}}&recType=1" wx:for="{{goodsList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
           <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.goodsName}}</text>
           <text class="price">￥{{iitem.marketPrice}}</text>

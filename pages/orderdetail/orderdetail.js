@@ -21,8 +21,12 @@ Page({
    */
   onLoad: function (options) {
    lineid = options.id
-    itemId = options.itemId
    console.log('111:',options)
+   if(options.recType){
+     itemId = options.recType
+   }else{
+    itemId = options.itemId
+   }
   },
   // 行程、费用及使用的选择
   xcSelect:function(e){

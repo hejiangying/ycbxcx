@@ -129,7 +129,7 @@ Page({
     var that = this;
     var lineid = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/orderdetail/orderdetail?id=' + lineid ,
+      url: '../../pages/orderdetail/orderdetail?id=' + lineid + '&itemId=' + 3,
     })
   },
   //客栈
@@ -137,7 +137,7 @@ Page({
     console.log("客栈id：", e)
     var houseid = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../pages/housedetail/housedetail?id=' + houseid,
+      url: '../../pages/housedetail/housedetail?id=' + houseid + '&itemId=' + 2,
     })
   },
   //美食
@@ -145,7 +145,7 @@ Page({
     var id = e.currentTarget.dataset.id;
     var that = this;
     wx.navigateTo({
-      url: '../../pages/fooddetail/fooddetail?id=' + id ,
+      url: '../../pages/fooddetail/fooddetail?id=' + id + '&itemId=' + 1,
     })
   },
   

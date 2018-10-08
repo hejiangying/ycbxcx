@@ -189,7 +189,12 @@ Page({
   onLoad: function(options) {
     console.log("option:", options)
     goodsId = options.id
-    itemId = options.itemId
+    if(options.recType){
+      itemId = options.recType
+    }else{
+      itemId = options.itemId
+    }
+    
   },
 
   /**
