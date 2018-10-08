@@ -94,13 +94,14 @@ Page({
         for (var i = 0; i < cartGoods.length; i++) {
           console.log(i, cartGoods[i].goodsPrice, cartGoods[i].goodsNumber)
           totalPrice += (cartGoods[i].goodsPrice * 100 * cartGoods[i].goodsNumber) / 100
+          console.log(totalPrice)
           ids.push(cartGoods[i].id)
         }
         console.log('ids', ids)
         that.setData({
           cartGoods: cartGoods,
           checkedGoodsCount: checkedGoodsCount,
-          totalPrice: totalPrice
+          totalPrice: totalPrice.toFixed(2)
         })
       } else {
         that.setData({

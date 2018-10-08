@@ -41,15 +41,28 @@ Page({
   //取消关注
   attClick: function (e) {
     var that = this, token = wx.getStorageSync('token'), id=e.currentTarget.dataset.id;
-    console.log("id", id,attList)
-    for (let i = 0; i < attList.length; i++) {
-      if (attList[i].followId == id) {
-        var url1 = api.attention.removeatten + '?token=' + token + '&followId=' + id;
-        toolkit.post(url1, (res) => {
-          that.getattList()
-        })
+    wx.showModal({
+      title: '提示',
+      content: '是否取消关注',
+      confirmColor: '#f63264',
+      success:function(res){
+        console.log(res)
+        if(res.confirm == true){
+          for (let i = 0; i < attList.length; i++) {
+            if (attList[i].followId == id) {
+              var url1 = api.attention.removeatten + '?token=' + token + '&followId=' + id;
+              toolkit.post(url1, (res) => {
+                that.getattList()
+              })
+            }
+          }
+        } else if (res.cancel){
+
+        }
+        
       }
-    }
+    })
+   
   },
   onLoad: function (options) {
   

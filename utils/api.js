@@ -81,7 +81,8 @@ const api = {
   buy:{
     buy: host +'/apiOrders/payment',//支付
     confirm: host +'/apiOrders/confirm',//确认收货
-    refund:host+'/apiOrders/payment',//退款
+    refund: host +'/apiOrders/refund',//退款
+    buyok: host +'/wxPay/payNotifyUr',//支付成功
   },
   like:{
     like: host +'/apiThumbs/create',//点赞

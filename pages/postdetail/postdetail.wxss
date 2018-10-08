@@ -87,9 +87,11 @@
   margin-right: 0rpx;
 }
 .post-text{
-  margin-top: 10rpx;
-  font-size: 26rpx;
-  color: #666
+  font-size: 28rpx;
+  color: #666;
+  width: 320px;
+  margin: 0 auto;
+   margin-top: 10rpx;
 }
 .btns{
   display: flex;

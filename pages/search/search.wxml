@@ -2,7 +2,7 @@
 <scroll-view style="height: 100%;">
   <view class="search-header">
     <view class="input-box">
-      <input name="input" class="keywrod" focus="true" value="{{keyword}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm" confirm-type="search" placeholder="{{defaultKeyword.keyword}}" />
+      <input name="input" class="keywrod" focus="true" value="{{keyword}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm" confirm-type="search" placeholder="请输入您感兴趣的内容" />
       <image class="del" wx:if="{{keyword}}" bindtap="clearKeyword" src="/image/clear.png"></image>
     </view>
     <view class="right" wx:if="{{keyword}}" bindtap="onKeywordConfirm">搜索</view>
@@ -10,37 +10,41 @@
   </view>
   <view class='mt'></view>
   <view class="search-result" wx:if="{{ searchStatus && (goodsList.length>0 || hotelList.length>0 || lineList.length>0 || goodsitemList.length>0 )}}">
+   <view wx:if="{{ hotelList.length>0 }}" class="tit">住宿</view>
     <view class="cate-item" wx:if="{{ hotelList.length>0 }}">
       <view class="b">
         <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/housedetail/housedetail?id={{iitem.id}}" wx:for="{{hotelList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
-          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
-          <text class="name">{{iitem.name}}</text>
-          <text class="price">￥{{iitem.price}}</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="cate-item" wx:if="{{ lineList.length>0}}">
-      <view class="b">
-        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/orderdetail/orderdetail?id={{iitem.id}}" wx:for="{{lineList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
-          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
+          <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.title}}</text>
           <text class="price">￥{{iitem.price}}</text>
         </navigator>
       </view>
     </view>
+    <view wx:if="{{ lineList.length>0}}" class="tit">自助游路线</view>
+    <view class="cate-item" wx:if="{{ lineList.length>0}}">
+      <view class="b">
+        <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/orderdetail/orderdetail?id={{iitem.id}}" wx:for="{{lineList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
+          <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
+          <text class="name">{{iitem.title}}</text>
+          <text class="price">￥{{iitem.price}}</text>
+        </navigator>
+      </view>
+    </view>
+     <view wx:if="{{goodsitemList.length>0}}" class="tit">通用商品</view>
     <view class="cate-item" wx:if="{{goodsitemList.length>0}}">
       <view class="b">
         <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/anotherfood/anotherfood?id={{iitem.id}}" wx:for="{{goodsitemList}}" wx:key="{{index}}" wx:for-item="iitem" wx:for-index="iindex">
-          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
+          <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.itemName}}</text>
           <text class="price">￥{{iitem.itemPrice}}</text>
         </navigator>
       </view>
     </view>
+     <view wx:if="{{goodsList.length>0}}" class="tit">美食特产</view>
     <view class="cate-item" wx:if="{{goodsList.length>0}}">
       <view class="b">
         <navigator class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}" url="/pages/fooddetail/fooddetail?id={{iitem.id}}" wx:for="{{goodsList}}" wx:key="iitem" wx:for-item="iitem" wx:for-index="iindex">
-          <image class="img" src="{{'http://192.168.190.243:8081'+iitem.imgList[0]}}" background-size="cover"></image>
+          <image class="img" src="{{'http://192.168.190.243:8080'+iitem.imgList[0]}}" background-size="cover"></image>
           <text class="name">{{iitem.goodsName}}</text>
           <text class="price">￥{{iitem.marketPrice}}</text>
         </navigator>

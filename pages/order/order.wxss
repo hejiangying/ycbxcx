@@ -34,6 +34,7 @@
   height: 320rpx;
   margin-right: 20rpx;
   border-top-left-radius: 20rpx;
+  background: #eee
 }
 .order-item .order-info{
   display: flex;

@@ -102,7 +102,7 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    var url = api.appGoods.goodsdetail + '?id=' + goodsId + '&token=' + token ;
+    var url = api.appGoods.goodsdetail + '?id=' + goodsId + '&token=' + token;
     toolkit.get(url, (res) => {
       wx.hideLoading()
       var goods = res.data.result.goods,commentlist = res.data.result.commentList;
@@ -132,7 +132,7 @@ Page({
     } else {
       var token = wx.getStorageSync('token'),
         goodsNumber = num,
-        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&recType=' + itemId;
+        url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&recType=' + itemId+'&goodsNumber=' + that.data.num;
       console.log("url", url)
       toolkit.post(url, (res) => {
         wx.showToast({

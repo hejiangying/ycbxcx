@@ -59,7 +59,6 @@ page {
   left: 40rpx;
   width: 506rpx;
   height: 75rpx;
-  padding-left: 30rpx;
 }
 
 .search-header .right {
@@ -259,6 +258,7 @@ page {
 .cate-item .item .img {
   width: 302rpx;
   height: 302rpx;
+  padding-top: 26rpx
 }
 
 .cate-item .item .name {
@@ -303,3 +303,8 @@ page {
   color: #999;
 }
 .mt{height: 67px;background: #fff;}
+.tit{
+  font-size: 30rpx;
+  color: #666;
+  padding: 10rpx;
+}

@@ -7,7 +7,7 @@
       <view class="post-con" data-id="{{item.id}}" bindtap="commSee">{{item.content}}</view>
       <view class="post-photo" data-id="{{item.id}}" bindtap="commSee">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}" >
-        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+        <image src="{{'http://192.168.190.243:8080'+item}}"></image>
         </block>
       </view>
       <view class="post-operation">
@@ -18,6 +18,7 @@
         <view class="oper-r">
           <view class="oper-comment">
             <image src="../../image/comment.png"></image>
+             <view class="status" wx:if="{{item.signRead==0}}"></view>
             <text>{{item.commentNum}}</text>
           </view>
           <view class="oper-like">

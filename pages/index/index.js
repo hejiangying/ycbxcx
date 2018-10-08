@@ -1,11 +1,13 @@
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
+var bannerUrl = '';//轮播
 Page({
   data: {
     lineList:'',
     goodsList:'',
     hotelList:'',
     banner:[],//首页轮播
+    
   },
   onLoad: function () {
     var that = this;
@@ -52,6 +54,7 @@ Page({
     var that = this;
     toolkit.get(api.home.banner,(res)=>{
       var banner = res.data.result.content
+      bannerUrl = banner
       that.setData({
         banner:banner
       })
@@ -59,6 +62,14 @@ Page({
   },
   goBanner(e){
     var that = this,bannerId = e.currentTarget.dataset.id;
+    for (let j in bannerUrl){
+      if (bannerUrl[j].id == bannerId){
+        wx.navigateTo({
+          url: '../../pages/coupon/coupon?url='+bannerUrl[j].adLink,
+        })
+      }
+    }
+    
   },
  
   // 跳转搜索页

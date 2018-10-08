@@ -1,39 +1,36 @@
 <!--pages/orderdetail/orderdetail.wxml-->
 <view class="container">
   <view class="tourdetail">
-     <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
       <block wx:for="{{linedetail.imgList}}" wx:key="{{index}}">
         <swiper-item>
-         <image src="{{'http://192.168.190.243:8081'+item}}" style='width:100%;height:150px;'></image>
+          <image src="{{'http://192.168.190.243:8080'+item}}" style='width:100%;height:150px;'></image>
         </swiper-item>
       </block>
     </swiper>
     <view class="t-name cen">
-      <!-- <text>【上新特惠】</text>  -->
-      {{linedetail.title}}
-    </view>
-    <view class="sell-state cen">
-      <view class="t-money">
-        <text class="t-symbol">￥</text>
-        <text class="t-much">{{linedetail.price}}</text>
-        <text class="t-min">起</text>
-        <!-- <text>可订明日</text> -->
+      <view>
+        {{linedetail.title}}</view>
+      <view class="sell-state">
+        <view class="t-money">
+          <text class="t-symbol">￥</text>
+          <text class="t-much">{{linedetail.price}}</text>
+          <text class="t-min">起</text>
+        </view>
       </view>
-      <text class="sold">已售:91</text>
     </view>
-    <view class="advantages cen">
-      <view><image src="../../image/ok.png"></image>  {{linedetail.sellPoint}}</view>
-      <view><image src="../../image/ok.png"></image>出发地：{{linedetail.startCity}}</view>
-      <view><image src="../../image/ok.png"></image>目的地：{{linedetail.overCity}}</view>
+    <view class="advantages cen" wx:if="{{linedetail.sellPoint != null}}">
+      <view>
+        <image src="../../image/ok.png"></image> {{linedetail.sellPoint}}</view>
     </view>
   </view>
-  <view class="kong"></view>
+  <view class="kong" wx:if="{{commentlist != ''}}"></view>
   <view class="comments" wx:if="{{commentlist != ''}}">
     <view class="score cen" bindtap='commSee' data-item="{{linedetail.id}}">
       <view class="satisfaction">
         <text>查看评论</text>
       </view>
-      <view class="com-num" >{{commentlist.length}}条评论 ></view>
+      <view class="com-num">{{commentlist.length}}条评论 ></view>
     </view>
   </view>
   <view class="kong"></view>
@@ -46,11 +43,16 @@
     </view>
     <view class="tab-con">
       <view class="tab1" wx:if="{{xc==1}}">
-      {{linedetail.introduce}}
+        <view> 出发地：{{linedetail.startCity}}</view>
+        <view> 目的地：{{linedetail.overCity}}</view>
+        <view>开始日期: {{linedetail.beginDate}}</view>
+        <view>结束日期：{{linedetail.endDate}}</view>
+        <view>总计： {{linedetail.lineDay}}天{{linedetail.lineNight}}夜</view>
+        <view> 介绍：{{linedetail.introduce}}</view>
       </view>
       <view class="tab2" wx:elif="{{xc==2}}">
-        （住宿）：单房差（若产生单男单女或自然单间我社有权安排三人间，或客人自付单房差）
-（其他）：其它个人消费，成都食宿、各地至成都往返大交通、景区便民设施，交通保险、行程 中约定的自理自费内容、酒水、个人消费、景区内索道、沿途小门票、行程中备注未含的餐及住宿等！请当地现付，备有说明除外。
+        {{linedetail.feeInclude}}
+        <view>{{linedetail.childRule}}</view>
       </view>
       <view class="tab3" wx:elif="{{xc==3}}">
         {{linedetail.lineContent}}
@@ -60,7 +62,7 @@
   <!-- 底部悬浮按钮 -->
   <view class="footbtn">
     <view class="scbtn" bindtap="isCollect" data-id="{{linedetail.id}}">
-      <image src="{{collectstatus ==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}" ></image>
+      <image src="{{collectstatus ==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
       <text>{{collectstatus ==  1 ? '收藏成功' : '点击收藏'}}</text>
     </view>
     <view class="buybtn" bindtap="buyClick">立即购买</view>

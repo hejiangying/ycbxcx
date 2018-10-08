@@ -1,2 +1,4 @@
 <!--pages/coupon/coupon.wxml-->
-<text>pages/coupon/coupon.wxml</text>
+<view>
+  <web-view src="{{url}}"></web-view>
+</view>

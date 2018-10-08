@@ -6,7 +6,7 @@
     <view class="perinfo">
       <view class="perinfo-l">
         <view class="perinfo-pho">
-          <image wx:if="{{postdetail.userFlag ==2}}" src="{{'http://192.168.190.243:8081'+postdetail.avatar}}"></image>
+          <image wx:if="{{postdetail.userFlag ==2}}" src="{{'http://192.168.190.243:8080'+postdetail.avatar}}"></image>
           <image wx:if="{{postdetail.userFlag ==1}}" src="{{postdetail.avatar}}"></image>
         </view>
         <view class="perinfo1-id">
@@ -18,7 +18,7 @@
       </view>
       <view class="perinfop-r">
         <text wx:if="{{myId == userid}}" class="no"></text>
-        <text wx:if="{{myId != userid}}" bindtap="attenClick" data-id="{{postdetail.userId}}" class="{{att_status == 1 ? 'old' :''}}" class="on">{{att_status == 1 ? '已关注' :'+关注'}}</text>
+        <text wx:if="{{myId != userid}}" bindtap="attenClick" data-id="{{postdetail.userId}}" class="on {{att_status == 1 ? 'old' :''}}">{{att_status == 1 ? '已关注' :'+关注'}}</text>
       </view>
     </view>
     <view class="post-text">
@@ -26,7 +26,7 @@
     </view>
     <view class="imglist">
       <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
-        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+        <image src="{{'http://192.168.190.243:8080'+item}}"></image>
       </block>
     </view>
     <view class="btns">

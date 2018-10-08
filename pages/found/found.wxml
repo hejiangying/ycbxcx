@@ -14,7 +14,7 @@
         <view class="hot-meslist">
           <view class="hot-message">
             <view class="hot-l">
-              <image wx:if="{{item.userFlag==2}}" src="{{'http://192.168.190.243:8081'+ item.avatar}}"></image>
+              <image wx:if="{{item.userFlag==2}}" src="{{'http://192.168.190.243:8080'+ item.avatar}}"></image>
               <image wx:if="{{item.userFlag==1}}" src="{{item.avatar}}"></image>
               <view class="hot-people">
                 <text>{{item.author}}</text>
@@ -29,13 +29,12 @@
           <view class="messagecon" bindtap="replyClick">{{item.content}} </view>
           <view class="mesimage" bindtap="replyClick" data-id="{{item.id}}">
             <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-              <image src="{{'http://192.168.190.243:8081' + item }}"></image>
+              <image src="{{'http://192.168.190.243:8080' + item }}"></image>
             </block>
           </view>
           <view class="mesoperation">
             <view class="operation">
               <image src="../../image/comment.png" bindtap="replyClick" data-id="{{item.id}}"></image>
-              <view class="status" wx:if="{{myId==item.userId}}"></view>
               <text>{{item.commentNum}}</text>
             </view>
             <view class="operation" bindtap="likeClick" data-id="{{item.id}}">
@@ -58,7 +57,7 @@
       <view class="hot-meslist">
         <view class="hot-message">
           <view class="hot-l">
-            <image wx:if="{{item.userStatus==0}}" src="{{'http://192.168.190.243:8081'+ item.avatar}}"></image>
+            <image wx:if="{{item.userStatus==0}}" src="{{'http://192.168.190.243:8080'+ item.avatar}}"></image>
             <image wx:if="{{item.userStatus==1}}" src="{{item.avatar}}"></image>
             <view class="hot-people">
               <text>{{item.author}}</text>
@@ -73,7 +72,7 @@
         <view class="messagecon" bindtap="replyClick">{{item.content}} </view>
         <view class="mesimage" bindtap="replyClick" data-id="{{item.id}}">
           <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-            <image src="{{'http://192.168.190.243:8081' + item }}"></image>
+            <image src="{{'http://192.168.190.243:8080' + item }}"></image>
           </block>
         </view>
         <view class="mesoperation">

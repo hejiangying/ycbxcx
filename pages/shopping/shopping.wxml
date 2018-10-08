@@ -13,7 +13,7 @@
         <view class="goods">
           <view class="item edit" wx:for="{{cartGoods}}" wx:key="{{item.id}}" wx:for-index="index">
             <view class="cart-goods">
-              <image class="img" src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
+              <image class="img" src="{{'http://192.168.190.243:8080'+item.imgList[0]}}"></image>
               <view class="info">
                 <view class="t">
                   <text class="name">{{item.goodsName}}</text>

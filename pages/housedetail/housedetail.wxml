@@ -2,10 +2,10 @@
 <view class="container">
   <block>
     <view class="tourdetail">
-      <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+      <swiper indicator-dots="{{goods.imgList.length>1?true:false}}" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
         <block wx:for="{{goods.imgList}}" wx:key="{{index}}">
           <swiper-item>
-            <image src="{{'http://192.168.190.243:8081'+ item}}" width="100%" height="150" />
+            <image src="{{'http://192.168.190.243:8080'+ item}}" style="width:100%;height:150px;" />
           </swiper-item>
         </block>
       </swiper>
@@ -21,7 +21,7 @@
           <text class="t-much">{{goods.price}}</text>
           <text class="t-min">起</text>
         </view>
-        <text class="sold">已售：91</text>
+        <!-- <text class="sold">已售：91</text> -->
       </view>
       <view class="advantages cen">
         <view>
@@ -31,7 +31,7 @@
         <view>
         </view>
       </view>
-      <view class="kong"></view>
+      <view class="kong" wx:if="{{commentlist !=''}}"></view>
       <view class="comments" wx:if="{{commentlist !=''}}">
         <view class="score cen">
           <view class="satisfaction">
@@ -53,7 +53,7 @@
             <view> 地理位置：{{goods.address}}</view>
             <view> 店内设备：{{goods.equipment}}</view>
             <view> 开业时间：{{goods.opentime}}</view>
-            <view> 酒店星级：{{goods.hotel_rankid}}</view>
+            <view> 酒店星级：{{goods.hotelRankid}}</view>
 
           </view>
           <view class="tab1" wx:if="{{xc==1}}">
@@ -79,10 +79,6 @@
 
             <view class="mask housemask" wx:if="{{status}}">
                 <view class="footbtn">
-                  <!-- <view class="scbtn" bindtap="isCollect" data-id="{{houseDetail.hotelId}}">
-                    <image src="{{iscol ==  true ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
-                    <text>{{iscol ==  true ? '收藏成功' : '点击收藏'}}</text>
-                  </view> -->
                   <view class="buybtn" bindtap="buyClick">{{status == true ? '立即预订' : '加入购物车'}}</view>
                 </view>
                  <view class="mask-cover"></view>

@@ -1,8 +1,8 @@
 <!--pages/booking/booking.wxml-->
 <view class="container">
-  <view class="booking-title">
+  <!-- <view class="booking-title">
     蝴蝶泉跟团一日游门票(带导游)
-  </view>
+  </view> -->
   <view class="time">
     <picker mode="date" value="{{_date}}" bindchange='dateSel'>
      <text>游玩日期</text> {{_date}}

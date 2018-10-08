@@ -1,10 +1,13 @@
 <!--pages/order/order.wxml-->
 <view class="container">
   <view class="order-status">
-    <text class="{{ortp==1 ? 'on' : ''}}" bindtap='orderSelect' data-order='1'>全部订单</text>
-    <text class="{{ortp==2 ? 'on' : ''}}" bindtap='orderSelect' data-order='2'>待付款订单</text>
-    <text class="{{ortp==3 ? 'on' : ''}}" bindtap='orderSelect' data-order='3'>待评价</text>
-    <text class="{{ortp==4 ? 'on' : ''}}" bindtap='orderSelect' data-order='4'>退款/售后</text>
+    <block wx:for="{{statusList}}" wx:key="{{index}}"> 
+     <text class="{{ortp==index ? 'on' : ''}}" bindtap='orderSelect' data-order='{{index}}'>{{item}}</text>
+      <!-- <text class="{{ortp==1 ? 'on' : ''}}" bindtap='orderSelect' data-order='1'>全部订单</text>
+      <text class="{{ortp==2 ? 'on' : ''}}" bindtap='orderSelect' data-order='2'>待付款订单</text>
+      <text class="{{ortp==3 ? 'on' : ''}}" bindtap='orderSelect' data-order='3'>待评价</text>
+      <text class="{{ortp==4 ? 'on' : ''}}" bindtap='orderSelect' data-order='4'>退款/售后</text> -->
+    </block>
   </view>
 
   <!-- 全部订单 -->
@@ -13,7 +16,7 @@
       <block wx:for="{{orderList}}" wx:key="{{index}}">
         <view class="order-list">
           <view class="order-item" bindtap='seeDetail' data-id='{{item.id}}' data-rectype="{{item.recType}}">
-            <image src="{{'http://192.168.190.243:8081'+item.goodsImg}}"></image>
+            <image src="{{'http://192.168.190.243:8080'+item.goodsImg}}"></image>
             <view class="order-info">
               <block wx:if="{{name}}" wx:key="{{index}}">
                 <text class="order-title">{{name[index]}}</text>
@@ -35,7 +38,7 @@
             </view>
           </view>
           <view class="order-state" wx:if="{{item.status == 1}}">
-            <view class="complete">已支付</view>
+            <view class="complete">已支付,未发货</view>
             <view class="operation">
               <text bindtap='refundClick' data-id='{{item.id}}'>申请退款</text>
             </view>
@@ -56,7 +59,7 @@
           </view>
           <view class="order-state" wx:if="{{item.status == 4}}">
             <view class="complete">交易完成</view>
-             <view class="operation">
+            <view class="operation">
               <text bindtap='delOrder' data-id='{{item.id}}'>删除订单</text>
             </view>
           </view>

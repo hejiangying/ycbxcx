@@ -4,7 +4,7 @@
     <view class="mydata-top" bindtap="seeInfo">
       <view class="mydata-left">
         <view class="myinfo">
-          <view class="myphoto" style="border-radius:50%;width: 160rpx;height: 160rpx;display: block;overflow:hidden;">
+          <view class="myphoto" style="border-radius:50%;width: 120rpx;height: 120rpx;display: block;overflow:hidden;border:1rpx solid #eee;">
             <open-data type="userAvatarUrl"></open-data>
           </view>
           <view class="mysign">
@@ -22,7 +22,7 @@
   <view class="mynum">
     <view class="num-item" bindtap='seeFans'>
       <text wx:if="{{myinfo.fanNum == 0}}">0</text>
-      <text wx:if="{{myinfo.fanNum != 0}}">{{myinfo.followNum}}</text>
+      <text wx:if="{{myinfo.fanNum != 0}}">{{myinfo.fanNum}}</text>
       <text>粉丝</text>
     </view>
     <view class="num-item"  bindtap='goAtt'>

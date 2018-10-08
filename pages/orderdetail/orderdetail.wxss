@@ -8,9 +8,9 @@
   height: 360rpx;
   width: 100%;
 }
-.sell-state{
+/* .sell-state{
   margin: 20rpx !important;
-}
+} */
 .sell-state .t-money{
   color: #f63264;
 }
@@ -52,15 +52,15 @@
 }
 .cen{
   width: 96%;
-  margin: 0 auto;
-  margin-top: 10rpx;
+  margin: 10rpx auto;
 }
 .t-name{
   color: #666;
   font-size: 30rpx;
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-between;
+  margin-bottom: 10rpx;
 }
 .kong{
   height: 30rpx;

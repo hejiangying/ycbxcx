@@ -17,11 +17,11 @@
     <view class="food-r">
       <block wx:for="{{goodsList}}" wx:key="{{index}}">
         <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
-          <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+          <image src="{{'http://192.168.190.243:8080'+ item.imgList[0]}}"></image>
           <text>{{item.goodsName}}</text>
           <view class="foodprice">
             <text>￥{{item.marketPrice}}</text>
-            <text>已售51份</text>
+            <text>剩余{{item.goodsNumber}}份</text>
           </view>
         </view>
       </block>
@@ -31,7 +31,7 @@
   <view wx:if="{{searchList != ''}}">
     <block wx:for="{{searchList}}" wx:key="{{index}}">
       <view class="searchitem" bindtap='foodClick' data-id="{{item.id}}">
-        <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+        <image src="{{'http://192.168.190.243:8080'+ item.imgList[0]}}"></image>
         <text>{{item.goodsName}}</text>
         <view class="foodprice">
           <text>￥{{item.marketPrice}}</text>

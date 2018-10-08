@@ -12,7 +12,7 @@
       <block wx:for="{{linelist}}" wx:key="{{index}}">
         <view class="touritem" bindtap='goDetail' data-id="{{item.id}}">
           <view class="search-con">
-            <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+            <image src="{{'http://192.168.190.243:8080'+ item.imgList[0]}}"></image>
             <!-- <text>可订明日</text> -->
           </view>
           <view class="tourinfo">
@@ -23,9 +23,7 @@
             </view>
             <view class="tour-sell">
               <view class="sell-num">
-                <text>已售423</text>
-                <text>|</text>
-                <text>4.8分</text>
+                <text> {{item.lineDay}}天{{item.lineNight}}夜</text>
               </view>
               <view class="sell-price">￥{{item.price}}
                 <text>起</text>
@@ -40,7 +38,7 @@
         <block wx:for="{{searchList}}" wx:key="{{index}}">
           <view class="touritem" bindtap='goDetail' data-id="{{item.id}}">
             <view class="search-con">
-              <image src="{{'http://192.168.190.243:8081'+ item.imgList[0]}}"></image>
+              <image src="{{'http://192.168.190.243:8080'+ item.imgList[0]}}"></image>
               <!-- <text>可订明日</text> -->
             </view>
             <view class="tourinfo">

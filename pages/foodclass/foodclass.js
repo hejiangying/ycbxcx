@@ -42,11 +42,7 @@ Page({
   //加载分类列表
   getfoodList:function(){
     var that = this;
-    wx.showLoading({
-      title: '数据加载中...',
-    })
     toolkit.get(api.appGoods.goodsClass,(res)=>{
-      wx.hideLoading()
       var foodList = res.data.result;
       that.setData({
         foodList:foodList,

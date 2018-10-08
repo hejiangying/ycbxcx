@@ -2,10 +2,10 @@
 <view class="container">
 <block>
   <view class="tourdetail">
-    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+    <swiper indicator-dots="{{goods.imgList.length>1 ? true:false}}" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
       <block wx:for="{{goods.imgList}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{'http://192.168.190.243:8081'+ item}}" width="100%" height="150" />
+          <image src="{{'http://192.168.190.243:8080'+ item}}" width="100%" height="150" />
         </swiper-item>
       </block>
     </swiper>
@@ -17,21 +17,10 @@
         <text class="t-symbol">￥</text>
         <text class="t-much">{{goods.marketPrice}}</text>
         <text class="t-min">起</text>
-        <!-- <text>可订明日</text> -->
       </view>
-      <text class="sold">已售：91</text>
+      <text class="sold">剩余{{goods.goodsNumber}}件</text>
     </view>
-    <view class="advantages cen">
-      <!-- <view>
-        <image src="../../image/ok.png"></image> 正品保障</view>
-      <view>
-        <image src="../../image/ok.png"></image>极速发货</view>
-      <view>
-        <image src="../../image/ok.png"></image>7天退换货</view> -->
-      <view>
-      </view>
-    </view>
-    <view class="kong"></view>
+    <view class="kong" wx:if="{{commentlist != ''}}"></view>
     <view class="comments" wx:if="{{commentlist != ''}}">
       <view class="score cen">
         <view class="satisfaction">
