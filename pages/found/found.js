@@ -1,7 +1,7 @@
 // pages/found/found.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var isLoadmore=false,currentPage = 1, totalpage = '',thumbsStatus='',postlike=[],postsum=[];//是否需要上拉加载数据,当前页,总页数，点赞状态，当前帖子数,总帖子数
+var isLoadmore=false,currentPage = 1, totalpage = '',thumbsStatus='',postlike=[],postsum=[],busy=false;//是否需要上拉加载数据,当前页,总页数，点赞状态，当前帖子数,总帖子数,多次点击导致网络繁忙
 
 Page({
 
@@ -54,16 +54,22 @@ Page({
     var token = wx.getStorageSync('token'),
     that = this,
       typeId = e.currentTarget.dataset.id;
+      if(busy == true){
+        return
+      }
+      busy = true
       for(let i=0; i<postlike.length; i++){
         if(postlike[i].id == typeId){
           if (postlike[i].thumbsStatus == 0){
             var url1 = api.like.like + '?token=' + token + '&typeId=' + typeId
             toolkit.post(url1, (res) => {
             })
+            busy = false
           } else if (postlike[i].thumbsStatus == 1){
             var url1 = api.like.removelike + '?token=' + token + '&typeId=' + typeId
             toolkit.post(url1,(res)=>{
             })
+            busy = false
           }
         }
       }
@@ -157,6 +163,7 @@ Page({
    */
   onShow: function () {
     var that = this;
+    busy = false;
     that.getpostList()
   },
 

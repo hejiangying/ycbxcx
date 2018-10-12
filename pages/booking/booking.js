@@ -1,7 +1,7 @@
 // pages/booking/booking.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var itemId = '',lineid='';
+var itemId = '',lineid='',price='',Num='';
 Page({
 
   /**
@@ -17,18 +17,8 @@ Page({
     totalPrice: 0, //订购总价默认为0
     status:false,//默认身份证号码错误
     peritem: [{
-        per: "成人",
-        price: 299,
-        num: 0
-      },
-      {
-        per: "儿童",
-        price: 199,
-        num: 0
-      },
-      {
-        per: "老人",
-        price: 199,
+        per: "价格",
+        price: '',
         num: 0
       }
     ],
@@ -41,6 +31,7 @@ Page({
   onLoad: function(options) {
     itemId = options.itemid
     lineid = options.lineid
+    price = options.price
   },
   // 日期选择
   dateSel: function(e) {
@@ -81,6 +72,7 @@ Page({
       minusStatuses: minusStatuses,
       lists: lists
     });
+    Num = num
     that.calculateTotal()
   },
   /* 点击加号 */
@@ -107,41 +99,50 @@ Page({
       minusStatuses: minusStatuses,
       lists: lists
     });
+    Num = num
     that.calculateTotal()
   },
   //计算总量
-  calculateTotal: function() {
+  // calculateTotal: function() {
+  //   var that = this;
+  //   var peritem = that.data.peritem;
+  //   for (var i = 0; i < peritem.length; i++) {
+  //     var _totalCount = that.data._totalCount;
+  //     _totalCount.push(peritem[i].num)
+  //   }
+  //   if (_totalCount.length > 3) {
+  //     _totalCount.splice(0, 3)
+  //     var totalCount = 0;
+  //     var totalMoney = 0;
+  //     for (var j = 0; j < _totalCount.length; j++) {
+  //       totalCount += _totalCount[j];
+  //       totalMoney = _totalCount[0] * that.data.peritem[0].price + _totalCount[1] * that.data.peritem[1].price + _totalCount[2] * that.data.peritem[2].price
+  //     }
+  //     that.setData({
+  //       totalCount: totalCount,
+  //       totalPrice: totalMoney
+  //     })
+  //   } else {
+  //     if (_totalCount[0] == 1) {
+  //       totalMoney = that.data.peritem[0].price
+  //     } else if (_totalCount[1] == 1) {
+  //       totalMoney = that.data.peritem[1].price
+  //     } else {
+  //       totalMoney = that.data.peritem[2].price
+  //     }
+  //     that.setData({
+  //       totalCount: 1,
+  //       totalPrice: totalMoney
+  //     })
+  //   }
+  // },
+
+  calculateTotal(){
     var that = this;
-    var peritem = that.data.peritem;
-    for (var i = 0; i < peritem.length; i++) {
-      var _totalCount = that.data._totalCount;
-      _totalCount.push(peritem[i].num)
-    }
-    if (_totalCount.length > 3) {
-      _totalCount.splice(0, 3)
-      var totalCount = 0;
-      var totalMoney = 0;
-      for (var j = 0; j < _totalCount.length; j++) {
-        totalCount += _totalCount[j];
-        totalMoney = _totalCount[0] * that.data.peritem[0].price + _totalCount[1] * that.data.peritem[1].price + _totalCount[2] * that.data.peritem[2].price
-      }
-      that.setData({
-        totalCount: totalCount,
-        totalPrice: totalMoney
-      })
-    } else {
-      if (_totalCount[0] == 1) {
-        totalMoney = that.data.peritem[0].price
-      } else if (_totalCount[1] == 1) {
-        totalMoney = that.data.peritem[1].price
-      } else {
-        totalMoney = that.data.peritem[2].price
-      }
-      that.setData({
-        totalCount: 1,
-        totalPrice: totalMoney
-      })
-    }
+    that.setData({
+      totalCount: Num,
+      totalPrice: price * Num
+    })
   },
 
   //获取输入的真实姓名
@@ -311,6 +312,12 @@ Page({
 
     }
   },
+  getPrice(){
+    var that = this;
+    that.setData({
+      price: price
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -323,6 +330,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var that = this;
+    that.getPrice()
   },
 
   /**

@@ -3,7 +3,6 @@
 .top {
   width: 100%;
 }
-
 .con view {
   font-size: 26rpx;
   color: #666;

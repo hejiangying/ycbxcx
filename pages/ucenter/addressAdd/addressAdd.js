@@ -126,11 +126,6 @@ Page(
         checked=0
       }
       var isDefault = checked;
-      console.log("8989:",isDefault)
-      console.log("1", that.data.addressName)
-      console.log("2", that.data.address)
-      console.log("3", that.data.mobile)
-      console.log("4", that.data.consignee)
       if (that.data.addressName != '' && that.data.address != '' && that.data.mobile != '' && that.data.consignee != ''){
         var token = wx.getStorageSync('token'),
           url = api.address.addressAdd + '?token=' + token + '&addressName=' + that.data.addressName + '&consignee=' + that.data.consignee + '&address=' + that.data.address + '&mobile=' + that.data.mobile + '&isDefault=' + isDefault;

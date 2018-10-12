@@ -41,5 +41,6 @@
        <view class="checkout" hover-class="active" bindtap="checkoutOrder"  >一键结算</view>
     </view>
   </view>
+ 
 
 </view>

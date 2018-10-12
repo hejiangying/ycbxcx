@@ -101,7 +101,6 @@ Page({
     })
   },
   chooseAddress: function (e) {
-    console.log("eeeee",e)
     let addressId = e.currentTarget.dataset.address.id
     let address = e.currentTarget.dataset.address
     let pages = getCurrentPages();

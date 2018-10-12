@@ -112,6 +112,7 @@
   margin: 1px;
   border: 1px solid #f7f7fa;
   border-radius: 5px;
+  background: #f7f7fa
 }
 .mesoperation{
   display: flex;
@@ -168,6 +169,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center
 }
 .f-search input{
   width: 90%;

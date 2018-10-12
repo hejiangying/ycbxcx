@@ -1,6 +1,6 @@
 .banner{
   margin-top: 100rpx;
-  background: #eee;
+  background: #f7f7fa;
 }
 .banner swiper-item image{
   width: 100%;
@@ -23,11 +23,11 @@
   height: 100rpx;
   width: 100%;
 }
-.address_con .logo image{
+.address_con>image{
   width: 90rpx;
   height: 90rpx;
   margin-left: 12rpx;
-  margin-right: 36rpx;
+  margin-right: 20rpx;
 }
 .address_con .search{
   position: relative;
@@ -36,7 +36,7 @@
   border-radius: 50rpx;
   background-color:#fff;
   opacity: 0.5;
-  width:430rpx;
+  width:450rpx;
   height: 70rpx;
   font-size: 30rpx;
   padding: 0rpx 40rpx;
@@ -51,10 +51,12 @@
 .address_con .shopping{
   position: relative;
   right:-20rpx;
-}
-.address_con .shopping image{
   width: 50rpx;
   height: 50rpx;
+}
+.address_con .shopping image{
+  width: 100%;
+  height: 100%;
 }
 .address image{
   width: 50rpx;

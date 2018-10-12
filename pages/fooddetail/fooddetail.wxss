@@ -95,6 +95,7 @@
   border-bottom: 1rpx solid rgb(119, 119, 119);
   font-size: 24rpx;
   color: #999;
+  height:1.5rem
 }
 .type-con text.on{
   color: #f63264;

@@ -258,7 +258,8 @@ page {
 .cate-item .item .img {
   width: 302rpx;
   height: 302rpx;
-  padding-top: 26rpx
+  margin-top: 26rpx;
+  background: #f7f7fa
 }
 
 .cate-item .item .name {

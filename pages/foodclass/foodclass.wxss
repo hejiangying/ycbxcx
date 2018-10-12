@@ -12,8 +12,8 @@
 .search input{
   font-size: 26rpx;
   color: #fff;
-  text-align: center;
   width: 90%;
+  padding-left:24rpx;
 }
 .search view {
   width: 10%;
@@ -125,8 +125,8 @@
   padding: 10rpx;
 }
 .nogoods image{
-  width: 180px;
-  height: 180px;
+  width: 120px;
+  height: 120px;
   margin: 20% auto 0;
   display: block
 }

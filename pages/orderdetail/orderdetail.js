@@ -3,7 +3,7 @@
 // pages/orderdetail/orderdetail.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
-var lineid = '', collectStatus = '', itemId='';//线路id,是否收藏，自助游标识
+var lineid = '', collectStatus = '', itemId='',price='';//线路id,是否收藏，自助游标识,价格
 Page({
 
   /**
@@ -44,11 +44,11 @@ Page({
       url: '../../pages/comments/comments?id=' + lineid + '&itemid=' + itemId,
     })
   },
-
+//立即预订
   buyClick:function(){
     console.log(lineid)
     wx.navigateTo({
-      url: '../../pages/booking/booking?lineid=' + lineid,
+      url: '../../pages/booking/booking?lineid=' + lineid + '&price=' + price,
     })
   },
   getLinedetail:function(){
@@ -57,9 +57,10 @@ Page({
     var url = api.appLine.linedetail + '?id=' + lineid+'&token='+token;
     toolkit.get(url ,(res)=>{
       console.log("线路详情：",res)
-      var linedetail = res.data.result.line, commentlist = res.data.result.commentList;;
-        collectStatus = res.data.result.collectStatus,
-        console.log("收藏：",collectStatus)
+      var linedetail = res.data.result.line, commentlist = res.data.result.commentList;
+        collectStatus = res.data.result.collectStatus;
+        price = linedetail.price
+      console.log("jiage：", price)
       that.setData({
         linedetail:linedetail,
         collectstatus: collectStatus,

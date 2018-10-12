@@ -12,6 +12,7 @@
   padding: 20rpx;
   display: flex;
   flex-direction: row;
+  border-top: 1rpx solid #f7f7fa;
 }
 
 .time text {
