@@ -34,7 +34,7 @@
             </view>
           </view>
           <view class="order-state" wx:if="{{item.status == 1}}">
-            <view class="complete">已支付,未发货</view>
+            <view class="complete">已支付</view>
             <view class="operation">
               <text bindtap='refundClick' data-id='{{item.id}}'>申请退款</text>
             </view>
