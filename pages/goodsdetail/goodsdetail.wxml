@@ -1,16 +1,10 @@
 <!--pages/goodsdetail/goodsdetail.wxml-->
 <view class="container">
 <view class="banner">
-    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264" style="width:100%;">
-      <block>
+    <swiper indicator-dots="{{info.imgList>1 ? true : false}}" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264" style="width:100%;">
+      <block wx:for="{{info.imgList}}" wx:key="{{index}}">
         <swiper-item style="width:100%;">
-          <image src="../../image/banner2.jpg" style="width:100%;height:100%;"/>
-        </swiper-item>
-        <swiper-item>
-          <image src="http://img.zcool.cn/community/01238655a521e032f8758bed2f7a40.jpg@1280w_1l_2o_100sh.jpg" style="width:100%;height:100%;" />
-        </swiper-item>
-        <swiper-item>
-          <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535263889&di=a4173a28c8649f561f10eb34d14d3ef8&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0146a0574b983332f875a4291b8607.png%401280w_1l_2o_100sh.png"  style="width:100%;height:100%;"></image>
+          <image src="{{host+item}}" style="width:100%;height:100%;"/>
         </swiper-item>
       </block>
     </swiper>
@@ -18,9 +12,6 @@
 <view>{{info.supplierName}}</view>
 <view>座机：{{info.mobile}}</view>
 <view>联系电话：{{info.telephone}}</view>
-  <!-- <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534161345109&di=2f1997fe1958557ac5c5a92f0f7fbaf5&imgtype=0&src=http%3A%2F%2Fc.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Ff9198618367adab4b025268587d4b31c8601e47b.jpg"></image>
- 
-  <image src="http://www.situcms.com/uploads/arcimgs/88781505466831.jpg"></image> -->
   <view>地址：{{info.address}}</view>
    <view>联系人：{{info.linkMan}}</view>
    <view>介绍：{{info.content}}</view>

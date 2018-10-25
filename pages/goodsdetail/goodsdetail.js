@@ -1,6 +1,7 @@
 // pages/goodsdetail/goodsdetail.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var id = '';
 Page({
 
@@ -42,6 +43,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getdetail()
+    that.setData({
+      host:host
+    })
   },
 
   /**

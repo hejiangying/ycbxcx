@@ -1,6 +1,7 @@
 // pages/fooddetail/fooddetail.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var goodsId = '',
   num = 1,
   goodsPrice = '',
@@ -123,13 +124,14 @@ Page({
   },
   //立即购买
   buyClick: function () {
+    var token = wx.getStorageSync('token')
     var that = this;
     var status = that.data.status
     if (status == false) {
       that.setData({
         status: true
       })
-    } else {
+    } else if(token != ''){
       var token = wx.getStorageSync('token'),
         goodsNumber = num,
         url = api.shop.addShop + '?goodsId=' + goodsId + '&token=' + token + '&recType=' + itemId+'&goodsNumber=' + that.data.num;
@@ -147,6 +149,11 @@ Page({
       //   url: '/pages/buy/checkout/checkout',
       // })
 
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon:'none'
+      })
     }
   },
   // 是否收藏该商品
@@ -156,31 +163,39 @@ Page({
       productId = e.currentTarget.dataset.id,
       token = wx.getStorageSync('token'),
       collentUrl = that.route;
-    if (collectStatus == 0) {
-      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.goods.marketPrice + '&productName=' + that.data.goods.goodsName + '&collentUrl=' + collentUrl + '&recType=' + itemId;
-      toolkit.post(url, (res) => {
-        console.log("收藏成功")
+      if(token != ''){
+        if (collectStatus == 0) {
+          var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&price=' + that.data.goods.marketPrice + '&productName=' + that.data.goods.goodsName + '&collentUrl=' + collentUrl + '&recType=' + itemId;
+          toolkit.post(url, (res) => {
+            console.log("收藏成功")
+            wx.showToast({
+              title: '收藏成功',
+            })
+            that.setData({
+              collectstatus: 1
+            })
+          })
+          collectStatus = 1
+        } else if (collectStatus == 1) {
+          var reurl = api.collection.remove + '?productId=' + productId + '&token=' + token;
+          toolkit.post(reurl, (res) => {
+            console.log("取消收藏")
+            wx.showToast({
+              title: '取消成功',
+            })
+            that.setData({
+              collectstatus: 0
+            })
+          })
+          collectStatus = 0
+        }
+      }else{
         wx.showToast({
-          title: '收藏成功',
+          title: '请先登录',
+          icon:'none'
         })
-        that.setData({
-          collectstatus: 1
-        })
-      })
-      collectStatus = 1
-    } else if (collectStatus == 1) {
-      var reurl = api.collection.remove + '?productId=' + productId + '&token=' + token;
-      toolkit.post(reurl, (res) => {
-        console.log("取消收藏")
-        wx.showToast({
-          title: '取消成功',
-        })
-        that.setData({
-          collectstatus: 0
-        })
-      })
-      collectStatus = 0
-    }
+      }
+   
   },
 
   /**
@@ -210,6 +225,9 @@ Page({
   onShow: function() {
     var that = this;
     that.getgoodsdetail()
+    that.setData({
+      host:host
+    })
   },
 
   /**

@@ -5,7 +5,7 @@
       <swiper indicator-dots="{{goods.imgList.length>1?true:false}}" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
         <block wx:for="{{goods.imgList}}" wx:key="{{index}}">
           <swiper-item>
-            <image src="{{'http://192.168.190.243:8080'+ item}}" style="width:100%;height:150px;" />
+            <image src="{{host+ item}}" style="width:100%;height:150px;" />
           </swiper-item>
         </block>
       </swiper>
@@ -59,7 +59,7 @@
             <block wx:for="{{houselist}}" wx:key="{{index}}">
               <view class="housesel">
                 <view class="l">
-                  <image src="../../../image/banner2.jpg"></image>
+                  <image src="{{host+goods.imgList[0]}}"></image>
                   <view class="housedes">
                     <text>{{item.roomName}}</text>
                     <view>
@@ -69,7 +69,7 @@
                   </view>
                 </view>
                 <view class="arr" bindtap="orderClick" data-houseid="{{item.id}}">
-                  <image src="../../../image/arrow.png"></image>
+                  <image src="../../image/arrow.png"></image>
                 </view>
               </view>
             </block>
@@ -87,7 +87,7 @@
                       <swiper indicator-dots="true" style="width:100%;" indicator-active-color="#f63264">
                         <block wx:for="{{houseDetail.imgList}}">
                         <swiper-item style="width:100%; height:150rpx;">
-                          <image src="{{'http://192.168.190.243:8080'+ item}}" style="width:100%;height:100%;"></image>
+                          <image src="{{host+ item}}" style="width:100%;height:100%;"></image>
                           <!-- <image src="{{item}}" class="slide-image"  /> -->
                         </swiper-item>
                         </block>

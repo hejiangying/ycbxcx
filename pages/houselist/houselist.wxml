@@ -8,7 +8,7 @@
   </view>
   <view class="address" wx:if="{{typeclass==1}}">
     <view class="fooditem" bindtap='foodClick' wx:for="{{houselist}}" wx:key="{{item.id}}" data-id="{{item.id}}">
-      <image src="{{'http://192.168.190.243:8080'+item.imgList[0]}}"></image>
+      <image src="{{host+item.imgList[0]}}"></image>
       <view class="ad">
       <text>{{item.title}}</text>
       <view class="foodprice">
@@ -21,7 +21,7 @@
   <view class="address" wx:if="{{typeclass==2}}">
     <view wx:if="{{searchList != ''}}">
       <view class="fooditem" bindtap='foodClick' wx:for="{{searchList}}" wx:key="{{item.id}}" data-id="{{item.id}}">
-         <image src="{{'http://192.168.190.243:8080'+item.imgList[0]}}"></image>
+         <image src="{{host+item.imgList[0]}}"></image>
          <view class="ad">
         <text>{{item.title}}</text>
         <view class="foodprice">

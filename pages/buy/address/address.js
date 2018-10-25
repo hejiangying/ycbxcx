@@ -40,6 +40,7 @@ Page({
     that.getshopList();
     //加载地址数据
   },
+  //地址列表
   getshopList:function(){
     var that = this,
     token = wx.getStorageSync('token'),
@@ -52,6 +53,7 @@ Page({
       })
     })
   },
+  //地址详情
   addressSee:function(e){
     var that = this;
     var addressId = e.currentTarget.dataset.id;
@@ -108,7 +110,10 @@ Page({
     wx.setStorage({
       key: 'addressId',
       data: e.currentTarget.dataset.address.id,
+      address:address
     })
+    console.log('地址id：', addressId)
+    console.log('地址：', address)
     //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
     prevPage.setData({
       checkedAddress: address

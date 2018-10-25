@@ -1,6 +1,7 @@
 // pages/order/order.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var _order = '',
   recType = [],
   status = '', //订单状态
@@ -25,7 +26,7 @@ Page({
     orderstatus: '',
     name: [],
     recType: [],
-    statusList: ['全部订单', '待付款订单', '待评价', '退款/售后']
+    statusList: ['全部订单', '待付款', '待收货', '待评价']
   },
   // 订单状态的选择
   orderSelect: function(e) {
@@ -43,9 +44,9 @@ Page({
     if (that.data.ortp == 1) {
       status = 0
     } else if (that.data.ortp == 2) {
-      status = 1
+      status = 2
     } else if (that.data.ortp == 3) {
-      status = 5
+      status = 3
     }
     currentPage = 1
     Status = status
@@ -130,6 +131,7 @@ Page({
       token = wx.getStorageSync('token'),
       url = api.buy.buy + '?orderId=' + orderId + '&token=' + token;
     toolkit.post(url, (res) => {
+      console.log('支付操作',res)
       var newres = res.data.result
       wx.requestPayment({
         'timeStamp': res.data.result.timeStamp,
@@ -138,12 +140,28 @@ Page({
         'signType': 'MD5',
         'paySign': res.data.result.paySign,
         'success': function(res) {
-          // console.log(res)
-          // toolkit.post(api.buy.buyok, newres,(res)=>{
-          //   console.log(989898)
-          // })
+          console.log('支付：',res)
+          if (res.errMsg== 'requestPayment:ok'){
+            var payurl = api.buy.updateList + '?token=' + token + '&orderId=' + orderId
+            toolkit.post(payurl,(res)=>{
+              console.log('支付成功',res)
+              wx.showToast({
+                title: '支付成功',
+                duration: 2000
+              })
+            })
+            
+          }
         },
-        'fail': function(res) {}
+        'fail': function(res) {
+          if (res.errMsg == 'requestPayment:fail cancel') {
+            wx.showToast({
+              title: '支付失败',
+              icon:'none',
+              duration: 2000
+            })
+          }
+        }
       })
     })
   },
@@ -169,6 +187,9 @@ Page({
         if (res.confirm) {
           toolkit.post(url, (res) => {
             that.getList()
+            that.setData({
+              ortp: 0
+            })
           })
         } else if (res.cancel) {
 
@@ -189,7 +210,16 @@ Page({
       success(res) {
         if (res.confirm) {
           toolkit.post(url, (res) => {
-            that.getList()
+            wx.showToast({
+              title: '退款成功',
+              duration:'1000',
+              success:function(){
+                that.getList()
+                that.setData({
+                  ortp: 0
+                })
+              }
+            })
           })
         } else if (res.cancel) {
 
@@ -210,7 +240,17 @@ Page({
       success(res) {
         if (res.confirm) {
           toolkit.post(url, (res) => {
-            that.getList()
+            wx.showToast({
+              title: '请等待商家同意',
+              duration:'1000',
+              success:function(){
+                that.getList()
+                that.setData({
+                  ortp: 0
+                })
+              }
+            })
+           
           })
         } else if (res.cancel) {
 
@@ -232,6 +272,9 @@ Page({
         if (res.confirm) {
           toolkit.post(url, (res) => {
             that.getList()
+            that.setData({
+              ortp: 0
+            })
           })
         } else if (res.cancel) {
 
@@ -244,6 +287,9 @@ Page({
     if (times == 0) {
       that.getList()
     }
+    that.setData({
+      host:host
+    })
 
   },
 
@@ -258,44 +304,53 @@ Page({
     var that = this,
       token = wx.getStorageSync('token'),
       url = api.order.orderList + '?token=' + token + '&pageNumber=' + currentPage;
-    toolkit.post(url, (res) => {
-      wx.hideLoading()
-      wx.stopPullDownRefresh()
-      var orderlist = res.data.result.content;
-      totalpage = res.data.result.totalPages
-      if (orderlist.length > 0) {
-        var name1 = [];
-        for (var i in orderlist) {
-          var recType = orderlist[i].recType;
-          if (orderlist[i].ordersLineList) {
-            name1[i] = orderlist[i].ordersLineList[0].goodsName
-          }
-          if (orderlist[i].ordersHotelList) {
-            name1[i] = orderlist[i].ordersHotelList[0].goodsName
-          }
-          if (orderlist[i].ordersItemList) {
-            name1[i] = orderlist[i].ordersItemList[0].goodsName
-          }
-          if (orderlist[i].ordersGoodsList) {
-            name1[i] = orderlist[i].ordersGoodsList[0].goodsName
-          }
-          that.data.recType.push(recType)
-        }
-        if (isLoadmore == true) {
-          sumList = sumList.concat(orderlist)
-          name = name.concat(name1)
-        } else {
-          sumList = orderlist
-          name = name1
-        }
-        that.setData({
-          orderList: sumList,
-          name: name
-        })
-      } else if (orderlist.length == 0) {
+      if(token != ''){
+        toolkit.post(url, (res) => {
+          wx.hideLoading()
+          wx.stopPullDownRefresh()
+          var orderlist = res.data.result.content;
+          totalpage = res.data.result.totalPages
+          if (orderlist.length > 0) {
+            var name1 = [];
+            for (var i in orderlist) {
+              var recType = orderlist[i].recType;
+              if (orderlist[i].ordersLineList) {
+                name1[i] = orderlist[i].ordersLineList[0].goodsName
+              }
+              if (orderlist[i].ordersHotelList) {
+                name1[i] = orderlist[i].ordersHotelList[0].goodsName
+              }
+              if (orderlist[i].ordersItemList) {
+                name1[i] = orderlist[i].ordersItemList[0].goodsName
+              }
+              if (orderlist[i].ordersGoodsList) {
+                name1[i] = orderlist[i].ordersGoodsList[0].goodsName
+              }
+              that.data.recType.push(recType)
+            }
+            if (isLoadmore == true) {
+              sumList = sumList.concat(orderlist)
+              name = name.concat(name1)
+            } else {
+              sumList = orderlist
+              name = name1
+            }
+            that.setData({
+              orderList: sumList,
+              name: name
+            })
+          } else if (orderlist.length == 0) {
 
+          }
+        })
+      }else{
+          wx.showToast({
+            title: '请先登录',
+            icon:'none',
+            duration:2000
+          })
       }
-    })
+    
   },
   //删除订单
   delOrder(e) {
@@ -315,6 +370,9 @@ Page({
               duration: 3000,
               success() {
                 that.getList()
+                that.setData({
+                  ortp: 0
+                })
               }
             })
           })
@@ -326,13 +384,50 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
+    wx.showLoading({
+      title: '加载中',
+    })
     var that = this;
     isLoadmore = false
     currentPage = 1
     if(that.data.ortp ==0 ){
       that.getList()
-    }else{
-      
+      that.setData({
+        ortp: 0
+      })
+    } else {
+      console.log('状态选择：', currentSel)
+      that.setData({
+        ortp: currentSel
+      })
+      var token = wx.getStorageSync('token'),
+        url = api.order.orderList + '?token=' + token + '&status=' + Status + '&pageNumber=' + 1;
+      toolkit.post(url, (res) => {
+        wx.stopPullDownRefresh()
+        wx.hideLoading()
+        var orderlist = res.data.result.content;
+        var name3 = [];
+        for (var i in orderlist) {
+          var recType = orderlist[i].recType;
+          if (orderlist[i].ordersLineList) {
+            name3[i] = orderlist[i].ordersLineList[0].goodsName
+          }
+          if (orderlist[i].ordersHotelList) {
+            name3[i] = orderlist[i].ordersHotelList[0].goodsName
+          }
+          if (orderlist[i].ordersItemList) {
+            name3[i] = orderlist[i].ordersItemList[0].goodsName
+          }
+          if (orderlist[i].ordersGoodsList) {
+            name3[i] = orderlist[i].ordersGoodsList[0].goodsName
+          }
+          that.data.recType.push(recType)
+        }
+        that.setData({
+          orderList: orderlist,
+          name: name3
+        })
+      })
     }
     
   },
@@ -348,11 +443,12 @@ Page({
       if (that.data.ortp == 0) {
         that.getList()
       } else {
+        console.log('状态选择：', currentSel)
         that.setData({
-          ortp: currentSel
+          ortp:currentSel
         })
         var token = wx.getStorageSync('token'),
-          url = api.order.orderList + '?token=' + token + '&status=' + Status + '&pageNumber=' + currentPage;;
+          url = api.order.orderList + '?token=' + token + '&status=' + Status + '&pageNumber=' + currentPage;
         toolkit.post(url, (res) => {
           wx.hideLoading()
           var orderlist = res.data.result.content;

@@ -6,10 +6,10 @@
       <view class="att-l">
         <view class="att-photo">
            <image wx:if="{{item.userFlag==1}}" src="{{item.avatar}}"></image>
-          <image wx:if="{{item.userFlag==2}}" src="{{'http://192.168.190.243:8080'+item.avatar}}"></image>
+          <image wx:if="{{item.userFlag==2}}" src="{{host+item.avatar}}"></image>
         </view>
         <view class="att-name">
-          <view>{{item.nickName}}</view>
+          <view>{{item.alias}}</view>
         </view>
       </view>
       <!-- <view class="att-state" bindtap='blackClick' data-id="{{item.followId}}">

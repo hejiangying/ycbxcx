@@ -1,6 +1,7 @@
 // pages/kezhan/kezhan.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
+const host = require('../../utils/host.js');
 var d1='',d2='',roomId='',hotelld='',itemid='',price='',sum=1;
 Page({
 
@@ -168,6 +169,9 @@ Page({
   onShow: function () {
     var that =this;
     that.getTime()
+    that.setData({
+      host:host
+    })
   },
 
   /**

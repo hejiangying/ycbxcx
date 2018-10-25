@@ -1,6 +1,7 @@
 // pages/comments/comments.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var goodsId = '', itemid='';
 Page({
 
@@ -56,6 +57,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getcomm()
+    that.setData({
+      host:host
+    })
   },
 
   /**

@@ -1,5 +1,6 @@
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var bannerUrl = '';//轮播
 Page({
   data: {
@@ -15,12 +16,9 @@ Page({
       success:function(res){
         console.log("authSetting", res)
         if(res.authSetting['scope.userInfo']){
-          wx.getUserInfo({
-            success:function(res){
-              console.log("user:",res)
-            }
-          })
+          console.log('允许授权')
         }else{
+          console.log('拒绝授权')
           wx.navigateTo({
             url: '../../pages/wxis/wxis',
           })
@@ -34,6 +32,10 @@ Page({
     var that = this;
     that.gethome()
     that.getBanner()
+    console.log('api:',host)
+    that.setData({
+      host:host
+    })
   },
   gethome(){
     var that = this,
@@ -63,11 +65,18 @@ Page({
   goBanner(e){
     var that = this,bannerId = e.currentTarget.dataset.id;
     for (let j in bannerUrl){
-      if (bannerUrl[j].id == bannerId){
-        wx.navigateTo({
-          url: '../../pages/coupon/coupon?url='+bannerUrl[j].adLink,
-        })
+      if (bannerUrl[j].adLink != ''){
+        console.log('有', bannerUrl[j].adLink)
+        if (bannerUrl[j].id == bannerId) {
+          wx.navigateTo({
+            url: '../../pages/coupon/coupon?url=' + bannerUrl[j].adLink,
+          })
+        }
+      } else {
+        console.log('无', bannerUrl[j].adLink)
+        return
       }
+      
     }
     
   },

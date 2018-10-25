@@ -1,6 +1,7 @@
 // pages/shopping/shopping.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var goodsList = [],currentPage=1,totalpage='',sumList=[],isLoadmore=false;//收藏列表第一页，当前页，总页数,收藏列表页数,是否需要加载更多
 Page({
 
@@ -31,6 +32,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getGoods();
+    that.setData({
+      host:host
+    })
   },
   getGoods(){
     var that = this, token = wx.getStorageSync('token'), url = api.collection.mycollection + '?token=' + token + '&pageNumber=' + currentPage;

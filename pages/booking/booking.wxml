@@ -40,7 +40,7 @@
     </view>
   </view> -->
   <text class="selnum">个人信息登记</text>
-  <scroll-view scroll-y="true" style="min-height:280px;padding-bottom:100rpx;background-color:#f7f7fa;">
+  <scroll-view scroll-y="true" style="min-height:280px;padding-bottom:100px;background-color:#f7f7fa;">
   <view class="myform">
     <view class="form-item" wx:for="{{lists}}" wx:key="{{index}}" data-index="{{index}}"> 
       <view class="fo-name">

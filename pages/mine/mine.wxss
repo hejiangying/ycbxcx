@@ -24,6 +24,13 @@
   font-size: 32rpx;
   color: #b0b1b2;
 }
+.myphoto>text{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: #f63264;
+} 
 .myphoto image{
   width: 160rpx;
   height: 160rpx;

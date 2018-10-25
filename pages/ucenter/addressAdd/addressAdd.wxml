@@ -20,7 +20,7 @@
     <view class="zan-cell zan-cell-switch">
       <view class="zan-cell__bd">设为默认地址</view>
       <view class="zan-cell__ft">
-        <view class="zan-switch zan-switch--{{ checked ? 'on' : 'off' }} {{ disabled ? 'zan-swtich--disabled' : '' }}" data-checked="{{ checked }}"  bindtap="_handleZanSwitchChange">
+        <view class="zan-switch zan-switch--{{ checked ? 'off' : 'on' }} {{ disabled ? 'zan-swtich--disabled' : '' }}" data-checked="{{ checked }}"  bindtap="_handleZanSwitchChange">
           <view class="zan-switch__circle">
             <view hidden="{{ !loading }}" class="zan-switch__loading"></view>
           </view>

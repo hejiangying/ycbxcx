@@ -70,12 +70,12 @@ Page({
         identify: 'article'
       },
       success: (res) => {
+        wx.hideLoading()
         var json = JSON.parse(res.data);
         console.log("图片:", index, res)
         var picList = json.result.relativePaths;
         if (index == this.data.imglist.length - 1) {
           console.log("已是最后一张图片")
-          wx.hideLoading()
           uploadpic.push(picList)
         } else {
           index++;

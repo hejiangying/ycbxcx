@@ -1,6 +1,7 @@
 // pages/shopping/checkout/checkout.js
 const toolkit = require('../../../utils/ToolKit.js');
 const api = require('../../../utils/api.js');
+const host = require('../../../utils/host.js');
 var goodsid = '', totalPrice=0;
 Page({
 
@@ -60,6 +61,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getGooddetail()
+    that.setData({
+      host:host
+    })
   },
   
   /**
@@ -98,33 +102,64 @@ Page({
   },
   chooseAddress: function () {
     let checkedAddressId = this.data.checkedAddress.id
-    console.log("checkedAddressId0000", checkedAddressId)
     let url = ''
     if (checkedAddressId) {
       url = '/pages/buy/address/address'
     }else {
       url = '/pages/buy/address/address'
     }
-    console.log("checkedAddressId", checkedAddressId)
     wx.navigateTo({
       url: url,
     })
   },
   submitOrder: function () {
-    var addressId=wx.getStorageSync('addressId'),
+    var addressId = wx.getStorageSync('addressId'),
     token=wx.getStorageSync('token'),
       url = api.pay.payall + '?ids=' + goodsid + '&token=' + token + '&addressId=' + addressId + '&paymentType=' + 1 +'&postFee='+0;
-      toolkit.post(url,(res)=>{
+    console.log("addressId", addressId)
+    if (addressId != ''){
+      toolkit.post(url, (res) => {
+        wx.removeStorageSync('addressId')
+        console.log('需要清除addressId', addressId)
+        var orderNo = res.data.result.orderNo
         wx.requestPayment({
           'timeStamp': res.data.result.timeStamp,
           'nonceStr': res.data.result.nonceStr,
           'package': res.data.result.package,
           'signType': res.data.result.signType,
           'paySign': res.data.result.paySign,
-          'success': function (res) { },
-          'fail': function (res) { }
+          'success': function (res) {
+            console.log('支付：', res)
+            if (res.errMsg == 'requestPayment:ok') {
+              var update = api.buy.updateList + '?token=' + token + '&orderNo=' + orderNo
+              toolkit.post(update, (res) => {
+                console.log('支付成功', res)
+                wx.showToast({
+                  title: '支付成功',
+                  duration: 2000
+                })
+              })
+
+            }
+          },
+          'fail': function (res) {
+            if (res.errMsg == 'requestPayment:fail cancel') {
+              wx.showToast({
+                title: '支付失败',
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          }
         })
       })
+      wx.removeStorageSync('addressId')
+    }else{
+      wx.showToast({
+        title: '请选择收货地址',
+      })
+    }
+      
    
   }
 })

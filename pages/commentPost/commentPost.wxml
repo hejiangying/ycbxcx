@@ -4,7 +4,7 @@
   <!-- 通用 -->
     <view class="goods" wx:if="{{rectype == 4}}" wx:for="{{goods3}}" wx:key="{{index}}">
       <view class="img">
-        <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
       </view>
       <view class="info">
         <text class="name">{{item.goodsName}}</text>
@@ -14,7 +14,7 @@
     <!-- 住宿 -->
      <view class="goods" wx:if="{{rectype == 2}}" wx:for="{{goods1}}" wx:key="{{index}}">
       <view class="img">
-        <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
       </view>
       <view class="info">
         <text class="name">{{item.goodsName}}</text>
@@ -24,7 +24,7 @@
     <!-- 特产 -->
      <view class="goods" wx:if="{{rectype == 1}}" wx:for="{{goods0}}" wx:key="{{index}}">
       <view class="img">
-        <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
       </view>
       <view class="info">
         <text class="name">{{item.goodsName}}</text>
@@ -34,7 +34,7 @@
     <!-- 自助游 -->
      <view class="goods" wx:if="{{rectype == 3}}" wx:for="{{goods2}}" wx:key="{{index}}">
       <view class="img">
-        <image src="{{'http://192.168.190.243:8081'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
       </view>
       <view class="info">
         <text class="name">{{item.goodsName}}</text>

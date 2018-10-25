@@ -2,7 +2,8 @@
 
 // pages/orderdetail/orderdetail.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var lineid = '', collectStatus = '', itemId='',price='';//线路id,是否收藏，自助游标识,价格
 Page({
 
@@ -46,10 +47,19 @@ Page({
   },
 //立即预订
   buyClick:function(){
+    var token = wx.getStorageSync('token')
     console.log(lineid)
-    wx.navigateTo({
-      url: '../../pages/booking/booking?lineid=' + lineid + '&price=' + price,
-    })
+    if(token != ''){
+      wx.navigateTo({
+        url: '../../pages/booking/booking?lineid=' + lineid + '&price=' + price,
+      })
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon:'none'
+      })
+    }
+    
   },
   getLinedetail:function(){
     var that = this,token=wx.getStorageSync('token');
@@ -70,31 +80,38 @@ Page({
   },
   // 是否收藏该商品
   isCollect: function (e) {
-    console.log("jjjjjjjjj",lineid)
     var that = this, productId=e.currentTarget.dataset.id,token=wx.getStorageSync('token'),collentUrl=that.route;
-    if (collectStatus ==0){
-      var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&collentUrl=' + collentUrl +'&recType='+itemId;
-      toolkit.post(url,(res)=>{
-        wx.showToast({
-          title: '收藏成功',
+    if(token != ''){
+      if (collectStatus == 0) {
+        var url = api.collection.save + '?productId=' + productId + '&token=' + token + '&collentUrl=' + collentUrl + '&recType=' + itemId;
+        toolkit.post(url, (res) => {
+          wx.showToast({
+            title: '收藏成功',
+          })
+          that.setData({
+            collectstatus: 1
+          })
         })
-        that.setData({
-          collectstatus: 1
+        collectStatus = 1
+      } else if (collectStatus == 1) {
+        var reurl = api.collection.remove + '?productId=' + productId + '&token=' + token;
+        toolkit.post(reurl, (res) => {
+          wx.showToast({
+            title: '取消成功',
+          })
+          that.setData({
+            collectstatus: 0
+          })
         })
+        collectStatus = 0
+      }
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
       })
-      collectStatus =1
-    } else if (collectStatus == 1){
-      var reurl = api.collection.remove + '?productId=' + productId + '&token=' + token;
-      toolkit.post(reurl,(res)=>{
-        wx.showToast({
-          title: '取消成功',
-        })
-        that.setData({
-          collectstatus: 0
-        })
-      })
-      collectStatus = 0
     }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -109,6 +126,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getLinedetail();
+    that.setData({
+      host:host
+    })
   },
 
   /**

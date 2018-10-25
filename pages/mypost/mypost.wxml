@@ -7,7 +7,7 @@
       <view class="post-con" data-id="{{item.id}}" bindtap="commSee">{{item.content}}</view>
       <view class="post-photo" data-id="{{item.id}}" bindtap="commSee">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}" >
-        <image src="{{'http://192.168.190.243:8080'+item}}"></image>
+        <image src="{{host+item}}"></image>
         </block>
       </view>
       <view class="post-operation">

@@ -6,7 +6,7 @@
       <block wx:for="{{banner}}" wx:key="{{index}}">
         <!-- <navigator url="{{item.adLink}}" open-type="navigate"> -->
         <swiper-item style="width:100%;">
-          <image src="{{'http://192.168.190.243:8080'+item.piclist}}" style="width:100%;height:100%;" data-id='{{item.id}}' bindtap='goBanner' />
+          <image src="{{host+item.piclist}}" style="width:100%;height:100%;" data-id='{{item.id}}' bindtap='goBanner' />
         </swiper-item>
         <!-- </navigator> -->
       </block>
@@ -54,7 +54,7 @@
   <view class="active_list">
     <block wx:for="{{lineList}}" wx:key="{{index}}">
       <view class="active_item" bindtap='goDetail' data-id="{{item.id}}">
-        <image src="{{'http://192.168.190.243:8080'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
         <view class="active_name">
           <text class="name">{{item.title}}</text>
           <text class="active_status">￥{{item.price}}</text>
@@ -73,7 +73,7 @@
   <view class="active_list">
     <block wx:for="{{goodsList}}" wx:key="{{index}}">
       <view class="active_item" bindtap='foodClick' data-id="{{item.id}}">
-        <image src="{{'http://192.168.190.243:8080'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
         <view class="active_name">
           <text class="name">{{item.goodsName}}</text>
           <text class="active_status">￥{{item.marketPrice}}</text>
@@ -92,7 +92,7 @@
   <view class="active_list">
     <block wx:for="{{hotelList}}" wx:key="{{index}}">
       <view class="active_item" bindtap='hotelClick' data-id="{{item.id}}">
-        <image src="{{'http://192.168.190.243:8080'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
         <view class="active_name">
           <text class="name">{{item.title}}</text>
           <text class="active_status">￥{{item.price}}</text>

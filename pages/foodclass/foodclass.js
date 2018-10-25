@@ -1,6 +1,7 @@
 // pages/footclass/foodclass.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var itemId = '', currentPage = 1, totalpage = '',goodssum=[],isLoadmore=false,classId='',classSum=[];//特产标识，当前页，总页数，总列表,是否加载更多,分类id,分类列表
 Page({
 
@@ -38,6 +39,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      host:host
+    })
   },
   //加载分类列表
   getfoodList:function(){

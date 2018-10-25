@@ -141,7 +141,7 @@ Page({
     var that = this;
     that.setData({
       totalCount: Num,
-      totalPrice: price * Num
+      totalPrice: (price * Num).toFixed(2)
     })
   },
 

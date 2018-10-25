@@ -18,7 +18,7 @@
     </view>
     <view class="imglist">
     <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
-      <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+      <image src="{{host+item}}"></image>
       </block>
     </view>
     
@@ -60,26 +60,5 @@
       </view>
     </view>
     </block>
-    <view class="peritem">
-      <view class="perinfo">
-        <view class="perinfo-l">
-          <view class="perinfo-pho">
-            <image src="http://uploads.5068.com/allimg/1712/144-1G2011GU9.jpg"></image>
-          </view>
-          <view class="perinfo-id">
-            <text>ID某某</text>
-            <view class="perinfo-addre">
-              <text>一分钟前</text>
-            </view>
-          </view>
-        </view>
-        <view class="perinfop-r">
-          <text class="replyop">...</text>
-        </view>
-      </view>
-      <view class="reply-text">
-        <text>这是评论这是评论这是评论这是评论这是评论这是评论这</text>
-      </view>
-    </view>
   </view>
 </view>

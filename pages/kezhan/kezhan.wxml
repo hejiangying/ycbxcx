@@ -8,7 +8,7 @@
         <view class="normal" bindtap="bindPlus">+</view>
       </view>
     </view> -->
-  <view class="house houseform">
+  <view class="house houseform" style="border-top:1rpx solid #f7f7fa;">
     <view>入住人：</view>
     <input placeholder='请填写入住人' bindinput='inputper'></input>
   </view>

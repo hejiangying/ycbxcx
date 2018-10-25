@@ -1,6 +1,7 @@
 // pages/food/food.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var itemid = '', currentPage=1,totalpage='',sumList=[],isLoadmore=false;//通用商品标识，当前页，总页数，总列表，是否加载更多
 Page({
 
@@ -67,6 +68,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getgoods()
+    that.setData({
+      host:host
+    })
   },
 
   /**

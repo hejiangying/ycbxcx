@@ -6,7 +6,7 @@
     <view class="perinfo">
       <view class="perinfo-l">
         <view class="perinfo-pho">
-          <image wx:if="{{postdetail.userFlag ==2}}" src="{{'http://192.168.190.243:8080'+postdetail.avatar}}"></image>
+          <image wx:if="{{postdetail.userFlag ==2}}" src="{{host+postdetail.avatar}}"></image>
           <image wx:if="{{postdetail.userFlag ==1}}" src="{{postdetail.avatar}}"></image>
         </view>
         <view class="perinfo1-id">
@@ -26,7 +26,7 @@
     </view>
     <view class="imglist">
       <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
-        <image src="{{'http://192.168.190.243:8080'+item}}"></image>
+        <image src="{{host+item}}"></image>
       </block>
     </view>
     <view class="btns">

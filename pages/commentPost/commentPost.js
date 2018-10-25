@@ -1,6 +1,7 @@
 // pages/commentPost/commentPost.js
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var originalList = [],
   index = 0,
   edit = false,
@@ -187,8 +188,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getDetail()
-    console.log(1111111111, that.data.imgList)
-    console.log(222222222222, uploadpic)
+    that.setData({
+      host:host
+    })
   },
 
   /**

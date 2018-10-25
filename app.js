@@ -1,7 +1,6 @@
 //app.js
 const toolkit = require('utils/ToolKit.js');
 const api = require('utils/api.js');
-
 App({
  
   onLaunch: function (options) {
@@ -16,44 +15,44 @@ App({
          wx.setStorageSync('openid', openid);
          console.log('openid:', wx.getStorageSync('openid'))
          var session_key = res.data.result.session_key;
-          that.getAuthorize(openid, session_key);
+          // that.getAuthorize(openid, session_key);
        })
      }
    })
   },
-  getAuthorize: function (openid, session_key) {
-    var that = this;
-    console.log("获取用户信息：", api.apiUser.get_union)
-    // wx.getUserInfo({
-    //   withCredentials: true,
-    //   success: function (user) {
-    //     console.log('wx.getUserInfo:', user)
-    //     wx.setStorageSync('userInfo', user.userInfo);
-    //     wx.setStorageSync('authorize', 0)
+  // getAuthorize: function (openid, session_key) {
+  //   var that = this;
+  //   console.log("获取用户信息：", api.apiUser.get_union)
+  //   // wx.getUserInfo({
+  //   //   withCredentials: true,
+  //   //   success: function (user) {
+  //   //     console.log('wx.getUserInfo:', user)
+  //   //     wx.setStorageSync('userInfo', user.userInfo);
+  //   //     wx.setStorageSync('authorize', 0)
        
-    //     toolkit.post(api.apiUser.get_union,
-    //       {
-    //         openid: openid,
-    //         session_key: session_key,
-    //         userInfo: user.userInfo,
-    //         rawData: user.rawData,
-    //         signature: user.signature,
-    //         encryptedData: user.encryptedData,
-    //         iv: user.iv
-    //       },
-    //       function (res) {
-    //         console.log("res1111:", res)
-    //          var myid = res.data.result.user.id
-    //          wx.setStorageSync('myid', myid)
-    //          wx.setStorageSync('token', res.data.result.token)
-    //       }
-    //     )
-    //   },
-    //   fail: function (res) {
-    //     console.log('拒绝授权')
-    //     wx.setStorageSync('authorize', 1)
-    //   }
-    // })
-  },
+  //   //     toolkit.post(api.apiUser.get_union,
+  //   //       {
+  //   //         openid: openid,
+  //   //         session_key: session_key,
+  //   //         userInfo: user.userInfo,
+  //   //         rawData: user.rawData,
+  //   //         signature: user.signature,
+  //   //         encryptedData: user.encryptedData,
+  //   //         iv: user.iv
+  //   //       },
+  //   //       function (res) {
+  //   //         console.log("res1111:", res)
+  //   //          var myid = res.data.result.user.id
+  //   //          wx.setStorageSync('myid', myid)
+  //   //          wx.setStorageSync('token', res.data.result.token)
+  //   //       }
+  //   //     )
+  //   //   },
+  //   //   fail: function (res) {
+  //   //     console.log('拒绝授权')
+  //   //     wx.setStorageSync('authorize', 1)
+  //   //   }
+  //   // })
+  // },
  
 })

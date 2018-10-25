@@ -1,6 +1,7 @@
 // pages/postdetail/postdetail.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var postId = '',
   index = '',
   replyId = '',
@@ -45,8 +46,8 @@ Page({
       url = api.post.remove + '?id=' + replyid + '&token=' + token,
       myId = wx.getStorageSync("myid");
     console.log("replyid:", replyid)
-    console.log("userid", myId, userid, formid)
-    if (myId == userid || myId == formid) {
+    console.log("userid", myId, userId, formid)
+    if (myId == userId || myId == formid) {
       wx.showActionSheet({
         itemList: ['评论', '删除'],
         success: function(res) {
@@ -92,18 +93,23 @@ Page({
   },
   //帖子详情
   getpostDetail: function() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var that = this,
       token = wx.getStorageSync('token'),
       id = postId,
       url = api.post.postDetail + '?id=' + id + '&token=' + token;
     var myid = wx.getStorageSync('myid')
     toolkit.get(url, (res) => {
+      wx.hideLoading()
       var postdetail = res.data.result.article,
         userid = res.data.result.article.userId,
         read = res.data.result.article.commentList; 
       attenStatus = res.data.result.followStatus;
       thumbsStatus = res.data.result.article.thumbsStatus;
       userId = userid;
+      console.log('555', userid, userId)
       if (res.data.result.commentList != null) {
         for (let i = 0; i < read.length; i++) {
           console.log("评论标识：", read[i].signRead)
@@ -128,10 +134,12 @@ Page({
     if (thumbsStatus == 0) {
       var url1 = api.like.like + '?token=' + token + '&typeId=' + typeId
       toolkit.post(url1, (res) => {
+        console.log("111",res)
       })
     } else if (thumbsStatus == 1) {
       var url = api.like.removelike + '?token=' + token + '&typeId=' + typeId
       toolkit.post(url, (res) => {
+        console.log("112", res)
       })
     }
     that.getpostDetail()
@@ -172,6 +180,9 @@ Page({
   onShow: function() {
     var that = this;
     that.getpostDetail()
+    that.setData({
+      host:host
+    })
   },
 
   /**
@@ -192,7 +203,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.getpostDetail()
   },
 
   /**

@@ -26,9 +26,16 @@ Page({
       url = api.address.addressDetail + '?token=' + token + '&id=' + addressId;
     toolkit.post(url, (res) => {
       var addressDetail = res.data.result;
+      if (addressDetail.isDefault == 1){
+        checked = true
+      }else{
+        checked = false
+      }
       that.setData({
-        addressDetail: addressDetail
+        addressDetail: addressDetail,
+        checked:checked
       })
+      
     })
   },
   addressDel: function() {

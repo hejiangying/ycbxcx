@@ -2,6 +2,7 @@
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../..//utils/api.js');
 var itemId = '',currentPage = 1,totalpage='',sumList=[],isLoadmore=false;//酒店标识，当前页，总页数，总列表,是否加载更多
+const host = require('../../utils/host.js');
 Page({
 
   /**
@@ -64,6 +65,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getgoods()
+    that.setData({
+      host:host
+    })
   },
 
   /**

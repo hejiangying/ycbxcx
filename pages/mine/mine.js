@@ -22,8 +22,6 @@ Page({
       toolkit.post(url,(res)=>{
         wx.stopPullDownRefresh()
         var myinfo = res.data.result
-       
-        console.log("444:",res)
         that.setData({
           myinfo:myinfo
         })
@@ -47,12 +45,12 @@ Page({
       url: '../../pages/mypost/mypost',
     })
   },
-  // 跳转个人资料页面
-  seeInfo:function(){
-    wx.navigateTo({
-      url: '../../pages/myinfo/myinfo',
-    })
-  },
+  // // 跳转个人资料页面
+  // seeInfo:function(){
+  //   wx.navigateTo({
+  //     url: '../../pages/myinfo/myinfo',
+  //   })
+  // },
   // 跳转到用户协议
   helpClick:function(){
     wx.navigateTo({
@@ -75,6 +73,11 @@ Page({
   aboutClick:function(){
     wx.navigateTo({
       url: '../../pages/shopping/shopping',
+    })
+  },
+  loginClick(){
+    wx.navigateTo({
+      url: '/pages/wxis/wxis',
     })
   },
 

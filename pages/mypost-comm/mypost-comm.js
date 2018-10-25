@@ -1,6 +1,7 @@
 // pages/mypost-comm/mypost-comm.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var postId = '';
 Page({
 
@@ -45,6 +46,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getpostDetail()
+    that.setData({
+      host:host
+    })
   },
 
   /**

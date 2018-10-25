@@ -12,7 +12,7 @@
       <block wx:for="{{orderList}}" wx:key="{{index}}">
         <view class="order-list">
           <view class="order-item" bindtap='seeDetail' data-id='{{item.id}}' data-rectype="{{item.recType}}">
-            <image src="{{'http://192.168.190.243:8080'+item.goodsImg}}"></image>
+            <image src="{{host+item.goodsImg}}"></image>
             <view class="order-info">
               <block wx:if="{{name}}" wx:key="{{index}}">
                 <text class="order-title">{{name[index]}}</text>
@@ -21,8 +21,8 @@
               <text class="order-time">{{item.createTime}}</text>
               <text class="order-people">总计{{item.goodsCount}}件</text>
               <view class="order-money">合计￥{{item.goodsAmountTotal}}
-                <text class="poundage" wx:if="{{item.postFee == null}}">(免邮费)</text>
-                <text class="poundage" wx:if="{{item.postFee != null}}">（含手续费￥{{item.postFee}}）</text>
+                <!-- <text class="poundage" wx:if="{{item.postFee == null}}">(免邮费)</text>
+                <text class="poundage" wx:if="{{item.postFee != null}}">（含手续费￥{{item.postFee}}）</text> -->
               </view>
             </view>
           </view>
@@ -39,7 +39,7 @@
               <text bindtap='refundClick' data-id='{{item.id}}'>申请退款</text>
             </view>
           </view>
-          <view class="order-state" wx:if="{{item.status == 2}}">
+          <view class="order-state" wx:if="{{item.status == 2 && item.recType == 1}}">
             <view class="complete">待收货</view>
             <view class="operation">
               <text bindtap='confirmOrder' data-id='{{item.id}}'>确认收货</text>

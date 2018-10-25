@@ -1,6 +1,7 @@
 // pages/search/search.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var searchcon = '';//搜索的内容
 Page({
 
@@ -38,7 +39,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      host:host
+    })
   },
 
   /**

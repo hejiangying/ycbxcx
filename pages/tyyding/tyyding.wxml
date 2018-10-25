@@ -1,12 +1,12 @@
 <!--pages/booking/booking.wxml-->
 <view class="container">
   <view class="time">
-    <picker mode="date" value="{{_date}}" bindchange='dateSel'>
-      <text>游玩日期</text> {{_date}}
-    </picker>
-  </view>
-  <view class="time">
     价格：￥{{price}}
+  </view>
+   <view class="time" style="border-top:1rpx solid #eee;">
+    <picker mode="date" value="{{_date}}" bindchange='dateSel'>
+      <text>游玩日期:</text> {{_date}}
+    </picker>
   </view>
   <text class="selnum">个人信息登记</text>
   <view class="myform">

@@ -12,7 +12,7 @@
         </view>
         <view class="c" bindtap="chooseAddress" data-address="{{item}}">
           <view class="mobile">{{item.mobile}}</view>
-          <view class="address">{{item.addressName+   item.address}}</view>
+          <view class="address">{{item.addressName+item.address}}</view>
         </view>
         <view class="d" bindtap="addressSee" data-id="{{item.id}}"><image src="/image/arrow.png"></image></view>
       </view>

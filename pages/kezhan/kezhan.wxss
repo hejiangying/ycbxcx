@@ -4,14 +4,13 @@
   color: #666;
   box-sizing: border-box;
   padding: 0rpx 20rpx;
-  margin-bottom: 10rpx;
 }
 .houseform{
   display: flex;
   flex-direction: row;
   align-items: center;
   border-bottom:1rpx solid #f7f7fa;
-  padding:10rpx 20rpx;
+  padding:20rpx 20rpx;
 }
 .houseform input{
   font-size: 26rpx;
@@ -77,4 +76,5 @@
   border-bottom: 1rpx solid rgb(119, 119, 119);
   font-size: 24rpx;
   color: #999;
+  height: 50rpx;
 }

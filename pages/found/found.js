@@ -1,6 +1,7 @@
 // pages/found/found.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var isLoadmore=false,currentPage = 1, totalpage = '',thumbsStatus='',postlike=[],postsum=[],busy=false;//是否需要上拉加载数据,当前页,总页数，点赞状态，当前帖子数,总帖子数,多次点击导致网络繁忙
 
 Page({
@@ -75,6 +76,7 @@ Page({
       }
     that.getpostList()
   },
+  //删除
   closeNews(e){
     var that = this,
     postid = e.currentTarget.dataset.postid,
@@ -113,19 +115,22 @@ Page({
       wx.stopPullDownRefresh()
       wx.hideLoading()
       console.log("帖子列表：", res)
-      var postList = res.data.result.content;
-      postlike = postList;
-      totalpage = res.data.result.totalPages
-      if(isLoadmore == true){
-        postsum = postsum.concat(postList)
-      }else{
-        postsum = postList
+      if (res.data.result != null){
+        var postList = res.data.result.content;
+        postlike = postList;
+        totalpage = res.data.result.totalPages
+        if (isLoadmore == true) {
+          postsum = postsum.concat(postList)
+        } else {
+          postsum = postList
+        }
+        that.setData({
+          postList: postsum,
+          myId: myid,
+          typeclass: 1
+        })
       }
-      that.setData({
-        postList: postsum,
-        myId:myid,
-        typeclass: 1
-      })
+      
     })
 
   },
@@ -165,6 +170,9 @@ Page({
     var that = this;
     busy = false;
     that.getpostList()
+    that.setData({
+      host:host
+    })
   },
 
   /**

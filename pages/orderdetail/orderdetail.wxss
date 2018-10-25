@@ -18,15 +18,10 @@
   font-size: 28rpx;
 }
 .sell-state .t-money .t-much{
-  font-weight: bold;
   font-size: 30rpx;
-  margin-right:6rpx;
 }
 .sell-state .t-money .t-min,.sell-state .t-money text:last-child{
-  color: rgb(114, 109, 109);
-}
-.sell-state .t-money text:last-child{
-  margin-left: 10rpx;
+  color: #f63264;
 }
 .sell-state .sold{
   font-size: 26rpx;

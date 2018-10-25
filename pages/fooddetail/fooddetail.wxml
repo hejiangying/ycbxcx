@@ -5,7 +5,7 @@
     <swiper indicator-dots="{{goods.imgList.length>1 ? true:false}}" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
       <block wx:for="{{goods.imgList}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{'http://192.168.190.243:8080'+ item}}" width="100%" height="150" />
+          <image src="{{host+ item}}" width="100%" height="150" />
         </swiper-item>
       </block>
     </swiper>
@@ -16,7 +16,7 @@
       <view class="t-money">
         <text class="t-symbol">￥</text>
         <text class="t-much">{{goods.marketPrice}}</text>
-        <text class="t-min">起</text>
+        <!-- <text class="t-min">起</text> -->
       </view>
       <text class="sold">剩余{{goods.goodsNumber}}件</text>
     </view>
@@ -34,12 +34,18 @@
     <view class="tab">
       <view class="tab-top">
         <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">商品详情</text>
-        <!-- <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">费用说明</text>
-      <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text> -->
+       <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">商家详情</text>
+       <!-- <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text> -->
       </view>
       <view class="tab-con">
         <view class="tab1" wx:if="{{xc==1}}">
          {{goods.goodsDesc}}
+        </view>
+        <view class="tab1" wx:if="{{xc==2}}">
+         <view>商家名称：{{goods.supplier.supplierName}}</view>
+         <view>商家地址：{{goods.supplier.address}}</view>
+         <view wx:if="{{goods.supplier.mobile != null}}">商家联系方式：{{goods.supplier.mobile}}</view>
+         <view wx:if="{{goods.supplier.telephone != null}}">商家地址：{{goods.supplier.telephone}}</view>
         </view>
       </view>
     </view>
@@ -57,7 +63,7 @@
     <view class="mask-con">
       <view class="img-con">
         <view class="img-left">
-          <image src="{{'http://192.168.190.243:8080'+ goods.imgList[0]}}"></image>
+          <image src="{{host+ goods.imgList[0]}}"></image>
           <view class="kc">
             <text class="price">￥{{(goods.marketPrice*100)*num/100}}</text>
             <text class="num">库存{{goods.goodsNumber}}件</text>

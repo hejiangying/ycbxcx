@@ -1,6 +1,7 @@
 // pages/tourroute/tourroute.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var itemId = '',currentPage=1,totalpage='',sumList=[],isLoadmore=false;//自助游标识，当前页，总页数，总列表,是否加载更多
 Page({
 
@@ -97,6 +98,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getLine()
+    that.setData({
+      host:host
+    })
   },
 
   /**

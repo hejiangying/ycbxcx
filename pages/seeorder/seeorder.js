@@ -1,6 +1,8 @@
 // pages/seeorder/seeorder.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+
+const host = require('../../utils/host.js');
 var goodsid = '';
 Page({
 
@@ -33,6 +35,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getDetail()
+    that.setData({
+      host:host
+    })
   },
   getDetail(){
     console.log(9)

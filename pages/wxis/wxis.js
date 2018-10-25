@@ -19,9 +19,8 @@ Page({
     })
   },
   getUserInfo: function (e) {
-    console.log(e)
+    console.log('666',e)
     var openid = wx.getStorageSync('openid')
-    console.log("openid000000000",openid)
     if (e.detail.errMsg == 'getUserInfo:ok') {
       toolkit.post(api.apiUser.get_union,
           {
@@ -34,7 +33,7 @@ Page({
           },
           function (res) {
             console.log("res1111:", res)
-             var myid = res.data.result.user.id
+             var myid = res.data.result.member.id
              wx.setStorageSync('myid', myid)
              wx.setStorageSync('token', res.data.result.token)
           }
@@ -42,25 +41,28 @@ Page({
       wx.switchTab({
         url: '../../pages/index/index',
       })
-     } else {
-      wx.showToast({
-        title: '请授权后再访问小程序',
-        image:'../../image/clear.png'
+    } else if (e.detail.errMsg == 'getUserInfo:fail auth deny'){
+      // wx.showToast({
+      //   title: '请授权后再访问小程序',
+      //   icon: 'none',
+      // })
+      //  this.getSetting();
+      wx.switchTab({
+        url: '../../pages/index/index',
       })
-       this.getSetting();
-
      }
   },
-  getSetting: function (e) {
-    wx.openSetting({
-      success: res => {
-        if (res.authSetting["scope.userInfo"] == true) {
-          auth.login(this.data.url);
-        } else {
-          this.getSetting();
-        }
-      }
-    });
-  },
+  // getSetting: function (e) {
+  //   console.log('333',e)
+  //   wx.openSetting({
+  //     success: res => {
+  //       if (res.authSetting["scope.userInfo"] == true) {
+  //         auth.login(this.data.url);
+  //       } else {
+  //         this.getSetting();
+  //       }
+  //     }
+  //   });
+  // },
 
 })

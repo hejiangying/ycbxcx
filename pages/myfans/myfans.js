@@ -1,6 +1,7 @@
 // pages/myfans/myfans.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
+const host = require('../../utils/host.js');
 var currentPage = 1, totalpage = '', sumList = [], isLoadmore = false;//当前页，总页数，总列表数，是否需要加载更多
 Page({
 
@@ -59,6 +60,9 @@ Page({
   onShow: function () {
     var that = this;
     that.getattList()
+    that.setData({
+      host:host
+    })
   },
 
   /**

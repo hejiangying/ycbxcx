@@ -19,7 +19,7 @@
       <view class="comm-con">{{item.content}}</view>
       <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+        <image src="{{host+item}}"></image>
         </block>
       </view>
     </view>
@@ -37,7 +37,7 @@
       <view class="comm-con">{{item.content}}</view>
        <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+        <image src="{{host+item}}"></image>
         </block>
       </view>
     </view>
@@ -55,7 +55,7 @@
       <view class="comm-con">{{item.content}}</view>
      <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-       <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+       <image src="{{host+item}}"></image>
         </block>
       </view>
     </view>
@@ -73,7 +73,7 @@
       <view class="comm-con">{{item.content}}</view>
       <view class="commimg">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
-        <image src="{{'http://192.168.190.243:8081'+item}}"></image>
+        <image src="{{host+item}}"></image>
         </block>
       </view>
     </view>

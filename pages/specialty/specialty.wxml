@@ -2,10 +2,10 @@
 <view class="container">
 <block wx:for="{{orderdetail}}" wx:key="{{index}}">
   <view class="top">
-    <swiper indicator-dots="{{item.imgList>1 ? true : false}}" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264" style="width:100%;">
+    <swiper indicator-dots="{{item.imgList>1 ? true : false}}" autoplay="true" circular="true" indicator-active-color="#f63264" style="width:100%;">
       <block wx:for="{{item.imgList}}" wx:key="{{index}}">
         <swiper-item style="width:100%;" >
-          <image src="{{'http://192.168.190.243:8080'+item}}" style="width:100%;height:100%;"/>
+          <image src="{{host+item}}" style="width:100%;height:100%;"/>
         </swiper-item>
       </block>
     </swiper>

@@ -50,7 +50,7 @@
   <view class="goods-items">
     <view class="item" wx:for="{{checkedGoodsList}}" wx:key="{{item.id}}">
       <view class="img">
-        <image src="{{'http://192.168.190.243:8080'+item.imgList[0]}}"></image>
+        <image src="{{host+item.imgList[0]}}"></image>
       </view>
       <view class="info">
         <view class="t">

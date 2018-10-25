@@ -1,6 +1,6 @@
 // pages/active/active.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
 Page({
 
   /**

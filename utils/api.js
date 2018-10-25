@@ -1,14 +1,15 @@
-const host = 'http://192.168.190.243:8080';
+ //   const host = 'http://192.168.11.243:8080';
+const host = 'https://ycb.yuncaibang.com';
 const api = {
   home:{
-    home: host +'/apiUser/home',//首页
+    home: host +'/apiMember/home',//首页
     banner: host +'/apiAd/list',//轮播
     bannerdetail: host +'/apiAd/info',//轮播详情
   },
   apiUser: {
-    onLogin: host + '/apiUser/auth',//授权
-    get_union: host +'/apiUser/login',//登录
-    info: host + '/apiUser/info'//获取用户信息
+    onLogin: host + '/apiMember/auth',//授权
+    get_union: host +'/apiMember/login',//登录
+    info: host + '/apiMember/info'//获取用户信息
   },
   appGoods:{
     goodslist: host + '/apiGoods/list',//特产商品列表
@@ -73,10 +74,10 @@ const api = {
     mycollection: host +'/apiCollection/list',//我的收藏
   },
   attention:{
-    addatten:host+'/apiUser/follow',//关注
-    removeatten: host +'/apiUser/remove',//取消关注
-    myattention: host +'/apiUser/myFollow',//我的关注和我的粉丝
-    black:host+'/apiUser/addBlack',//拉黑粉丝
+    addatten: host +'/apiMember/follow',//关注
+    removeatten: host +'/apiMember/remove',//取消关注
+    myattention: host +'/apiMember/myFollow',//我的关注和我的粉丝
+    black: host +'/apiMemberr/addBlack',//拉黑粉丝
   },
   buy:{
     buy: host +'/apiOrders/payment',//支付
@@ -84,6 +85,7 @@ const api = {
     refund: host +'/apiOrders/refund',//退款
     buyok: host +'/wxPay/payNotifyUr',//支付成功
     back:host+'/apiOrders/reback',//退货退款
+    updateList:host +'/apiOrders/updateStatus',//更新订单状态
   },
   like:{
     like: host +'/apiThumbs/create',//点赞

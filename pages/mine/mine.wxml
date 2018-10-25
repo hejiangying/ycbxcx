@@ -1,16 +1,25 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
   <view class="mydata cen">
-    <view class="mydata-top" bindtap="seeInfo">
-      <view class="mydata-left">
+    <view class="mydata-top" >
+      <view class="mydata-left" wx:if="{{myinfo !== null}}">
         <view class="myinfo">
           <view class="myphoto" style="border-radius:50%;width: 120rpx;height: 120rpx;display: block;overflow:hidden;border:1rpx solid #eee;">
-            <open-data type="userAvatarUrl"></open-data>
+            <!-- <open-data type="userAvatarUrl"></open-data> -->
+            <image src="{{myinfo.avatar}}" style="border-radius:50%;width: 120rpx;height: 120rpx;display: block;overflow:hidden;border:1rpx solid #eee;"></image>
           </view>
           <view class="mysign">
-            <view class="myname">
-             <open-data type="userNickName" open-gid="xxxxxx" style="color:#666;font-size:28rpx;"></open-data>
+            <view class="myname" style="color:#666;font-size:28rpx;">
+             <!-- <open-data type="userNickName" open-gid="xxxxxx" style="color:#666;font-size:28rpx;"></open-data> -->
+             {{myinfo.alias}}
             </view>
+          </view>
+        </view>
+      </view>
+      <view class="mydata-left" wx:if="{{myinfo == null}}" style="width:100%;">
+        <view class="myinfo" >
+          <view class="myphoto" style="border-radius:50%;width: 120rpx;margin:0 auto;height: 120rpx;display: block;overflow:hidden;border:1rpx solid #eee;text-align:center;font-size:24rpx;color:#666;" bindtap="loginClick">
+          <text style="margin-top:50rpx;">点击登陆 </text>
           </view>
         </view>
       </view>

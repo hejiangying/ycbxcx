@@ -9,7 +9,7 @@
   <view class="tongyong" wx:if="{{typeclass==1}}">
     <block wx:for="{{goodslist}}" wx:key="{{index}}">
       <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
-        <image src="{{'http://192.168.190.243:8080'+ item.imgList[0]}}"></image>
+        <image src="{{host+ item.imgList[0]}}"></image>
         <view class="ad">
         <text>{{item.itemName}}</text>
         <view class="foodprice">
@@ -23,7 +23,7 @@
     <view wx:if="{{searchList != ''}}">
       <block wx:for="{{searchList}}" wx:key="{{index}}">
         <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">
-          <image src="{{'http://192.168.190.243:8080'+ item.imgList[0]}}"></image>
+          <image src="{{host+ item.imgList[0]}}"></image>
           <view class="ad">
           <text>{{item.itemName}}</text>
           <view class="foodprice">
