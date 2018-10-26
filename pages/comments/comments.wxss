@@ -4,6 +4,11 @@
   flex-direction: row;
   justify-content: space-around;
   border-bottom: 1rpx solid rgb(233, 231, 231);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  opacity: 0.7;
 }
 .commsel view{
   padding-bottom: 10rpx;
@@ -61,4 +66,7 @@
 .comm-con{
   font-size:26rpx;
   color: #666
+}
+.allcomm,.phtcomm{
+  margin-top: 56rpx;
 }

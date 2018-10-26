@@ -167,9 +167,14 @@ Page({
   },
   //评论
   commClick: function(e) {
-    var id = e.currentTarget.dataset.id
+    var id = e.currentTarget.dataset.id,that = this;
     wx.navigateTo({
       url: '../../pages/commentPost/commentPost?id=' + id,
+    })
+    times = 0
+    that.getList()
+    that.setData({
+      ortp: 0
     })
   },
   //取消订单
@@ -210,16 +215,23 @@ Page({
       success(res) {
         if (res.confirm) {
           toolkit.post(url, (res) => {
-            wx.showToast({
-              title: '退款成功',
-              duration:'1000',
-              success:function(){
-                that.getList()
-                that.setData({
-                  ortp: 0
-                })
-              }
-            })
+            if (200 == res.data.code){
+              wx.showToast({
+                title: '退款成功',
+                duration: 1000,
+                success: function () {
+                  that.getList()
+                  that.setData({
+                    ortp: 0
+                  })
+                }
+              })
+            }else{
+              wx.showToast({
+                title: '退款失败，请稍后再试',
+                icon:'none'
+              })
+            }
           })
         } else if (res.cancel) {
 
@@ -242,7 +254,7 @@ Page({
           toolkit.post(url, (res) => {
             wx.showToast({
               title: '请等待商家同意',
-              duration:'1000',
+              duration:1000,
               success:function(){
                 that.getList()
                 that.setData({

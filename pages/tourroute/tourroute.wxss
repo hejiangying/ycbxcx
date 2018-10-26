@@ -125,7 +125,6 @@
 .tourlist .tourinfo .sell-price text {
   font-size: 24rpx;
   color: #999;
-  margin-left: 10rpx;
   font-weight: normal
 }
 

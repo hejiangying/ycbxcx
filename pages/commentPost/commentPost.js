@@ -6,7 +6,8 @@ var originalList = [],
   index = 0,
   edit = false,
   uploadpic = [],
-  goodsid='';
+  goodsid='',
+  busy = true;
 Page({
 
   /**
@@ -158,21 +159,25 @@ Page({
   //发表
   onPost(){
     var that = this;
-    if (that.data.inputcon == '' && uploadpic == ''){
-      wx.showToast({
-        title: '请填写评价',
-        icon:''
-      })
-    }else{
-      var that = this, token = wx.getStorageSync('token'), url = api.order.ordercomm + '?token=' + token + '&id=' + goodsid + '&content=' + that.data.inputcon + '&picList=' + uploadpic +'&score=' + that.data.star;
-      toolkit.post(url,(res)=>{
+      if (that.data.inputcon == '' && uploadpic == '') {
         wx.showToast({
-          title: '评价成功',
+          title: '请填写评价',
+          icon: ''
         })
-      })
-    }
-   
-
+      } else {
+        var that = this, token = wx.getStorageSync('token'), url = api.order.ordercomm + '?token=' + token + '&id=' + goodsid + '&content=' + that.data.inputcon + '&picList=' + uploadpic + '&score=' + that.data.star;
+        toolkit.post(url, (res) => {
+          wx.showToast({
+            title: '评价成功',
+            duration: 2000,
+            success: (res) => {
+              wx.switchTab({
+                url: '/pages/order/order',
+              })
+            }
+          })
+        })
+      }
   },
 
   /**
@@ -191,6 +196,7 @@ Page({
     that.setData({
       host:host
     })
+    busy = false
   },
 
   /**

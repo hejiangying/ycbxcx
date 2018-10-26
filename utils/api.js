@@ -1,4 +1,4 @@
- //   const host = 'http://192.168.11.243:8080';
+//    const host = 'http://192.168.11.243:8080';
 const host = 'https://ycb.yuncaibang.com';
 const api = {
   home:{

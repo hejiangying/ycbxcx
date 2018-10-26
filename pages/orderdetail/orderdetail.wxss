@@ -66,7 +66,6 @@
 }
 .score{
   font-size: 36rpx;
-  padding-bottom: 10rpx;
 }
 .time{
   padding: 20rpx 0rpx;
@@ -74,12 +73,12 @@
   font-size: 26rpx;
 }
 .satisfaction{
-  color: #f63264;
+  color: #999;
   font-size: 26rpx;
 }
-.comments{
+/* .comments{
   padding: 20rpx 0rpx;
-}
+} */
 .comments-con{
   font-size: 26rpx;
   color: #999;
@@ -88,7 +87,7 @@
   font-size:26rpx;
 }
 .score .com-num{
-  color:#999;
+  color:#f63264;
   font-size: 26rpx;
 }
 /* .tab-con{
