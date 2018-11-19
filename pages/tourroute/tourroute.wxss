@@ -3,7 +3,6 @@
 .search{
   width: 100%;
   background: #f63264;
-  opacity: 0.7;
   padding: 15rpx 0rpx;
   position: fixed;
   top: 0;
@@ -26,10 +25,171 @@
   height: 40rpx;
   vertical-align: -5rpx
 }
+.menu{
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  position: fixed;
+  top: 81rpx;
+  width: 100%;
+  justify-content: space-around;
+  background: #fff;
+  border-bottom: 1rpx solid #f63264;
+  z-index: 998;
+  padding: 20rpx 0rpx;
+  color: #666;
+}
+.menu view{
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+.menu .ang{
+ width: 0;
+ height: 0;
+ border-bottom: 10rpx solid #f63264;
+ border-left:10rpx solid transparent;
+ border-right: 10rpx solid transparent;
+ margin-left: 10rpx;
+}
+.menu .angb{
+    width: 0;
+    height: 0;
+    border-top: 10rpx solid #f63264;
+    border-left:10rpx solid transparent;
+    border-right: 10rpx solid transparent;
+    margin-left: 10rpx;
+}
+.menu .angbcolor{
+  border-top: 10rpx solid #666;
+}
+.menu image{
+  width: 48rpx;
+  height: 48rpx;
+}
+.on{
+  color: #f63264
+}
+.sortList{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 160rpx;
+  z-index: 999;
+  background: #fff;
+  font-size: 26rpx;
+  color: #666;
+  width: 100%;
+}
+.filtrate{
+  position: fixed;
+  top: 156rpx;
+  z-index: 999;
+  font-size: 26rpx;
+  color: #666;
+  width: 100%;
+  background: #faf7f8;
+  padding: 0rpx 15px;
+  box-sizing: border-box
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0rpx;
+}
+.btn text{
+  padding: 5rpx 10rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+  width: 110rpx;
+  display: inline-block;
+  text-align: center
+}
+.btn-r text:nth-child(2){
+  background: #f63264;
+  color: #fff;
+  border: 1rpx solid #f63264
+}
+.fil{
+  display: flex;
+  flex-direction: row;
+}
+.fil .fil-menu{
+  width: 30%;
+  display: flex;
+  flex-direction: column
+}
+.fil .fil-menu .menu_on{
+  background: #fff
+}
+.fil .fil-menu text{
+  padding: 15rpx;
+  box-sizing: border-box
+}
+.fil .fil-con{
+  width: 70%;
+  background: #fff;
+}
+.fil .time-con{
+  background: #faf7f8
+}
+.fil .time-con .timesel view{
+  display: inline-block
+}
+.fil .time-con .timesel{
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.fil .fil-con view{
+  padding:15rpx 0rpx;
+  margin: 0px 10px;
+  /* border-bottom: 1rpx solid #f7f7fa; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box
+}
+.fil .fil-con view.picker{
+  border: 0rpx;
+  
+}
+.fil .fil-con view image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+  position: fixed;
+  z-index: 997
+}
+.gray{
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+  position: fixed;
+  z-index: 999;
+  top: 83rpx;
+}
+.sortList text{
+  padding: 15rpx 0rpx;
+  text-align: center;
+  border-top: 1rpx solid #f7f7fa
+}
 .nogoods image{
   width: 120px;
   height: 120px;
-  margin: 20% auto 0;
+  margin: 40% auto 0;
   display: block
 }
 .nogoods view{
@@ -63,7 +223,7 @@
 .tourlist {
   width: 96%;
   margin: 0 auto;
-  margin-top: 78rpx;
+  margin-top: 160rpx;
 }
 
 .tourlist .touritem {
@@ -76,6 +236,7 @@
 
 .tourlist .touritem .search-con {
   position: relative;
+  z-index: 888
 }
 
 .tourlist .touritem .search-con image {
@@ -89,9 +250,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 10rpx 15rpx;
+  padding: 5rpx 15rpx;
   color: #fff;
-  font-size: 30rpx;
+  font-size: 22rpx;
   background-color: #f63264;
   border-top-right-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
@@ -131,7 +292,7 @@
 .tourlist .tourinfo .tour-tag text {
   border-right: 1rpx solid #999;
   padding: 0rpx 10rpx;
-  font-size: 30rpx;
+  font-size: 24rpx;
   color: #999;
 }
 

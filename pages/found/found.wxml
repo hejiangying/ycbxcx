@@ -1,11 +1,12 @@
 <!--pages/found/found.wxml-->
 <view class="container">
-  <view class="found">
+  <view class="found" bindtap='showClick'>
     <view class="f-search">
       <input placeholder='请输入关键字' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff;font-size:26rpx;'></input>
       <image src="../../image/search.png" bindtap='searchClick'></image>
     </view>
   </view>
+   <view class="gray" wx:if="{{searchmask}}"></view>
   <view class="kt"></view>
   <!-- 最热 -->
   <view wx:if="{{typeclass == 1}}">

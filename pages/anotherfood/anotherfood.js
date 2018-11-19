@@ -11,8 +11,7 @@ Page({
   data: {
     xc: 1, //默认选择行程介绍
     iscol: false, //默认不收藏该商品
-    // input默认是1
-     num: 1,
+    num: 1, // input默认是1
     // 使用data数据对象设置样式名
     minusStatus: 'disabled',
     status: false,
@@ -22,7 +21,8 @@ Page({
     imgres:[],
     pathList:[],
     collectstatus:'',
-    commentlist:[]
+    commentlist:[],
+    goodcomm:''
 
   },
   xcSelect: function(e) {
@@ -108,12 +108,13 @@ Page({
       collectStatus = res.data.result.collectStatus;
        var commentlist = res.data.result.commentList;
       goodsPrice = res.data.result.goodsItem.itemPrice
-    
+      var goodcomm = res.data.result
       console.log("商品详情：",goods)
       that.setData({
         goods:goods,
         collectstatus: collectStatus,
-        commentlist:commentlist
+        commentlist:commentlist,
+        goodcomm:goodcomm
       })
     })
   },

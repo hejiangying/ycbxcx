@@ -26,7 +26,7 @@
     </view>
     <view class="imglist">
       <block wx:for="{{postdetail.imgList}}" wx:key="{{index}}">
-        <image src="{{host+item}}"></image>
+        <image src="{{host+item}}" bindtap='clickImg' data-index="{{host+item}}"></image>
       </block>
     </view>
     <view class="btns">

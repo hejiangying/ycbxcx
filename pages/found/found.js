@@ -18,6 +18,7 @@ Page({
     inputcon:'',//输入的内容
     searchList:[],//搜索结果
     typeclass: 1,//1为列表，2为搜索
+    searchmask: false
   },
 
   /**
@@ -76,6 +77,7 @@ Page({
       }
     that.getpostList()
   },
+  
   //删除
   closeNews(e){
     var that = this,
@@ -146,13 +148,28 @@ Page({
   searchClick() {
     var that = this,token=wx.getStorageSync('token');
     var goodsName = that.data.inputcon, url = api.post.postList + '?keyword=' + goodsName+'&token='+token;
-    toolkit.get(url, (res) => {
-      var searchList = res.data.result.content
-      that.setData({
-        searchList: searchList,
-        foodList: '',
-        typeclass: 2
+    if (goodsName != ''){
+      toolkit.get(url, (res) => {
+        var searchList = res.data.result.content
+        that.setData({
+          searchList: searchList,
+          foodList: '',
+          typeclass: 2,
+          searchmask: false
+        })
       })
+    }else{
+      wx.showToast({
+        icon:'none',
+        title: '搜索内容不能为空',
+      })
+    }
+   
+  },
+  showClick() {
+    var that = this;
+    that.setData({
+      searchmask: true
     })
   },
   

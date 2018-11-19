@@ -100,3 +100,9 @@
   color: #f63264;
   border: 1rpx solid #f63264;
 }
+.satisfaction .nocomm{
+  width: 96%;
+  margin: 10px auto;
+  font-size: 28rpx;
+  display: block
+}

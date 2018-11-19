@@ -1,6 +1,6 @@
 // pages/mine/mine.js
 const toolkit = require('../../utils/ToolKit.js');
-const api = require('../..//utils/api.js');
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -26,6 +26,12 @@ Page({
           myinfo:myinfo
         })
       })
+  },
+  // 修改个人信息
+  changeInfo(){
+    wx.navigateTo({
+      url: '../../pages/changeinfo/changeinfo',
+    })
   },
   // 跳转我的关注页面
   goAtt:function(){

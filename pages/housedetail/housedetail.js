@@ -20,7 +20,8 @@ Page({
     commentlist:[],
     seindex:'',
     houseDetail:'',
-    collectstatus:''
+    collectstatus:'',
+    goodcomm:''
   },
   xcSelect: function(e) {
     var that = this;
@@ -52,11 +53,13 @@ Page({
       collectStatus = res.data.result.collectStatus
       wx.hideLoading()
       var goodsimg = goods.litpic;
+      var goodcomm = res.data.result
       that.setData({
         goods: goods,
         houselist: houselist,
         commentlist: commentlist,
-        collectstatus: collectStatus
+        collectstatus: collectStatus,
+        goodcomm: goodcomm
       })
     })
   },

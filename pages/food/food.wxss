@@ -2,7 +2,7 @@
 .fooditem{
   width: 47%;
   float: left;
-  margin-bottom: 20rpx;
+  margin-top: 20rpx;
   box-shadow: 0rpx 0rpx 2rpx #ccc;
   margin-left: 2%;
 }
@@ -20,6 +20,15 @@
 .fooditem .foodprice text{
   font-size: 26rpx;
   color: #999;
+}
+.gray{
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+  position: fixed;
+  z-index: 999;
+  top: 83rpx;
 }
 .fooditem .ad {
   display: flex;

@@ -1,14 +1,80 @@
 <!--pages/tourroute/tourroute.wxml-->
 <view class="container">
-  <view class="search">
+  <view class="search" bindtap='showClick'>
     <input placeholder='请输入目的地' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff;'></input>
     <view bindtap='searchClick'>
       <image src="../../image/search.png"></image>
     </view>
   </view>
+  <view class="gray" wx:if="{{searchmask}}"></view>
+  <view class="menu">
+    <view bindtap='sortClick' data-sort="{{1}}" class="{{sort == 1 ? 'on':''}}">
+      <text>{{name}}</text>
+      <view class="ang" wx:if="{{issort}}"></view>
+      <view class="angb {{sort == 1 ? '':'angbcolor'}}" wx:if="{{!issort}}"></view>
+    </view>
+    <view bindtap='sortClick' data-sort="{{2}}" class="{{sort == 2 ? 'on':''}}">无自费</view>
+    <view bindtap='sortClick' data-sort="{{3}}" class="{{sort == 3 ? 'on':''}}">无购物</view>
+    <view bindtap='sortClick' data-sort="{{4}}" class="{{sort == 4 ? 'on':''}}">筛选</view>
+  </view>
+  <!-- 排序 -->
+  <view class="sortList" wx:if="{{issort}}">
+    <block wx:for="{{sortList}}" wx:key="{{index}}">
+      <text bindtap='sortSel' data-id="{{item.index}}" data-name="{{item.name}}">{{item.name}}</text>
+    </block>
+  </view>
+  <!-- 筛选 -->
+  <view class="filtrate" wx:if="{{isfiltrate}}">
+    <view class="btn">
+      <view class="btn-l" bindtap="cancelClick">
+        <text>取消</text>
+      </view>
+      <view class="btn-r">
+        <text bindtap="nofil">恢复默认</text>
+        <text bindtap="confirmBtn">确认</text>
+      </view>
+    </view>
+    <view class="fil">
+      <view class="fil-menu">
+        <text class="{{menu1 == 3 ? 'menu_on':'' }}" bindtap='filClick' data-me="{{3}}">游玩时间</text>
+        <text class="{{menu1 == 1 ? 'menu_on':'' }}" bindtap='filClick' data-me="{{1}}">目的地</text>
+        <text class="{{menu1 == 2 ? 'menu_on':'' }}" bindtap='filClick' data-me="{{2}}">出发地</text>
+      </view>
+      <view class="fil-con" wx:if="{{menu1 == 1}}">
+        <block wx:for="{{fitMenu.overCityList}}" wx:key="{{index}}">
+          <view bindtap="optClick" data-opt="{{item}}">
+            <text>{{item}}</text>
+            <image src="../../image/nosel.png" wx:if="{{item != optName}}"></image>
+            <image src="../../image/oksel.png" wx:if="{{item == optName}}"></image>
+          </view>
+
+        </block>
+      </view>
+      <view class="fil-con" wx:if="{{menu1 == 2}}">
+        <block wx:for="{{fitMenu.startCityList}}" wx:key="{{index}}">
+          <view bindtap="optClick" data-opt="{{item}}">
+            <text>{{item}}</text>
+            <image src="../../image/nosel.png" wx:if="{{item != optName}}"></image>
+            <image src="../../image/oksel.png" wx:if="{{item == optName}}"></image>
+          </view>
+        </block>
+      </view>
+      <view class="fil-con time-con" wx:if="{{menu1 == 3}}">
+        <picker mode="date" value="{{date}}" bindchange="bindDateChange" class="timesel">
+          <view>请选择出行日期：</view>
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+
+    </view>
+  </view>
+  <view class="mask" wx:if="{{issort || isfiltrate}}" bindtap="closeMask"></view>
   <!-- 产品列表 -->
   <view class="tourlist">
     <view class="foodclass" wx:if="{{typeclass==1}}">
+    <view wx:if="{{linelist.length>0}}">
       <block wx:for="{{linelist}}" wx:key="{{index}}">
         <view class="touritem" bindtap='goDetail' data-id="{{item.id}}">
           <view class="search-con">
@@ -19,11 +85,16 @@
             <text class="tour-title">{{item.title}}</text>
             <view class="tour-tag">
               <text>出发地：{{item.startCity}}</text>
-              <text>目的地：{{item.overCity}}</text>
+              <text wx:if="{{item.isSelfexpense == 0}}">无自费</text>
+              <text wx:if="{{item.isSelfexpense == 1}}">有自费</text>
+              <text wx:if="{{item.isShop == 0}}">无购物</text>
+              <text wx:if="{{item.isShop == 1}}">有购物</text>
             </view>
             <view class="tour-sell">
               <view class="sell-num">
-                <text> {{item.lineDay}}天{{item.lineNight}}夜</text>
+                <text> {{item.grade == null ? '暂无评分':item.grade}}</text>
+                <text>|</text>
+                <text>已售：{{item.bookCount}}份</text>
               </view>
               <view class="sell-price">￥{{item.price}}
                 <text>起</text>
@@ -32,6 +103,11 @@
           </view>
         </view>
       </block>
+     </view> 
+     <view wx:if="{{linelist.length == 0}}" class="nogoods">
+       <image src="../../image/nn.png"></image>
+        <view>抱歉,暂无该商品。</view>
+     </view>
     </view>
     <view class="foodclass" wx:if="{{typeclass==2}}">
       <view wx:if="{{searchList != ''}}">
@@ -44,12 +120,12 @@
             <view class="tourinfo">
               <text class="tour-title">{{item.title}}</text>
               <view class="tour-tag">
-              <text>出发地：{{item.startCity}}</text>
-              <text>目的地：{{item.overCity}}</text>
-            </view>
+                <text>出发地：{{item.startCity}}</text>
+                <text>目的地：{{item.overCity}}</text>
+              </view>
               <view class="tour-sell">
                 <view class="sell-num">
-                   <text> {{item.lineDay}}天{{item.lineNight}}夜</text>
+                  <text> {{item.lineDay}}天{{item.lineNight}}夜</text>
                 </view>
                 <view class="sell-price">￥{{item.price}}
                   <text>起</text>

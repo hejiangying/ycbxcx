@@ -6,7 +6,7 @@
     </block>
   </view>
 
-  <!-- 全部订单 -->
+  <!-- 订单 -->
   <view class="allorder">
     <view wx:if="{{orderList != '' }}">
       <block wx:for="{{orderList}}" wx:key="{{index}}">

@@ -2,6 +2,7 @@
 const toolkit = require('../../utils/ToolKit.js');
 const api = require('../../utils/api.js');
 const host = require('../../utils/host.js');
+var pic = '',Newpic=[];
 var postId = '',
   index = '',
   replyId = '',
@@ -84,6 +85,20 @@ Page({
     }
 
   },
+  //预览大图
+  clickImg:function(e){
+    Newpic=[];
+    var index = e.currentTarget.dataset.index
+    console.log(index)
+    for(let i=0;i<pic.length;i++){
+      var newpic = host+pic[i]
+      Newpic.push(newpic);
+    }
+    wx.previewImage({
+      current:'index',
+      urls: Newpic,
+    })
+  },
   replayClick: function(e) {
     var commentId = e.currentTarget.dataset.reid;
     console.log("commentId:", commentId)
@@ -109,6 +124,7 @@ Page({
       attenStatus = res.data.result.followStatus;
       thumbsStatus = res.data.result.article.thumbsStatus;
       userId = userid;
+      pic = postdetail.imgList;
       console.log('555', userid, userId)
       if (res.data.result.commentList != null) {
         for (let i = 0; i < read.length; i++) {

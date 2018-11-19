@@ -1,11 +1,12 @@
 <!--pages/houselist/houselist.wxml-->
 <view class="container">
-  <view class="search">
+  <view class="search"  bindtap='showClick'>
     <input placeholder='请输入酒店名/地名' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff'></input>
     <view bindtap='searchClick'>
       <image src="../../image/search.png"></image>
     </view>
   </view>
+  <view class="gray" wx:if="{{searchmask}}"></view>
   <view class="address" wx:if="{{typeclass==1}}">
     <view class="fooditem" bindtap='foodClick' wx:for="{{houselist}}" wx:key="{{item.id}}" data-id="{{item.id}}">
       <image src="{{host+item.imgList[0]}}"></image>

@@ -8,7 +8,20 @@
     <view class="right" wx:if="{{keyword}}" bindtap="onKeywordConfirm">搜索</view>
     <view class="right" wx:if="{{!keyword}}" bindtap="closeSearch">取消</view>
   </view>
-  <view class='mt'></view>
+  <view class="hot-search" wx:if="{{showHot}}" >
+    <view class="hot-tit">热门城市</view>
+    <view class="hot-con">
+      <block wx:for="{{searchList.cityList}}" wx:key="{{index}}">
+      <view bindtap='hotSearch' data-id="{{item}}">{{item}}</view>
+      </block>
+    </view>
+    <view class="hot-tit">热门景点</view>
+    <view class="hot-con">
+      <block wx:for="{{searchList.spotList}}" wx:key="{{index}}">
+      <view bindtap='hotspotSearch' data-id="{{item}}">{{item}}</view>
+      </block>
+    </view>
+  </view>
   <view class="search-result" wx:if="{{ searchStatus && (goodsList.length>0 || hotelList.length>0 || lineList.length>0 || goodsitemList.length>0 )}}">
    <view wx:if="{{ hotelList.length>0 }}" class="tit">住宿</view>
     <view class="cate-item" wx:if="{{ hotelList.length>0 }}">

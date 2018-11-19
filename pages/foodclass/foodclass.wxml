@@ -1,12 +1,13 @@
 <!--pages/footclass/foodclass.wxml-->
 
 <view class="container">
-  <view class="search">
+  <view class="search" bindtap='showClick'>
     <input placeholder='搜索产品' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff'></input>
     <view bindtap='searchClick'>
       <image src="../../image/search.png"></image>
     </view>
   </view>
+   <view class="gray" wx:if="{{searchmask}}"></view>
   <view class="foodclass" wx:if="{{typeclass==1}}">
     <view class="food-l">
       <text bindtap="allGood" class="normal {{allon == 1 ? 'onn' : ''}}">全部商品</text>

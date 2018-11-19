@@ -1,18 +1,2 @@
 /* pages/goodsdetail/goodsdetail.wxss */
-.container{
-  width: 96%;
-  margin: 0 auto;
-}
-.container image{
-  display: block;
-  width: 100%;
-}
-.container text{
-  font-size: 28rpx;
-  line-height: 48rpx;
-}
-.container view{
-  font-size: 26rpx;
-  color: #666;
-  padding: 5rpx 0rpx;
-}
+@import '../../pages/orderdetail/orderdetail.wxss';

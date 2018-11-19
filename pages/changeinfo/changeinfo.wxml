@@ -1,0 +1,30 @@
+<view class="add-address">
+
+  <view class="pho">
+    <image src="{{avatar}}" bindtap="changePho"></image>
+  </view>
+  <view class="add-form">
+    <view class="info"><text>昵称</text> <input placeholder='昵称设置' value="{{consignee}}" bindinput='nameInput'></input></view>
+    <view class="info"><text>性别</text> <input placeholder='性别' value="{{sex==1 ? '男':'女'}}" bindtap='sexInput'></input></view>
+    <view class="house houseform" wx:if="{{num != 0}}">
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange" style="width:518rpx;">
+        <view>出生日期：</view>
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class="mine-item">
+      <text>现居城市</text>
+      <view class="mine-r">
+        <picker mode="region" bindchange="bindRegionChange">
+          <input value="{{addressName}}" class="picker" />
+        </picker>
+        <image src="../../../image/arrow.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="btns">
+    <button class="save" bindtap="save">保存</button>
+  </view>
+</view>

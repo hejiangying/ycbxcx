@@ -117,6 +117,7 @@ Page({
     token=wx.getStorageSync('token'),
       url = api.pay.payall + '?ids=' + goodsid + '&token=' + token + '&addressId=' + addressId + '&paymentType=' + 1 +'&postFee='+0;
     console.log("addressId", addressId)
+    var that = this
     if (addressId != ''){
       toolkit.post(url, (res) => {
         wx.removeStorageSync('addressId')
@@ -147,7 +148,10 @@ Page({
               wx.showToast({
                 title: '支付失败',
                 icon: 'none',
-                duration: 2000
+                duration: 2000,
+                success(){
+                  that.getGooddetail()
+                }
               })
             }
           }

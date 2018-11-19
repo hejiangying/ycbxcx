@@ -18,15 +18,35 @@
         <text class="t-much">{{goods.marketPrice}}</text>
         <!-- <text class="t-min">起</text> -->
       </view>
-      <text class="sold">剩余{{goods.goodsNumber}}件</text>
+      <text class="sold">已售{{goods.sellNumber}}件</text>
     </view>
-    <view class="kong" wx:if="{{commentlist != ''}}"></view>
-    <view class="comments" wx:if="{{commentlist != ''}}">
+    <view class="kong"></view>
+    <view class="comments" wx:if="{{goodcomm.comment != ''}}">
       <view class="score cen">
         <view class="satisfaction">
-          <text>{{commentlist.length}}条评论</text>
+          <text>{{goods.grade}}分</text>
         </view>
-        <view class="com-num" bindtap='commSee' data-item="{{commentlist[0].id}}"> 查看评论 ></view>
+        <view class="com-num" bindtap='commSee' data-item="{{commentlist[0].id}}"> {{commentlist.length}}条评论 ></view>
+      </view>
+    </view>
+    <view class="comments" wx:if="{{goodcomm.comment == ''}}">
+       <view class="satisfaction">
+          <text class="nocomm">暂无评价</text> 
+        </view>
+    </view>
+    <view class="commdetail" wx:if="{{goodcomm.comment != ''}}">
+    <view class="who">
+      <view class="star">
+        <text wx:if="{{goodcomm.comment.score == 5}}" >★★★★★</text>
+        <text wx:if="{{goodcomm.comment.score == 4}}" >★★★★</text>
+        <text wx:if="{{goodcomm.comment.score == 3}}" >★★★</text>
+        <text wx:if="{{goodcomm.comment.score == 2}}" >★★</text>
+        <text wx:if="{{goodcomm.comment.score == 1}}" >★</text>
+      </view>
+        <view>{{goodcomm.comment.nickname}}  {{time}}</view>
+      </view>
+      <view class="think">
+      {{goodcomm.comment.content}}
       </view>
     </view>
     <view class="kong"></view>
@@ -56,7 +76,8 @@
       <image src="{{collectstatus==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
       <text>{{collectstatus ==  1 ? '收藏成功' : '点击收藏'}}</text>
     </view>
-    <view class="buybtn" bindtap="buyClick" hover-class='clickcss'>{{status == true ? '加入购物车' : '选择商品'}}</view>
+    <view class="buybtn store" bindtap="storeClick" data-id="{{linedetail.supplierId}}">查看店铺</view>
+    <view class="buybtn gobuy" bindtap="buyClick" hover-class='clickcss'>{{status == true ? '加入购物车' : '选择商品'}}</view>
   </view>
   <view class="mask" wx:if="{{status}}">
     <view class="mask-cover"></view>

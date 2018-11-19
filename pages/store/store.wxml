@@ -1,0 +1,110 @@
+<!--pages/store/store.wxml-->
+<view class="container">
+  <view class="storeinfo">
+    <view class="name">
+      <view>
+        <image src="{{host + storeInfo.supplier.litpic}}"></image>
+      </view>
+      <view class="rightiinfo">
+        <view class="info">
+          <text>{{storeInfo.supplier.account}}</text>
+          <text>店铺位置：{{storeInfo.supplier.address}}</text>
+          <text>{{storeInfo.supplier.fanNum}}粉丝</text>
+        </view>
+        <view class="att" bindtap='attClick' data-id="{{storeInfo.supplier.id}}">{{att_status == 1 ? '已关注' :'+关注'}}</view>
+      </view>
+      <!-- <text>达人介绍</text>
+      <text>达人心情</text> -->
+    </view>
+  </view>
+  <view class="menu">
+    <text bindtap="menuClick" data-index="{{1}}" class="{{menuIdex == 1? 'on':''}}">动态</text>
+    <text bindtap="menuClick" data-index="{{2}}" class="{{menuIdex == 2? 'on':''}}">自助游</text>
+    <text bindtap="menuClick" data-index="{{3}}" class="{{menuIdex == 3? 'on':''}}">特产</text>
+    <text bindtap="menuClick" data-index="{{4}}" class="{{menuIdex == 4? 'on':''}}">客栈</text>
+  </view>
+  <view class="con" wx:if="{{menuIdex==1}}">
+     <block wx:for="{{storeInfo.articleList.content}}" wx:key="{{index}}">
+      <view class="item" bindtap="goodsClick" data-index="{{item.id}}">
+        <image src="{{host+item.imgList[0]}}"></image>
+        <view class="item-info">
+          <text>{{item.author}}</text>
+          <view class="des">{{item.content}}</view>
+          <view class="price">
+            <text>{{item.authorEmail}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="con" wx:if="{{menuIdex==1 && storeInfo.articleList== ''}}">
+    <view class="no">
+      <image src="../../image/nn.png"></image>
+      <view>暂无</view>
+    </view>
+  </view>
+  <view class="con" wx:if="{{menuIdex==2}}">
+    <block wx:for="{{storeInfo.lineList.content}}" wx:key="{{index}}">
+      <view class="item">
+        <image src="{{host+item.imgList[0]}}"></image>
+        <view class="item-info">
+          <text>{{item.title}}</text>
+          <view>{{item.introduce}}</view>
+          <view class="price">
+            <text>价格 {{item.price}}元</text>
+            <text>已售：{{item.sellNum}}份</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+   <view wx:if="{{menuIdex==2 && storeInfo.lineList.content.length== 0}}">
+    <view class="no">
+      <image src="../../image/nn.png"></image>
+      <view>暂无</view>
+    </view>
+  </view>
+  <view class="con" wx:if="{{menuIdex==3}}">
+     <block wx:for="{{storeInfo.goodsList.content}}" wx:key="{{index}}">
+      <view class="item">
+        <image src="{{host+item.imgList[0]}}"></image>
+        <view class="item-info">
+          <text>{{item.goodsName}}</text>
+          <view>{{item.goodsDesc}}</view>
+          <view class="price">
+            <text>价格 {{item.marketPrice}}元</text>
+            <text>已售：{{item.sellNum}}份</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{menuIdex==3 && storeInfo.goodsList.content.length== 0}}">
+    <view class="no">
+      <image src="../../image/nn.png"></image>
+      <view>暂无</view>
+    </view>
+  </view>
+  <view class="con" wx:if="{{menuIdex==4}}">
+     <block wx:for="{{storeInfo.hotelList.content}}" wx:key="{{index}}">
+      <view class="item">
+        <image src="{{host+item.imgList[0]}}"></image>
+        <view class="item-info">
+          <text>{{item.title}}</text>
+          <view>{{item.content}}</view>
+          <view>{{item.address}}</view>
+          <view class="price">
+            <text>价格 {{item.price}}元</text>
+            <text>已售：{{item.sellNum}}份</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+   <view class="con" wx:if="{{menuIdex==4 && storeInfo.hotelList.content.length== 0}}">
+    <view class="no">
+      <image src="../../image/nn.png"></image>
+      <view>暂无</view>
+    </view>
+  </view>
+</view>

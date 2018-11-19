@@ -29,15 +29,35 @@
         <view>
         </view>
       </view>
-      <view class="kong" wx:if="{{commentlist !=''}}"></view>
-      <view class="comments" wx:if="{{commentlist !=''}}">
+      <view class="kong"></view>
+      <view class="comments" wx:if="{{goodcomm.comment != ''}}">
         <view class="score cen">
           <view class="satisfaction">
-            <text>{{commentlist.length}}条评论 </text>
+            <text>{{goods.grade}}分 </text>
           </view>
-          <view class="com-num" bindtap='commSee' data-item="{{commentlist[0].id}}">查看评论 ></view>
+          <view class="com-num" bindtap='commSee' data-item="{{commentlist[0].id}}">{{commentlist.length}}条评论 ></view>
         </view>
       </view>
+       <view class="comments" wx:if="{{goodcomm.comment == ''}}">
+       <view class="satisfaction">
+          <text class="nocomm">暂无评价</text> 
+        </view>
+    </view>
+       <view class="commdetail" wx:if="{{goodcomm.comment != ''}}">
+    <view class="who">
+      <view class="star">
+        <text wx:if="{{goodcomm.comment.score == 5}}" >★★★★★</text>
+        <text wx:if="{{goodcomm.comment.score == 4}}" >★★★★</text>
+        <text wx:if="{{goodcomm.comment.score == 3}}" >★★★</text>
+        <text wx:if="{{goodcomm.comment.score == 2}}" >★★</text>
+        <text wx:if="{{goodcomm.comment.score == 1}}" >★</text>
+      </view>
+        <view>{{goodcomm.comment.nickname}}  {{time}}</view>
+      </view>
+      <view class="think">
+      {{goodcomm.comment.content}}
+      </view>
+    </view>
       <view class="kong"></view>
       <!-- tab -->
       <view class="tab">
@@ -77,7 +97,8 @@
 
             <view class="mask housemask" wx:if="{{status}}">
                 <view class="footbtn">
-                  <view class="buybtn" bindtap="buyClick">{{status == true ? '立即预订' : '加入购物车'}}</view>
+                 <view class="buybtn store" bindtap="storeClick" data-id="{{linedetail.supplierId}}">查看店铺</view>
+                 <view class="buybtn gobuy" bindtap="buyClick">{{status == true ? '立即预订' : '加入购物车'}}</view>
                 </view>
                  <view class="mask-cover"></view>
                 <view class="mask-con">

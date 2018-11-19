@@ -33,6 +33,7 @@ Page({
     console.log("eeeeeeeee", options)
     goodsid= options.id
   },
+  //星星评分
   clickstar(e){
     var that = this;
     var star = e.currentTarget.dataset.star;

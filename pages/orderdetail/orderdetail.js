@@ -14,7 +14,9 @@ Page({
     xc:1,//默认选择行程介绍
     collectstatus:'',//默认不收藏该商品
     linedetail:'',//线路详情
-    commentlist:[]
+    commentlist:[],
+    goodscomm:'',
+    time:''
   },
 
   /**
@@ -70,11 +72,17 @@ Page({
       var linedetail = res.data.result.line, commentlist = res.data.result.commentList;
         collectStatus = res.data.result.collectStatus;
         price = linedetail.price
-      console.log("jiage：", price)
+        var goodscomm = res.data.result
+      var time = res.data.result.comment.createTime
+      console.log('TIME,',time)
+      // var newt = newtime.splice(0, 10)
+     
       that.setData({
         linedetail:linedetail,
         collectstatus: collectStatus,
-        commentlist: commentlist
+        commentlist: commentlist,
+        goodscomm: goodscomm,
+        // time: newt
       })
     })
   },
@@ -112,6 +120,13 @@ Page({
       })
     }
     
+  },
+  //查看商家
+  storeClick(e){
+    var storeId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../../pages/store/store' + '?storeId=' + storeId,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

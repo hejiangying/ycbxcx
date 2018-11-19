@@ -1,18 +1,90 @@
-<!--pages/goodsdetail/goodsdetail.wxml-->
+<!--pages/orderdetail/orderdetail.wxml-->
 <view class="container">
-<view class="banner">
-    <swiper indicator-dots="{{info.imgList>1 ? true : false}}" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264" style="width:100%;">
-      <block wx:for="{{info.imgList}}" wx:key="{{index}}">
-        <swiper-item style="width:100%;">
-          <image src="{{host+item}}" style="width:100%;height:100%;"/>
+  <view class="tourdetail">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" indicator-active-color="#f63264">
+      <block wx:for="{{linedetail.imgList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{host+item}}" style='width:100%;height:150px;'></image>
         </swiper-item>
       </block>
     </swiper>
+    <view class="t-name cen">
+      <view>
+        {{linedetail.title}}</view>
+      <view class="sell-state">
+        <view class="t-money">
+          <text class="t-symbol">￥</text>
+          <text class="t-much">{{linedetail.price}}</text>
+          <!-- <text class="t-min">起</text> -->
+        </view>
+      </view>
+    </view>
+    <view class="advantages cen">
+      <view>
+        <image src="../../image/ok.png"></image> {{linedetail.sellPoint}}</view>
+    </view>
   </view>
-<view>{{info.supplierName}}</view>
-<view>座机：{{info.mobile}}</view>
-<view>联系电话：{{info.telephone}}</view>
-  <view>地址：{{info.address}}</view>
-   <view>联系人：{{info.linkMan}}</view>
-   <view>介绍：{{info.content}}</view>
+  <view class="kong"></view>
+  <view class="comments"  wx:if="{{goodscomm.comment != ''}}">
+    <view class="score cen" bindtap='commSee' data-item="{{linedetail.id}}">
+      <view class="satisfaction">
+        <text>{{linedetail.grade}}分</text>
+      </view>
+      <view class="com-num"> {{commentlist.length}}条评论 ></view>
+    </view>
+  </view>
+   <view class="comments" wx:if="{{goodscomm.comment == ''}}">
+       <view class="satisfaction">
+          <text class="nocomm">暂无评价</text> 
+        </view>
+    </view>
+  <view class="commdetail"  wx:if="{{goodscomm.comment != ''}}">
+    <view class="who">
+      <view class="star">
+        <text wx:if="{{goodscomm.comment.score == 5}}" >★★★★★</text>
+        <text wx:if="{{goodscomm.comment.score == 4}}" >★★★★</text>
+        <text wx:if="{{goodscomm.comment.score == 3}}" >★★★</text>
+        <text wx:if="{{goodscomm.comment.score == 2}}" >★★</text>
+        <text wx:if="{{goodscomm.comment.score == 1}}" >★</text>
+      </view>
+      <view>{{goodscomm.comment.nickname}}  {{time}}</view>
+    </view>
+    <view class="think">
+    {{goodscomm.comment.content}}
+    </view>
+  </view>
+  <view class="kong"></view>
+  <!-- tab -->
+  <view class="tab">
+    <view class="tab-top">
+      <text data-xc="1" bindtap='xcSelect' class="{{xc==1 ? 'xcon': ''}}">行程介绍</text>
+      <text data-xc="2" bindtap='xcSelect' class="{{xc==2 ? 'xcon': ''}}">费用说明</text>
+      <text data-xc="3" bindtap='xcSelect' class="{{xc==3 ? 'xcon': ''}}">使用说明</text>
+    </view>
+    <view class="tab-con">
+      <view class="tab1" wx:if="{{xc==1}}">
+        <view> 出发地：{{linedetail.startCity}}</view>
+        <view> 目的地：{{linedetail.overCity}}</view>
+        <view>开始日期: {{linedetail.beginDate}}</view>
+        <view>结束日期：{{linedetail.endDate}}</view>
+        <view>总计： {{linedetail.lineDay}}天{{linedetail.lineNight}}夜</view>
+        <view> 介绍：{{linedetail.content}}</view>
+      </view>
+      <view class="tab2" wx:elif="{{xc==2}}">
+        {{linedetail.feeInclude}}
+        <view>{{linedetail.childRule}}</view>
+      </view>
+      <view class="tab3" wx:elif="{{xc==3}}">
+        {{linedetail.lineContent}}
+      </view>
+    </view>
+  </view>
+  <!-- 底部悬浮按钮 -->
+  <view class="footbtn">
+    <view class="scbtn" bindtap="isCollect" data-id="{{linedetail.id}}">
+      <image src="{{collectstatus ==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
+      <text>{{collectstatus ==  1 ? '收藏成功' : '点击收藏'}}</text>
+    </view>
+    <view class="buybtn" bindtap="buyClick">立即购买</view>
+  </view>
 </view>

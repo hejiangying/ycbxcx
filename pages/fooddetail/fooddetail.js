@@ -26,6 +26,7 @@ Page({
     imgres: [],
     pathList: [],
     collectstatus: '', //收藏
+    goodcomm:''
 
   },
   xcSelect: function(e) {
@@ -110,15 +111,12 @@ Page({
       collectStatus = res.data.result.collectStatus;
       goodsPrice = res.data.result.goods.marketPrice
       console.log("商品详情：", goods)
-      // var goodsimg = goods.goodsImg;
-      // var reg = /,$/gi;
-      // var img = goodsimg.replace(reg, '')
-      // var imgres = img.split(",")
+      var goodcomm = res.data.result
       that.setData({
         goods: goods,
-        // imgres: imgres,
         collectstatus: collectStatus,
-        commentlist:commentlist
+        commentlist:commentlist,
+        goodcomm: goodcomm
       })
     })
   },

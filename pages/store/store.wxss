@@ -1,0 +1,103 @@
+/* pages/store/store.wxss */
+.container{
+  color: #666;
+  font-size: 26rpx;
+}
+.storeinfo{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.menu{
+  position: fixed;
+  top: 146rpx;
+  width: 100%;
+  background: #fff
+}
+.rightiinfo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 78%;
+  align-items: center
+}
+.name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(to bottom, rgb(233, 75, 75), #f63264);
+  box-sizing: border-box;
+  padding: 10rpx;
+  color: #fff
+}
+.name image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  border: 1rpx solid #fff
+}
+.name .info{
+  display: flex;
+  flex-direction: column
+}
+.menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10rpx 0rpx;
+  border-bottom: 1rpx dashed #f63264
+}
+.con{
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 200rpx;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 0rpx;
+  border-bottom: 1rpx dashed rgb(230, 227, 227);
+  box-sizing: border-box
+}
+.item image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.item-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20rpx;
+}
+.item-info view.price text{
+ margin-right: 20rpx;
+}
+.item-info view.price {
+  width: 480rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+.item-info view.des{
+  width: 480rpx;
+  word-wrap:break-word
+}
+.on{
+  color: #f63264
+}
+.att{
+  border: 1rpx solid #fff;
+  padding: 0rpx 10rpx;
+  border-radius: 10rpx;
+}
+.no image{
+  width: 300rpx;
+  height: 300rpx;
+  margin: 30rpx auto;
+  display: block;
+}
+.no view{
+  text-align: center
+}

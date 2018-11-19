@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    attstatus:'',//是否关注
   },
 
   /**
@@ -39,11 +39,11 @@ Page({
     })
 
   },
-  blackClick(e){
+  addClick(e){
     var that = this,id=e.currentTarget.dataset.id,token=wx.getStorageSync('token');
-    var url = api.attention.black+'?token='+token+'&followId='+id
+    var url = api.attention.addatten+'?token='+token+'&userId='+id
     toolkit.post(url,(res)=>{
-      
+      that.getattList()
     })
   },
 
@@ -83,7 +83,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.getattList()
   },
 
   /**

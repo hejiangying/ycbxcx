@@ -1,11 +1,12 @@
 <!--pages/food/food.wxml-->
 <view class="container">
-  <view class="search">
-    <input placeholder='请输入...' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff'></input>
+  <view class="search" bindtap='showClick'>
+    <input placeholder='请输入您感兴趣的内容...' bindinput='getcon' value="{{inputcon}}" placeholder-style='color:#fff'></input>
     <view bindtap='searchClick'>
       <image src="../../image/search.png"></image>
     </view>
   </view>
+  <view class="gray" wx:if="{{searchmask}}"></view>
   <view class="tongyong" wx:if="{{typeclass==1}}">
     <block wx:for="{{goodslist}}" wx:key="{{index}}">
       <view class="fooditem" bindtap='foodClick' data-id="{{item.id}}">

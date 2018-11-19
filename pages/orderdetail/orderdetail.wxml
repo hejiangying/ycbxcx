@@ -19,18 +19,38 @@
         </view>
       </view>
     </view>
-    <view class="advantages cen" wx:if="{{linedetail.sellPoint != null}}">
+    <view class="advantages cen">
       <view>
         <image src="../../image/ok.png"></image> {{linedetail.sellPoint}}</view>
     </view>
   </view>
-  <view class="kong" wx:if="{{commentlist != ''}}"></view>
-  <view class="comments" wx:if="{{commentlist != ''}}">
+  <view class="kong"></view>
+  <view class="comments"  wx:if="{{goodscomm.comment != ''}}">
     <view class="score cen" bindtap='commSee' data-item="{{linedetail.id}}">
       <view class="satisfaction">
-        <text>{{commentlist.length}}条评论</text>
+        <text>{{linedetail.grade}}分</text>
       </view>
-      <view class="com-num"> 查看评论 ></view>
+      <view class="com-num"> {{commentlist.length}}条评论 ></view>
+    </view>
+  </view>
+   <view class="comments" wx:if="{{goodscomm.comment == ''}}">
+       <view class="satisfaction">
+          <text class="nocomm">暂无评价</text> 
+        </view>
+    </view>
+  <view class="commdetail"  wx:if="{{goodscomm.comment != ''}}">
+    <view class="who">
+      <view class="star">
+        <text wx:if="{{goodscomm.comment.score == 5}}" >★★★★★</text>
+        <text wx:if="{{goodscomm.comment.score == 4}}" >★★★★</text>
+        <text wx:if="{{goodscomm.comment.score == 3}}" >★★★</text>
+        <text wx:if="{{goodscomm.comment.score == 2}}" >★★</text>
+        <text wx:if="{{goodscomm.comment.score == 1}}" >★</text>
+      </view>
+      <view>{{goodscomm.comment.nickname}}  {{time}}</view>
+    </view>
+    <view class="think">
+    {{goodscomm.comment.content}}
     </view>
   </view>
   <view class="kong"></view>
@@ -48,7 +68,7 @@
         <view>开始日期: {{linedetail.beginDate}}</view>
         <view>结束日期：{{linedetail.endDate}}</view>
         <view>总计： {{linedetail.lineDay}}天{{linedetail.lineNight}}夜</view>
-        <view> 介绍：{{linedetail.introduce}}</view>
+        <view> 介绍：{{linedetail.content}}</view>
       </view>
       <view class="tab2" wx:elif="{{xc==2}}">
         {{linedetail.feeInclude}}
@@ -65,6 +85,7 @@
       <image src="{{collectstatus ==  1 ? '../../image/collect.png' : '../../image/nocollect.png'}}"></image>
       <text>{{collectstatus ==  1 ? '收藏成功' : '点击收藏'}}</text>
     </view>
-    <view class="buybtn" bindtap="buyClick">立即购买</view>
+    <view class="buybtn store" bindtap="storeClick" data-id="{{linedetail.supplierId}}">查看店铺</view>
+    <view class="buybtn gobuy" bindtap="buyClick">立即购买</view>
   </view>
 </view>

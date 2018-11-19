@@ -18,6 +18,23 @@
 .att-name{
   color: #666;
   font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+}
+.att-name image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+.att-name .isstore{
+  border: 1rpx solid #f63264;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  padding: 5rpx 10rpx;
+  color: #fff;
+  background: #f63264;
+  height: 36rpx;
+  line-height: 36rpx
 }
 .att-item .att-l {
   display: flex;
@@ -41,4 +58,7 @@
     color: #f63264;
     text-align: center;
     margin-top:30%;
+  }
+  .name{
+    width: 200rpx;
   }

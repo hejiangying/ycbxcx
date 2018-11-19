@@ -20,39 +20,23 @@ App({
      }
    })
   },
-  // getAuthorize: function (openid, session_key) {
-  //   var that = this;
-  //   console.log("获取用户信息：", api.apiUser.get_union)
-  //   // wx.getUserInfo({
-  //   //   withCredentials: true,
-  //   //   success: function (user) {
-  //   //     console.log('wx.getUserInfo:', user)
-  //   //     wx.setStorageSync('userInfo', user.userInfo);
-  //   //     wx.setStorageSync('authorize', 0)
-       
-  //   //     toolkit.post(api.apiUser.get_union,
-  //   //       {
-  //   //         openid: openid,
-  //   //         session_key: session_key,
-  //   //         userInfo: user.userInfo,
-  //   //         rawData: user.rawData,
-  //   //         signature: user.signature,
-  //   //         encryptedData: user.encryptedData,
-  //   //         iv: user.iv
-  //   //       },
-  //   //       function (res) {
-  //   //         console.log("res1111:", res)
-  //   //          var myid = res.data.result.user.id
-  //   //          wx.setStorageSync('myid', myid)
-  //   //          wx.setStorageSync('token', res.data.result.token)
-  //   //       }
-  //   //     )
-  //   //   },
-  //   //   fail: function (res) {
-  //   //     console.log('拒绝授权')
-  //   //     wx.setStorageSync('authorize', 1)
-  //   //   }
-  //   // })
-  // },
- 
+  onShow: function () {
+    console.log("app.js ---onShow---");
+    
+    var expriation = wx.getStorageSync("index_date")
+    var timestamp = Date.parse(new Date());//拿到现在时间
+    console.log('存下的时间：', expriation)
+    console.log("现在的时间：", timestamp)
+    if (expriation < timestamp) {//过期了，清空缓存，跳转到登录
+      console.log("缓存已过期");
+      wx.clearStorageSync('token');//清空缓存
+      return;
+    }
+  },
+  onHide: function () {
+    console.log("app.js ---onHide---");
+  },
+  onError: function (msg) {
+    console.log("app.js ---onError---" + msg);
+  }
 })

@@ -16,6 +16,7 @@ Page({
     inputcon: '',//搜索内容
     searchList: '',//搜索结果
     typeclass: 1,//1为列表，2为搜索
+    searchmask:false
   },
 
   /**
@@ -38,21 +39,37 @@ Page({
     console.log(e.detail.value)
     var that = this;
     that.setData({
-      inputcon: e.detail.value
+      inputcon: e.detail.value,
+      searchmask: true
+    })
+  },
+  showClick() {
+    var that = this;
+    that.setData({
+      searchmask: true
     })
   },
   //搜索
   searchClick() {
     var that = this;
     var goodsName = that.data.inputcon, url = api.appGoods.another + '?goodsName=' + goodsName;
-    toolkit.get(url, (res) => {
-      var searchList = res.data.result.content
-      that.setData({
-        searchList: searchList,
-        foodList: '',
-        typeclass: 2
+    if(goodsName != ''){
+      toolkit.get(url, (res) => {
+        var searchList = res.data.result.content
+        that.setData({
+          searchList: searchList,
+          foodList: '',
+          typeclass: 2,
+          searchmask: false
+        })
       })
-    })
+    }else{
+      wx.showToast({
+        icon: 'none',
+        title: '搜索内容不能为空',
+      })
+    }
+    
   },
 
   /**

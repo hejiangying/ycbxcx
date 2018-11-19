@@ -1,0 +1,157 @@
+
+page {
+  height: 100%;
+}
+.pho{
+  width: 140rpx;
+  margin: 20rpx auto;
+}
+.pho image{
+  width:140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  box-shadow: 0rpx 0rpx 10rpx 2rpx #f63264
+}
+.add-address .add-form {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.add-form .info {
+   width: 80%;
+   margin: 30rpx auto;
+   border-radius: 20rpx;
+   box-shadow: 0rpx 0rpx 10rpx 2rpx #f63264;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding: 0rpx 30rpx;
+   box-sizing: border-box
+}
+.add-form .info input {
+  display: block;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  width: 80%;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: #666;
+
+}
+.add-form .info text{
+  font-size: 28rpx;
+  color: #666;
+}
+.add-form input.picker{
+  padding: 0;
+  font-size: 24rpx;
+  border-bottom: none;
+}
+
+.add-address .btns {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+}
+
+.add-address .save {
+  flex: 1;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+.region {
+  color: #777;
+  flex: 1;
+  line-height: 1.6;
+  padding: 13px 0;
+  min-height: 22px;
+  height: auto;
+  font-size: 14px;
+  border-bottom: 0.8px solid #ebebeb;
+  margin-left: 30rpx;
+}
+
+.region.selected {
+  color: #555;
+}
+
+.add-address .save {
+  background: #f63264;
+}
+.mine-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 36rpx;
+  color: rgb(78, 77, 77);
+  align-items: center;
+  width: 80%;
+  margin: 30rpx auto;
+  border-radius: 20rpx;
+  box-shadow: 0rpx 0rpx 10rpx 2rpx #f63264;
+  padding: 14rpx 20rpx;
+}
+.mine-item>text{
+  font-size: 26rpx;
+  color: #666;
+}
+.mine-item .mine-r image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+.mine-item .mine-r {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mine-item .mine-r picker{
+  width: 400rpx;
+}
+.mine-item .mine-r picker view{
+  font-size:20rpx;
+}
+.mine-r .myzp image{
+  width: 80rpx;
+  height: 80rpx;
+  display: block;
+  border-radius: 50%;
+}
+.zan-cell__bd{
+  color: #666;
+  font-size: 26rpx;
+}
+.house{
+  font-size: 28rpx;
+  color: #666;
+  box-sizing: border-box;
+  padding: 0rpx 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0rpx 0rpx 10rpx 2rpx #f63264
+}
+.houseform{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding:20rpx 20rpx;
+  width: 80%;
+  margin: 20rpx auto;
+}
+.houseform input{
+  font-size: 26rpx;
+}
+.houseform picker view{
+  display: inline-block
+}

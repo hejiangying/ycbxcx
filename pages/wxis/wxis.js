@@ -36,6 +36,10 @@ Page({
              var myid = res.data.result.member.id
              wx.setStorageSync('myid', myid)
              wx.setStorageSync('token', res.data.result.token)
+            var timestamp = Date.parse(new Date());
+            var expriation = timestamp + 7200000;
+            wx.setStorageSync('index_date', expriation);
+            console.log("时间:",expriation)
           }
         )
       wx.switchTab({

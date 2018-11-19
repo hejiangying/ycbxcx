@@ -1,15 +1,17 @@
-//    const host = 'http://192.168.11.243:8080';
-const host = 'https://ycb.yuncaibang.com';
+ const host = 'http://192.168.11.243:8080';
+// const host = 'https://ycb.yuncaibang.com';
 const api = {
   home:{
     home: host +'/apiMember/home',//首页
     banner: host +'/apiAd/list',//轮播
     bannerdetail: host +'/apiAd/info',//轮播详情
+    search: host + '/apiMember/search',//搜索
   },
   apiUser: {
     onLogin: host + '/apiMember/auth',//授权
     get_union: host +'/apiMember/login',//登录
-    info: host + '/apiMember/info'//获取用户信息
+    info: host + '/apiMember/info',//获取用户信息
+    updata: host +'/appMember/update',//修改用户信息
   },
   appGoods:{
     goodslist: host + '/apiGoods/list',//特产商品列表
@@ -27,7 +29,8 @@ const api = {
   },
   appLine:{
     linelist:host + '/apiLine/list',//线路列表
-    linedetail: host + '/apiLine/getLineById'//线路详情
+    linedetail: host + '/apiLine/getLineById',//线路详情
+    filtrate: host + '/apiLine/getCity',//筛选
   },
   post:{
     postCreat: host + '/apiArticle/create',//创建帖子
@@ -47,7 +50,8 @@ const api = {
     addShop: host + '/apiCart/create',//加入购物车
     shopList: host + '/apiCart/list',//购物车列表
     shopInfo: host + '/apiCart/info',//购物车商品详情
-    delGoods: host +'/apiCart/delete'//删除商品
+    delGoods: host +'/apiCart/delete',//删除商品
+    store: host + '/apiSupplier/home'//商户主页
   },
   address:{
     addressList: host +'/apiMember_address/list',//地址列表
@@ -95,8 +99,9 @@ const api = {
     commlist: host +'/apiComment/list',//评论列表
   },
   play:{
-    playList: host +'/apiSupplier/list',//附近玩列表
-    info:host + '/apiSupplier/info',//附近玩详情
+    //playList: host +'/apiSupplier/list',//附近玩列表
+    playList: host + '/apiLine/getPlay',//附近玩列表
+    info: host + '/apiLine/getLineById',//附近玩详情
   }
  
 }

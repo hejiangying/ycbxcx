@@ -42,15 +42,18 @@
     "pages/kezhan/kezhan",
     "pages/lineorder/lineorder",
     "pages/tyyding/tyyding",
-    "pages/specialty/specialty"
+    "pages/specialty/specialty",
+    "pages/changeinfo/changeinfo",
+    "pages/store/store"
+   
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "云彩帮",
     "navigationBarTextStyle": "black",
-     "enablePullDownRefresh": true,
-     "onReachBottomDistance": 50
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
   },
   "tabBar": {
     "selectedColor": "#f63264",
